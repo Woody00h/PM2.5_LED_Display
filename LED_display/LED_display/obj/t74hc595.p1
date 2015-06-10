@@ -1,0 +1,2236 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"18 D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1\m8c.h
+[v _BOOL `uc 1 t ]
+[; ;CY8C22~1\m8c.h: 18: typedef unsigned char BOOL;
+
+"19
+[v _BYTE `uc 1 t ]
+[; ;CY8C22~1\m8c.h: 19: typedef unsigned char BYTE;
+
+"20
+[v _CHAR `c 1 t ]
+[; ;CY8C22~1\m8c.h: 20: typedef signed char CHAR;
+
+"21
+[v _WORD `ui 1 t ]
+[; ;CY8C22~1\m8c.h: 21: typedef unsigned int WORD;
+
+"22
+[v _INT `i 1 t ]
+[; ;CY8C22~1\m8c.h: 22: typedef signed int INT;
+
+"23
+[v _DWORD `ul 1 t ]
+[; ;CY8C22~1\m8c.h: 23: typedef unsigned long DWORD;
+
+"24
+[v _LONG `l 1 t ]
+[; ;CY8C22~1\m8c.h: 24: typedef signed long LONG;
+
+"70
+[v _PRT0DR `Auc 1 e@0 ]
+[; ;CY8C22~1\m8c.h: 70: BYTE PRT0DR;
+
+"72
+[v _PRT0IE `Auc 1 e@1 ]
+[; ;CY8C22~1\m8c.h: 72: BYTE PRT0IE;
+
+"74
+[v _PRT0GS `Auc 1 e@2 ]
+[; ;CY8C22~1\m8c.h: 74: BYTE PRT0GS;
+
+"76
+[v _PRT0DM2 `Auc 1 e@3 ]
+[; ;CY8C22~1\m8c.h: 76: BYTE PRT0DM2;
+
+"79
+[v _PRT1DR `Auc 1 e@4 ]
+[; ;CY8C22~1\m8c.h: 79: BYTE PRT1DR;
+
+"81
+[v _PRT1IE `Auc 1 e@5 ]
+[; ;CY8C22~1\m8c.h: 81: BYTE PRT1IE;
+
+"83
+[v _PRT1GS `Auc 1 e@6 ]
+[; ;CY8C22~1\m8c.h: 83: BYTE PRT1GS;
+
+"85
+[v _PRT1DM2 `Auc 1 e@7 ]
+[; ;CY8C22~1\m8c.h: 85: BYTE PRT1DM2;
+
+"88
+[v _PRT2DR `Auc 1 e@8 ]
+[; ;CY8C22~1\m8c.h: 88: BYTE PRT2DR;
+
+"90
+[v _PRT2IE `Auc 1 e@9 ]
+[; ;CY8C22~1\m8c.h: 90: BYTE PRT2IE;
+
+"92
+[v _PRT2GS `Auc 1 e@10 ]
+[; ;CY8C22~1\m8c.h: 92: BYTE PRT2GS;
+
+"94
+[v _PRT2DM2 `Auc 1 e@11 ]
+[; ;CY8C22~1\m8c.h: 94: BYTE PRT2DM2;
+
+"97
+[v _PRT3DR `Auc 1 e@12 ]
+[; ;CY8C22~1\m8c.h: 97: BYTE PRT3DR;
+
+"99
+[v _PRT3IE `Auc 1 e@13 ]
+[; ;CY8C22~1\m8c.h: 99: BYTE PRT3IE;
+
+"101
+[v _PRT3GS `Auc 1 e@14 ]
+[; ;CY8C22~1\m8c.h: 101: BYTE PRT3GS;
+
+"103
+[v _PRT3DM2 `Auc 1 e@15 ]
+[; ;CY8C22~1\m8c.h: 103: BYTE PRT3DM2;
+
+"106
+[v _PRT4DR `Auc 1 e@16 ]
+[; ;CY8C22~1\m8c.h: 106: BYTE PRT4DR;
+
+"108
+[v _PRT4IE `Auc 1 e@17 ]
+[; ;CY8C22~1\m8c.h: 108: BYTE PRT4IE;
+
+"110
+[v _PRT4GS `Auc 1 e@18 ]
+[; ;CY8C22~1\m8c.h: 110: BYTE PRT4GS;
+
+"112
+[v _PRT4DM2 `Auc 1 e@19 ]
+[; ;CY8C22~1\m8c.h: 112: BYTE PRT4DM2;
+
+"121
+[v _DBC00DR0 `Auc 1 e@32 ]
+[; ;CY8C22~1\m8c.h: 121: BYTE DBC00DR0;
+
+"123
+[v _DBC00DR1 `Auc 1 e@33 ]
+[; ;CY8C22~1\m8c.h: 123: BYTE DBC00DR1;
+
+"125
+[v _DBC00DR2 `Auc 1 e@34 ]
+[; ;CY8C22~1\m8c.h: 125: BYTE DBC00DR2;
+
+"127
+[v _DBC00CR0 `Auc 1 e@35 ]
+[; ;CY8C22~1\m8c.h: 127: BYTE DBC00CR0;
+
+"131
+[v _DBC01DR0 `Auc 1 e@36 ]
+[; ;CY8C22~1\m8c.h: 131: BYTE DBC01DR0;
+
+"133
+[v _DBC01DR1 `Auc 1 e@37 ]
+[; ;CY8C22~1\m8c.h: 133: BYTE DBC01DR1;
+
+"135
+[v _DBC01DR2 `Auc 1 e@38 ]
+[; ;CY8C22~1\m8c.h: 135: BYTE DBC01DR2;
+
+"137
+[v _DBC01CR0 `Auc 1 e@39 ]
+[; ;CY8C22~1\m8c.h: 137: BYTE DBC01CR0;
+
+"141
+[v _DCC02DR0 `Auc 1 e@40 ]
+[; ;CY8C22~1\m8c.h: 141: BYTE DCC02DR0;
+
+"143
+[v _DCC02DR1 `Auc 1 e@41 ]
+[; ;CY8C22~1\m8c.h: 143: BYTE DCC02DR1;
+
+"145
+[v _DCC02DR2 `Auc 1 e@42 ]
+[; ;CY8C22~1\m8c.h: 145: BYTE DCC02DR2;
+
+"147
+[v _DCC02CR0 `Auc 1 e@43 ]
+[; ;CY8C22~1\m8c.h: 147: BYTE DCC02CR0;
+
+"151
+[v _DCC03DR0 `Auc 1 e@44 ]
+[; ;CY8C22~1\m8c.h: 151: BYTE DCC03DR0;
+
+"153
+[v _DCC03DR1 `Auc 1 e@45 ]
+[; ;CY8C22~1\m8c.h: 153: BYTE DCC03DR1;
+
+"155
+[v _DCC03DR2 `Auc 1 e@46 ]
+[; ;CY8C22~1\m8c.h: 155: BYTE DCC03DR2;
+
+"157
+[v _DCC03CR0 `Auc 1 e@47 ]
+[; ;CY8C22~1\m8c.h: 157: BYTE DCC03CR0;
+
+"161
+[v _DBC10DR0 `Auc 1 e@48 ]
+[; ;CY8C22~1\m8c.h: 161: BYTE DBC10DR0;
+
+"163
+[v _DBC10DR1 `Auc 1 e@49 ]
+[; ;CY8C22~1\m8c.h: 163: BYTE DBC10DR1;
+
+"165
+[v _DBC10DR2 `Auc 1 e@50 ]
+[; ;CY8C22~1\m8c.h: 165: BYTE DBC10DR2;
+
+"167
+[v _DBC10CR0 `Auc 1 e@51 ]
+[; ;CY8C22~1\m8c.h: 167: BYTE DBC10CR0;
+
+"171
+[v _DBC11DR0 `Auc 1 e@52 ]
+[; ;CY8C22~1\m8c.h: 171: BYTE DBC11DR0;
+
+"173
+[v _DBC11DR1 `Auc 1 e@53 ]
+[; ;CY8C22~1\m8c.h: 173: BYTE DBC11DR1;
+
+"175
+[v _DBC11DR2 `Auc 1 e@54 ]
+[; ;CY8C22~1\m8c.h: 175: BYTE DBC11DR2;
+
+"177
+[v _DBC11CR0 `Auc 1 e@55 ]
+[; ;CY8C22~1\m8c.h: 177: BYTE DBC11CR0;
+
+"181
+[v _DCC12DR0 `Auc 1 e@56 ]
+[; ;CY8C22~1\m8c.h: 181: BYTE DCC12DR0;
+
+"183
+[v _DCC12DR1 `Auc 1 e@57 ]
+[; ;CY8C22~1\m8c.h: 183: BYTE DCC12DR1;
+
+"185
+[v _DCC12DR2 `Auc 1 e@58 ]
+[; ;CY8C22~1\m8c.h: 185: BYTE DCC12DR2;
+
+"187
+[v _DCC12CR0 `Auc 1 e@59 ]
+[; ;CY8C22~1\m8c.h: 187: BYTE DCC12CR0;
+
+"191
+[v _DCC13DR0 `Auc 1 e@60 ]
+[; ;CY8C22~1\m8c.h: 191: BYTE DCC13DR0;
+
+"193
+[v _DCC13DR1 `Auc 1 e@61 ]
+[; ;CY8C22~1\m8c.h: 193: BYTE DCC13DR1;
+
+"195
+[v _DCC13DR2 `Auc 1 e@62 ]
+[; ;CY8C22~1\m8c.h: 195: BYTE DCC13DR2;
+
+"197
+[v _DCC13CR0 `Auc 1 e@63 ]
+[; ;CY8C22~1\m8c.h: 197: BYTE DCC13CR0;
+
+"204
+[v _AMX_IN `Auc 1 e@96 ]
+[; ;CY8C22~1\m8c.h: 204: BYTE AMX_IN;
+
+"211
+[v _AMUX_CFG `Auc 1 e@97 ]
+[; ;CY8C22~1\m8c.h: 211: BYTE AMUX_CFG;
+
+"218
+[v _AMUXCFG `Auc 1 e@97 ]
+[; ;CY8C22~1\m8c.h: 218: BYTE AMUXCFG;
+
+"224
+[v _PWM_CR `Auc 1 e@98 ]
+[; ;CY8C22~1\m8c.h: 224: BYTE PWM_CR;
+
+"230
+[v _ARF_CR `Auc 1 e@99 ]
+[; ;CY8C22~1\m8c.h: 230: BYTE ARF_CR;
+
+"233
+[v _CMP_CR0 `Auc 1 e@100 ]
+[; ;CY8C22~1\m8c.h: 233: BYTE CMP_CR0;
+
+"244
+[v _CMP_CR1 `Auc 1 e@102 ]
+[; ;CY8C22~1\m8c.h: 244: BYTE CMP_CR1;
+
+"249
+[v _ADC0_CR `Auc 1 e@104 ]
+[; ;CY8C22~1\m8c.h: 249: BYTE ADC0_CR;
+
+"258
+[v _ADC1_CR `Auc 1 e@105 ]
+[; ;CY8C22~1\m8c.h: 258: BYTE ADC1_CR;
+
+"268
+[v _ACE00CR1 `Auc 1 e@114 ]
+[; ;CY8C22~1\m8c.h: 268: BYTE ACE00CR1;
+
+"270
+[v _ACE00CR2 `Auc 1 e@115 ]
+[; ;CY8C22~1\m8c.h: 270: BYTE ACE00CR2;
+
+"274
+[v _ACE01CR1 `Auc 1 e@118 ]
+[; ;CY8C22~1\m8c.h: 274: BYTE ACE01CR1;
+
+"276
+[v _ACE01CR2 `Auc 1 e@119 ]
+[; ;CY8C22~1\m8c.h: 276: BYTE ACE01CR2;
+
+"280
+[v _ASE10CR0 `Auc 1 e@128 ]
+[; ;CY8C22~1\m8c.h: 280: BYTE ASE10CR0;
+
+"284
+[v _ASE11CR0 `Auc 1 e@132 ]
+[; ;CY8C22~1\m8c.h: 284: BYTE ASE11CR0;
+
+"290
+[v _TMP_DR0 `Auc 1 e@108 ]
+[; ;CY8C22~1\m8c.h: 290: BYTE TMP_DR0;
+
+"292
+[v _TMP_DR1 `Auc 1 e@109 ]
+[; ;CY8C22~1\m8c.h: 292: BYTE TMP_DR1;
+
+"294
+[v _TMP_DR2 `Auc 1 e@110 ]
+[; ;CY8C22~1\m8c.h: 294: BYTE TMP_DR2;
+
+"296
+[v _TMP_DR3 `Auc 1 e@111 ]
+[; ;CY8C22~1\m8c.h: 296: BYTE TMP_DR3;
+
+"306
+[v _RDI0RI `Auc 1 e@176 ]
+[; ;CY8C22~1\m8c.h: 306: BYTE RDI0RI;
+
+"308
+[v _RDI0SYN `Auc 1 e@177 ]
+[; ;CY8C22~1\m8c.h: 308: BYTE RDI0SYN;
+
+"310
+[v _RDI0IS `Auc 1 e@178 ]
+[; ;CY8C22~1\m8c.h: 310: BYTE RDI0IS;
+
+"312
+[v _RDI0LT0 `Auc 1 e@179 ]
+[; ;CY8C22~1\m8c.h: 312: BYTE RDI0LT0;
+
+"314
+[v _RDI0LT1 `Auc 1 e@180 ]
+[; ;CY8C22~1\m8c.h: 314: BYTE RDI0LT1;
+
+"316
+[v _RDI0RO0 `Auc 1 e@181 ]
+[; ;CY8C22~1\m8c.h: 316: BYTE RDI0RO0;
+
+"318
+[v _RDI0RO1 `Auc 1 e@182 ]
+[; ;CY8C22~1\m8c.h: 318: BYTE RDI0RO1;
+
+"321
+[v _RDI1RI `Auc 1 e@184 ]
+[; ;CY8C22~1\m8c.h: 321: BYTE RDI1RI;
+
+"323
+[v _RDI1SYN `Auc 1 e@185 ]
+[; ;CY8C22~1\m8c.h: 323: BYTE RDI1SYN;
+
+"325
+[v _RDI1IS `Auc 1 e@186 ]
+[; ;CY8C22~1\m8c.h: 325: BYTE RDI1IS;
+
+"327
+[v _RDI1LT0 `Auc 1 e@187 ]
+[; ;CY8C22~1\m8c.h: 327: BYTE RDI1LT0;
+
+"329
+[v _RDI1LT1 `Auc 1 e@188 ]
+[; ;CY8C22~1\m8c.h: 329: BYTE RDI1LT1;
+
+"331
+[v _RDI1RO0 `Auc 1 e@189 ]
+[; ;CY8C22~1\m8c.h: 331: BYTE RDI1RO0;
+
+"333
+[v _RDI1RO1 `Auc 1 e@190 ]
+[; ;CY8C22~1\m8c.h: 333: BYTE RDI1RO1;
+
+"339
+[v _CUR_PP `Auc 1 e@208 ]
+[; ;CY8C22~1\m8c.h: 339: BYTE CUR_PP;
+
+"341
+[v _STK_PP `Auc 1 e@209 ]
+[; ;CY8C22~1\m8c.h: 341: BYTE STK_PP;
+
+"343
+[v _IDX_PP `Auc 1 e@211 ]
+[; ;CY8C22~1\m8c.h: 343: BYTE IDX_PP;
+
+"345
+[v _MVR_PP `Auc 1 e@212 ]
+[; ;CY8C22~1\m8c.h: 345: BYTE MVR_PP;
+
+"347
+[v _MVW_PP `Auc 1 e@213 ]
+[; ;CY8C22~1\m8c.h: 347: BYTE MVW_PP;
+
+"353
+[v _I2C_CFG `Auc 1 e@214 ]
+[; ;CY8C22~1\m8c.h: 353: BYTE I2C_CFG;
+
+"365
+[v _I2C_SCR `Auc 1 e@215 ]
+[; ;CY8C22~1\m8c.h: 365: BYTE I2C_SCR;
+
+"376
+[v _I2C_DR `Auc 1 e@216 ]
+[; ;CY8C22~1\m8c.h: 376: BYTE I2C_DR;
+
+"379
+[v _I2C_MSCR `Auc 1 e@217 ]
+[; ;CY8C22~1\m8c.h: 379: BYTE I2C_MSCR;
+
+"389
+[v _INT_CLR0 `Auc 1 e@218 ]
+[; ;CY8C22~1\m8c.h: 389: BYTE INT_CLR0;
+
+"391
+[v _INT_CLR1 `Auc 1 e@219 ]
+[; ;CY8C22~1\m8c.h: 391: BYTE INT_CLR1;
+
+"393
+[v _INT_CLR2 `Auc 1 e@220 ]
+[; ;CY8C22~1\m8c.h: 393: BYTE INT_CLR2;
+
+"395
+[v _INT_CLR3 `Auc 1 e@221 ]
+[; ;CY8C22~1\m8c.h: 395: BYTE INT_CLR3;
+
+"398
+[v _INT_MSK3 `Auc 1 e@222 ]
+[; ;CY8C22~1\m8c.h: 398: BYTE INT_MSK3;
+
+"403
+[v _INT_MSK0 `Auc 1 e@224 ]
+[; ;CY8C22~1\m8c.h: 403: BYTE INT_MSK0;
+
+"414
+[v _INT_MSK1 `Auc 1 e@225 ]
+[; ;CY8C22~1\m8c.h: 414: BYTE INT_MSK1;
+
+"425
+[v _INT_MSK2 `Auc 1 e@223 ]
+[; ;CY8C22~1\m8c.h: 425: BYTE INT_MSK2;
+
+"432
+[v _INT_VC `Auc 1 e@226 ]
+[; ;CY8C22~1\m8c.h: 432: BYTE INT_VC;
+
+"435
+[v _RES_WDT `Auc 1 e@227 ]
+[; ;CY8C22~1\m8c.h: 435: BYTE RES_WDT;
+
+"439
+[v _DEC_CR0 `Auc 1 e@230 ]
+[; ;CY8C22~1\m8c.h: 439: BYTE DEC_CR0;
+
+"441
+[v _DEC_CR1 `Auc 1 e@231 ]
+[; ;CY8C22~1\m8c.h: 441: BYTE DEC_CR1;
+
+"444
+[v _DAC_D `Auc 1 e@253 ]
+[; ;CY8C22~1\m8c.h: 444: BYTE DAC_D;
+
+"448
+[v _MUL0_X `Ac 1 e@232 ]
+[; ;CY8C22~1\m8c.h: 448: CHAR MUL0_X;
+
+"450
+[v _MUL0_Y `Ac 1 e@233 ]
+[; ;CY8C22~1\m8c.h: 450: CHAR MUL0_Y;
+
+"452
+[v _MUL0_DH `Ac 1 e@234 ]
+[; ;CY8C22~1\m8c.h: 452: CHAR MUL0_DH;
+
+"454
+[v _MUL0_DL `Ac 1 e@235 ]
+[; ;CY8C22~1\m8c.h: 454: CHAR MUL0_DL;
+
+"456
+[v _ACC0_DR1 `Ac 1 e@236 ]
+[; ;CY8C22~1\m8c.h: 456: CHAR ACC0_DR1;
+
+"458
+[v _ACC0_DR0 `Ac 1 e@237 ]
+[; ;CY8C22~1\m8c.h: 458: CHAR ACC0_DR0;
+
+"460
+[v _ACC0_DR3 `Ac 1 e@238 ]
+[; ;CY8C22~1\m8c.h: 460: CHAR ACC0_DR3;
+
+"462
+[v _ACC0_DR2 `Ac 1 e@239 ]
+[; ;CY8C22~1\m8c.h: 462: CHAR ACC0_DR2;
+
+"464
+[v _MAC_Y `Ac 1 e@237 ]
+[; ;CY8C22~1\m8c.h: 464: CHAR MAC_Y;
+
+"466
+[v _MAC_CL0 `Auc 1 e@238 ]
+[; ;CY8C22~1\m8c.h: 466: BYTE MAC_CL0;
+
+"468
+[v _MAC_CL1 `Auc 1 e@239 ]
+[; ;CY8C22~1\m8c.h: 468: BYTE MAC_CL1;
+
+"470
+[v _ACC_DR1 `Ac 1 e@236 ]
+[; ;CY8C22~1\m8c.h: 470: CHAR ACC_DR1;
+
+"472
+[v _ACC_DR0 `Ac 1 e@237 ]
+[; ;CY8C22~1\m8c.h: 472: CHAR ACC_DR0;
+
+"474
+[v _ACC_LOW_WORD `Ai 1 e@236 ]
+[; ;CY8C22~1\m8c.h: 474: INT ACC_LOW_WORD;
+
+"476
+[v _ACC_DR3 `Ac 1 e@238 ]
+[; ;CY8C22~1\m8c.h: 476: CHAR ACC_DR3;
+
+"478
+[v _ACC_DR2 `Ac 1 e@239 ]
+[; ;CY8C22~1\m8c.h: 478: CHAR ACC_DR2;
+
+"480
+[v _ACC_HI_WORD `Ai 1 e@238 ]
+[; ;CY8C22~1\m8c.h: 480: INT ACC_HI_WORD;
+
+"490
+[v _CPU_F `Auc 1 e@247 ]
+[; ;CY8C22~1\m8c.h: 490: BYTE CPU_F;
+
+"493
+[v _CPU_SCR1 `Auc 1 e@254 ]
+[; ;CY8C22~1\m8c.h: 493: BYTE CPU_SCR1;
+
+"501
+[v _CPU_SCR0 `Auc 1 e@255 ]
+[; ;CY8C22~1\m8c.h: 501: BYTE CPU_SCR0;
+
+"512
+[v _CSD0_DR0_L `Auc 1 e@80 ]
+[; ;CY8C22~1\m8c.h: 512: BYTE CSD0_DR0_L;
+
+"514
+[v _CSD0_DR0_H `Auc 1 e@84 ]
+[; ;CY8C22~1\m8c.h: 514: BYTE CSD0_DR0_H;
+
+"516
+[v _CSD1_DR0_L `Auc 1 e@88 ]
+[; ;CY8C22~1\m8c.h: 516: BYTE CSD1_DR0_L;
+
+"518
+[v _CSD1_DR0_H `Auc 1 e@92 ]
+[; ;CY8C22~1\m8c.h: 518: BYTE CSD1_DR0_H;
+
+"520
+[v _CSD0_DR1_L `Auc 1 e@81 ]
+[; ;CY8C22~1\m8c.h: 520: BYTE CSD0_DR1_L;
+
+"522
+[v _CSD0_DR1_H `Auc 1 e@85 ]
+[; ;CY8C22~1\m8c.h: 522: BYTE CSD0_DR1_H;
+
+"524
+[v _CSD1_DR1_L `Auc 1 e@89 ]
+[; ;CY8C22~1\m8c.h: 524: BYTE CSD1_DR1_L;
+
+"526
+[v _CSD1_DR1_H `Auc 1 e@93 ]
+[; ;CY8C22~1\m8c.h: 526: BYTE CSD1_DR1_H;
+
+"528
+[v _CSD0_CNT_L `Auc 1 e@82 ]
+[; ;CY8C22~1\m8c.h: 528: BYTE CSD0_CNT_L;
+
+"530
+[v _CSD0_CNT_H `Auc 1 e@86 ]
+[; ;CY8C22~1\m8c.h: 530: BYTE CSD0_CNT_H;
+
+"532
+[v _CSD1_CNT_L `Auc 1 e@90 ]
+[; ;CY8C22~1\m8c.h: 532: BYTE CSD1_CNT_L;
+
+"534
+[v _CSD1_CNT_H `Auc 1 e@94 ]
+[; ;CY8C22~1\m8c.h: 534: BYTE CSD1_CNT_H;
+
+"536
+[v _CSD0_CR0 `Auc 1 e@83 ]
+[; ;CY8C22~1\m8c.h: 536: BYTE CSD0_CR0;
+
+"538
+[v _CSD1_CR0 `Auc 1 e@91 ]
+[; ;CY8C22~1\m8c.h: 538: BYTE CSD1_CR0;
+
+"540
+[v _CSD0_CR1 `Auc 1 e@87 ]
+[; ;CY8C22~1\m8c.h: 540: BYTE CSD0_CR1;
+
+"542
+[v _CSD1_CR1 `Auc 1 e@95 ]
+[; ;CY8C22~1\m8c.h: 542: BYTE CSD1_CR1;
+
+"548
+[v _ASY_CR `Auc 1 e@101 ]
+[; ;CY8C22~1\m8c.h: 548: BYTE ASY_CR;
+
+"550
+[v _ADC_DH `Auc 1 e@106 ]
+[; ;CY8C22~1\m8c.h: 550: BYTE ADC_DH;
+
+"552
+[v _ADC_DL `Auc 1 e@107 ]
+[; ;CY8C22~1\m8c.h: 552: BYTE ADC_DL;
+
+"554
+[v _PWMVREF0 `Auc 1 e@200 ]
+[; ;CY8C22~1\m8c.h: 554: BYTE PWMVREF0;
+
+"556
+[v _PWMVREF1 `Auc 1 e@201 ]
+[; ;CY8C22~1\m8c.h: 556: BYTE PWMVREF1;
+
+"558
+[v _PWMSRC `Auc 1 e@203 ]
+[; ;CY8C22~1\m8c.h: 558: BYTE PWMSRC;
+
+"560
+[v _IDACMODE `Auc 1 e@202 ]
+[; ;CY8C22~1\m8c.h: 560: BYTE IDACMODE;
+
+"562
+[v _IDACR_D `Auc 1 e@252 ]
+[; ;CY8C22~1\m8c.h: 562: BYTE IDACR_D;
+
+"564
+[v _IDACL_D `Auc 1 e@253 ]
+[; ;CY8C22~1\m8c.h: 564: BYTE IDACL_D;
+
+"570
+[v _RDI0DSM `Auc 1 e@183 ]
+[; ;CY8C22~1\m8c.h: 570: BYTE RDI0DSM;
+
+"572
+[v _RDI1DSM `Auc 1 e@191 ]
+[; ;CY8C22~1\m8c.h: 572: BYTE RDI1DSM;
+
+"578
+[v _TSCR0 `Auc 1 e@204 ]
+[; ;CY8C22~1\m8c.h: 578: BYTE TSCR0;
+
+"580
+[v _TSCMPH `Auc 1 e@205 ]
+[; ;CY8C22~1\m8c.h: 580: BYTE TSCMPH;
+
+"582
+[v _TSCMPL `Auc 1 e@206 ]
+[; ;CY8C22~1\m8c.h: 582: BYTE TSCMPL;
+
+"584
+[v _TSCR1 `Auc 1 e@207 ]
+[; ;CY8C22~1\m8c.h: 584: BYTE TSCR1;
+
+"598
+[v _PRT0DM0 `Auc 1 e@256 ]
+[; ;CY8C22~1\m8c.h: 598: BYTE PRT0DM0;
+
+"600
+[v _PRT0DM1 `Auc 1 e@257 ]
+[; ;CY8C22~1\m8c.h: 600: BYTE PRT0DM1;
+
+"602
+[v _PRT0IC0 `Auc 1 e@258 ]
+[; ;CY8C22~1\m8c.h: 602: BYTE PRT0IC0;
+
+"604
+[v _PRT0IC1 `Auc 1 e@259 ]
+[; ;CY8C22~1\m8c.h: 604: BYTE PRT0IC1;
+
+"607
+[v _PRT1DM0 `Auc 1 e@260 ]
+[; ;CY8C22~1\m8c.h: 607: BYTE PRT1DM0;
+
+"609
+[v _PRT1DM1 `Auc 1 e@261 ]
+[; ;CY8C22~1\m8c.h: 609: BYTE PRT1DM1;
+
+"611
+[v _PRT1IC0 `Auc 1 e@262 ]
+[; ;CY8C22~1\m8c.h: 611: BYTE PRT1IC0;
+
+"613
+[v _PRT1IC1 `Auc 1 e@263 ]
+[; ;CY8C22~1\m8c.h: 613: BYTE PRT1IC1;
+
+"616
+[v _PRT2DM0 `Auc 1 e@264 ]
+[; ;CY8C22~1\m8c.h: 616: BYTE PRT2DM0;
+
+"618
+[v _PRT2DM1 `Auc 1 e@265 ]
+[; ;CY8C22~1\m8c.h: 618: BYTE PRT2DM1;
+
+"620
+[v _PRT2IC0 `Auc 1 e@266 ]
+[; ;CY8C22~1\m8c.h: 620: BYTE PRT2IC0;
+
+"622
+[v _PRT2IC1 `Auc 1 e@267 ]
+[; ;CY8C22~1\m8c.h: 622: BYTE PRT2IC1;
+
+"625
+[v _PRT3DM0 `Auc 1 e@268 ]
+[; ;CY8C22~1\m8c.h: 625: BYTE PRT3DM0;
+
+"627
+[v _PRT3DM1 `Auc 1 e@269 ]
+[; ;CY8C22~1\m8c.h: 627: BYTE PRT3DM1;
+
+"629
+[v _PRT3IC0 `Auc 1 e@270 ]
+[; ;CY8C22~1\m8c.h: 629: BYTE PRT3IC0;
+
+"631
+[v _PRT3IC1 `Auc 1 e@271 ]
+[; ;CY8C22~1\m8c.h: 631: BYTE PRT3IC1;
+
+"634
+[v _PRT4DM0 `Auc 1 e@272 ]
+[; ;CY8C22~1\m8c.h: 634: BYTE PRT4DM0;
+
+"636
+[v _PRT4DM1 `Auc 1 e@273 ]
+[; ;CY8C22~1\m8c.h: 636: BYTE PRT4DM1;
+
+"638
+[v _PRT4IC0 `Auc 1 e@274 ]
+[; ;CY8C22~1\m8c.h: 638: BYTE PRT4IC0;
+
+"640
+[v _PRT4IC1 `Auc 1 e@275 ]
+[; ;CY8C22~1\m8c.h: 640: BYTE PRT4IC1;
+
+"649
+[v _DBC00FN `Auc 1 e@288 ]
+[; ;CY8C22~1\m8c.h: 649: BYTE DBC00FN;
+
+"651
+[v _DBC00IN `Auc 1 e@289 ]
+[; ;CY8C22~1\m8c.h: 651: BYTE DBC00IN;
+
+"653
+[v _DBC00OU `Auc 1 e@290 ]
+[; ;CY8C22~1\m8c.h: 653: BYTE DBC00OU;
+
+"655
+[v _DBC00CR1 `Auc 1 e@291 ]
+[; ;CY8C22~1\m8c.h: 655: BYTE DBC00CR1;
+
+"659
+[v _DBC01FN `Auc 1 e@292 ]
+[; ;CY8C22~1\m8c.h: 659: BYTE DBC01FN;
+
+"661
+[v _DBC01IN `Auc 1 e@293 ]
+[; ;CY8C22~1\m8c.h: 661: BYTE DBC01IN;
+
+"663
+[v _DBC01OU `Auc 1 e@294 ]
+[; ;CY8C22~1\m8c.h: 663: BYTE DBC01OU;
+
+"665
+[v _DBC01CR1 `Auc 1 e@295 ]
+[; ;CY8C22~1\m8c.h: 665: BYTE DBC01CR1;
+
+"669
+[v _DCC02FN `Auc 1 e@296 ]
+[; ;CY8C22~1\m8c.h: 669: BYTE DCC02FN;
+
+"671
+[v _DCC02IN `Auc 1 e@297 ]
+[; ;CY8C22~1\m8c.h: 671: BYTE DCC02IN;
+
+"673
+[v _DCC02OU `Auc 1 e@298 ]
+[; ;CY8C22~1\m8c.h: 673: BYTE DCC02OU;
+
+"675
+[v _DBC02CR1 `Auc 1 e@299 ]
+[; ;CY8C22~1\m8c.h: 675: BYTE DBC02CR1;
+
+"679
+[v _DCC03FN `Auc 1 e@300 ]
+[; ;CY8C22~1\m8c.h: 679: BYTE DCC03FN;
+
+"681
+[v _DCC03IN `Auc 1 e@301 ]
+[; ;CY8C22~1\m8c.h: 681: BYTE DCC03IN;
+
+"683
+[v _DCC03OU `Auc 1 e@302 ]
+[; ;CY8C22~1\m8c.h: 683: BYTE DCC03OU;
+
+"685
+[v _DBC03CR1 `Auc 1 e@303 ]
+[; ;CY8C22~1\m8c.h: 685: BYTE DBC03CR1;
+
+"689
+[v _DBC10FN `Auc 1 e@304 ]
+[; ;CY8C22~1\m8c.h: 689: BYTE DBC10FN;
+
+"691
+[v _DBC10IN `Auc 1 e@305 ]
+[; ;CY8C22~1\m8c.h: 691: BYTE DBC10IN;
+
+"693
+[v _DBC10OU `Auc 1 e@306 ]
+[; ;CY8C22~1\m8c.h: 693: BYTE DBC10OU;
+
+"695
+[v _DBC10CR1 `Auc 1 e@307 ]
+[; ;CY8C22~1\m8c.h: 695: BYTE DBC10CR1;
+
+"699
+[v _DBC11FN `Auc 1 e@308 ]
+[; ;CY8C22~1\m8c.h: 699: BYTE DBC11FN;
+
+"701
+[v _DBC11IN `Auc 1 e@309 ]
+[; ;CY8C22~1\m8c.h: 701: BYTE DBC11IN;
+
+"703
+[v _DBC11OU `Auc 1 e@310 ]
+[; ;CY8C22~1\m8c.h: 703: BYTE DBC11OU;
+
+"705
+[v _DBC11CR1 `Auc 1 e@311 ]
+[; ;CY8C22~1\m8c.h: 705: BYTE DBC11CR1;
+
+"709
+[v _DCC12FN `Auc 1 e@312 ]
+[; ;CY8C22~1\m8c.h: 709: BYTE DCC12FN;
+
+"711
+[v _DCC12IN `Auc 1 e@313 ]
+[; ;CY8C22~1\m8c.h: 711: BYTE DCC12IN;
+
+"713
+[v _DCC12OU `Auc 1 e@314 ]
+[; ;CY8C22~1\m8c.h: 713: BYTE DCC12OU;
+
+"715
+[v _DBC12CR1 `Auc 1 e@315 ]
+[; ;CY8C22~1\m8c.h: 715: BYTE DBC12CR1;
+
+"719
+[v _DCC13FN `Auc 1 e@316 ]
+[; ;CY8C22~1\m8c.h: 719: BYTE DCC13FN;
+
+"721
+[v _DCC13IN `Auc 1 e@317 ]
+[; ;CY8C22~1\m8c.h: 721: BYTE DCC13IN;
+
+"723
+[v _DCC13OU `Auc 1 e@318 ]
+[; ;CY8C22~1\m8c.h: 723: BYTE DCC13OU;
+
+"725
+[v _DBC13CR1 `Auc 1 e@319 ]
+[; ;CY8C22~1\m8c.h: 725: BYTE DBC13CR1;
+
+"733
+[v _CLK_CR0 `Auc 1 e@352 ]
+[; ;CY8C22~1\m8c.h: 733: BYTE CLK_CR0;
+
+"740
+[v _CLK_CR1 `Auc 1 e@353 ]
+[; ;CY8C22~1\m8c.h: 740: BYTE CLK_CR1;
+
+"748
+[v _ABF_CR0 `Auc 1 e@354 ]
+[; ;CY8C22~1\m8c.h: 748: BYTE ABF_CR0;
+
+"752
+[v _AMD_CR0 `Auc 1 e@355 ]
+[; ;CY8C22~1\m8c.h: 752: BYTE AMD_CR0;
+
+"756
+[v _CMP_GO_EN `Auc 1 e@356 ]
+[; ;CY8C22~1\m8c.h: 756: BYTE CMP_GO_EN;
+
+"765
+[v _AMD_CR1 `Auc 1 e@358 ]
+[; ;CY8C22~1\m8c.h: 765: BYTE AMD_CR1;
+
+"769
+[v _ALT_CR0 `Auc 1 e@359 ]
+[; ;CY8C22~1\m8c.h: 769: BYTE ALT_CR0;
+
+"774
+[v _CLK_CR3 `Auc 1 e@363 ]
+[; ;CY8C22~1\m8c.h: 774: BYTE CLK_CR3;
+
+"785
+[v _GDI_O_IN `Auc 1 e@464 ]
+[; ;CY8C22~1\m8c.h: 785: BYTE GDI_O_IN;
+
+"787
+[v _GDI_E_IN `Auc 1 e@465 ]
+[; ;CY8C22~1\m8c.h: 787: BYTE GDI_E_IN;
+
+"789
+[v _GDI_O_OU `Auc 1 e@466 ]
+[; ;CY8C22~1\m8c.h: 789: BYTE GDI_O_OU;
+
+"791
+[v _GDI_E_OU `Auc 1 e@467 ]
+[; ;CY8C22~1\m8c.h: 791: BYTE GDI_E_OU;
+
+"794
+[v _GDI_O_IN_CR `Auc 1 e@416 ]
+[; ;CY8C22~1\m8c.h: 794: BYTE GDI_O_IN_CR;
+
+"796
+[v _GDI_E_IN_CR `Auc 1 e@417 ]
+[; ;CY8C22~1\m8c.h: 796: BYTE GDI_E_IN_CR;
+
+"798
+[v _GDI_O_OU_CR `Auc 1 e@418 ]
+[; ;CY8C22~1\m8c.h: 798: BYTE GDI_O_OU_CR;
+
+"800
+[v _GDI_E_OU_CR `Auc 1 e@419 ]
+[; ;CY8C22~1\m8c.h: 800: BYTE GDI_E_OU_CR;
+
+"803
+[v _MUX_CR0 `Auc 1 e@472 ]
+[; ;CY8C22~1\m8c.h: 803: BYTE MUX_CR0;
+
+"805
+[v _MUX_CR1 `Auc 1 e@473 ]
+[; ;CY8C22~1\m8c.h: 805: BYTE MUX_CR1;
+
+"807
+[v _MUX_CR2 `Auc 1 e@474 ]
+[; ;CY8C22~1\m8c.h: 807: BYTE MUX_CR2;
+
+"809
+[v _MUX_CR3 `Auc 1 e@475 ]
+[; ;CY8C22~1\m8c.h: 809: BYTE MUX_CR3;
+
+"811
+[v _MUX_CR4 `Auc 1 e@492 ]
+[; ;CY8C22~1\m8c.h: 811: BYTE MUX_CR4;
+
+[; ;CY8C22~1\m8c.h: 814: BYTE RDI1LT0;
+
+[; ;CY8C22~1\m8c.h: 816: BYTE RDI1LT1;
+
+"823
+[v _OSC_GO_EN `Auc 1 e@477 ]
+[; ;CY8C22~1\m8c.h: 823: BYTE OSC_GO_EN;
+
+"834
+[v _OSC_CR4 `Auc 1 e@478 ]
+[; ;CY8C22~1\m8c.h: 834: BYTE OSC_CR4;
+
+"838
+[v _OSC_CR3 `Auc 1 e@479 ]
+[; ;CY8C22~1\m8c.h: 838: BYTE OSC_CR3;
+
+"841
+[v _OSC_CR0 `Auc 1 e@480 ]
+[; ;CY8C22~1\m8c.h: 841: BYTE OSC_CR0;
+
+"861
+[v _OSC_CR1 `Auc 1 e@481 ]
+[; ;CY8C22~1\m8c.h: 861: BYTE OSC_CR1;
+
+"866
+[v _OSC_CR2 `Auc 1 e@482 ]
+[; ;CY8C22~1\m8c.h: 866: BYTE OSC_CR2;
+
+"873
+[v _VLT_CR `Auc 1 e@483 ]
+[; ;CY8C22~1\m8c.h: 873: BYTE VLT_CR;
+
+"883
+[v _VLT_CMP `Auc 1 e@484 ]
+[; ;CY8C22~1\m8c.h: 883: BYTE VLT_CMP;
+
+"890
+[v _ADC0_TR `Auc 1 e@485 ]
+[; ;CY8C22~1\m8c.h: 890: BYTE ADC0_TR;
+
+"892
+[v _ADC1_TR `Auc 1 e@486 ]
+[; ;CY8C22~1\m8c.h: 892: BYTE ADC1_TR;
+
+"895
+[v _IMO_TR `Auc 1 e@488 ]
+[; ;CY8C22~1\m8c.h: 895: BYTE IMO_TR;
+
+"897
+[v _ILO_TR `Auc 1 e@489 ]
+[; ;CY8C22~1\m8c.h: 897: BYTE ILO_TR;
+
+"899
+[v _BDG_TR `Auc 1 e@490 ]
+[; ;CY8C22~1\m8c.h: 899: BYTE BDG_TR;
+
+"901
+[v _ECO_TR `Auc 1 e@491 ]
+[; ;CY8C22~1\m8c.h: 901: BYTE ECO_TR;
+
+"904
+[v _FLS_PR1 `Auc 1 e@506 ]
+[; ;CY8C22~1\m8c.h: 904: BYTE FLS_PR1;
+
+"908
+[v _DAC_CR0 `Auc 1 e@509 ]
+[; ;CY8C22~1\m8c.h: 908: BYTE DAC_CR0;
+
+"910
+[v _DAC_CR1 `Auc 1 e@476 ]
+[; ;CY8C22~1\m8c.h: 910: BYTE DAC_CR1;
+
+"920
+[v _I2C_ADDR `Auc 1 e@429 ]
+[; ;CY8C22~1\m8c.h: 920: BYTE I2C_ADDR;
+
+"926
+[v _VDAC50CR0 `Auc 1 e@339 ]
+[; ;CY8C22~1\m8c.h: 926: BYTE VDAC50CR0;
+
+"928
+[v _VDAC51CR0 `Auc 1 e@343 ]
+[; ;CY8C22~1\m8c.h: 928: BYTE VDAC51CR0;
+
+"930
+[v _ADC_CR0 `Auc 1 e@424 ]
+[; ;CY8C22~1\m8c.h: 930: BYTE ADC_CR0;
+
+"932
+[v _ADC_CR1 `Auc 1 e@425 ]
+[; ;CY8C22~1\m8c.h: 932: BYTE ADC_CR1;
+
+"934
+[v _ADC_CR2 `Auc 1 e@426 ]
+[; ;CY8C22~1\m8c.h: 934: BYTE ADC_CR2;
+
+"936
+[v _ADC_CR3TRIM `Auc 1 e@427 ]
+[; ;CY8C22~1\m8c.h: 936: BYTE ADC_CR3TRIM;
+
+"938
+[v _ADC_CR4 `Auc 1 e@428 ]
+[; ;CY8C22~1\m8c.h: 938: BYTE ADC_CR4;
+
+"940
+[v _VDAC_TRIM `Auc 1 e@487 ]
+[; ;CY8C22~1\m8c.h: 940: BYTE VDAC_TRIM;
+
+"946
+[v _CMP0CR1 `Auc 1 e@336 ]
+[; ;CY8C22~1\m8c.h: 946: BYTE CMP0CR1;
+
+"948
+[v _CMP0CR2 `Auc 1 e@337 ]
+[; ;CY8C22~1\m8c.h: 948: BYTE CMP0CR2;
+
+"950
+[v _CMP1CR1 `Auc 1 e@340 ]
+[; ;CY8C22~1\m8c.h: 950: BYTE CMP1CR1;
+
+"952
+[v _CMP1CR2 `Auc 1 e@341 ]
+[; ;CY8C22~1\m8c.h: 952: BYTE CMP1CR2;
+
+"954
+[v _CSCMPCR0 `Auc 1 e@344 ]
+[; ;CY8C22~1\m8c.h: 954: BYTE CSCMPCR0;
+
+"956
+[v _CSCMPGOEN `Auc 1 e@345 ]
+[; ;CY8C22~1\m8c.h: 956: BYTE CSCMPGOEN;
+
+"958
+[v _CSLUTCR0 `Auc 1 e@346 ]
+[; ;CY8C22~1\m8c.h: 958: BYTE CSLUTCR0;
+
+"960
+[v _CMPCOLMUX `Auc 1 e@347 ]
+[; ;CY8C22~1\m8c.h: 960: BYTE CMPCOLMUX;
+
+"962
+[v _CMPPWMCR `Auc 1 e@348 ]
+[; ;CY8C22~1\m8c.h: 962: BYTE CMPPWMCR;
+
+"964
+[v _CMPFLTCR `Auc 1 e@349 ]
+[; ;CY8C22~1\m8c.h: 964: BYTE CMPFLTCR;
+
+"966
+[v _CMPCLK1 `Auc 1 e@350 ]
+[; ;CY8C22~1\m8c.h: 966: BYTE CMPCLK1;
+
+"968
+[v _CMPCLK0 `Auc 1 e@351 ]
+[; ;CY8C22~1\m8c.h: 968: BYTE CMPCLK0;
+
+"974
+[v _RTCH `Auc 1 e@420 ]
+[; ;CY8C22~1\m8c.h: 974: BYTE RTCH;
+
+"976
+[v _RTCM `Auc 1 e@421 ]
+[; ;CY8C22~1\m8c.h: 976: BYTE RTCM;
+
+"978
+[v _RTCS `Auc 1 e@422 ]
+[; ;CY8C22~1\m8c.h: 978: BYTE RTCS;
+
+"980
+[v _RTCCR `Auc 1 e@423 ]
+[; ;CY8C22~1\m8c.h: 980: BYTE RTCCR;
+
+"986
+[v _AMUX_CFG1 `Auc 1 e@362 ]
+[; ;CY8C22~1\m8c.h: 986: BYTE AMUX_CFG1;
+
+"7 ./lib\PSoCGPIOINT.h
+[v _MR_Data_ADDR `Auc 1 e@0 ]
+[; ;lib\PSoCGPIOINT.h: 7: BYTE MR_Data_ADDR;
+
+"9
+[v _MR_DriveMode_0_ADDR `Auc 1 e@256 ]
+[; ;lib\PSoCGPIOINT.h: 9: BYTE MR_DriveMode_0_ADDR;
+
+"11
+[v _MR_DriveMode_1_ADDR `Auc 1 e@257 ]
+[; ;lib\PSoCGPIOINT.h: 11: BYTE MR_DriveMode_1_ADDR;
+
+"13
+[v _MR_DriveMode_2_ADDR `Auc 1 e@3 ]
+[; ;lib\PSoCGPIOINT.h: 13: BYTE MR_DriveMode_2_ADDR;
+
+"15
+[v _MR_GlobalSelect_ADDR `Auc 1 e@2 ]
+[; ;lib\PSoCGPIOINT.h: 15: BYTE MR_GlobalSelect_ADDR;
+
+"17
+[v _MR_IntCtrl_0_ADDR `Auc 1 e@258 ]
+[; ;lib\PSoCGPIOINT.h: 17: BYTE MR_IntCtrl_0_ADDR;
+
+"19
+[v _MR_IntCtrl_1_ADDR `Auc 1 e@259 ]
+[; ;lib\PSoCGPIOINT.h: 19: BYTE MR_IntCtrl_1_ADDR;
+
+"21
+[v _MR_IntEn_ADDR `Auc 1 e@1 ]
+[; ;lib\PSoCGPIOINT.h: 21: BYTE MR_IntEn_ADDR;
+
+"24
+[v _MR_MUXBusCtrl_ADDR `Auc 1 e@472 ]
+[; ;lib\PSoCGPIOINT.h: 24: BYTE MR_MUXBusCtrl_ADDR;
+
+"27
+[v _Sensor_RST_Data_ADDR `Auc 1 e@0 ]
+[; ;lib\PSoCGPIOINT.h: 27: BYTE Sensor_RST_Data_ADDR;
+
+"29
+[v _Sensor_RST_DriveMode_0_ADDR `Auc 1 e@256 ]
+[; ;lib\PSoCGPIOINT.h: 29: BYTE Sensor_RST_DriveMode_0_ADDR;
+
+"31
+[v _Sensor_RST_DriveMode_1_ADDR `Auc 1 e@257 ]
+[; ;lib\PSoCGPIOINT.h: 31: BYTE Sensor_RST_DriveMode_1_ADDR;
+
+"33
+[v _Sensor_RST_DriveMode_2_ADDR `Auc 1 e@3 ]
+[; ;lib\PSoCGPIOINT.h: 33: BYTE Sensor_RST_DriveMode_2_ADDR;
+
+"35
+[v _Sensor_RST_GlobalSelect_ADDR `Auc 1 e@2 ]
+[; ;lib\PSoCGPIOINT.h: 35: BYTE Sensor_RST_GlobalSelect_ADDR;
+
+"37
+[v _Sensor_RST_IntCtrl_0_ADDR `Auc 1 e@258 ]
+[; ;lib\PSoCGPIOINT.h: 37: BYTE Sensor_RST_IntCtrl_0_ADDR;
+
+"39
+[v _Sensor_RST_IntCtrl_1_ADDR `Auc 1 e@259 ]
+[; ;lib\PSoCGPIOINT.h: 39: BYTE Sensor_RST_IntCtrl_1_ADDR;
+
+"41
+[v _Sensor_RST_IntEn_ADDR `Auc 1 e@1 ]
+[; ;lib\PSoCGPIOINT.h: 41: BYTE Sensor_RST_IntEn_ADDR;
+
+"44
+[v _Sensor_RST_MUXBusCtrl_ADDR `Auc 1 e@472 ]
+[; ;lib\PSoCGPIOINT.h: 44: BYTE Sensor_RST_MUXBusCtrl_ADDR;
+
+"47
+[v _DS_Data_ADDR `Auc 1 e@0 ]
+[; ;lib\PSoCGPIOINT.h: 47: BYTE DS_Data_ADDR;
+
+"49
+[v _DS_DriveMode_0_ADDR `Auc 1 e@256 ]
+[; ;lib\PSoCGPIOINT.h: 49: BYTE DS_DriveMode_0_ADDR;
+
+"51
+[v _DS_DriveMode_1_ADDR `Auc 1 e@257 ]
+[; ;lib\PSoCGPIOINT.h: 51: BYTE DS_DriveMode_1_ADDR;
+
+"53
+[v _DS_DriveMode_2_ADDR `Auc 1 e@3 ]
+[; ;lib\PSoCGPIOINT.h: 53: BYTE DS_DriveMode_2_ADDR;
+
+"55
+[v _DS_GlobalSelect_ADDR `Auc 1 e@2 ]
+[; ;lib\PSoCGPIOINT.h: 55: BYTE DS_GlobalSelect_ADDR;
+
+"57
+[v _DS_IntCtrl_0_ADDR `Auc 1 e@258 ]
+[; ;lib\PSoCGPIOINT.h: 57: BYTE DS_IntCtrl_0_ADDR;
+
+"59
+[v _DS_IntCtrl_1_ADDR `Auc 1 e@259 ]
+[; ;lib\PSoCGPIOINT.h: 59: BYTE DS_IntCtrl_1_ADDR;
+
+"61
+[v _DS_IntEn_ADDR `Auc 1 e@1 ]
+[; ;lib\PSoCGPIOINT.h: 61: BYTE DS_IntEn_ADDR;
+
+"64
+[v _DS_MUXBusCtrl_ADDR `Auc 1 e@472 ]
+[; ;lib\PSoCGPIOINT.h: 64: BYTE DS_MUXBusCtrl_ADDR;
+
+"67
+[v _SHCP_Data_ADDR `Auc 1 e@0 ]
+[; ;lib\PSoCGPIOINT.h: 67: BYTE SHCP_Data_ADDR;
+
+"69
+[v _SHCP_DriveMode_0_ADDR `Auc 1 e@256 ]
+[; ;lib\PSoCGPIOINT.h: 69: BYTE SHCP_DriveMode_0_ADDR;
+
+"71
+[v _SHCP_DriveMode_1_ADDR `Auc 1 e@257 ]
+[; ;lib\PSoCGPIOINT.h: 71: BYTE SHCP_DriveMode_1_ADDR;
+
+"73
+[v _SHCP_DriveMode_2_ADDR `Auc 1 e@3 ]
+[; ;lib\PSoCGPIOINT.h: 73: BYTE SHCP_DriveMode_2_ADDR;
+
+"75
+[v _SHCP_GlobalSelect_ADDR `Auc 1 e@2 ]
+[; ;lib\PSoCGPIOINT.h: 75: BYTE SHCP_GlobalSelect_ADDR;
+
+"77
+[v _SHCP_IntCtrl_0_ADDR `Auc 1 e@258 ]
+[; ;lib\PSoCGPIOINT.h: 77: BYTE SHCP_IntCtrl_0_ADDR;
+
+"79
+[v _SHCP_IntCtrl_1_ADDR `Auc 1 e@259 ]
+[; ;lib\PSoCGPIOINT.h: 79: BYTE SHCP_IntCtrl_1_ADDR;
+
+"81
+[v _SHCP_IntEn_ADDR `Auc 1 e@1 ]
+[; ;lib\PSoCGPIOINT.h: 81: BYTE SHCP_IntEn_ADDR;
+
+"84
+[v _SHCP_MUXBusCtrl_ADDR `Auc 1 e@472 ]
+[; ;lib\PSoCGPIOINT.h: 84: BYTE SHCP_MUXBusCtrl_ADDR;
+
+"87
+[v _Sensor_SET_Data_ADDR `Auc 1 e@0 ]
+[; ;lib\PSoCGPIOINT.h: 87: BYTE Sensor_SET_Data_ADDR;
+
+"89
+[v _Sensor_SET_DriveMode_0_ADDR `Auc 1 e@256 ]
+[; ;lib\PSoCGPIOINT.h: 89: BYTE Sensor_SET_DriveMode_0_ADDR;
+
+"91
+[v _Sensor_SET_DriveMode_1_ADDR `Auc 1 e@257 ]
+[; ;lib\PSoCGPIOINT.h: 91: BYTE Sensor_SET_DriveMode_1_ADDR;
+
+"93
+[v _Sensor_SET_DriveMode_2_ADDR `Auc 1 e@3 ]
+[; ;lib\PSoCGPIOINT.h: 93: BYTE Sensor_SET_DriveMode_2_ADDR;
+
+"95
+[v _Sensor_SET_GlobalSelect_ADDR `Auc 1 e@2 ]
+[; ;lib\PSoCGPIOINT.h: 95: BYTE Sensor_SET_GlobalSelect_ADDR;
+
+"97
+[v _Sensor_SET_IntCtrl_0_ADDR `Auc 1 e@258 ]
+[; ;lib\PSoCGPIOINT.h: 97: BYTE Sensor_SET_IntCtrl_0_ADDR;
+
+"99
+[v _Sensor_SET_IntCtrl_1_ADDR `Auc 1 e@259 ]
+[; ;lib\PSoCGPIOINT.h: 99: BYTE Sensor_SET_IntCtrl_1_ADDR;
+
+"101
+[v _Sensor_SET_IntEn_ADDR `Auc 1 e@1 ]
+[; ;lib\PSoCGPIOINT.h: 101: BYTE Sensor_SET_IntEn_ADDR;
+
+"104
+[v _Sensor_SET_MUXBusCtrl_ADDR `Auc 1 e@472 ]
+[; ;lib\PSoCGPIOINT.h: 104: BYTE Sensor_SET_MUXBusCtrl_ADDR;
+
+"107
+[v _STCP_Data_ADDR `Auc 1 e@0 ]
+[; ;lib\PSoCGPIOINT.h: 107: BYTE STCP_Data_ADDR;
+
+"109
+[v _STCP_DriveMode_0_ADDR `Auc 1 e@256 ]
+[; ;lib\PSoCGPIOINT.h: 109: BYTE STCP_DriveMode_0_ADDR;
+
+"111
+[v _STCP_DriveMode_1_ADDR `Auc 1 e@257 ]
+[; ;lib\PSoCGPIOINT.h: 111: BYTE STCP_DriveMode_1_ADDR;
+
+"113
+[v _STCP_DriveMode_2_ADDR `Auc 1 e@3 ]
+[; ;lib\PSoCGPIOINT.h: 113: BYTE STCP_DriveMode_2_ADDR;
+
+"115
+[v _STCP_GlobalSelect_ADDR `Auc 1 e@2 ]
+[; ;lib\PSoCGPIOINT.h: 115: BYTE STCP_GlobalSelect_ADDR;
+
+"117
+[v _STCP_IntCtrl_0_ADDR `Auc 1 e@258 ]
+[; ;lib\PSoCGPIOINT.h: 117: BYTE STCP_IntCtrl_0_ADDR;
+
+"119
+[v _STCP_IntCtrl_1_ADDR `Auc 1 e@259 ]
+[; ;lib\PSoCGPIOINT.h: 119: BYTE STCP_IntCtrl_1_ADDR;
+
+"121
+[v _STCP_IntEn_ADDR `Auc 1 e@1 ]
+[; ;lib\PSoCGPIOINT.h: 121: BYTE STCP_IntEn_ADDR;
+
+"124
+[v _STCP_MUXBusCtrl_ADDR `Auc 1 e@472 ]
+[; ;lib\PSoCGPIOINT.h: 124: BYTE STCP_MUXBusCtrl_ADDR;
+
+"127
+[v _SDA_Data_ADDR `Auc 1 e@4 ]
+[; ;lib\PSoCGPIOINT.h: 127: BYTE SDA_Data_ADDR;
+
+"129
+[v _SDA_DriveMode_0_ADDR `Auc 1 e@260 ]
+[; ;lib\PSoCGPIOINT.h: 129: BYTE SDA_DriveMode_0_ADDR;
+
+"131
+[v _SDA_DriveMode_1_ADDR `Auc 1 e@261 ]
+[; ;lib\PSoCGPIOINT.h: 131: BYTE SDA_DriveMode_1_ADDR;
+
+"133
+[v _SDA_DriveMode_2_ADDR `Auc 1 e@7 ]
+[; ;lib\PSoCGPIOINT.h: 133: BYTE SDA_DriveMode_2_ADDR;
+
+"135
+[v _SDA_GlobalSelect_ADDR `Auc 1 e@6 ]
+[; ;lib\PSoCGPIOINT.h: 135: BYTE SDA_GlobalSelect_ADDR;
+
+"137
+[v _SDA_IntCtrl_0_ADDR `Auc 1 e@262 ]
+[; ;lib\PSoCGPIOINT.h: 137: BYTE SDA_IntCtrl_0_ADDR;
+
+"139
+[v _SDA_IntCtrl_1_ADDR `Auc 1 e@263 ]
+[; ;lib\PSoCGPIOINT.h: 139: BYTE SDA_IntCtrl_1_ADDR;
+
+"141
+[v _SDA_IntEn_ADDR `Auc 1 e@5 ]
+[; ;lib\PSoCGPIOINT.h: 141: BYTE SDA_IntEn_ADDR;
+
+"144
+[v _SDA_MUXBusCtrl_ADDR `Auc 1 e@473 ]
+[; ;lib\PSoCGPIOINT.h: 144: BYTE SDA_MUXBusCtrl_ADDR;
+
+"147
+[v _SCL_Data_ADDR `Auc 1 e@4 ]
+[; ;lib\PSoCGPIOINT.h: 147: BYTE SCL_Data_ADDR;
+
+"149
+[v _SCL_DriveMode_0_ADDR `Auc 1 e@260 ]
+[; ;lib\PSoCGPIOINT.h: 149: BYTE SCL_DriveMode_0_ADDR;
+
+"151
+[v _SCL_DriveMode_1_ADDR `Auc 1 e@261 ]
+[; ;lib\PSoCGPIOINT.h: 151: BYTE SCL_DriveMode_1_ADDR;
+
+"153
+[v _SCL_DriveMode_2_ADDR `Auc 1 e@7 ]
+[; ;lib\PSoCGPIOINT.h: 153: BYTE SCL_DriveMode_2_ADDR;
+
+"155
+[v _SCL_GlobalSelect_ADDR `Auc 1 e@6 ]
+[; ;lib\PSoCGPIOINT.h: 155: BYTE SCL_GlobalSelect_ADDR;
+
+"157
+[v _SCL_IntCtrl_0_ADDR `Auc 1 e@262 ]
+[; ;lib\PSoCGPIOINT.h: 157: BYTE SCL_IntCtrl_0_ADDR;
+
+"159
+[v _SCL_IntCtrl_1_ADDR `Auc 1 e@263 ]
+[; ;lib\PSoCGPIOINT.h: 159: BYTE SCL_IntCtrl_1_ADDR;
+
+"161
+[v _SCL_IntEn_ADDR `Auc 1 e@5 ]
+[; ;lib\PSoCGPIOINT.h: 161: BYTE SCL_IntEn_ADDR;
+
+"164
+[v _SCL_MUXBusCtrl_ADDR `Auc 1 e@473 ]
+[; ;lib\PSoCGPIOINT.h: 164: BYTE SCL_MUXBusCtrl_ADDR;
+
+"35 ./lib\SAR10.h
+[v F356 `(v 1 tf ]
+[; ;lib\SAR10.h: 35: extern void SAR10_EnableInt(void);
+
+"36
+[v F359 `(v 1 tf ]
+[; ;lib\SAR10.h: 36: extern void SAR10_DisableInt(void);
+
+"37
+[v F362 `(v 1 tf ]
+[; ;lib\SAR10.h: 37: extern void SAR10_Start(void);
+
+"38
+[v F365 `(v 1 tf ]
+[; ;lib\SAR10.h: 38: extern void SAR10_Stop(void);
+
+"39
+[v F368 `(v 1 tf ]
+[; ;lib\SAR10.h: 39: extern void SAR10_Trigger(void);
+
+"40
+[v F371 `(uc 1 tf ]
+[; ;lib\SAR10.h: 40: extern BYTE SAR10_fIsDataAvailable(void);
+
+"41
+[v F374 `(i 1 tf ]
+[; ;lib\SAR10.h: 41: extern INT SAR10_iGetData(void);
+
+"42
+[v F377 `(uc 1 tf ]
+[; ;lib\SAR10.h: 42: extern BYTE SAR10_bGetData(void);
+
+"43
+[v F380 `(v 1 tf1`uc ]
+[; ;lib\SAR10.h: 43: extern void SAR10_SetADCChannel(BYTE bChannel);
+
+"44
+[v F383 `(v 1 tf1`uc ]
+[; ;lib\SAR10.h: 44: extern void SAR10_SetTriggerSrc(BYTE bSrc);
+
+"45
+[v F386 `(v 1 tf1`uc ]
+[; ;lib\SAR10.h: 45: extern void SAR10_EnableAutoTrigger(BYTE bMode);
+
+"46
+[v F389 `(v 1 tf1`uc ]
+[; ;lib\SAR10.h: 46: extern void SAR10_SetClk(BYTE bClkMode);
+
+"47
+[v F392 `(v 1 tf1`uc ]
+[; ;lib\SAR10.h: 47: extern void SAR10_SetRunMode(BYTE bRunMode);
+
+"118
+[v _SAR10_SAR_CR0_REG `Auc 1 e@424 ]
+[; ;lib\SAR10.h: 118: BYTE SAR10_SAR_CR0_REG;
+
+"120
+[v _SAR10_SAR_CR1_REG `Auc 1 e@425 ]
+[; ;lib\SAR10.h: 120: BYTE SAR10_SAR_CR1_REG;
+
+"122
+[v _SAR10_SAR_CR2_REG `Auc 1 e@426 ]
+[; ;lib\SAR10.h: 122: BYTE SAR10_SAR_CR2_REG;
+
+"124
+[v _SAR10_SAR_DH_REG `Auc 1 e@106 ]
+[; ;lib\SAR10.h: 124: BYTE SAR10_SAR_DH_REG;
+
+"126
+[v _SAR10_SAR_DL_REG `Auc 1 e@107 ]
+[; ;lib\SAR10.h: 126: BYTE SAR10_SAR_DL_REG;
+
+"41 ./lib\Timer16.h
+[v F400 `(v 1 tf ]
+[; ;lib\Timer16.h: 41: extern void Timer16_EnableInt(void);
+
+"42
+[v F403 `(v 1 tf ]
+[; ;lib\Timer16.h: 42: extern void Timer16_DisableInt(void);
+
+"43
+[v F406 `(v 1 tf ]
+[; ;lib\Timer16.h: 43: extern void Timer16_Start(void);
+
+"44
+[v F409 `(v 1 tf ]
+[; ;lib\Timer16.h: 44: extern void Timer16_Stop(void);
+
+"45
+[v F412 `(ui 1 tf ]
+[; ;lib\Timer16.h: 45: extern WORD Timer16_wReadTimer(void);
+
+"46
+[v F415 `(ui 1 tf ]
+[; ;lib\Timer16.h: 46: extern WORD Timer16_wReadTimerSaveCV(void);
+
+"47
+[v F418 `(v 1 tf1`ui ]
+[; ;lib\Timer16.h: 47: extern void Timer16_WritePeriod(WORD wPeriod);
+
+"48
+[v F421 `(ui 1 tf ]
+[; ;lib\Timer16.h: 48: extern WORD Timer16_wReadCompareValue(void);
+
+"49
+[v F424 `(v 1 tf1`ui ]
+[; ;lib\Timer16.h: 49: extern void Timer16_WriteCompareValue(WORD wCompareValue);
+
+"54
+[v F427 `(ui 1 tf ]
+[; ;lib\Timer16.h: 54: extern WORD wTimer16_ReadCompareValue(void);
+
+"55
+[v F430 `(ui 1 tf ]
+[; ;lib\Timer16.h: 55: extern WORD wTimer16_ReadTimerSaveCV(void);
+
+"56
+[v F433 `(ui 1 tf ]
+[; ;lib\Timer16.h: 56: extern WORD wTimer16_ReadCounter(void);
+
+"57
+[v F436 `(ui 1 tf ]
+[; ;lib\Timer16.h: 57: extern WORD wTimer16_ReadTimer(void);
+
+"58
+[v F439 `(ui 1 tf ]
+[; ;lib\Timer16.h: 58: extern WORD wTimer16_CaptureCounter(void);
+
+"83
+[v _Timer16_COUNTER_LSB_REG `Auc 1 e@32 ]
+[; ;lib\Timer16.h: 83: BYTE Timer16_COUNTER_LSB_REG;
+
+"85
+[v _Timer16_COUNTER_MSB_REG `Auc 1 e@36 ]
+[; ;lib\Timer16.h: 85: BYTE Timer16_COUNTER_MSB_REG;
+
+"87
+[v _Timer16_PERIOD_LSB_REG `Auc 1 e@33 ]
+[; ;lib\Timer16.h: 87: BYTE Timer16_PERIOD_LSB_REG;
+
+"89
+[v _Timer16_PERIOD_MSB_REG `Auc 1 e@37 ]
+[; ;lib\Timer16.h: 89: BYTE Timer16_PERIOD_MSB_REG;
+
+"91
+[v _Timer16_COMPARE_LSB_REG `Auc 1 e@34 ]
+[; ;lib\Timer16.h: 91: BYTE Timer16_COMPARE_LSB_REG;
+
+"93
+[v _Timer16_COMPARE_MSB_REG `Auc 1 e@38 ]
+[; ;lib\Timer16.h: 93: BYTE Timer16_COMPARE_MSB_REG;
+
+"95
+[v _Timer16_CONTROL_LSB_REG `Auc 1 e@35 ]
+[; ;lib\Timer16.h: 95: BYTE Timer16_CONTROL_LSB_REG;
+
+"97
+[v _Timer16_CONTROL_MSB_REG `Auc 1 e@39 ]
+[; ;lib\Timer16.h: 97: BYTE Timer16_CONTROL_MSB_REG;
+
+"99
+[v _Timer16_FUNC_LSB_REG `Auc 1 e@288 ]
+[; ;lib\Timer16.h: 99: BYTE Timer16_FUNC_LSB_REG;
+
+"101
+[v _Timer16_FUNC_MSB_REG `Auc 1 e@292 ]
+[; ;lib\Timer16.h: 101: BYTE Timer16_FUNC_MSB_REG;
+
+"103
+[v _Timer16_INPUT_LSB_REG `Auc 1 e@289 ]
+[; ;lib\Timer16.h: 103: BYTE Timer16_INPUT_LSB_REG;
+
+"105
+[v _Timer16_INPUT_MSB_REG `Auc 1 e@293 ]
+[; ;lib\Timer16.h: 105: BYTE Timer16_INPUT_MSB_REG;
+
+"107
+[v _Timer16_OUTPUT_LSB_REG `Auc 1 e@290 ]
+[; ;lib\Timer16.h: 107: BYTE Timer16_OUTPUT_LSB_REG;
+
+"109
+[v _Timer16_OUTPUT_MSB_REG `Auc 1 e@294 ]
+[; ;lib\Timer16.h: 109: BYTE Timer16_OUTPUT_MSB_REG;
+
+"111
+[v _Timer16_INT_REG `Auc 1 e@225 ]
+[; ;lib\Timer16.h: 111: BYTE Timer16_INT_REG;
+
+"41 ./lib\Timer8.h
+[v F457 `(v 1 tf ]
+[; ;lib\Timer8.h: 41: extern void Timer8_EnableInt(void);
+
+"42
+[v F460 `(v 1 tf ]
+[; ;lib\Timer8.h: 42: extern void Timer8_DisableInt(void);
+
+"43
+[v F463 `(v 1 tf ]
+[; ;lib\Timer8.h: 43: extern void Timer8_Start(void);
+
+"44
+[v F466 `(v 1 tf ]
+[; ;lib\Timer8.h: 44: extern void Timer8_Stop(void);
+
+"45
+[v F469 `(uc 1 tf ]
+[; ;lib\Timer8.h: 45: extern BYTE Timer8_bReadTimer(void);
+
+"46
+[v F472 `(uc 1 tf ]
+[; ;lib\Timer8.h: 46: extern BYTE Timer8_bReadTimerSaveCV(void);
+
+"47
+[v F475 `(v 1 tf1`uc ]
+[; ;lib\Timer8.h: 47: extern void Timer8_WritePeriod(BYTE bPeriod);
+
+"48
+[v F478 `(uc 1 tf ]
+[; ;lib\Timer8.h: 48: extern BYTE Timer8_bReadCompareValue(void);
+
+"49
+[v F481 `(v 1 tf1`uc ]
+[; ;lib\Timer8.h: 49: extern void Timer8_WriteCompareValue(BYTE bCompareValue);
+
+"54
+[v F484 `(uc 1 tf ]
+[; ;lib\Timer8.h: 54: extern BYTE bTimer8_ReadCompareValue(void);
+
+"55
+[v F487 `(uc 1 tf ]
+[; ;lib\Timer8.h: 55: extern BYTE bTimer8_ReadTimerSaveCV(void);
+
+"56
+[v F490 `(uc 1 tf ]
+[; ;lib\Timer8.h: 56: extern BYTE bTimer8_ReadCounter(void);
+
+"57
+[v F493 `(uc 1 tf ]
+[; ;lib\Timer8.h: 57: extern BYTE bTimer8_ReadTimer(void);
+
+"58
+[v F496 `(uc 1 tf ]
+[; ;lib\Timer8.h: 58: extern BYTE bTimer8_CaptureCounter(void);
+
+"83
+[v _Timer8_COUNTER_REG `Auc 1 e@48 ]
+[; ;lib\Timer8.h: 83: BYTE Timer8_COUNTER_REG;
+
+"85
+[v _Timer8_PERIOD_REG `Auc 1 e@49 ]
+[; ;lib\Timer8.h: 85: BYTE Timer8_PERIOD_REG;
+
+"87
+[v _Timer8_COMPARE_REG `Auc 1 e@50 ]
+[; ;lib\Timer8.h: 87: BYTE Timer8_COMPARE_REG;
+
+"89
+[v _Timer8_CONTROL_REG `Auc 1 e@51 ]
+[; ;lib\Timer8.h: 89: BYTE Timer8_CONTROL_REG;
+
+"91
+[v _Timer8_FUNC_REG `Auc 1 e@304 ]
+[; ;lib\Timer8.h: 91: BYTE Timer8_FUNC_REG;
+
+"93
+[v _Timer8_INPUT_REG `Auc 1 e@305 ]
+[; ;lib\Timer8.h: 93: BYTE Timer8_INPUT_REG;
+
+"95
+[v _Timer8_OUTPUT_REG `Auc 1 e@306 ]
+[; ;lib\Timer8.h: 95: BYTE Timer8_OUTPUT_REG;
+
+"97
+[v _Timer8_INT_REG `Auc 1 e@225 ]
+[; ;lib\Timer8.h: 97: BYTE Timer8_INT_REG;
+
+"70 ./lib\UART_Board.h
+[v F507 `(v 1 tf1`uc ]
+[; ;lib\UART_Board.h: 70: extern void UART_Board_SetTxIntMode(BYTE bTxIntMode);
+
+"71
+[v F510 `(v 1 tf ]
+[; ;lib\UART_Board.h: 71: extern void UART_Board_EnableInt(void);
+
+"72
+[v F513 `(v 1 tf ]
+[; ;lib\UART_Board.h: 72: extern void UART_Board_DisableInt(void);
+
+"73
+[v F516 `(v 1 tf1`uc ]
+[; ;lib\UART_Board.h: 73: extern void UART_Board_Start(BYTE bParitySetting);
+
+"74
+[v F519 `(v 1 tf ]
+[; ;lib\UART_Board.h: 74: extern void UART_Board_Stop(void);
+
+"75
+[v F522 `(v 1 tf1`uc ]
+[; ;lib\UART_Board.h: 75: extern void UART_Board_SendData(BYTE bTxData);
+
+"76
+[v F525 `(uc 1 tf ]
+[; ;lib\UART_Board.h: 76: extern BYTE UART_Board_bReadTxStatus(void);
+
+"77
+[v F528 `(uc 1 tf ]
+[; ;lib\UART_Board.h: 77: extern BYTE UART_Board_bReadRxData(void);
+
+"78
+[v F531 `(uc 1 tf ]
+[; ;lib\UART_Board.h: 78: extern BYTE UART_Board_bReadRxStatus(void);
+
+"81
+[v F534 `(v 1 tf1`*Cuc ]
+[; ;lib\UART_Board.h: 81: extern void UART_Board_CPutString(const BYTE * szRomString);
+
+"82
+[v F537 `(v 1 tf1`*uc ]
+[; ;lib\UART_Board.h: 82: extern void UART_Board_PutString(BYTE * szRamString);
+
+"83
+[v F540 `(v 1 tf1`c ]
+[; ;lib\UART_Board.h: 83: extern void UART_Board_PutChar(CHAR cData);
+
+"84
+[v F544 `(v 1 tf2`*uc`uc ]
+[; ;lib\UART_Board.h: 84: extern void UART_Board_Write(BYTE * szRamString, BYTE bCount);
+
+"85
+[v F548 `(v 1 tf2`*Cuc`i ]
+[; ;lib\UART_Board.h: 85: extern void UART_Board_CWrite(const BYTE * szRomString, INT iCount);
+
+"86
+[v F551 `(v 1 tf1`uc ]
+[; ;lib\UART_Board.h: 86: extern void UART_Board_PutSHexByte(BYTE bValue);
+
+"87
+[v F554 `(v 1 tf1`i ]
+[; ;lib\UART_Board.h: 87: extern void UART_Board_PutSHexInt(INT iValue);
+
+"88
+[v F557 `(v 1 tf ]
+[; ;lib\UART_Board.h: 88: extern void UART_Board_PutCRLF(void);
+
+"89
+[v F560 `(v 1 tf1`uc ]
+[; ;lib\UART_Board.h: 89: extern void UART_Board_TxIntMode(BYTE bMask);
+
+"92
+[v F563 `(c 1 tf ]
+[; ;lib\UART_Board.h: 92: extern CHAR UART_Board_cGetChar(void);
+
+"93
+[v F566 `(c 1 tf ]
+[; ;lib\UART_Board.h: 93: extern CHAR UART_Board_cReadChar(void);
+
+"94
+[v F569 `(i 1 tf ]
+[; ;lib\UART_Board.h: 94: extern INT UART_Board_iReadChar(void);
+
+"95
+[v F572 `(v 1 tf1`uc ]
+[; ;lib\UART_Board.h: 95: extern void UART_Board_IntCntl(BYTE bMask);
+
+"158
+[v _UART_Board_TX_CONTROL_REG `Auc 1 e@59 ]
+[; ;lib\UART_Board.h: 158: BYTE UART_Board_TX_CONTROL_REG;
+
+"160
+[v _UART_Board_TX_SHIFT_REG `Auc 1 e@56 ]
+[; ;lib\UART_Board.h: 160: BYTE UART_Board_TX_SHIFT_REG;
+
+"162
+[v _UART_Board_TX_BUFFER_REG `Auc 1 e@57 ]
+[; ;lib\UART_Board.h: 162: BYTE UART_Board_TX_BUFFER_REG;
+
+"164
+[v _UART_Board_TX_FUNC_REG `Auc 1 e@312 ]
+[; ;lib\UART_Board.h: 164: BYTE UART_Board_TX_FUNC_REG;
+
+"166
+[v _UART_Board_TX_INPUT_REG `Auc 1 e@313 ]
+[; ;lib\UART_Board.h: 166: BYTE UART_Board_TX_INPUT_REG;
+
+"168
+[v _UART_Board_TX_OUTPUT_REG `Auc 1 e@314 ]
+[; ;lib\UART_Board.h: 168: BYTE UART_Board_TX_OUTPUT_REG;
+
+"170
+[v _UART_Board_RX_CONTROL_REG `Auc 1 e@63 ]
+[; ;lib\UART_Board.h: 170: BYTE UART_Board_RX_CONTROL_REG;
+
+"172
+[v _UART_Board_RX_SHIFT_REG `Auc 1 e@60 ]
+[; ;lib\UART_Board.h: 172: BYTE UART_Board_RX_SHIFT_REG;
+
+"174
+[v _UART_Board_RX_BUFFER_REG `Auc 1 e@62 ]
+[; ;lib\UART_Board.h: 174: BYTE UART_Board_RX_BUFFER_REG;
+
+"176
+[v _UART_Board_RX_FUNC_REG `Auc 1 e@316 ]
+[; ;lib\UART_Board.h: 176: BYTE UART_Board_RX_FUNC_REG;
+
+"178
+[v _UART_Board_RX_INPUT_REG `Auc 1 e@317 ]
+[; ;lib\UART_Board.h: 178: BYTE UART_Board_RX_INPUT_REG;
+
+"180
+[v _UART_Board_RX_OUTPUT_REG `Auc 1 e@318 ]
+[; ;lib\UART_Board.h: 180: BYTE UART_Board_RX_OUTPUT_REG;
+
+"183
+[v _UART_Board_TX_INT_REG `Auc 1 e@225 ]
+[; ;lib\UART_Board.h: 183: BYTE UART_Board_TX_INT_REG;
+
+"185
+[v _UART_Board_RX_INT_REG `Auc 1 e@225 ]
+[; ;lib\UART_Board.h: 185: BYTE UART_Board_RX_INT_REG;
+
+"201
+[v F589 `(uc 1 tf ]
+[; ;lib\UART_Board.h: 201: extern BYTE bUART_Board_ReadTxStatus(void);
+
+"202
+[v F592 `(uc 1 tf ]
+[; ;lib\UART_Board.h: 202: extern BYTE bUART_Board_ReadRxData(void);
+
+"203
+[v F595 `(uc 1 tf ]
+[; ;lib\UART_Board.h: 203: extern BYTE bUART_Board_ReadRxStatus(void);
+
+"70 ./lib\UART_Sensor.h
+[v F598 `(v 1 tf1`uc ]
+[; ;lib\UART_Sensor.h: 70: extern void UART_Sensor_SetTxIntMode(BYTE bTxIntMode);
+
+"71
+[v F601 `(v 1 tf ]
+[; ;lib\UART_Sensor.h: 71: extern void UART_Sensor_EnableInt(void);
+
+"72
+[v F604 `(v 1 tf ]
+[; ;lib\UART_Sensor.h: 72: extern void UART_Sensor_DisableInt(void);
+
+"73
+[v F607 `(v 1 tf1`uc ]
+[; ;lib\UART_Sensor.h: 73: extern void UART_Sensor_Start(BYTE bParitySetting);
+
+"74
+[v F610 `(v 1 tf ]
+[; ;lib\UART_Sensor.h: 74: extern void UART_Sensor_Stop(void);
+
+"75
+[v F613 `(v 1 tf1`uc ]
+[; ;lib\UART_Sensor.h: 75: extern void UART_Sensor_SendData(BYTE bTxData);
+
+"76
+[v F616 `(uc 1 tf ]
+[; ;lib\UART_Sensor.h: 76: extern BYTE UART_Sensor_bReadTxStatus(void);
+
+"77
+[v F619 `(uc 1 tf ]
+[; ;lib\UART_Sensor.h: 77: extern BYTE UART_Sensor_bReadRxData(void);
+
+"78
+[v F622 `(uc 1 tf ]
+[; ;lib\UART_Sensor.h: 78: extern BYTE UART_Sensor_bReadRxStatus(void);
+
+"81
+[v F625 `(v 1 tf1`*Cuc ]
+[; ;lib\UART_Sensor.h: 81: extern void UART_Sensor_CPutString(const BYTE * szRomString);
+
+"82
+[v F628 `(v 1 tf1`*uc ]
+[; ;lib\UART_Sensor.h: 82: extern void UART_Sensor_PutString(BYTE * szRamString);
+
+"83
+[v F631 `(v 1 tf1`c ]
+[; ;lib\UART_Sensor.h: 83: extern void UART_Sensor_PutChar(CHAR cData);
+
+"84
+[v F635 `(v 1 tf2`*uc`uc ]
+[; ;lib\UART_Sensor.h: 84: extern void UART_Sensor_Write(BYTE * szRamString, BYTE bCount);
+
+"85
+[v F639 `(v 1 tf2`*Cuc`i ]
+[; ;lib\UART_Sensor.h: 85: extern void UART_Sensor_CWrite(const BYTE * szRomString, INT iCount);
+
+"86
+[v F642 `(v 1 tf1`uc ]
+[; ;lib\UART_Sensor.h: 86: extern void UART_Sensor_PutSHexByte(BYTE bValue);
+
+"87
+[v F645 `(v 1 tf1`i ]
+[; ;lib\UART_Sensor.h: 87: extern void UART_Sensor_PutSHexInt(INT iValue);
+
+"88
+[v F648 `(v 1 tf ]
+[; ;lib\UART_Sensor.h: 88: extern void UART_Sensor_PutCRLF(void);
+
+"89
+[v F651 `(v 1 tf1`uc ]
+[; ;lib\UART_Sensor.h: 89: extern void UART_Sensor_TxIntMode(BYTE bMask);
+
+"92
+[v F654 `(c 1 tf ]
+[; ;lib\UART_Sensor.h: 92: extern CHAR UART_Sensor_cGetChar(void);
+
+"93
+[v F657 `(c 1 tf ]
+[; ;lib\UART_Sensor.h: 93: extern CHAR UART_Sensor_cReadChar(void);
+
+"94
+[v F660 `(i 1 tf ]
+[; ;lib\UART_Sensor.h: 94: extern INT UART_Sensor_iReadChar(void);
+
+"95
+[v F663 `(v 1 tf1`uc ]
+[; ;lib\UART_Sensor.h: 95: extern void UART_Sensor_IntCntl(BYTE bMask);
+
+"158
+[v _UART_Sensor_TX_CONTROL_REG `Auc 1 e@43 ]
+[; ;lib\UART_Sensor.h: 158: BYTE UART_Sensor_TX_CONTROL_REG;
+
+"160
+[v _UART_Sensor_TX_SHIFT_REG `Auc 1 e@40 ]
+[; ;lib\UART_Sensor.h: 160: BYTE UART_Sensor_TX_SHIFT_REG;
+
+"162
+[v _UART_Sensor_TX_BUFFER_REG `Auc 1 e@41 ]
+[; ;lib\UART_Sensor.h: 162: BYTE UART_Sensor_TX_BUFFER_REG;
+
+"164
+[v _UART_Sensor_TX_FUNC_REG `Auc 1 e@296 ]
+[; ;lib\UART_Sensor.h: 164: BYTE UART_Sensor_TX_FUNC_REG;
+
+"166
+[v _UART_Sensor_TX_INPUT_REG `Auc 1 e@297 ]
+[; ;lib\UART_Sensor.h: 166: BYTE UART_Sensor_TX_INPUT_REG;
+
+"168
+[v _UART_Sensor_TX_OUTPUT_REG `Auc 1 e@298 ]
+[; ;lib\UART_Sensor.h: 168: BYTE UART_Sensor_TX_OUTPUT_REG;
+
+"170
+[v _UART_Sensor_RX_CONTROL_REG `Auc 1 e@47 ]
+[; ;lib\UART_Sensor.h: 170: BYTE UART_Sensor_RX_CONTROL_REG;
+
+"172
+[v _UART_Sensor_RX_SHIFT_REG `Auc 1 e@44 ]
+[; ;lib\UART_Sensor.h: 172: BYTE UART_Sensor_RX_SHIFT_REG;
+
+"174
+[v _UART_Sensor_RX_BUFFER_REG `Auc 1 e@46 ]
+[; ;lib\UART_Sensor.h: 174: BYTE UART_Sensor_RX_BUFFER_REG;
+
+"176
+[v _UART_Sensor_RX_FUNC_REG `Auc 1 e@300 ]
+[; ;lib\UART_Sensor.h: 176: BYTE UART_Sensor_RX_FUNC_REG;
+
+"178
+[v _UART_Sensor_RX_INPUT_REG `Auc 1 e@301 ]
+[; ;lib\UART_Sensor.h: 178: BYTE UART_Sensor_RX_INPUT_REG;
+
+"180
+[v _UART_Sensor_RX_OUTPUT_REG `Auc 1 e@302 ]
+[; ;lib\UART_Sensor.h: 180: BYTE UART_Sensor_RX_OUTPUT_REG;
+
+"183
+[v _UART_Sensor_TX_INT_REG `Auc 1 e@225 ]
+[; ;lib\UART_Sensor.h: 183: BYTE UART_Sensor_TX_INT_REG;
+
+"185
+[v _UART_Sensor_RX_INT_REG `Auc 1 e@225 ]
+[; ;lib\UART_Sensor.h: 185: BYTE UART_Sensor_RX_INT_REG;
+
+"201
+[v F680 `(uc 1 tf ]
+[; ;lib\UART_Sensor.h: 201: extern BYTE bUART_Sensor_ReadTxStatus(void);
+
+"202
+[v F683 `(uc 1 tf ]
+[; ;lib\UART_Sensor.h: 202: extern BYTE bUART_Sensor_ReadRxData(void);
+
+"203
+[v F686 `(uc 1 tf ]
+[; ;lib\UART_Sensor.h: 203: extern BYTE bUART_Sensor_ReadRxStatus(void);
+
+"23 ./t74HC595.h
+[v _DisBit `Cuc -> 0 `x e ]
+[i _DisBit
+:U ..
+-> -> 191 `i `uc
+-> -> 239 `i `uc
+-> -> 251 `i `uc
+-> -> 254 `i `uc
+-> -> 127 `i `uc
+-> -> 223 `i `uc
+-> -> 247 `i `uc
+-> -> 253 `i `uc
+..
+][; ;t74HC595.h: 23: const unsigned char DisBit[]={0xbf,0xef,0xfb,0xfe,0x7f,0xdf,0xf7,0xfd};
+
+"31
+[v _DisplayBuf `uc -> 3 `i e ]
+[; ;t74HC595.h: 31: char DisplayBuf[3];
+
+[; ;t74HC595.h: 32: void ShiftRegOutput(void);
+
+"7 ./t74hc595.c
+[v _ShiftRegOutput `(v 1 ef ]
+{
+[; ;t74hc595.c: 6: void ShiftRegOutput(void)
+
+[; ;t74hc595.c: 7: {
+
+[e :U _ShiftRegOutput ]
+[f ]
+"8
+[v _i `uc 1 a ]
+[v _k `uc 1 a ]
+"9
+[v _temp_data `uc 1 a ]
+[; ;t74hc595.c: 8: unsigned char i,k;
+
+[; ;t74hc595.c: 9: unsigned char temp_data=0x00;
+
+[e = _temp_data -> -> 0 `i `uc ]
+[; ;t74hc595.c: 11: (PRT0DR |= 0x2);
+
+"11
+[e =| _PRT0DR -> -> 2 `i `uc ]
+[; ;t74hc595.c: 12: asm ("NOP");
+
+"12
+[; NOP ;#
+[; ;t74hc595.c: 13: asm ("NOP");
+
+"13
+[; NOP ;#
+[; ;t74hc595.c: 14: asm ("NOP");
+
+"14
+[; NOP ;#
+[; ;t74hc595.c: 15: asm ("NOP");
+
+"15
+[; NOP ;#
+[; ;t74hc595.c: 17: (PRT0DR &= ~0x80);
+
+"17
+[e =& _PRT0DR -> ~ -> 128 `i `uc ]
+[; ;t74hc595.c: 18: asm ("NOP");
+
+"18
+[; NOP ;#
+[; ;t74hc595.c: 19: asm ("NOP");
+
+"19
+[; NOP ;#
+[; ;t74hc595.c: 20: asm ("NOP");
+
+"20
+[; NOP ;#
+[; ;t74hc595.c: 21: asm ("NOP");
+
+"21
+[; NOP ;#
+[; ;t74hc595.c: 23: for (k=0;k<3;k++)
+
+"23
+{
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 3 `i 2  ]
+[e $U 3  ]
+"24
+[e :U 2 ]
+[; ;t74hc595.c: 24: {
+
+{
+[; ;t74hc595.c: 25: temp_data = DisplayBuf[k];
+
+"25
+[e = _temp_data *U + &U _DisplayBuf * -> _k `ux -> -> # *U &U _DisplayBuf `ui `ux ]
+[; ;t74hc595.c: 26: for (i=0; i < 8; i++)
+
+"26
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 5  ]
+[e $U 6  ]
+"27
+[e :U 5 ]
+[; ;t74hc595.c: 27: {
+
+{
+[; ;t74hc595.c: 28: (PRT0DR &= ~0x20);
+
+"28
+[e =& _PRT0DR -> ~ -> 32 `i `uc ]
+[; ;t74hc595.c: 29: asm ("NOP");
+
+"29
+[; NOP ;#
+[; ;t74hc595.c: 30: asm ("NOP");
+
+"30
+[; NOP ;#
+[; ;t74hc595.c: 32: if (temp_data & 0x80)
+
+"32
+[e $ ! != & -> _temp_data `i -> 128 `i -> 0 `i 8  ]
+[; ;t74hc595.c: 33: (PRT0DR |= 0x8);
+
+"33
+[e =| _PRT0DR -> -> 8 `i `uc ]
+[e $U 9  ]
+"34
+[e :U 8 ]
+[; ;t74hc595.c: 34: else
+
+[; ;t74hc595.c: 35: (PRT0DR &= ~0x8);
+
+"35
+[e =& _PRT0DR -> ~ -> 8 `i `uc ]
+[e :U 9 ]
+[; ;t74hc595.c: 37: asm ("NOP");
+
+"37
+[; NOP ;#
+[; ;t74hc595.c: 38: asm ("NOP");
+
+"38
+[; NOP ;#
+[; ;t74hc595.c: 40: (PRT0DR |= 0x20);
+
+"40
+[e =| _PRT0DR -> -> 32 `i `uc ]
+[; ;t74hc595.c: 42: asm ("NOP");
+
+"42
+[; NOP ;#
+[; ;t74hc595.c: 43: asm ("NOP");
+
+"43
+[; NOP ;#
+[; ;t74hc595.c: 45: temp_data <<= 1;
+
+"45
+[e =<< _temp_data -> 1 `i ]
+"46
+}
+"26
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 5  ]
+[e :U 6 ]
+"46
+}
+"47
+}
+"23
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 3 `i 2  ]
+[e :U 3 ]
+"47
+}
+[; ;t74hc595.c: 46: }
+
+[; ;t74hc595.c: 47: }
+
+[; ;t74hc595.c: 48: asm ("NOP");
+
+"48
+[; NOP ;#
+[; ;t74hc595.c: 49: asm ("NOP");
+
+"49
+[; NOP ;#
+[; ;t74hc595.c: 50: asm ("NOP");
+
+"50
+[; NOP ;#
+[; ;t74hc595.c: 52: (PRT0DR |= 0x80); ;
+
+"52
+[e =| _PRT0DR -> -> 128 `i `uc ]
+[; ;t74hc595.c: 53: asm ("NOP");
+
+"53
+[; NOP ;#
+[; ;t74hc595.c: 54: asm ("NOP");
+
+"54
+[; NOP ;#
+[; ;t74hc595.c: 55: asm ("NOP");
+
+"55
+[; NOP ;#
+[; ;t74hc595.c: 56: asm ("NOP");
+
+"56
+[; NOP ;#
+[; ;t74hc595.c: 58: (PRT0DR &= ~0x8);
+
+"58
+[e =& _PRT0DR -> ~ -> 8 `i `uc ]
+[; ;t74hc595.c: 59: asm ("NOP");
+
+"59
+[; NOP ;#
+[; ;t74hc595.c: 60: asm ("NOP");
+
+"60
+[; NOP ;#
+"61
+[; ;t74hc595.c: 61: }
+
+[e :UE 1 ]
+}

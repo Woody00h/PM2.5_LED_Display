@@ -1,0 +1,34 @@
+Starting MAKE...
+creating project.mk -- no changes
+
+sed: can't read HTlinkOpts.lkp: No such file or directory
+
+expanded_libs = 
+
+Linking..
+
+HI-TECH C COMPILER (Cypress PSOC) Pro  V9.61
+
+Copyright (C) 1984-2008 HI-TECH SOFTWARE
+
+Serial number: HCPSOC-679591
+
+
+
+Memory Summary:
+
+    Program space        used  13BBh (  5051) of  4000h bytes   ( 30.8%)
+
+    Data space           used    7Dh (   125) of   400h bytes   ( 12.2%)
+
+
+
+Comparative memory usage (excludes absolute areas and stack variables)
+
+    ROM used:  4718 bytes
+
+    RAM used:    88 bytes
+
+ 
+LED_display - 0 error(s) 0 warning(s) 21:41:15
+

@@ -1,0 +1,73 @@
+# DO NOT DELETE
+./obj/boardcommunication.p1 :  ./lib/PSoCAPI.h ./lib/PSOCGP~1.H\
+   ./lib/SAR10.h ./lib/Timer16.h ./lib/Timer8.h ./lib/UART_B~1.H\
+   ./lib/UART_S~1.H\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.h
+./obj/led.p1 :  E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\BOARDC~1.H\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\LED.h\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\PARTIC~1.H\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\Si7020.h
+./obj/main.p1 :  ./lib/PSoCAPI.h ./lib/PSOCGP~1.H ./lib/SAR10.h\
+   ./lib/Timer16.h ./lib/Timer8.h ./lib/UART_B~1.H ./lib/UART_S~1.H\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.h\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\BOARDC~1.H\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\LED.h\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\PARTIC~1.H\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\Si7020.h\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\SOFTWA~1.H\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\t74HC595.h
+./obj/particlesensor.p1 :  ./lib/PSoCAPI.h ./lib/PSOCGP~1.H ./lib/SAR10.h\
+   ./lib/Timer16.h ./lib/Timer8.h ./lib/UART_B~1.H ./lib/UART_S~1.H\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.h\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\PARTIC~1.H
+./obj/si7020.p1 :  E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\Si7020.h\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\SOFTWA~1.H
+./obj/software_iic.p1 :  ./lib/PSoCAPI.h ./lib/PSOCGP~1.H ./lib/SAR10.h\
+   ./lib/Timer16.h ./lib/Timer8.h ./lib/UART_B~1.H ./lib/UART_S~1.H\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.h
+./obj/t74hc595.p1 :  ./lib/PSoCAPI.h ./lib/PSOCGP~1.H ./lib/SAR10.h\
+   ./lib/Timer16.h ./lib/Timer8.h ./lib/UART_B~1.H ./lib/UART_S~1.H\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.h\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\t74HC595.h
+./obj/boot.obj : \
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8ssc.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\lib\GLOBAL~1.INC\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/psocconfig.obj :  ./lib/GLOBAL~1.INC\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/psocconfigtbl.obj : \
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc
+./lib/obj/sar10.obj :  ./lib/SAR10.inc\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/sar10int.obj :  ./lib/SAR10.inc\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/timer16.obj :  ./lib/Timer16.inc\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/timer16int.obj :  ./lib/Timer16.inc\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/timer8.obj :  ./lib/Timer8.inc\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/timer8int.obj :  ./lib/Timer8.inc\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/uart_board.obj :  ./lib/UART_B~1.INC\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/uart_boardint.obj :  ./lib/UART_B~1.INC\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/uart_boardplus.obj : 
+./lib/obj/uart_sensor.obj :  ./lib/UART_S~1.INC\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/uart_sensorint.obj :  ./lib/UART_S~1.INC\
+   D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1/m8c.inc\
+   E:\430PRO~1\LED_DI~1\LED_DI~1\LED_DI~1\memory.inc
+./lib/obj/uart_sensorplus.obj : 

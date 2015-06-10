@@ -1,0 +1,19 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"1 output\__custom.c
+[v __flash_banks `Cuc 1 e ]
+[i __flash_banks
+-> -> 1 `i `uc
+][; ;__custom.c: 1: const unsigned char _flash_banks = 1;
+
+"2
+[v __flash_size `Cui 1 e ]
+[i __flash_size
+-> -> 16384 `i `ui
+][; ;__custom.c: 2: const unsigned int _flash_size = 0x4000;
+
+"3
+[v __flash_blocksize `Cuc 1 e ]
+[i __flash_blocksize
+-> -> 64 `i `uc
+][; ;__custom.c: 3: const unsigned char _flash_blocksize = 64;
+

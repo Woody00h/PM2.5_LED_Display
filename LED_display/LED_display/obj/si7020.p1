@@ -1,0 +1,424 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[; ;Si7020.h: 27: unsigned char Si7020SendCommand(unsigned char cmd);
+
+[; ;Si7020.h: 28: void Si7020Read_RH_NHM(unsigned char * buffer);
+
+[; ;Si7020.h: 29: unsigned char Si7020Read_Temp_after_RHM(unsigned char * buffer);
+
+[; ;Si7020.h: 30: signed char Si7020CalcTemp(unsigned int data);
+
+[; ;Si7020.h: 31: unsigned char Si7020CalcRH(unsigned int data);
+
+[; ;Si7020.h: 32: void Si7020ClearBuf();
+
+"34 ./Si7020.h
+[v _Humidity `uc 1 e ]
+[; ;Si7020.h: 34: unsigned char Humidity;
+
+"35
+[v _Temperature `c 1 e ]
+[; ;Si7020.h: 35: signed char Temperature;
+
+"36
+[v _RecBuf `uc -> 5 `i e ]
+[; ;Si7020.h: 36: unsigned char RecBuf[5];
+
+[; ;software_IIC.h: 25: extern unsigned char ack;
+
+[; ;software_IIC.h: 26: extern char eepromtype;
+
+[; ;software_IIC.h: 28: extern void Init_IIC(void);
+
+[; ;software_IIC.h: 29: extern unsigned char SetAddr(unsigned char sla,unsigned int suba);
+
+[; ;software_IIC.h: 30: extern void Start_I2c(void);
+
+[; ;software_IIC.h: 31: extern void Stop_I2c(void);
+
+[; ;software_IIC.h: 32: extern void SendByte(unsigned char c);
+
+[; ;software_IIC.h: 33: extern unsigned char RcvByte(void);
+
+[; ;software_IIC.h: 34: extern void Ack_I2c(unsigned char a);
+
+[; ;software_IIC.h: 35: extern unsigned char ISendByte(unsigned char sla,unsigned char c);
+
+[; ;software_IIC.h: 36: extern unsigned char ISendStr(unsigned char sla,unsigned int suba,unsigned char *s,unsigned char no);
+
+[; ;software_IIC.h: 37: extern unsigned char IRcvByte(unsigned char sla,unsigned char *c);
+
+[; ;software_IIC.h: 38: extern unsigned char IRcvStr(unsigned char sla,unsigned int suba,unsigned char *s,unsigned char no);
+
+[; ;software_IIC.h: 39: extern unsigned char IRcvBytes(unsigned char sla,unsigned char *s,unsigned char no);
+
+[; ;software_IIC.h: 40: extern void ChangeToRead(void);
+
+[; ;software_IIC.h: 41: extern void ChangeToOD(void);
+
+[; ;software_IIC.h: 42: extern void delay_us(unsigned int us);
+
+[; ;si7020.c: 5: extern unsigned char IICTimeOutTimer;
+
+"10 ./si7020.c
+[v _Si7020SendCommand `(uc 1 ef1`uc ]
+{
+[; ;si7020.c: 9: unsigned char Si7020SendCommand(char cmd)
+
+[; ;si7020.c: 10: {
+
+[e :U _Si7020SendCommand ]
+[v _cmd `uc 1 r1 ]
+[f ]
+[; ;si7020.c: 11: return(ISendByte(0x80,cmd));
+
+"35 ./software_IIC.h
+[v _ISendByte `(uc 0 ef2`uc`uc ]
+"11 ./si7020.c
+[e ) ( _ISendByte (2
+ , -> -> 128 `i `uc _cmd ]
+[e $UE 1  ]
+"12
+[; ;si7020.c: 12: }
+
+[e :UE 1 ]
+}
+"18
+[v _Si7020Read_RH_NHM `(v 1 ef1`*uc ]
+{
+[; ;si7020.c: 17: void Si7020Read_RH_NHM(unsigned char * buffer)
+
+[; ;si7020.c: 18: {
+
+[e :U _Si7020Read_RH_NHM ]
+[v _buffer `*uc 1 r1 ]
+[f ]
+"19
+[v _ret `uc 1 a ]
+[; ;si7020.c: 19: char ret;
+
+[; ;si7020.c: 20: IICTimeOutTimer = 2;
+
+"5
+[v _IICTimeOutTimer `uc 0 e ]
+"20
+[e = _IICTimeOutTimer -> -> 2 `i `uc ]
+[; ;si7020.c: 21: while (1)
+
+"21
+[e :U 4 ]
+[; ;si7020.c: 22: {
+
+"22
+{
+[; ;si7020.c: 23: ret = IRcvBytes(0x80,buffer,3);
+
+"39 ./software_IIC.h
+[v _IRcvBytes `(uc 0 ef3`uc`*uc`uc ]
+"23 ./si7020.c
+[e = _ret ( _IRcvBytes (3
+ , , -> -> 128 `i `uc _buffer -> -> 3 `i `uc ]
+[; ;si7020.c: 24: if (ret || !IICTimeOutTimer)
+
+"24
+[e $ ! || != -> _ret `i -> -> -> 0 `i `uc `i ! != -> _IICTimeOutTimer `i -> -> -> 0 `i `uc `i 6  ]
+[; ;si7020.c: 25: break;
+
+"25
+[e $U 5  ]
+[e :U 6 ]
+"26
+}
+[e :U 3 ]
+"21
+[e $U 4  ]
+[e :U 5 ]
+"27
+[; ;si7020.c: 26: }
+
+[; ;si7020.c: 27: }
+
+[e :UE 2 ]
+}
+"33
+[v _Si7020Read_Temp_after_RHM `(uc 1 ef1`*uc ]
+{
+[; ;si7020.c: 32: unsigned char Si7020Read_Temp_after_RHM(unsigned char * buffer)
+
+[; ;si7020.c: 33: {
+
+[e :U _Si7020Read_Temp_after_RHM ]
+[v _buffer `*uc 1 r1 ]
+[f ]
+"34
+[v _ret `uc 1 a ]
+[; ;si7020.c: 34: char ret;
+
+[; ;si7020.c: 35: ret = Si7020SendCommand(0xE0);
+
+"35
+[e = _ret ( _Si7020SendCommand (1
+ -> -> 224 `i `uc ]
+[; ;si7020.c: 37: if (!ret)
+
+"37
+[e $ ! ! != -> _ret `i -> -> -> 0 `i `uc `i 8  ]
+[; ;si7020.c: 38: {
+
+"38
+{
+[; ;si7020.c: 39: return 0;
+
+"39
+[e ) -> -> 0 `i `uc ]
+[e $UE 7  ]
+"40
+}
+[e :U 8 ]
+[; ;si7020.c: 40: }
+
+[; ;si7020.c: 42: ret = IRcvBytes(0x80,buffer,3);
+
+"42
+[e = _ret ( _IRcvBytes (3
+ , , -> -> 128 `i `uc _buffer -> -> 3 `i `uc ]
+[; ;si7020.c: 44: if (!ret)
+
+"44
+[e $ ! ! != -> _ret `i -> -> -> 0 `i `uc `i 9  ]
+[; ;si7020.c: 45: {
+
+"45
+{
+[; ;si7020.c: 46: return 0;
+
+"46
+[e ) -> -> 0 `i `uc ]
+[e $UE 7  ]
+"47
+}
+[e :U 9 ]
+[; ;si7020.c: 47: }
+
+[; ;si7020.c: 49: return 1;
+
+"49
+[e ) -> -> 1 `i `uc ]
+[e $UE 7  ]
+"50
+[; ;si7020.c: 50: }
+
+[e :UE 7 ]
+}
+"57
+[v _Si7020CalcTemp `(c 1 ef1`ui ]
+{
+[; ;si7020.c: 56: signed char Si7020CalcTemp(unsigned int data)
+
+[; ;si7020.c: 57: {
+
+[e :U _Si7020CalcTemp ]
+[v _data `ui 1 r1 ]
+[f ]
+"58
+[v _temp `l 1 a ]
+"59
+[v _result `c 1 a ]
+[; ;si7020.c: 58: signed long temp;
+
+[; ;si7020.c: 59: signed char result;
+
+[; ;si7020.c: 60: temp = data;
+
+"60
+[e = _temp -> _data `l ]
+[; ;si7020.c: 61: temp = temp*175;
+
+"61
+[e = _temp * _temp -> -> 175 `i `l ]
+[; ;si7020.c: 62: temp += (data>>2)*3;
+
+"62
+[e =+ _temp -> * >> _data -> 2 `i -> -> 3 `i `ui `l ]
+[; ;si7020.c: 63: temp >>= 16;
+
+"63
+[e =>> _temp -> 16 `i ]
+[; ;si7020.c: 64: temp -= 47;
+
+"64
+[e =- _temp -> -> 47 `i `l ]
+[; ;si7020.c: 65: if (temp < -9)
+
+"65
+[e $ ! < _temp -> -U -> 9 `i `l 11  ]
+[; ;si7020.c: 66: temp = -9;
+
+"66
+[e = _temp -> -U -> 9 `i `l ]
+[e :U 11 ]
+[; ;si7020.c: 68: result = temp;
+
+"68
+[e = _result -> _temp `c ]
+[; ;si7020.c: 69: return result;
+
+"69
+[e ) _result ]
+[e $UE 10  ]
+"70
+[; ;si7020.c: 70: }
+
+[e :UE 10 ]
+}
+"77
+[v _Si7020CalcRH `(uc 1 ef1`ui ]
+{
+[; ;si7020.c: 76: unsigned char Si7020CalcRH(unsigned int data)
+
+[; ;si7020.c: 77: {
+
+[e :U _Si7020CalcRH ]
+[v _data `ui 1 r1 ]
+[f ]
+"78
+[v _temp `ul 1 a ]
+"79
+[v _result `uc 1 a ]
+[; ;si7020.c: 78: unsigned long temp;
+
+[; ;si7020.c: 79: unsigned char result;
+
+[; ;si7020.c: 80: temp = data;
+
+"80
+[e = _temp -> _data `ul ]
+[; ;si7020.c: 81: temp = 125*temp;
+
+"81
+[e = _temp * -> -> -> 125 `i `l `ul _temp ]
+[; ;si7020.c: 82: temp >>= 16;
+
+"82
+[e =>> _temp -> 16 `i ]
+[; ;si7020.c: 83: if (temp >= 6)
+
+"83
+[e $ ! >= _temp -> -> -> 6 `i `l `ul 13  ]
+[; ;si7020.c: 84: {
+
+"84
+{
+[; ;si7020.c: 85: if (temp >= 106)
+
+"85
+[e $ ! >= _temp -> -> -> 106 `i `l `ul 14  ]
+[; ;si7020.c: 86: {
+
+"86
+{
+[; ;si7020.c: 87: temp = 100;
+
+"87
+[e = _temp -> -> -> 100 `i `l `ul ]
+"88
+}
+[; ;si7020.c: 88: }
+
+[e $U 15  ]
+"89
+[e :U 14 ]
+[; ;si7020.c: 89: else
+
+[; ;si7020.c: 90: {
+
+"90
+{
+[; ;si7020.c: 91: temp -= 6;
+
+"91
+[e =- _temp -> -> -> 6 `i `l `ul ]
+"92
+}
+[e :U 15 ]
+"93
+}
+[; ;si7020.c: 92: }
+
+[; ;si7020.c: 93: }
+
+[e $U 16  ]
+"94
+[e :U 13 ]
+[; ;si7020.c: 94: else
+
+[; ;si7020.c: 95: {
+
+"95
+{
+[; ;si7020.c: 96: temp = 0;
+
+"96
+[e = _temp -> -> -> 0 `i `l `ul ]
+"97
+}
+[e :U 16 ]
+[; ;si7020.c: 97: }
+
+[; ;si7020.c: 99: result = temp;
+
+"99
+[e = _result -> _temp `uc ]
+[; ;si7020.c: 100: return result;
+
+"100
+[e ) _result ]
+[e $UE 12  ]
+"101
+[; ;si7020.c: 101: }
+
+[e :UE 12 ]
+}
+"104
+[v _Si7020ClearBuf `(v 1 ef ]
+{
+[; ;si7020.c: 103: void Si7020ClearBuf()
+
+[; ;si7020.c: 104: {
+
+[e :U _Si7020ClearBuf ]
+[f ]
+"105
+[v _k `uc 1 a ]
+[; ;si7020.c: 105: unsigned char k;
+
+[; ;si7020.c: 106: for (k=0;k<5;k++)
+
+"106
+{
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 5 `i 18  ]
+[e $U 19  ]
+"107
+[e :U 18 ]
+[; ;si7020.c: 107: {
+
+{
+[; ;si7020.c: 108: RecBuf[k] = 0;
+
+"108
+[e = *U + &U _RecBuf * -> _k `ux -> -> # *U &U _RecBuf `ui `ux -> -> 0 `i `uc ]
+"109
+}
+"106
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 5 `i 18  ]
+[e :U 19 ]
+"109
+}
+"110
+[; ;si7020.c: 109: }
+
+[; ;si7020.c: 110: }
+
+[e :UE 17 ]
+}

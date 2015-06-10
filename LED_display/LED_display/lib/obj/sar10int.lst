@@ -1,0 +1,2267 @@
+
+
+HI-TECH Software Macro Assembler (PSoC MCU) V9.61
+                                                                                                           Wed Jun 10 11:39:23 2015
+
+
+     1                          ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+     2                          ;;;
+     3                          ;;;  M8C.INC -- Microcontroller Device System Declarations
+     4                          ;;;
+     5                          ;;;  Copyright (c) Cypress Semiconductor 2013. All Rights Reserved.
+     6                          ;;;
+     7                          ;;;  This file provides address constants, bit field masks and a set of macro
+     8                          ;;;  facilities for the Cypress Semiconductor CY8C22045 Microcontroller devices.
+     9                          ;;;
+    10                          ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    11                          
+    12                          ;;=============================================================================
+    13                          ;; Definition of abbreviations used in the descriptions below
+    14                          ;;  (RW)   The register or bit supports reads and writes
+    15                          ;;  (W)    The register or bit is write-only
+    16                          ;;  (R)    The register or bit is read-only
+    17                          ;;  (#)    Access to the register is bit specific (see the family datasheet)
+    18                          ;;  (RC)   The register or bit can be read, but writing a 0 will clear it,
+    19                          ;;         writing a 1 will have no effect.
+    20                          ;;=============================================================================
+    21                          
+    22                          ;;=============================================================================
+    23                          ;;      System Registers
+    24                          ;;=============================================================================
+    25                          
+    26                          ;----------------------------
+    27                          ;  Flag Register Bit Fields
+    28                          ;----------------------------
+    29  00C0                    FLAG_PGMODE_MASK:  equ 0C0h     ; Paging control for > 256 bytes of RAM
+    30  0000                    FLAG_PGMODE_0:     equ 00h       ; Direct to Page 0,      indexed to Page 0
+    31  0040                    FLAG_PGMODE_1:     equ 40h       ; Direct to Page 0,      indexed to STK_PP page
+    32  0080                    FLAG_PGMODE_2:     equ 80h       ; Direct to CUR_PP page, indexed to IDX_PP page
+    33  00C0                    FLAG_PGMODE_3:     equ 0C0h       ; Direct to CUR_PP page, indexed to STK_PP page
+    34  0000                    FLAG_PGMODE_00b:   equ 00h       ; Same as PGMODE_0
+    35  0040                    FLAG_PGMODE_01b:   equ 40h       ; Same as PGMODE_1
+    36  0080                    FLAG_PGMODE_10b:   equ 80h       ; Same as PGMODE_2
+    37  00C0                    FLAG_PGMODE_11b:   equ 0C0h       ; Same as PGMODE_3
+    38  0010                    FLAG_XIO_MASK:     equ 10h     ; I/O Bank select for register space
+    39  0008                    FLAG_SUPER:        equ 08h     ; Supervisor Mode
+    40  0004                    FLAG_CARRY:        equ 04h     ; Carry Condition Flag
+    41  0002                    FLAG_ZERO:         equ 02h     ; Zero  Condition Flag
+    42  0001                    FLAG_GLOBAL_IE:    equ 01h     ; Glogal Interrupt Enable
+    43                          
+    44                          
+    45                          ;;=============================================================================
+    46                          ;;      Register Space, Bank 0
+    47                          ;;=============================================================================
+    48                          
+    49                          ;------------------------------------------------
+    50                          ;  Port Registers
+    51                          ;  Note: Also see this address range in Bank 1.
+    52                          ;------------------------------------------------
+    53                          ; Port 0
+    54  0000                    PRT0DR:       equ 00h          ; Port 0 Data Register                     (RW)
+    55  0001                    PRT0IE:       equ 01h          ; Port 0 Interrupt Enable Register         (RW)
+    56  0002                    PRT0GS:       equ 02h          ; Port 0 Global Select Register            (RW)
+    57  0003                    PRT0DM2:      equ 03h          ; Port 0 Drive Mode 2                      (RW)
+    58                          ; Port 1
+    59  0004                    PRT1DR:       equ 04h          ; Port 1 Data Register                     (RW)
+    60  0005                    PRT1IE:       equ 05h          ; Port 1 Interrupt Enable Register         (RW)
+    61  0006                    PRT1GS:       equ 06h          ; Port 1 Global Select Register            (RW)
+    62  0007                    PRT1DM2:      equ 07h          ; Port 1 Drive Mode 2                      (RW)
+    63                          ; Port 2
+    64  0008                    PRT2DR:       equ 08h          ; Port 2 Data Register                     (RW)
+    65  0009                    PRT2IE:       equ 09h          ; Port 2 Interrupt Enable Register         (RW)
+    66  000A                    PRT2GS:       equ 0Ah          ; Port 2 Global Select Register            (RW)
+    67  000B                    PRT2DM2:      equ 0Bh          ; Port 2 Drive Mode 2                      (RW)
+    68                          ; Port 3
+    69  000C                    PRT3DR:       equ 0Ch          ; Port 3 Data Register                     (RW)
+    70  000D                    PRT3IE:       equ 0Dh          ; Port 3 Interrupt Enable Register         (RW)
+    71  000E                    PRT3GS:       equ 0Eh          ; Port 3 Global Select Register            (RW)
+    72  000F                    PRT3DM2:      equ 0Fh          ; Port 3 Drive Mode 2                      (RW)
+    73                          ; Port 4
+    74  0010                    PRT4DR:       equ 10h          ; Port 4 Data Register                     (RW)
+    75  0011                    PRT4IE:       equ 11h          ; Port 4 Interrupt Enable Register         (RW)
+    76  0012                    PRT4GS:       equ 12h          ; Port 4 Global Select Register            (RW)
+    77  0013                    PRT4DM2:      equ 13h          ; Port 4 Drive Mode 2                      (RW)
+    78                          
+    79                          ;------------------------------------------------
+    80                          ;  Digital PSoC(tm) block Registers
+    81                          ;  Note: Also see this address range in Bank 1.
+    82                          ;------------------------------------------------
+    83                          ; Digital PSoC block 00, Basic Type C
+    84  0020                    DBC00DR0:     equ 20h          ; data register 0                          (#)
+    85  0021                    DBC00DR1:     equ 21h          ; data register 1                          (W)
+    86  0022                    DBC00DR2:     equ 22h          ; data register 2                          (RW)
+    87  0023                    DBC00CR0:     equ 23h          ; control & status register 0              (#)
+    88                          
+    89                          ; Digital PSoC block 01, Basic Type C
+    90  0024                    DBC01DR0:     equ 24h          ; data register 0                          (#)
+    91  0025                    DBC01DR1:     equ 25h          ; data register 1                          (W)
+    92  0026                    DBC01DR2:     equ 26h          ; data register 2                          (RW)
+    93  0027                    DBC01CR0:     equ 27h          ; control & status register 0              (#)
+    94                          
+    95                          ; Digital PSoC block 02, Communications Type C
+    96  0028                    DCC02DR0:     equ 28h          ; data register 0                          (#)
+    97  0029                    DCC02DR1:     equ 29h          ; data register 1                          (W)
+    98  002A                    DCC02DR2:     equ 2Ah          ; data register 2                          (RW)
+    99  002B                    DCC02CR0:     equ 2Bh          ; control & status register 0              (#)
+   100                          
+   101                          ; Digital PSoC block 03, Communications Type C
+   102  002C                    DCC03DR0:     equ 2Ch          ; data register 0                          (#)
+   103  002D                    DCC03DR1:     equ 2Dh          ; data register 1                          (W)
+   104  002E                    DCC03DR2:     equ 2Eh          ; data register 2                          (RW)
+   105  002F                    DCC03CR0:     equ 2Fh          ; control & status register 0              (#)
+   106                          
+   107                          ; Digital PSoC block 10, Basic Type C
+   108  0030                    DBC10DR0:     equ 30h          ; data register 0                          (#)
+   109  0031                    DBC10DR1:     equ 31h          ; data register 1                          (W)
+   110  0032                    DBC10DR2:     equ 32h          ; data register 2                          (RW)
+   111  0033                    DBC10CR0:     equ 33h          ; control & status register 0              (#)
+   112                          
+   113                          ; Digital PSoC block 11, Basic Type C
+   114  0034                    DBC11DR0:     equ 34h          ; data register 0                          (#)
+   115  0035                    DBC11DR1:     equ 35h          ; data register 1                          (W)
+   116  0036                    DBC11DR2:     equ 36h          ; data register 2                          (RW)
+   117  0037                    DBC11CR0:     equ 37h          ; control & status register 0              (#)
+   118                          
+   119                          ; Digital PSoC block 12, Communications Type C
+   120  0038                    DCC12DR0:     equ 38h          ; data register 0                          (#)
+   121  0039                    DCC12DR1:     equ 39h          ; data register 1                          (W)
+   122  003A                    DCC12DR2:     equ 3Ah          ; data register 2                          (RW)
+   123  003B                    DCC12CR0:     equ 3Bh          ; control & status register 0              (#)
+   124                          
+   125                          ; Digital PSoC block 13, Communications Type C
+   126  003C                    DCC13DR0:     equ 3Ch          ; data register 0                          (#)
+   127  003D                    DCC13DR1:     equ 3Dh          ; data register 1                          (W)
+   128  003E                    DCC13DR2:     equ 3Eh          ; data register 2                          (RW)
+   129  003F                    DCC13CR0:     equ 3Fh          ; control & status register 0              (#)
+   130                          
+   131                          ;-------------------------------------
+   132                          ;  Analog Control Registers
+   133                          ;-------------------------------------
+   134  0060                    AMX_IN:       equ 60h          ; Analog Input Multiplexor Control         (RW)
+   135  00C0                    AMX_IN_ACI3:          equ C0h    ; MASK: column 3 input mux
+   136  0030                    AMX_IN_ACI2:          equ 30h    ; MASK: column 2 input mux
+   137  000C                    AMX_IN_ACI1:          equ 0Ch    ; MASK: column 1 input mux
+   138  0003                    AMX_IN_ACI0:          equ 03h    ; MASK: column 0 input mux
+   139                          
+   140  0061                    AMUX_CFG:      equ 61h          ; Analog MUX Configuration
+   141  0030                    AMUX_CFG_INTCAP:       equ 30h    ;
+   142  000E                    AMUX_CFG_MUXCLK:  	  equ 0Eh	 ;
+   143  0001                    AMUX_CFG_EN:		  	  equ 01h	 ;
+   144                          
+   145                          ; old declarations DO NOT USE
+   146  0061                    AMUXCFG:      equ 61h          ; Analog MUX Configuration
+   147  0030                    AMUXCFG_INTCAP:       equ 30h    ;
+   148  000E                    AMUXCFG_MUXCLK:  	  equ 0Eh	 ;
+   149  0001                    AMUXCFG_EN:		  	  equ 01h	 ;
+   150                          
+   151  0062                    PWM_CR:       equ 62h          ; Pulse-Width Modulator Control
+   152  0038                    PWM_CR_HIGH:          equ 38h    ; MASK: PWM high time
+   153  0006                    PWM_CR_LOW:           equ 06h	 ; MASK: PWM low time
+   154  0001                    PWM_CR_EN:            equ 01h	 ; MASK: Enable/Disable PWM function
+   155                          
+   156  0063                    ARF_CR:       equ 63h          ; Analog Reference Control
+   157                          
+   158  0064                    CMP_CR0:      equ 64h          ; Analog Comparator Bus Register           (#)
+   159  0080                    CMP_CR0_COMP3:        equ 80h    ; MASK: Column 3 comparator state        (R)
+   160  0040                    CMP_CR0_COMP2:        equ 40h    ; MASK: Column 2 comparator state        (R)
+   161  0020                    CMP_CR0_COMP1:        equ 20h    ; MASK: Column 1 comparator state        (R)
+   162  0010                    CMP_CR0_COMP0:        equ 10h    ; MASK: Column 0 comparator state        (R)
+   163  0008                    CMP_CR0_AINT3:        equ 08h    ; MASK: Column 3 interrupt source        (RW)
+   164  0004                    CMP_CR0_AINT2:        equ 04h    ; MASK: Column 2 interrupt source        (RW)
+   165  0002                    CMP_CR0_AINT1:        equ 02h    ; MASK: Column 1 interrupt source        (RW)
+   166  0001                    CMP_CR0_AINT0:        equ 01h    ; MASK: Column 0 interrupt source        (RW)
+   167                          
+   168  0066                    CMP_CR1:      equ 66h          ; Analog Comparator Bus 1 Register         (RW)
+   169  0020                    CMP_CR1_CLDIS1:       equ 20h    ; MASK: Column 1 comparator output latch
+   170  0010                    CMP_CR1_CLDIS0:	      equ 10h    ; MASK: Column 0 comparator output latch
+   171                          
+   172  0068                    ADC0_CR:      equ 68h          ; Analog Column 0 Configuration
+   173  0080                    ADC0_CR_CMPST:        equ 80h    ;
+   174  0040                    ADC0_CR_LOREN:        equ 40h    ;
+   175  0020                    ADC0_CR_SHEN:         equ 20h    ;
+   176  0008                    ADC0_CR_CBSRC:        equ 08h    ;
+   177  0004                    ADC0_CR_ADCM:         equ 04h    ;
+   178  0001                    ADC0_CR_EN:	          equ 01h    ;
+   179                          
+   180  0069                    ADC1_CR:      equ 69h          ; Analog Column 1 Configuration
+   181  0080                    ADC1_CR_CMPST:        equ 80h    ;
+   182  0040                    ADC1_CR_LOREN:        equ 40h    ;
+   183  0020                    ADC1_CR_SHEN:         equ 20h    ;
+   184  0008                    ADC1_CR_CBSRC:        equ 08h    ;
+   185  0004                    ADC1_CR_ADCM:         equ 04h    ;
+   186  0001                    ADC1_CR_EN:	          equ 01h    ;
+   187+                         
+   188+                         ; Continuous Time PSoC block Type E Row 0 Col 0
+   189+ 0072                    ACE00CR1:     equ 72h          ; Control register 1                       (RW)
+   190+ 0073                    ACE00CR2:     equ 73h          ; Control register 2                       (RW)
+   191                          
+   192                          ; Continuous Time PSoC block Type E Row 0 Col 1
+   193  0076                    ACE01CR1:     equ 76h          ; Control register 1                       (RW)
+   194  0077                    ACE01CR2:     equ 77h          ; Control register 2                       (RW)
+   195                          
+   196                          ; Switched Cap PSoC blockType E Row 1 Col 0
+   197  0080                    ASE10CR0:     equ 80h          ; Control register 0                       (RW)
+   198                          
+   199                          ; Switched Cap PSoC blockType E Row 1 Col 1
+   200  0084                    ASE11CR0:     equ 84h          ; Control register 0                       (RW)
+   201                          
+   202                          ;-----------------------------------------------
+   203                          ;  Global General Purpose Data Registers
+   204                          ;-----------------------------------------------
+   205  006C                    TMP_DR0:      equ 6Ch          ; Temporary Data Register 0                (RW)
+   206  006D                    TMP_DR1:      equ 6Dh          ; Temporary Data Register 1                (RW)
+   207  006E                    TMP_DR2:      equ 6Eh          ; Temporary Data Register 2                (RW)
+   208  006F                    TMP_DR3:      equ 6Fh          ; Temporary Data Register 3                (RW)
+   209                          
+   210                          ;------------------------------------------------
+   211                          ;  Row Digital Interconnects
+   212                          ;
+   213                          ;  Note: the following registers are mapped into
+   214                          ;  both register bank 0 AND register bank 1.
+   215                          ;------------------------------------------------
+   216                          
+   217  00B0                    RDI0RI:       equ 0B0h          ; Row Digital Interconnect Row 0 Input Reg (RW)
+   218  00B1                    RDI0SYN:      equ 0B1h          ; Row Digital Interconnect Row 0 Sync Reg  (RW)
+   219  00B2                    RDI0IS:       equ 0B2h          ; Row 0 Input Select Register              (RW)
+   220  00B3                    RDI0LT0:      equ 0B3h          ; Row 0 Look Up Table Register 0           (RW)
+   221  00B4                    RDI0LT1:      equ 0B4h          ; Row 0 Look Up Table Register 1           (RW)
+   222  00B5                    RDI0RO0:      equ 0B5h          ; Row 0 Output Register 0                  (RW)
+   223  00B6                    RDI0RO1:      equ 0B6h          ; Row 0 Output Register 1                  (RW)
+   224                          
+   225  00B8                    RDI1RI:       equ 0B8h          ; Row Digital Interconnect Row 1 Input Reg (RW)
+   226  00B9                    RDI1SYN:      equ 0B9h          ; Row Digital Interconnect Row 1 Sync Reg  (RW)
+   227  00BA                    RDI1IS:       equ 0BAh          ; Row 1 Input Select Register              (RW)
+   228  00BB                    RDI1LT0:      equ 0BBh          ; Row 1 Look Up Table Register 0           (RW)
+   229  00BC                    RDI1LT1:      equ 0BCh          ; Row 1 Look Up Table Register 1           (RW)
+   230  00BD                    RDI1RO0:      equ 0BDh          ; Row 1 Output Register 0                  (RW)
+   231  00BE                    RDI1RO1:      equ 0BEh          ; Row 1 Output Register 1                  (RW)
+   232                          
+   233                          ;-----------------------------------------------
+   234                          ;  Ram Page Pointers
+   235                          ;-----------------------------------------------
+   236  00D0                    CUR_PP:      equ 0D0h           ; Current   Page Pointer
+   237  00D1                    STK_PP:      equ 0D1h           ; Stack     Page Pointer
+   238  00D3                    IDX_PP:      equ 0D3h           ; Index     Page Pointer
+   239  00D4                    MVR_PP:      equ 0D4h           ; MVI Read  Page Pointer
+   240  00D5                    MVW_PP:      equ 0D5h           ; MVI Write Page Pointer
+   241                          
+   242                          ;------------------------------------------------
+   243                          ;  I2C Configuration Registers
+   244                          ;------------------------------------------------
+   245  00D6                    I2C_CFG:      equ 0D6h          ; I2C Configuration Register               (RW)
+   246  0040                    I2C_CFG_PINSEL:         equ 40h  ; MASK: Select P1[0] and P1[1] for I2C
+   247  0020                    I2C_CFG_BUSERR_IE:      equ 20h  ; MASK: Enable interrupt on Bus Error
+   248  0010                    I2C_CFG_STOP_IE:        equ 10h  ; MASK: Enable interrupt on Stop
+   249  0000                    I2C_CFG_CLK_RATE_100K:  equ 00h  ; MASK: I2C clock set at 100K
+   250  0004                    I2C_CFG_CLK_RATE_400K:  equ 04h  ; MASK: I2C clock set at 400K
+   251  0008                    I2C_CFG_CLK_RATE_50K:   equ 08h  ; MASK: I2C clock set at 50K
+   252  000C                    I2C_CFG_CLK_RATE:       equ 0Ch  ; MASK: I2C clock rate setting mask
+   253  0002                    I2C_CFG_PSELECT_MASTER: equ 02h  ; MASK: Enable I2C Master
+   254  0001                    I2C_CFG_PSELECT_SLAVE:  equ 01h  ; MASK: Enable I2C Slave
+   255                          
+   256  00D7                    I2C_SCR:      equ 0D7h          ; I2C Status and Control Register          (#)
+   257  0080                    I2C_SCR_BUSERR:        equ 80h   ; MASK: I2C Bus Error detected           (RC)
+   258  0040                    I2C_SCR_LOSTARB:       equ 40h   ; MASK: I2C Arbitration lost             (RC)
+   259  0020                    I2C_SCR_STOP:          equ 20h   ; MASK: I2C Stop detected                (RC)
+   260  0010                    I2C_SCR_ACK:           equ 10h   ; MASK: ACK the last byte                (RW)
+   261  0008                    I2C_SCR_ADDR:          equ 08h   ; MASK: Address rcv'd is Slave address   (RC)
+   262  0004                    I2C_SCR_XMIT:          equ 04h   ; MASK: Set transfer to tranmit mode     (RW)
+   263  0002                    I2C_SCR_LRB:           equ 02h   ; MASK: Last recieved bit                (RC)
+   264  0001                    I2C_SCR_BYTECOMPLETE:  equ 01h   ; MASK: Transfer of byte complete        (RC)
+   265                          
+   266  00D8                    I2C_DR:       equ 0D8h          ; I2C Data Register                        (RW)
+   267                          
+   268  00D9                    I2C_MSCR:     equ 0D9h          ; I2C Master Status and Control Register   (#)
+   269  0008                    I2C_MSCR_BUSY:         equ 08h   ; MASK: I2C Busy (Start detected)        (R)
+   270  0004                    I2C_MSCR_MODE:         equ 04h   ; MASK: Start has been generated         (R)
+   271  0002                    I2C_MSCR_RESTART:      equ 02h   ; MASK: Generate a Restart condition     (RW)
+   272  0001                    I2C_MSCR_START:        equ 01h   ; MASK: Generate a Start condition       (RW)
+   273                          
+   274                          ;------------------------------------------------
+   275                          ;  System and Global Resource Registers
+   276                          ;------------------------------------------------
+   277  00DA                    INT_CLR0:     equ 0DAh          ; Interrupt Clear Register 0               (RW)
+   278                                                         ; Use INT_MSK0 bit field masks
+   279  00DB                    INT_CLR1:     equ 0DBh          ; Interrupt Clear Register 1               (RW)
+   280                                                         ; Use INT_MSK1 bit field masks
+   281  00DC                    INT_CLR2:     equ 0DCh          ; Interrupt Clear Register 2               (RW)
+   282                                                         ; Use INT_MSK2 bit field masks
+   283  00DD                    INT_CLR3:     equ 0DDh          ; Interrupt Clear Register 3               (RW)
+   284                                                         ; Use INT_MSK3 bit field masks
+   285                          
+   286  00DE                    INT_MSK3:     equ 0DEh          ; I2C and Software Mask Register           (RW)
+   287  0080                    INT_MSK3_ENSWINT:          equ 80h ; MASK: enable/disable SW interrupt
+   288  0001                    INT_MSK3_I2C:              equ 01h ; MASK: enable/disable I2C interrupt
+   289                          
+   290  00E0                    INT_MSK0:     equ 0E0h          ; General Interrupt Mask Register          (RW)
+   291  0080                    INT_MSK0_VC3:              equ 80h ; MASK: enable/disable VC3 interrupt
+   292  0040                    INT_MSK0_SLEEP:            equ 40h ; MASK: enable/disable sleep interrupt
+   293  0020                    INT_MSK0_GPIO:             equ 20h ; MASK: enable/disable GPIO  interrupt
+   294  0010                    INT_MSK0_ACOLUMN_3:        equ 10h ; MASK: enable/disable Analog col 3 interrupt
+   295  0008                    INT_MSK0_ACOLUMN_2:        equ 08h ; MASK: enable/disable Analog col 2 interrupt
+   296  0004                    INT_MSK0_ACOLUMN_1:        equ 04h ; MASK: enable/disable Analog col 1 interrupt
+   297  0002                    INT_MSK0_ACOLUMN_0:        equ 02h ; MASK: enable/disable Analog col 0 interrupt
+   298  0001                    INT_MSK0_VOLTAGE_MONITOR:  equ 01h ; MASK: enable/disable Volts interrupt
+   299                          
+   300  00E1                    INT_MSK1:     equ 0E1h          ; Digital PSoC block Mask Register         (RW)
+   301  0080                    INT_MSK1_DCC13:            equ 80h ; MASK: enable/disable DCC13 block interrupt
+   302  0040                    INT_MSK1_DCC12:            equ 40h ; MASK: enable/disable DCC12 block interrupt
+   303  0020                    INT_MSK1_DBC11:            equ 20h ; MASK: enable/disable DBC11 block interrupt
+   304  0010                    INT_MSK1_DBC10:            equ 10h ; MASK: enable/disable DBC10 block interrupt
+   305  0008                    INT_MSK1_DCC03:            equ 08h ; MASK: enable/disable DCC03 block interrupt
+   306  0004                    INT_MSK1_DCC02:            equ 04h ; MASK: enable/disable DCC02 block interrupt
+   307  0002                    INT_MSK1_DBC01:            equ 02h ; MASK: enable/disable DBC01 block interrupt
+   308  0001                    INT_MSK1_DBC00:            equ 01h ; MASK: enable/disable DBC00 block interrupt
+   309                          
+   310  00DF                    INT_MSK2:     equ DFh			; Custom block Mask Register			   (RW)
+   311  0010                    INT_MSK2_SARADC:           equ 10h ; MASK: enable/disable SARADC block interrupt
+   312  0020                    INT_MSK2_CSD0:             equ 20h ; MASK: enable/disable CSD0 block interrupt
+   313  0040                    INT_MSK2_CSD1:             equ 40h ; MASK: enable/disable CSD1 block interrupt
+   314  0080                    INT_MSK2_RTC:              equ 80h ; MASK: enable/disable RTC block interrupt
+   315                          
+   316  00E2                    INT_VC:       equ 0E2h          ; Interrupt vector register                (RC)
+   317  00E3                    RES_WDT:      equ 0E3h          ; Watch Dog Timer Register                 (W)
+   318                          
+   319                          ;------------------------------------------------------
+   320                          ;  MAC Registers
+   321                          ;------------------------------------------------------
+   322                          
+   323  00E8                    MUL0_X:       equ 0E8h          ; Multiply Input X Register                (W)
+   324  00E9                    MUL0_Y:       equ 0E9h          ; Multiply Input Y Register                (W)
+   325  00EA                    MUL0_DH:      equ 0EAh          ; Multiply Result High Byte Register       (R)
+   326  00EB                    MUL0_DL:      equ 0EBh          ; Multiply Result Low Byte Register        (R)
+   327                          
+   328  00EC                    ACC0_DR1:     equ 0ECh          ; Accumulator Data Register 1              (RW)
+   329  00ED                    ACC0_DR0:     equ 0EDh          ; Accumulator Data Register 0              (RW)
+   330  00EE                    ACC0_DR3:     equ 0EEh          ; Accumulator Data Register 3              (RW)
+   331  00EF                    ACC0_DR2:     equ 0EFh          ; Accumulator Data Register 2              (RW)
+   332                          
+   333                          ; DECIMATOR Control Registers
+   334  00E6                    DEC_CR0:      equ 0E6h          ; Data Control Register 0                  (RW)
+   335  00E7                    DEC_CR1:      equ 0E7h          ; Data Control Register 1                  (RW)
+   336                          
+   337                          ;------------------------------------------------------
+   338                          ;  System Status and Control Registers
+   339                          ;
+   340                          ;  Note: The following registers are mapped into both
+   341                          ;        register bank 0 AND register bank 1.
+   342                          ;------------------------------------------------------
+   343  00F7                    CPU_F:        equ 0F7h          ; CPU Flag Register Access                 (RO)
+   344                                                             ; Use FLAG_ masks defined at top of file
+   345                          
+   346  00FD                    DAC_D:        equ 0FDh		   ; DAC Data Register                        (RW)
+   347                          
+   348  00FE                    CPU_SCR1:     equ 0FEh          ; CPU Status and Control Register #1       (#)
+   349  0080                    CPU_SCR1_IRESS:         equ 80h    ; MASK: flag, Internal Reset Status bit
+   350  0010                    CPU_SCR1_SLIMO:         equ 10h	   ; MASK: Slow IMO (internal main osc) enable
+   351  0008                    CPU_SCR1_ECO_ALWD_WR:   equ 08h    ; MASK: flag, ECO allowed has been written
+   352  0004                    CPU_SCR1_ECO_ALLOWED:   equ 04h    ; MASK: ECO allowed to be enabled
+   353  0001                    CPU_SCR1_IRAMDIS:       equ 01h    ; MASK: Disable RAM initialization on WDR
+   354                          
+   355  00FF                    CPU_SCR0:     equ 0FFh          ; CPU Status and Control Register #2       (#)
+   356  0080                    CPU_SCR0_GIE_MASK:      equ 80h    ; MASK: Global Interrupt Enable shadow
+   357  0020                    CPU_SCR0_WDRS_MASK:     equ 20h    ; MASK: Watch Dog Timer Reset
+   358  0010                    CPU_SCR0_PORS_MASK:     equ 10h    ; MASK: power-on reset bit PORS
+   359  0008                    CPU_SCR0_SLEEP_MASK:    equ 08h    ; MASK: Enable Sleep
+   360  0001                    CPU_SCR0_STOP_MASK:     equ 01h    ; MASK: Halt CPU bit
+   361                          
+   362                          ;------------------------------------------------------
+   363                          ;  Neon Capsense Digital Control Registers
+   364                          ;------------------------------------------------------
+   365  0050                    CSD0_DR0_L:				equ 50h		; Capsense 0 data low 0				(RW)
+   366  0054                    CSD0_DR0_H:				equ 54h		; Capsense 0 data high 0			(RW)
+   367  0058                    CSD1_DR0_L:				equ 58h		; Capsense 1 data low 0				(RW)
+   368  005C                    CSD1_DR0_H:				equ 5Ch		; Capsense 1 data high 0			(RW)
+   369  0051                    CSD0_DR1_L:				equ 51h		; Capsense 0 data low 1				(RW)
+   370  0055                    CSD0_DR1_H:				equ 55h		; Capsense 0 data high 1			(RW)
+   371  0059                    CSD1_DR1_L:				equ 59h		; Capsense 1 data low 1				(RW)
+   372  005D                    CSD1_DR1_H:				equ 5Dh		; Capsense 1 data high 1			(RW)
+   373  0052                    CSD0_CNT_L:				equ 52h		; Capsense 0 counter low			(RW)
+   374  0056                    CSD0_CNT_H:				equ 56h		; Capsense 0 counter high			(RW)
+   375  005A                    CSD1_CNT_L:				equ 5Ah		; Capsense 1 counter low			(RW)
+   376  005E                    CSD1_CNT_H:				equ	5Eh		; Capsense 1 counter high			(RW)
+   377  0053                    CSD0_CR0:				equ 53h		; Capsense 0 control 0				(RW)
+   378  005B                    CSD1_CR0:				equ 5Bh		; Capsense 1 control 0				(RW)
+   379  0057                    CSD0_CR1:				equ 57h		; Capsense 0 control 1				(RW)
+   380  005F                    CSD1_CR1:				equ 5Fh		; Capsense 1 control 1				(RW)
+   381                          
+   382                          ;------------------------------------------------------
+   383                          ;  Neon Analog Registers
+   384                          ;------------------------------------------------------
+   385  0065                    ASY_CR:					equ 65h		; Analog Synchronization Control	(RW)
+   386  006A                    ADC_DH:					equ 6Ah		; ADC data high						(RW)
+   387  006B                    ADC_DL:					equ 6Bh		; ADC data low						(RW)
+   388  00C8                    PWMVREF0:				equ C8h		; PWM Voltage Reference 0			(RW)
+   389  00C9                    PWMVREF1:				equ C9h		; PWM Voltage Reference 1			(RW)
+   390  00CB                    PWMSRC:					equ CBh		; PWM Source						(RW)
+   391  00CA                    IDACMODE:				equ CAh		; IDAC Mode							(RW)
+   392  00FC                    IDACR_D:				equ FCh		; Analog Mux DAC data 0				(RW)
+   393  00FD                    IDACL_D:				equ FDh		; Analog Mux DAC data 1				(RW)
+   394                          
+   395                          ;------------------------------------------------------
+   396                          ;  Neon Digital Registers
+   397                          ;------------------------------------------------------
+   398  00B7                    RDI0DSM:				equ B7h		; Row Digital Interconnect input select 0	(RW)
+   399  00BF                    RDI1DSM:				equ BFh		; Row Digital Interconnect input select 1	(RW)
+   400                          
+   401                          ;------------------------------------------------------
+   402                          ;  Neon Test Registers
+   403                          ;------------------------------------------------------
+   404  00CC                    TSCR0:					equ CCh		; Tsource 0							(RW)
+   405  00CD                    TSCMPH:					equ CDh		; TSCMP high						(RW)
+   406  00CE                    TSCMPL:					equ CEh		; TSCMP low							(RW)
+   407  00CF                    TSCR1:					equ CFh		; Tsource 1							(RW)
+   408                          
+   409                          ;;=============================================================================
+   410                          ;;      Register Space, Bank 1
+   411                          ;;=============================================================================
+   412                          
+   413                          ;------------------------------------------------
+   414                          ;  Port Registers
+   415                          ;  Note: Also see this address range in Bank 0.
+   416                          ;------------------------------------------------
+   417                          ; Port 0
+   418  0000                    PRT0DM0:      equ 00h          ; Port 0 Drive Mode 0                      (RW)
+   419  0001                    PRT0DM1:      equ 01h          ; Port 0 Drive Mode 1                      (RW)
+   420  0002                    PRT0IC0:      equ 02h          ; Port 0 Interrupt Control 0               (RW)
+   421  0003                    PRT0IC1:      equ 03h          ; Port 0 Interrupt Control 1               (RW)
+   422                          
+   423                          ; Port 1
+   424  0004                    PRT1DM0:      equ 04h          ; Port 1 Drive Mode 0                      (RW)
+   425  0005                    PRT1DM1:      equ 05h          ; Port 1 Drive Mode 1                      (RW)
+   426  0006                    PRT1IC0:      equ 06h          ; Port 1 Interrupt Control 0               (RW)
+   427  0007                    PRT1IC1:      equ 07h          ; Port 1 Interrupt Control 1               (RW)
+   428                          
+   429                          ; Port 2
+   430  0008                    PRT2DM0:      equ 08h          ; Port 2 Drive Mode 0                      (RW)
+   431  0009                    PRT2DM1:      equ 09h          ; Port 2 Drive Mode 1                      (RW)
+   432  000A                    PRT2IC0:      equ 0Ah          ; Port 2 Interrupt Control 0               (RW)
+   433  000B                    PRT2IC1:      equ 0Bh          ; Port 2 Interrupt Control 1               (RW)
+   434                          
+   435                          ; Port 3
+   436  000C                    PRT3DM0:      equ 0Ch          ; Port 3 Drive Mode 0                      (RW)
+   437  000D                    PRT3DM1:      equ 0Dh          ; Port 3 Drive Mode 1                      (RW)
+   438  000E                    PRT3IC0:      equ 0Eh          ; Port 3 Interrupt Control 0               (RW)
+   439  000F                    PRT3IC1:      equ 0Fh          ; Port 3 Interrupt Control 1               (RW)
+   440                          
+   441                          ; Port 4
+   442  0010                    PRT4DM0:      equ 10h          ; Port 4 Drive Mode 0                      (RW)
+   443  0011                    PRT4DM1:      equ 11h          ; Port 4 Drive Mode 1                      (RW)
+   444  0012                    PRT4IC0:      equ 12h          ; Port 4 Interrupt Control 0               (RW)
+   445  0013                    PRT4IC1:      equ 13h          ; Port 4 Interrupt Control 1               (RW)
+   446                          
+   447                          ;------------------------------------------------
+   448                          ;  Digital PSoC(tm) block Registers
+   449                          ;  Note: Also see this address range in Bank 0.
+   450                          ;------------------------------------------------
+   451                          
+   452                          ; Digital PSoC block 00, Basic Type C
+   453  0020                    DBC00FN:      equ 20h          ; Function Register                        (RW)
+   454  0021                    DBC00IN:      equ 21h          ;    Input Register                        (RW)
+   455  0022                    DBC00OU:      equ 22h          ;   Output Register                        (RW)
+   456  0023                    DBC00CR1:     equ 23h          ;   control & status register 1            (RW)
+   457                          
+   458                          ; Digital PSoC block 01, Basic Type C
+   459  0024                    DBC01FN:      equ 24h          ; Function Register                        (RW)
+   460  0025                    DBC01IN:      equ 25h          ;    Input Register                        (RW)
+   461  0026                    DBC01OU:      equ 26h          ;   Output Register                        (RW)
+   462  0027                    DBC01CR1:     equ 27h          ;   control & status register 1            (RW)
+   463                          
+   464                          ; Digital PSoC block 02, Communications Type C
+   465  0028                    DCC02FN:      equ 28h          ; Function Register                        (RW)
+   466  0029                    DCC02IN:      equ 29h          ;    Input Register                        (RW)
+   467  002A                    DCC02OU:      equ 2Ah          ;   Output Register                        (RW)
+   468  002B                    DBC02CR1:     equ 2Bh          ;   control & status register 1            (RW)
+   469                          
+   470                          ; Digital PSoC block 03, Communications Type C
+   471  002C                    DCC03FN:      equ 2Ch          ; Function Register                        (RW)
+   472  002D                    DCC03IN:      equ 2Dh          ;    Input Register                        (RW)
+   473  002E                    DCC03OU:      equ 2Eh          ;   Output Register                        (RW)
+   474  0029                    DBC03CR1:     equ 29h          ;   control & status register 1            (RW)
+   475                          
+   476                          ; Digital PSoC block 10, Basic Type C
+   477  0030                    DBC10FN:      equ 30h          ; Function Register                        (RW)
+   478  0031                    DBC10IN:      equ 31h          ;    Input Register                        (RW)
+   479  0032                    DBC10OU:      equ 32h          ;   Output Register                        (RW)
+   480  0033                    DBC10CR1:     equ 33h          ;   control & status register 1            (RW)
+   481                          
+   482                          ; Digital PSoC block 11, Basic Type C
+   483  0034                    DBC11FN:      equ 34h          ; Function Register                        (RW)
+   484  0035                    DBC11IN:      equ 35h          ;    Input Register                        (RW)
+   485  0036                    DBC11OU:      equ 36h          ;   Output Register                        (RW)
+   486  0037                    DBC11CR1:     equ 37h          ;   control & status register 1            (RW)
+   487                          
+   488                          ; Digital PSoC block 12, Communications Type C
+   489  0038                    DCC12FN:      equ 38h          ; Function Register                        (RW)
+   490  0039                    DCC12IN:      equ 39h          ;    Input Register                        (RW)
+   491  003A                    DCC12OU:      equ 3Ah          ;   Output Register                        (RW)
+   492  003B                    DBC12CR1:     equ 3Bh          ;   control & status register 1            (RW)
+   493                          
+   494                          ; Digital PSoC block 13, Communications Type C
+   495  003C                    DCC13FN:      equ 3Ch          ; Function Register                        (RW)
+   496  003D                    DCC13IN:      equ 3Dh          ;    Input Register                        (RW)
+   497  003E                    DCC13OU:      equ 3Eh          ;   Output Register                        (RW)
+   498  003F                    DBC13CR1:     equ 3Fh          ;   control & status register 1            (RW)
+   499                          
+   500                          ;------------------------------------------------
+   501                          ;  System and Global Resource Registers
+   502                          ;  Note: Also see this address range in Bank 0.
+   503                          ;------------------------------------------------
+   504                          
+   505  0060                    CLK_CR0:      equ 60h          ; Analog Column Clock Select Register 0    (RW)
+   506  00C0                    CLK_CR0_ACOLUMN_3:    equ C0h    ; MASK: Specify clock for analog cloumn
+   507  0030                    CLK_CR0_ACOLUMN_2:    equ 30h    ; MASK: Specify clock for analog cloumn
+   508  000C                    CLK_CR0_ACOLUMN_1:    equ 0Ch    ; MASK: Specify clock for analog cloumn
+   509  0003                    CLK_CR0_ACOLUMN_0:    equ 03h    ; MASK: Specify clock for analog cloumn
+   510                          
+   511  0061                    CLK_CR1:      equ 61h          ; Analog Clock Source Select Register 1    (RW)
+   512  0018                    CLK_CR1_ACLK1:        equ 18h    ; MASK: Digital PSoC block for analog source
+   513  0003                    CLK_CR1_ACLK0:        equ 03h    ; MASK: Digital PSoC block for analog source
+   514                          
+   515  0003                    CLK_CR1_ACLK2:        equ 03h    ; Deprecated do not use
+   516                          
+   517  0062                    ABF_CR0:      equ 62h          ; Analog Output Buffer Control Register 0  (RW)
+   518  0080                    ABF_CR0_ACOL1MUX:     equ 80h    ; MASK: Analog Column 1 Mux control
+   519                          
+   520  0063                    AMD_CR0:      equ 63h          ; Analog Modulator Control Register 0      (RW)
+   521  000F                    AMD_CR0_AMOD0:        equ 0Fh    ; MASK: Modulation source for analog column 0
+   522                          
+   523  0064                    CMP_GO_EN:    equ 64h          ; Comparator Bus To Global Out Enable      (RW)
+   524  0080                    CMP_GO_EN_GOO5:       equ 80h    ; MASK: Selected Col 1 signal to GOO5
+   525  0040                    CMP_GO_EN_GOO1:       equ 40h    ; MASK: Selected Col 1 signal to GOO1
+   526  0030                    CMP_GO_EN_SEL1:       equ 30h    ; MASK: Column 1 Signal Select
+   527  0008                    CMP_GO_EN_GOO4:       equ 08h    ; MASK: Selected Col 0 signal to GOO4
+   528  0004                    CMP_GO_EN_GOO0:       equ 04h    ; MASK: Selected Col 0 signal to GOO0
+   529  0003                    CMP_GO_EN_SEL0:       equ 03h    ; MASK: Column 0 Signal Select
+   530                          
+   531  0066                    AMD_CR1:      equ 66h          ; Analog Modulator Control Register 1      (RW)
+   532  000F                    AMD_CR1_AMOD1:        equ 0Fh    ; MASK: Modulation ctrl for analog column 1
+   533                          
+   534  0067                    ALT_CR0:      equ 67h          ; Analog Look Up Table (LUT) Register 0    (RW)
+   535  00F0                    ALT_CR0_LUT1:         equ 0F0h    ; MASK: Look up table 1 selection
+   536  000F                    ALT_CR0_LUT0:         equ 0Fh    ; MASK: Look up table 0 selection
+   537                          
+   538  006B                    CLK_CR3:      equ 6Bh          ; Analog Clock Source Control Register 3   (RW)
+   539  0040                    CLK_CR3_SYS1:         equ 40h    ; MASK: Analog Clock 1 selection
+   540  0030                    CLK_CR3_DIVCLK1:      equ 30h    ; MASK: Analog Clock 1 divider
+   541  0004                    CLK_CR3_SYS0:         equ 04h    ; MASK: Analog Clock 0 selection
+   542  0003                    CLK_CR3_DIVCLK0:      equ 03h    ; MASK: Analog Clock 0 divider
+   543                          
+   544                          ;------------------------------------------------
+   545                          ;  Global Digital Interconnects
+   546                          ;------------------------------------------------
+   547                          
+   548  00D0                    GDI_O_IN:     equ 0D0h          ; Global Dig Interconnect Odd Inputs Reg   (RW)
+   549  00D1                    GDI_E_IN:     equ 0D1h          ; Global Dig Interconnect Even Inputs Reg  (RW)
+   550  00D2                    GDI_O_OU:     equ 0D2h          ; Global Dig Interconnect Odd Outputs Reg  (RW)
+   551  00D3                    GDI_E_OU:     equ 0D3h          ; Global Dig Interconnect Even Outputs Reg (RW)
+   552                          
+   553  00A0                    GDI_O_IN_CR:  equ 0A0h          ; Global Dig Interconnect Odd Inputs Reg   (RW)
+   554  00A1                    GDI_E_IN_CR:  equ 0A1h          ; Global Dig Interconnect Even Inputs Reg  (RW)
+   555  00A2                    GDI_O_OU_CR:  equ 0A2h          ; Global Dig Interconnect Odd Outputs Reg  (RW)
+   556  00A3                    GDI_E_OU_CR:  equ 0A3h          ; Global Dig Interconnect Even Outputs Reg (RW)
+   557                          
+   558  00BB                    RDI1LT0:      equ 0BBh          ; Row 1 Look Up Table Register 0           (RW)
+   559  00BC                    RDI1LT1:      equ 0BCh          ; Row 1 Look Up Table Register 1           (RW)
+   560                          
+   561                          ;------------------------------------------------
+   562                          ;  Analog Mux Bus Port Enable Bits
+   563                          ;------------------------------------------------
+   564  00D8                    MUX_CR0:      equ 0D8h          ; Analog Mux Port 0 Bit Enables Register
+   565  00D9                    MUX_CR1:      equ 0D9h          ; Analog Mux Port 1 Bit Enables Register
+   566  00DA                    MUX_CR2:      equ 0DAh          ; Analog Mux Port 2 Bit Enables Register
+   567  00DB                    MUX_CR3:      equ 0DBh          ; Analog Mux Port 3 Bit Enables Register
+   568  00EC                    MUX_CR4:      equ 0ECh          ; Analog Mux Port 4 Bit Enables Register
+   569                          
+   570                          ;------------------------------------------------
+   571                          ;  Clock and System Control Registers
+   572                          ;------------------------------------------------
+   573                          
+   574  00DD                    OSC_GO_EN:    equ 0DDh          ; Oscillator to Global Outputs Enable Register (RW)
+   575  0080                    OSC_GO_EN_SLPINT:      equ 80h	 ; Enable Sleep Timer onto GOE[7]
+   576  0040                    OSC_GO_EN_VC3:         equ 40h    ; Enable VC3 onto GOE[6]
+   577  0020                    OSC_GO_EN_VC2:         equ 20h    ; Enable VC2 onto GOE[5]
+   578  0010                    OSC_GO_EN_VC1:         equ 10h    ; Enable VC1 onto GOE[4]
+   579  0008                    OSC_GO_EN_SYSCLKX2:    equ 08h    ; Enable 2X SysClk onto GOE[3]
+   580  0004                    OSC_GO_EN_SYSCLK:      equ 04h    ; Enable 1X SysClk onto GOE[2]
+   581  0002                    OSC_GO_EN_CLK24M:      equ 02h    ; Enable 24 MHz clock onto GOE[1]
+   582  0001                    OSC_GO_EN_CLK32K:      equ 01h    ; Enable 32 kHz clock onto GOE[0]
+   583                          
+   584  00DE                    OSC_CR4:      equ 0DEh          ; Oscillator Control Register 4            (RW)
+   585  0003                    OSC_CR4_VC3SEL:       equ 03h    ; MASK: System VC3 Clock source
+   586                          
+   587  00DF                    OSC_CR3:      equ 0DFh          ; Oscillator Control Register 3            (RW)
+   588                          
+   589  00E0                    OSC_CR0:      equ 0E0h          ; System Oscillator Control Register 0     (RW)
+   590  0080                    OSC_CR0_32K_SELECT:   equ 80h    ; MASK: Enable/Disable External XTAL Osc
+   591  0040                    OSC_CR0_PLL_MODE:     equ 40h    ; MASK: Enable/Disable PLL
+   592  0020                    OSC_CR0_NO_BUZZ:      equ 20h    ; MASK: Bandgap always powered/BUZZ bandgap
+   593  0018                    OSC_CR0_SLEEP:        equ 18h    ; MASK: Set Sleep timer freq/period
+   594  0000                    OSC_CR0_SLEEP_512Hz:  equ 00h    ;     Set sleep bits for 1.95ms period
+   595  0008                    OSC_CR0_SLEEP_64Hz:   equ 08h    ;     Set sleep bits for 15.6ms period
+   596  0010                    OSC_CR0_SLEEP_8Hz:    equ 10h    ;     Set sleep bits for 125ms period
+   597  0018                    OSC_CR0_SLEEP_1Hz:    equ 18h    ;     Set sleep bits for 1 sec period
+   598  0007                    OSC_CR0_CPU:          equ 07h    ; MASK: Set CPU Frequency
+   599  0000                    OSC_CR0_CPU_3MHz:     equ 00h    ;     set CPU Freq bits for 3MHz Operation
+   600  0001                    OSC_CR0_CPU_6MHz:     equ 01h    ;     set CPU Freq bits for 6MHz Operation
+   601  0002                    OSC_CR0_CPU_12MHz:    equ 02h    ;     set CPU Freq bits for 12MHz Operation
+   602  0003                    OSC_CR0_CPU_24MHz:    equ 03h    ;     set CPU Freq bits for 24MHz Operation
+   603  0004                    OSC_CR0_CPU_1d5MHz:   equ 04h    ;     set CPU Freq bits for 1.5MHz Operation
+   604  0005                    OSC_CR0_CPU_750kHz:   equ 05h    ;     set CPU Freq bits for 750kHz Operation
+   605  0006                    OSC_CR0_CPU_187d5kHz: equ 06h    ;     set CPU Freq bits for 187.5kHz Operation
+   606  0007                    OSC_CR0_CPU_93d7kHz:  equ 07h    ;     set CPU Freq bits for 93.7kHz Operation
+   607                          
+   608  00E1                    OSC_CR1:      equ 0E1h          ; System VC1/VC2 Divider Control Register  (RW)
+   609  00F0                    OSC_CR1_VC1:          equ 0F0h    ; MASK: System VC1 24MHz/External Clk divider
+   610  000F                    OSC_CR1_VC2:          equ 0Fh    ; MASK: System VC2 24MHz/External Clk divider
+   611                          
+   612  00E2                    OSC_CR2:      equ 0E2h          ; Oscillator Control Register 2            (RW)
+   613  0080                    OSC_CR2_PLLGAIN:      equ 80h    ; MASK: High/Low gain
+   614  0004                    OSC_CR2_EXTCLKEN:     equ 04h    ; MASK: Enable/Disable External Clock
+   615  0002                    OSC_CR2_IMODIS:       equ 02h    ; MASK: Enable/Disable System (IMO) Clock Net
+   616  0001                    OSC_CR2_SYSCLKX2DIS:  equ 01h    ; MASK: Enable/Disable 48MHz clock source
+   617                          
+   618  00E3                    VLT_CR:       equ 0E3h          ; Voltage Monitor Control Register         (RW)
+   619  0080                    VLT_CR_SMP:           equ 80h    ; MASK: Enable Switch Mode Pump
+   620  0030                    VLT_CR_PORLEV:        equ 30h    ; MASK: Mask for Power on Reset level control
+   621  0000                    VLT_CR_POR_LOW:       equ 00h    ;   Lowest  Precision Power-on Reset trip point
+   622  0010                    VLT_CR_POR_MID:       equ 10h    ;   Middle  Precision Power-on Reset trip point
+   623  0020                    VLT_CR_POR_HIGH:      equ 20h    ;   Highest Precision Power-on Reset trip point
+   624  0008                    VLT_CR_LVDTBEN:       equ 08h    ; MASK: Enable the CPU Throttle Back on LVD
+   625  0007                    VLT_CR_VM:            equ 07h    ; MASK: Mask for Voltage Monitor level setting
+   626                          
+   627  00E4                    VLT_CMP:      equ 0E4h          ; Voltage Monitor Comparators Register     (R)
+   628  0008                    VLT_CMP_NOWRITE:      equ 08h    ; MASK: Vcc below Flash Write level
+   629  0004                    VLT_CMP_PUMP:         equ 04h    ; MASK: Vcc below SMP trip level
+   630  0002                    VLT_CMP_LVD:          equ 02h    ; MASK: Vcc below LVD trip level
+   631  0001                    VLT_CMP_PPOR:         equ 01h    ; MASK: Vcc below PPOR trip level
+   632                          
+   633  00E5                    ADC0_TR:      equ 0E5h          ; ADC Column 0 Trim Register
+   634  00E6                    ADC1_TR:      equ 0E6h          ; ADC Column 1 Trim Register
+   635                          
+   636  00E8                    IMO_TR:       equ 0E8h          ; Internal Main Oscillator Trim Register   (W)
+   637  00E9                    ILO_TR:       equ 0E9h          ; Internal Low-speed Oscillator Trim       (W)
+   638  00EA                    BDG_TR:       equ 0EAh          ; Band Gap Trim Register                   (W)
+   639  00EB                    ECO_TR:       equ 0EBh          ; External Oscillator Trim Register        (W)
+   640                          
+   641  00FA                    FLS_PR1:      equ 0FAh          ; Flash Program Register 1                 (RW)
+   642  0003                    FLS_PR1_BANK:         equ 03h    ; MASK: Select Active Flash Bank
+   643                          
+   644  00FD                    DAC_CR0:       equ 0FDh          ; Analog Mux DAC Control Register 0
+   645  00DC                    DAC_CR1:       equ 0DCh          ; Analog Mux DAC Control Register 1
+   646  0008                    DAC_CR_IRANGE:        equ 08h    ; MASK: Sets the DAC Range low or high
+   647  0006                    DAC_CR_OSCMODE:       equ 06h    ; MASK: Defines the reset mode for AMux
+   648  0001                    DAC_CR_ENABLE:        equ 01h    ; MASK: Enable/Disable DAC function
+   649                          
+   650                          ;------------------------------------------------
+   651                          ;  I2C Control Registers
+   652                          ;------------------------------------------------
+   653                          
+   654  00AD                    I2C_ADDR:    equ 0ADh          ; I2C Address Register (RW)
+   655                          
+   656                          ;------------------------------------------------------
+   657                          ;  Neon Analog Registers
+   658                          ;------------------------------------------------------
+   659  0053                    VDAC50CR0:		equ 53h			; V DAC5 control 0				(RW)
+   660  0057                    VDAC51CR0:		equ 57h			; V DAC5 control 1				(RW)
+   661  00A8                    ADC_CR0:		equ A8h			; ADC control 0					(RW)
+   662  00A9                    ADC_CR1:		equ A9h			; ADC control 1					(RW)
+   663  00AA                    ADC_CR2:		equ AAh			; ADC control 2					(RW)
+   664  00AB                    ADC_CR3TRIM:	equ ABh			; ADC control 3					(RW)
+   665  00AC                    ADC_CR4:		equ ACh			; ADC control 4					(RW)
+   666  00E7                    VDAC_TRIM:		equ E7h			; V DAC trim					(RW)
+   667                          
+   668                          ;------------------------------------------------------
+   669                          ;  Neon Current Sense CMP Registers
+   670                          ;------------------------------------------------------
+   671  0050                    CMP0CR1:		equ 50h			; CMP0 control 1				(RW)
+   672  0051                    CMP0CR2:		equ 51h			; CMP0 control 2				(RW)
+   673  0054                    CMP1CR1:		equ 54h			; CMP1 control 1				(RW)
+   674  0055                    CMP1CR2:		equ 55h			; CMP1 control 2				(RW)
+   675  0058                    CSCMPCR0:		equ 58h			; CSCMP control 0				(RW)
+   676  0059                    CSCMPGOEN:		equ 59h			; CSCMO global out enable		(RW)
+   677  005A                    CSLUTCR0:		equ 5Ah			; CSLUT control 0				(RW)
+   678  005B                    CMPCOLMUX:		equ 5Bh			; CMP Column Mux				(RW)
+   679  005C                    CMPPWMCR:		equ 5Ch			; CMP PWM control				(RW)
+   680  005D                    CMPFLTCR:		equ 5Dh			; CMP filter control			(RW)
+   681  005E                    CMPCLK1:		equ 5Eh			; CMP clock 1					(RW)
+   682  005F                    CMPCLK0:		equ 5Fh			; CMP clock 0					(RW)
+   683                          
+   684                          ;------------------------------------------------------
+   685                          ;  Neon Real Time Clock Registers
+   686                          ;------------------------------------------------------
+   687  00A4                    RTCH:			equ A4h			; Real time current hour		(RW)
+   688  00A5                    RTCM:			equ A5h			; Real time current minute		(RW)
+   689  00A6                    RTCS:			equ A6h			; Real time current second		(RW)
+   690  00A7                    RTCCR:			equ A7h			; Real time clock control		(RW)
+   691                          
+   692                          ;------------------------------------------------------
+   693                          ;  Analog MUX Config Registers
+   694                          ;------------------------------------------------------
+   695                          
+   696  006A                    AMUX_CFG1:			equ 6Ah  ; Analog MUX Configuration 1
+   697  0020                    AMUX_CFG1_GOINVR:	equ 20h  ;
+   698  0010                    AMUX_CFG1_GOINVL:  	equ 10h	 ;
+   699  000C                    AMUX_CFG1_AMUXMODR:	equ 0Ch	 ;
+   700  0003                    AMUX_CFG1_AMUXMODL:	equ 03h	 ;
+   701                          
+   702                          ;;=============================================================================
+   703                          ;;      M8C System Macros
+   704                          ;;  These macros should be used when their functions are needed.
+   705                          ;;=============================================================================
+   706                          
+   707                          ;----------------------------------------------------
+   708                          ;  Swapping Register Banks
+   709                          ;----------------------------------------------------
+   710                              macro M8C_SetBank0
+   711                              and   F, ~FLAG_XIO_MASK
+   712  3C9A                        endm
+   713                          
+   714                              macro M8C_SetBank1
+   715                              or    F, FLAG_XIO_MASK
+   716  3C9A                        endm
+   717                          
+   718                          ;----------------------------------------------------
+   719                          ;  Global Interrupt Enable/Disable
+   720                          ;----------------------------------------------------
+   721                              macro M8C_EnableGInt
+   722                              or    F, FLAG_GLOBAL_IE
+   723  3C9A                        endm
+   724                          
+   725                              macro M8C_DisableGInt
+   726                              and   F, ~FLAG_GLOBAL_IE
+   727  3C9A                        endm
+   728                          
+   729                          ;----------------------------------------------------
+   730                          ;  Enable/Disable Interrupt Mask
+   731                          ;
+   732                          ;  Use the following macros to enable/disable
+   733                          ;  bits in the Interrupt mask registers,
+   734                          ;  INT_MSK0, INT_MSK1 or INT_MSK3.
+   735                          ;
+   736                          ;  Usage:    M8C_DisableIntMask INT_MSKN, MASK
+   737                          ;            M8C_EnableIntMask  INT_MSKN, MASK
+   738                          ;
+   739                          ;  where INT_MSKN is INT_MSK0, INT_MSK1 or INT_MSK3
+   740                          ;        and MASK is the bit set to enable or disable
+   741                          ;----------------------------------------------------
+   742                          ; Disable Interrupt Bit Mask(s)
+   743                              macro M8C_DisableIntMask
+   744                              and   reg[@0], ~@1              ; disable specified interrupt enable bit
+   745  3C9A                        endm
+   746                          
+   747                          ; Enable Interrupt Bit Mask(s)
+   748                              macro M8C_EnableIntMask
+   749                              or    reg[@0], @1               ; enable specified interrupt enable bit
+   750  3C9A                        endm
+   751                          
+   752                          ;----------------------------------------------------
+   753                          ;  Clear Posted Interrupt Flag Mask
+   754                          ;
+   755                          ;  Use the following macros to clear the
+   756                          ;  bits in the Interrupt Clear registers,
+   757                          ;  INT_CLR0, INT_CLR1 or INT_CLR3.
+   758                          ;  Usage:    M8C_ClearIntFlag INT_CLRN, MASK
+   759                          ;
+   760                          ;  where INT_MSKN is INT_CLR0, INT_CLR1 or INT_CLR3
+   761                          ;        and MASK is the bit set to enable or disable
+   762                          ;----------------------------------------------------
+   763                              macro M8C_ClearIntFlag
+   764                              mov   reg[@0], ~@1              ; clear specified interrupt enable bit
+   765  3C9A                        endm
+   766                          
+   767                          ;----------------------------------------------------
+   768                          ;  Power-On Reset & WatchDog Timer Functions
+   769                          ;----------------------------------------------------
+   770                              macro M8C_EnableWatchDog
+   771                              and   reg[CPU_SCR0], ~CPU_SCR0_PORS_MASK
+   772  3C9A                        endm
+   773                          
+   774                              macro M8C_ClearWDT
+   775                              mov   reg[RES_WDT], 00h
+   776  3C9A                        endm
+   777                          
+   778                              macro M8C_ClearWDTAndSleep
+   779                              mov   reg[RES_WDT], 38h
+   780  3C9A                        endm
+   781                          
+   782                          ;----------------------------------------------------
+   783                          ;  Sleep, CPU Stop & Software Reset
+   784                          ;----------------------------------------------------
+   785                              macro M8C_Sleep
+   786                              or    reg[CPU_SCR0], CPU_SCR0_SLEEP_MASK
+   787                              ; The next instruction to be executed depends on the state of the
+   788                              ; various interrupt enable bits. If some interrupts are enabled
+   789                              ; and the global interrupts are disabled, the next instruction will
+   790                              ; be the one that follows the invocation of this macro. If global
+   791                              ; interrupts are also enabled then the next instruction will be
+   792                              ; from the interrupt vector table. If no interrupts are enabled
+   793                              ; then the CPU sleeps forever.
+   794  3C9A                        endm
+   795                          
+   796                              macro M8C_Stop
+   797                              ; In general, you probably don't want to do this, but here's how:
+   798                              or    reg[CPU_SCR0], CPU_SCR0_STOP_MASK
+   799                              ; Next instruction to be executed is located in the interrupt
+   800                              ; vector table entry for Power-On Reset.
+   801  3C9A                        endm
+   802                          
+   803                              macro M8C_Reset
+   804                              ; Restore CPU to the power-on reset state.
+   805                              mov A, 0
+   806                              SSC
+   807                              ; Next non-supervisor instruction will be at interrupt vector 0.
+   808  3C9A                        endm
+   809                          
+   810                          ;----------------------------------------------------
+   811                          ; ImageCraft Code Compressor Actions
+   812                          ;----------------------------------------------------
+   813                              ; Suspend Code Compressor
+   814                              ; Must not span a RET or RETI instruction
+   815                              ; without resuming code compression
+   816                              macro Suspend_CodeCompressor
+   817                              or   F, 0
+   818  3C9A                        endm
+   819                          
+   820                              ; Resume Code Compression
+   821                              macro Resume_CodeCompressor
+   822                              add  SP, 0
+   823                              endm
+      + 3C9A                    
+      + 3C9A                    ; end of file m8c.inc
+
+     1                          ;;*****************************************************************************
+     2                          ;;*****************************************************************************
+     3                          ;;
+     4                          ;;       FILENAME: Memory.inc
+     5                          ;;
+     6                          ;;    DESCRIPTION: Memory Model and Stack Parameter Definitions for 
+     7                          ;;                 CY8C22045 PSoC devices.
+     8                          ;;
+     9                          ;;  LAST MODIFIED: August 17, 2004
+    10                          ;;
+    11                          ;;-----------------------------------------------------------------------------
+    12                          ;;  Copyright (c) Cypress Semiconductor 2013. All Rights Reserved.
+    13                          ;;*****************************************************************************
+    14                          ;;*****************************************************************************
+    15                          ;
+    16                          ;
+    17                          ;  ******** Define Memory Model and Stack parameters ********
+    18                          ;
+    19  0001                    IMAGECRAFT: equ 1   
+    20  0002                    HITECH: equ 2   
+    21  0002                    TOOLCHAIN: equ HITECH   
+    22  0001                    SYSTEM_LARGE_MEMORY_MODEL: equ 1   
+    23  0000                    SYSTEM_SMALL_MEMORY_MODEL: equ 0   
+    24  0003                    SYSTEM_STACK_PAGE: equ 3   
+    25  0000                    SYSTEM_STACK_PAGE_OFFSET: equ 0   
+    26  0002                    SYSTEM_TOOLS: equ 2   
+    27  0000                    SYSTEM_IDXPG_TRACKS_STK_PP: equ 0   
+    28  0001                    SYSTEM_IDXPG_TRACKS_IDX_PP: equ 1   
+    29  0000                    SYSTEM_MULTIPAGE_STACK: equ 0 
+    30                          
+    31                          
+    32                          ;  ******* Function Class Definitions *******
+    33                          ;
+    34                          ;  These definitions are used to describe RAM access patterns. They provide
+    35                          ;  documentation and they control prologue and epilogue macros that perform
+    36                          ;  the necessary housekeeping functions for large memory model devices like
+    37                          ;  the CY8C22045.
+    38                          
+    39  0001                    RAM_USE_CLASS_1:               equ 1   ; PUSH, POP & I/O access
+    40  0002                    RAM_USE_CLASS_2:               equ 2   ; Indexed address mode on stack page
+    41  0004                    RAM_USE_CLASS_3:               equ 4   ; Indexed address mode to any page
+    42  0008                    RAM_USE_CLASS_4:               equ 8   ; Direct/Indirect address mode access
+    43                          
+    44                          ; ******* Hi Tech Specific *******
+    45                          ; Turn on the expansion of all macros by default
+    46                          IF (TOOLCHAIN & HITECH)
+    47                          OPT EXPAND
+    48                          ENDIF
+    49                          ; ******* Page Pointer Manipulation Macros *******
+    50                          ;
+    51                          ;  ******* Page Pointer Manipulation Macros *******
+    52                          ;
+    53                          ;  Most of the following macros are conditionally compiled so they only
+    54                          ;  produce code if the large memory model is selected.
+    55                          
+    56                             ;-----------------------------------------------
+    57                             ;  Set Stack Page Macro
+    58                             ;-----------------------------------------------
+    59                             ;
+    60                             ;  DESC: Modify STK_PP in the large or small memory Models.
+    61                             ;
+    62                             ; INPUT: Constant (e.g., SYSTEM_STACK_PAGE) that specifies the RAM page on
+    63                             ;        which stack operations like PUSH and POP store and retrieve their
+    64                             ;        data
+    65                             ;
+    66                             ;  COST: 8 instruction cycles (in LMM only)
+    67                          
+    68                             macro RAM_SETPAGE_STK( PG_NUMBER )
+    69                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+    70                                mov reg[STK_PP], @PG_NUMBER
+    71                             ENDIF
+    72  3C9A                       endm
+    73                          
+    74                             ;-----------------------------------------------
+    75                             ;  Set Current Page Macro
+    76                             ;-----------------------------------------------
+    77                             ;
+    78                             ;  DESC: Modify CUR_PP in the large or small memory Models.
+    79                             ;
+    80                             ; INPUT: Constant value (e.g., >bFoo) for the RAM page number used in
+    81                             ;        calculation of effective direct-mode address operands.
+    82                             ;
+    83                             ;  COST: 8 instruction cycles (in LMM only)
+    84                          
+    85                             macro RAM_SETPAGE_CUR( PG_NUMBER )
+    86                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+    87                                mov reg[CUR_PP], @PG_NUMBER
+    88                             ENDIF
+    89  3C9A                       endm
+    90                          
+    91                             ;-----------------------------------------------
+    92                             ;  Set Index Page Macro
+    93                             ;-----------------------------------------------
+    94                             ;
+    95                             ;  DESC: Modify IDX_PP in the large or small emory Models.
+    96                             ;
+    97                             ; INPUT: Constant value (e.g., >caFoo) for the RAM page number used in
+    98                             ;         calculation of effective index-mode address operands.
+    99                             ;
+   100                             ;  COST: 8 instruction cycles (in LMM only)
+   101                          
+   102                             macro RAM_SETPAGE_IDX( PG_NUMBER )
+   103                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   104                                mov reg[IDX_PP], @PG_NUMBER
+   105                             ENDIF
+   106  3C9A                       endm
+   107                          
+   108                             ;-----------------------------------------------
+   109                             ;  Set MVI Read Page Macro
+   110                             ;-----------------------------------------------
+   111                             ;
+   112                             ;  DESC: Modify MVR_PP in the large or small memory Models.
+   113                             ;
+   114                             ; INPUT: Constant value (e.g., >pFoo) for the RAM page number used in
+   115                             ;        calculation of indirect address operands used in the
+   116                             ;        "mvi A, [pFoo]" instructions.
+   117                             ;
+   118                             ;  COST: 8 instruction cycles (in LMM only)
+   119                          
+   120                             macro RAM_SETPAGE_MVR( PG_NUMBER )
+   121                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   122                                mov reg[MVR_PP], @PG_NUMBER
+   123                             ENDIF
+   124  3C9A                       endm
+   125                          
+   126                             ;-----------------------------------------------
+   127                             ;  Set MVI Write Page Macro
+   128                             ;-----------------------------------------------
+   129                             ;
+   130                             ;  DESC: Modify MVW_PP in the large or small memory Models.
+   131                             ;
+   132                             ; INPUT: Constant value (e.g., >pFoo) for the RAM page number used in
+   133                             ;        calculation of indirect address operands used in the
+   134                             ;        "mvi [pFoo], A" instructions.
+   135                             ;
+   136                             ;  COST: 8 instruction cycles (in LMM only)
+   137                          
+   138                             macro RAM_SETPAGE_MVW( PG_NUMBER )
+   139                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   140                                mov reg[MVW_PP], @PG_NUMBER
+   141                             ENDIF
+   142  3C9A                       endm
+   143                          
+   144                             ;-----------------------------------------------
+   145                             ;  Force Index Page Pointer to Stack Page
+   146                             ;-----------------------------------------------
+   147                             ;
+   148                             ;  DESC: Map index-mode operands onto the stack page by modifying IDX_PP.
+   149                             ;        See also RAM_LOCK_INDEX_TO_STACKPAGE.
+   150                             ;
+   151                             ; INPUT: None
+   152                             ;
+   153                             ;  COST: 8 instruction cycles (in LMM only)
+   154                          
+   155                             macro RAM_SETPAGE_IDX2STK
+   156                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   157                                IF ( SYSTEM_MULTIPAGE_STACK )
+   158                                   mov   A, reg[STK_PP]
+   159                                   mov   reg[IDX_PP], A
+   160                                ELSE
+   161                                   RAM_SETPAGE_IDX SYSTEM_STACK_PAGE
+   162                                ENDIF
+   163                             ENDIF
+   164  3C9A                       endm
+   165                          
+   166                             ;-----------------------------------------------
+   167                             ;  Change Memory Mode
+   168                             ;-----------------------------------------------
+   169                             ;
+   170                             ;  DESC: Modify FLAG_PAGEMODE bits in the large and small memory Models.
+   171                             ;
+   172                             ; INPUT: Constant value for PGMODE bitfield of CPU Flag register, F.
+   173                             ;        See FLAG_PGMODE_{x} constants in M8C.INC.
+   174                             ;
+   175                             ;  COST: 8 instruction cycles (in LMM only)
+   176                          
+   177                             macro RAM_CHANGE_PAGE_MODE( MODE )
+   178                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   179                                and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
+   180                                or    F,  FLAG_PGMODE_MASK & @MODE
+   181                             ENDIF
+   182  3C9A                       endm
+   183                          
+   184                             ;-----------------------------------------------
+   185                             ;  Set Large Memory Model Native Paging Mode
+   186                             ;-----------------------------------------------
+   187                             ;
+   188                             ;  DESC: Changes the FLAG_PAGEMODE bits to enter the native LMM RAM
+   189                             ;        paging mode *IFF* a simple "OR" is guaranteed to work---for
+   190                             ;        example, in an ISR, when the PGMODE bits have been cleared
+   191                             ;        to zero. If a simple "OR" is not guaranteed to work, use
+   192                             ;        the slower RAM_RESTORE_NATIVE_PAGING instead.
+   193                             ;
+   194                             ; INPUT: none
+   195                             ;
+   196                             ;  COST: 4 instruction cycles (in LMM only)
+   197                          
+   198                             macro RAM_SET_NATIVE_PAGING
+   199                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   200                             IF ( SYSTEM_IDXPG_TRACKS_STK_PP )
+   201                                or    F,  FLAG_PGMODE_11b            ; LMM w/ IndexPage<==>StackPage
+   202                             ENDIF ;  PGMODE LOCKED
+   203                             IF ( SYSTEM_IDXPG_TRACKS_IDX_PP )
+   204                                or    F,  FLAG_PGMODE_10b            ; LMM with independent IndexPage
+   205                             ENDIF ; PGMODE FREE
+   206                             ENDIF ; SYSTEM_LARGE_MEMORY_MODEL
+   207  3C9A                       endm
+   208                          
+   209                             ;-----------------------------------------------
+   210                             ; Restore Large Memory Model Native Paging Mode
+   211                             ;-----------------------------------------------
+   212                             ;
+   213                             ;  DESC: Changes the FLAG_PAGEMODE bits to enter the native LMM RAM
+   214                             ;        paging mode. Always works because it clears the PGMODE bits
+   215                             ;        before OR-ing in the new ones. See RAM_RESTORE_NATIVE_PAGING
+   216                             ;        for a faster method.
+   217                             ;
+   218                             ; INPUT: none
+   219                             ;
+   220                             ;  COST: 8 instruction cycles (in LMM only)
+   221                          
+   222                             macro RAM_RESTORE_NATIVE_PAGING
+   223                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   224                             IF ( SYSTEM_IDXPG_TRACKS_STK_PP )
+   225                                RAM_CHANGE_PAGE_MODE FLAG_PGMODE_11b ; LMM w/ IndexPage<==>StackPage
+   226                             ENDIF ;  PGMODE LOCKED
+   227                             IF ( SYSTEM_IDXPG_TRACKS_IDX_PP )
+   228                                RAM_CHANGE_PAGE_MODE FLAG_PGMODE_10b ; LMM with independent IndexPage
+   229                             ENDIF ; PGMODE FREE
+   230                             ENDIF ; SYSTEM_LARGE_MEMORY_MODEL
+   231  3C9A                       endm
+   232                          
+   233                             ;-----------------------------------------------
+   234                             ; Force indexed addr mode operands to Stack Pg
+   235                             ;-----------------------------------------------
+   236                             ;
+   237                             ;  DESC: Force instructions that use indexed address mode to reference the
+   238                             ;        stack page (as defined by STK_PP). This macro sets the "Indexed
+   239                             ;        Stack Mode" bit (LSB) of the PGMODE bit field in the CPU Flag
+   240                             ;        register, F. (See also RAM_SETPAGE_IDX2STK, above.)
+   241                             ;
+   242                             ; INPUT: none
+   243                             ;
+   244                             ;  COST: 4 instruction cycles (in LMM only)
+   245                          
+   246                             macro RAM_X_POINTS_TO_STACKPAGE
+   247                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   248                                or   F, FLAG_PGMODE_01b
+   249                             ENDIF ;  SYSTEM_LARGE_MEMORY_MODEL
+   250  3C9A                       endm
+   251                          
+   252                             ;-----------------------------------------------
+   253                             ;  Force indexed addr mode operands to Index Pg
+   254                             ;-----------------------------------------------
+   255                             ;
+   256                             ;  DESC: Permit instructions that use indexed address mode to reference page
+   257                             ;        zero or the page pointed to by the IDX_PP register, depending on the
+   258                             ;        setting of the MSb (or "Direct Page Mode" bit) of the PGMODE bits
+   259                             ;        in the CPU Flag register, F. (This macro clears the PGMODE LSb.)
+   260                             ;
+   261                             ; INPUT: none
+   262                             ;
+   263                             ;  COST: 4 instruction cycles (in LMM only)
+   264                          
+   265                             macro RAM_X_POINTS_TO_INDEXPAGE
+   266                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   267                                and  F, ~FLAG_PGMODE_01b
+   268                             ENDIF ;  SYSTEM_LARGE_MEMORY_MODEL
+   269  3C9A                       endm
+   270                          
+   271                             ;-----------------------------------------------
+   272                             ;  Function Prologue
+   273                             ;-----------------------------------------------
+   274                             ;
+   275                             ;  Prologue for functions that run in the LMM and SMM.
+   276                             ;
+   277                          
+   278                             macro RAM_PROLOGUE( ACTUAL_CLASS )
+   279                          
+   280                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_1 )
+   281                             ; Nothing to do
+   282                             ENDIF ; RAM_USE_CLASS_1
+   283                          
+   284                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_2 )
+   285                                IF ( SYSTEM_IDXPG_TRACKS_IDX_PP )
+   286                                   RAM_X_POINTS_TO_STACKPAGE         ; exit native paging mode!
+   287                                ENDIF
+   288                             ENDIF ; RAM_USE_CLASS_2
+   289                          
+   290                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_3 )
+   291                                IF ( SYSTEM_IDXPG_TRACKS_STK_PP )
+   292                                   RAM_X_POINTS_TO_INDEXPAGE         ; exit native paging mode!
+   293                                ENDIF
+   294                             ENDIF ; RAM_USE_CLASS_3
+   295                          
+   296                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_4 )
+   297                             ; Nothing to do
+   298                             ENDIF ; RAM_USE_CLASS_4
+   299                          
+   300  3C9A                       endm
+   301                          
+   302                             ;-----------------------------------------------
+   303                             ;  Function Epilogue
+   304                             ;-----------------------------------------------
+   305                             ;
+   306                             ;  Prologue for functions that run in the LMM and SMM.
+   307                             ;
+   308                          
+   309                             macro RAM_EPILOGUE( ACTUAL_CLASS )
+   310                          
+   311                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_1 )
+   312                             ; Nothing to do
+   313                             ENDIF ; RAM_USE_CLASS_1
+   314                          
+   315                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_2 )
+   316                                RAM_RESTORE_NATIVE_PAGING
+   317                             ENDIF ; RAM_USE_CLASS_2
+   318                          
+   319                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_3 )
+   320                                RAM_RESTORE_NATIVE_PAGING
+   321                             ENDIF ; RAM_USE_CLASS_3
+   322                          
+   323                             IF ( @ACTUAL_CLASS & RAM_USE_CLASS_4 )
+   324                             ; Nothing to do
+   325                             ENDIF ; RAM_USE_CLASS_4
+   326                          
+   327  3C9A                       endm
+   328                          
+   329                             ;-----------------------------------------------
+   330                             ;  Preserve Register
+   331                             ;-----------------------------------------------
+   332                             ;
+   333                             ;  DESC: Preserve a register value on the stack
+   334                             ;
+   335                             ; INPUT: Name or address of register in I/O Space
+   336                             ;        The I/O bank is an implicit parameter. That is, this function will
+   337                             ;        Access the I/O bank currently specified by the CPU Flag register.
+   338                             ;
+   339                             ;  USES: CPU 'A' register
+   340                             ;
+   341                             ;  COST: 9 instruction cycles
+   342                          
+   343                             macro REG_PRESERVE( IOReg )
+   344                             mov   A, reg[ @IOReg ]
+   345                             push  A
+   346  3C9A                       endm
+   347                          
+   348                             ;-----------------------------------------------
+   349                             ;  Restore Register
+   350                             ;-----------------------------------------------
+   351                             ;
+   352                             ;  DESC: Restore a register value from the stack
+   353                             ;
+   354                             ; INPUT: Name or address of register in I/O Space
+   355                             ;        The I/O bank is an implicit parameter. That is, this function will
+   356                             ;        Access the I/O bank currently specified by the CPU Flag register.
+   357                             ;
+   358                             ;  USES: CPU 'A' register
+   359                             ;
+   360                             ;  COST: 10 instruction cycles
+   361                          
+   362                             macro REG_RESTORE( IOReg )
+   363                             pop   A
+   364                             mov   reg[ @IOReg ], A
+   365  3C9A                       endm
+   366                          
+   367                             ;-----------------------------------------------
+   368                             ;  Preserve Volatile Page Pointer Registers
+   369                             ;-----------------------------------------------
+   370                             ;
+   371                             ;  DESC: Invoked by ISRs before switching to the LMM mode and calling
+   372                             ;        functions that require on it.
+   373                             ;
+   374                             ; INPUT: none
+   375                             ;
+   376                             ;  USES: CPU 'A' register
+   377                             ;
+   378                             ;  COST: 45 instruction cycles (in LMM only)
+   379                          
+   380                             macro ISR_PRESERVE_PAGE_POINTERS
+   381                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   382                                REG_PRESERVE CUR_PP
+   383                                REG_PRESERVE IDX_PP
+   384                                REG_PRESERVE MVR_PP
+   385                                REG_PRESERVE MVW_PP
+   386                             ENDIF
+   387  3C9A                       endm
+   388                          
+   389                             ;-----------------------------------------------
+   390                             ;  Restore Volatile Page Pointer Registers
+   391                             ;-----------------------------------------------
+   392                             ;
+   393                             ;  DESC: Undo for RAM_PRESERVE_PAGE_POINTERS macro. Invoked by ISRs after
+   394                             ;        calling functions that run in the LMM mode and before executing
+   395                             ;        the RETI instruction.
+   396                             ;
+   397                             ; INPUT: none
+   398                             ;
+   399                             ;  USES: CPU 'A' register
+   400                             ;
+   401                             ;  COST: 50 instruction cycles (in LMM only)
+   402                          
+   403                             macro ISR_RESTORE_PAGE_POINTERS
+   404                             IF ( SYSTEM_LARGE_MEMORY_MODEL )
+   405                                REG_RESTORE MVW_PP
+   406                                REG_RESTORE MVR_PP
+   407                                REG_RESTORE IDX_PP
+   408                                REG_RESTORE CUR_PP
+   409                             ENDIF
+   410                             endm
+      + 3C9A                    
+      + 3C9A                    ; end of file Memory.inc
+
+      + 3C9A                    ;;*****************************************************************************
+;;******************
+      +                         ***********************************************************
+;;  FILENAME: SAR10.inc
+;;   Version: 2.
+      +                         00, Updated on 2013/5/19 at 10:39:9
+;;  Generated by PSoC Designer 5.4.2946
+;;
+;;  DESCRIPTION: Asse
+      +                         mbler declarations for the SAR10 user module interface
+;;-------------------------------------------
+      +                         ----------------------------------
+;;  Copyright (c) Cypress Semiconductor 2013. All Rights Reserved
+      +                         .
+;;*****************************************************************************
+;;****************
+      +                         *************************************************************
+
+   824                          
+   825                          ; end of file m8c.inc
+    29  00C0                    FLAG_PGMODE_MASK:  equ 0C0h     ; Paging control for > 256 bytes of RAM
+    30  0000                    FLAG_PGMODE_0:     equ 00h       ; Direct to Page 0,      indexed to Page 0
+    31  0040                    FLAG_PGMODE_1:     equ 40h       ; Direct to Page 0,      indexed to STK_PP page
+    32  0080                    FLAG_PGMODE_2:     equ 80h       ; Direct to CUR_PP page, indexed to IDX_PP page
+    33  00C0                    FLAG_PGMODE_3:     equ 0C0h       ; Direct to CUR_PP page, indexed to STK_PP page
+    34  0000                    FLAG_PGMODE_00b:   equ 00h       ; Same as PGMODE_0
+    35  0040                    FLAG_PGMODE_01b:   equ 40h       ; Same as PGMODE_1
+    36  0080                    FLAG_PGMODE_10b:   equ 80h       ; Same as PGMODE_2
+    37  00C0                    FLAG_PGMODE_11b:   equ 0C0h       ; Same as PGMODE_3
+    38  0010                    FLAG_XIO_MASK:     equ 10h     ; I/O Bank select for register space
+    39  0008                    FLAG_SUPER:        equ 08h     ; Supervisor Mode
+    40  0004                    FLAG_CARRY:        equ 04h     ; Carry Condition Flag
+    41  0002                    FLAG_ZERO:         equ 02h     ; Zero  Condition Flag
+    42  0001                    FLAG_GLOBAL_IE:    equ 01h     ; Glogal Interrupt Enable
+    43                          
+    44                          
+    45                          ;;=============================================================================
+    46                          ;;      Register Space, Bank 0
+    47                          ;;=============================================================================
+    48                          
+    49                          ;------------------------------------------------
+    50                          ;  Port Registers
+    51                          ;  Note: Also see this address range in Bank 1.
+    52                          ;------------------------------------------------
+    53                          ; Port 0
+    54  0000                    PRT0DR:       equ 00h          ; Port 0 Data Register                     (RW)
+    55  0001                    PRT0IE:       equ 01h          ; Port 0 Interrupt Enable Register         (RW)
+    56  0002                    PRT0GS:       equ 02h          ; Port 0 Global Select Register            (RW)
+    57  0003                    PRT0DM2:      equ 03h          ; Port 0 Drive Mode 2                      (RW)
+    58                          ; Port 1
+    59  0004                    PRT1DR:       equ 04h          ; Port 1 Data Register                     (RW)
+    60  0005                    PRT1IE:       equ 05h          ; Port 1 Interrupt Enable Register         (RW)
+    61  0006                    PRT1GS:       equ 06h          ; Port 1 Global Select Register            (RW)
+    62  0007                    PRT1DM2:      equ 07h          ; Port 1 Drive Mode 2                      (RW)
+    63                          ; Port 2
+    64  0008                    PRT2DR:       equ 08h          ; Port 2 Data Register                     (RW)
+    65  0009                    PRT2IE:       equ 09h          ; Port 2 Interrupt Enable Register         (RW)
+    66  000A                    PRT2GS:       equ 0Ah          ; Port 2 Global Select Register            (RW)
+    67  000B                    PRT2DM2:      equ 0Bh          ; Port 2 Drive Mode 2                      (RW)
+    68                          ; Port 3
+    69  000C                    PRT3DR:       equ 0Ch          ; Port 3 Data Register                     (RW)
+    70  000D                    PRT3IE:       equ 0Dh          ; Port 3 Interrupt Enable Register         (RW)
+    71  000E                    PRT3GS:       equ 0Eh          ; Port 3 Global Select Register            (RW)
+    72  000F                    PRT3DM2:      equ 0Fh          ; Port 3 Drive Mode 2                      (RW)
+    73                          ; Port 4
+    74  0010                    PRT4DR:       equ 10h          ; Port 4 Data Register                     (RW)
+    75  0011                    PRT4IE:       equ 11h          ; Port 4 Interrupt Enable Register         (RW)
+    76  0012                    PRT4GS:       equ 12h          ; Port 4 Global Select Register            (RW)
+    77  0013                    PRT4DM2:      equ 13h          ; Port 4 Drive Mode 2                      (RW)
+    78                          
+    79                          ;------------------------------------------------
+    80                          ;  Digital PSoC(tm) block Registers
+    81                          ;  Note: Also see this address range in Bank 1.
+    82                          ;------------------------------------------------
+    83                          ; Digital PSoC block 00, Basic Type C
+    84  0020                    DBC00DR0:     equ 20h          ; data register 0                          (#)
+    85  0021                    DBC00DR1:     equ 21h          ; data register 1                          (W)
+    86  0022                    DBC00DR2:     equ 22h          ; data register 2                          (RW)
+    87  0023                    DBC00CR0:     equ 23h          ; control & status register 0              (#)
+    88                          
+    89                          ; Digital PSoC block 01, Basic Type C
+    90  0024                    DBC01DR0:     equ 24h          ; data register 0                          (#)
+    91  0025                    DBC01DR1:     equ 25h          ; data register 1                          (W)
+    92  0026                    DBC01DR2:     equ 26h          ; data register 2                          (RW)
+    93  0027                    DBC01CR0:     equ 27h          ; control & status register 0              (#)
+    94                          
+    95                          ; Digital PSoC block 02, Communications Type C
+    96  0028                    DCC02DR0:     equ 28h          ; data register 0                          (#)
+    97  0029                    DCC02DR1:     equ 29h          ; data register 1                          (W)
+    98  002A                    DCC02DR2:     equ 2Ah          ; data register 2                          (RW)
+    99  002B                    DCC02CR0:     equ 2Bh          ; control & status register 0              (#)
+   100                          
+   101                          ; Digital PSoC block 03, Communications Type C
+   102  002C                    DCC03DR0:     equ 2Ch          ; data register 0                          (#)
+   103  002D                    DCC03DR1:     equ 2Dh          ; data register 1                          (W)
+   104  002E                    DCC03DR2:     equ 2Eh          ; data register 2                          (RW)
+   105  002F                    DCC03CR0:     equ 2Fh          ; control & status register 0              (#)
+   106                          
+   107                          ; Digital PSoC block 10, Basic Type C
+   108  0030                    DBC10DR0:     equ 30h          ; data register 0                          (#)
+   109  0031                    DBC10DR1:     equ 31h          ; data register 1                          (W)
+   110  0032                    DBC10DR2:     equ 32h          ; data register 2                          (RW)
+   111  0033                    DBC10CR0:     equ 33h          ; control & status register 0              (#)
+   112                          
+   113                          ; Digital PSoC block 11, Basic Type C
+   114  0034                    DBC11DR0:     equ 34h          ; data register 0                          (#)
+   115  0035                    DBC11DR1:     equ 35h          ; data register 1                          (W)
+   116  0036                    DBC11DR2:     equ 36h          ; data register 2                          (RW)
+   117  0037                    DBC11CR0:     equ 37h          ; control & status register 0              (#)
+   118                          
+   119                          ; Digital PSoC block 12, Communications Type C
+   120  0038                    DCC12DR0:     equ 38h          ; data register 0                          (#)
+   121  0039                    DCC12DR1:     equ 39h          ; data register 1                          (W)
+   122  003A                    DCC12DR2:     equ 3Ah          ; data register 2                          (RW)
+   123  003B                    DCC12CR0:     equ 3Bh          ; control & status register 0              (#)
+   124                          
+   125                          ; Digital PSoC block 13, Communications Type C
+   126  003C                    DCC13DR0:     equ 3Ch          ; data register 0                          (#)
+   127  003D                    DCC13DR1:     equ 3Dh          ; data register 1                          (W)
+   128  003E                    DCC13DR2:     equ 3Eh          ; data register 2                          (RW)
+   129  003F                    DCC13CR0:     equ 3Fh          ; control & status register 0              (#)
+   130                          
+   131                          ;-------------------------------------
+   132                          ;  Analog Control Registers
+   133                          ;-------------------------------------
+   134  0060                    AMX_IN:       equ 60h          ; Analog Input Multiplexor Control         (RW)
+   135  00C0                    AMX_IN_ACI3:          equ C0h    ; MASK: column 3 input mux
+   136  0030                    AMX_IN_ACI2:          equ 30h    ; MASK: column 2 input mux
+   137  000C                    AMX_IN_ACI1:          equ 0Ch    ; MASK: column 1 input mux
+   138  0003                    AMX_IN_ACI0:          equ 03h    ; MASK: column 0 input mux
+   139                          
+   140  0061                    AMUX_CFG:      equ 61h          ; Analog MUX Configuration
+   141  0030                    AMUX_CFG_INTCAP:       equ 30h    ;
+   142  000E                    AMUX_CFG_MUXCLK:  	  equ 0Eh	 ;
+   143  0001                    AMUX_CFG_EN:		  	  equ 01h	 ;
+   144                          
+   145                          ; old declarations DO NOT USE
+   146  0061                    AMUXCFG:      equ 61h          ; Analog MUX Configuration
+   147  0030                    AMUXCFG_INTCAP:       equ 30h    ;
+   148  000E                    AMUXCFG_MUXCLK:  	  equ 0Eh	 ;
+   149  0001                    AMUXCFG_EN:		  	  equ 01h	 ;
+   150                          
+   151  0062                    PWM_CR:       equ 62h          ; Pulse-Width Modulator Control
+   152  0038                    PWM_CR_HIGH:          equ 38h    ; MASK: PWM high time
+   153  0006                    PWM_CR_LOW:           equ 06h	 ; MASK: PWM low time
+   154  0001                    PWM_CR_EN:            equ 01h	 ; MASK: Enable/Disable PWM function
+   155                          
+   156  0063                    ARF_CR:       equ 63h          ; Analog Reference Control
+   157                          
+   158  0064                    CMP_CR0:      equ 64h          ; Analog Comparator Bus Register           (#)
+   159  0080                    CMP_CR0_COMP3:        equ 80h    ; MASK: Column 3 comparator state        (R)
+   160  0040                    CMP_CR0_COMP2:        equ 40h    ; MASK: Column 2 comparator state        (R)
+   161  0020                    CMP_CR0_COMP1:        equ 20h    ; MASK: Column 1 comparator state        (R)
+   162  0010                    CMP_CR0_COMP0:        equ 10h    ; MASK: Column 0 comparator state        (R)
+   163  0008                    CMP_CR0_AINT3:        equ 08h    ; MASK: Column 3 interrupt source        (RW)
+   164  0004                    CMP_CR0_AINT2:        equ 04h    ; MASK: Column 2 interrupt source        (RW)
+   165  0002                    CMP_CR0_AINT1:        equ 02h    ; MASK: Column 1 interrupt source        (RW)
+   166  0001                    CMP_CR0_AINT0:        equ 01h    ; MASK: Column 0 interrupt source        (RW)
+   167                          
+   168  0066                    CMP_CR1:      equ 66h          ; Analog Comparator Bus 1 Register         (RW)
+   169  0020                    CMP_CR1_CLDIS1:       equ 20h    ; MASK: Column 1 comparator output latch
+   170  0010                    CMP_CR1_CLDIS0:	      equ 10h    ; MASK: Column 0 comparator output latch
+   171                          
+   172  0068                    ADC0_CR:      equ 68h          ; Analog Column 0 Configuration
+   173  0080                    ADC0_CR_CMPST:        equ 80h    ;
+   174  0040                    ADC0_CR_LOREN:        equ 40h    ;
+   175  0020                    ADC0_CR_SHEN:         equ 20h    ;
+   176  0008                    ADC0_CR_CBSRC:        equ 08h    ;
+   177  0004                    ADC0_CR_ADCM:         equ 04h    ;
+   178  0001                    ADC0_CR_EN:	          equ 01h    ;
+   179                          
+   180  0069                    ADC1_CR:      equ 69h          ; Analog Column 1 Configuration
+   181  0080                    ADC1_CR_CMPST:        equ 80h    ;
+   182  0040                    ADC1_CR_LOREN:        equ 40h    ;
+   183  0020                    ADC1_CR_SHEN:         equ 20h    ;
+   184  0008                    ADC1_CR_CBSRC:        equ 08h    ;
+   185  0004                    ADC1_CR_ADCM:         equ 04h    ;
+   186  0001                    ADC1_CR_EN:	          equ 01h    ;
+   187                          
+   188                          ; Continuous Time PSoC block Type E Row 0 Col 0
+   189  0072                    ACE00CR1:     equ 72h          ; Control register 1                       (RW)
+   190  0073                    ACE00CR2:     equ 73h          ; Control register 2                       (RW)
+   191                          
+   192                          ; Continuous Time PSoC block Type E Row 0 Col 1
+   193  0076                    ACE01CR1:     equ 76h          ; Control register 1                       (RW)
+   194  0077                    ACE01CR2:     equ 77h          ; Control register 2                       (RW)
+   195                          
+   196                          ; Switched Cap PSoC blockType E Row 1 Col 0
+   197  0080                    ASE10CR0:     equ 80h          ; Control register 0                       (RW)
+   198                          
+   199                          ; Switched Cap PSoC blockType E Row 1 Col 1
+   200  0084                    ASE11CR0:     equ 84h          ; Control register 0                       (RW)
+   201                          
+   202                          ;-----------------------------------------------
+   203                          ;  Global General Purpose Data Registers
+   204                          ;-----------------------------------------------
+   205  006C                    TMP_DR0:      equ 6Ch          ; Temporary Data Register 0                (RW)
+   206  006D                    TMP_DR1:      equ 6Dh          ; Temporary Data Register 1                (RW)
+   207  006E                    TMP_DR2:      equ 6Eh          ; Temporary Data Register 2                (RW)
+   208  006F                    TMP_DR3:      equ 6Fh          ; Temporary Data Register 3                (RW)
+   209                          
+   210                          ;------------------------------------------------
+   211                          ;  Row Digital Interconnects
+   212                          ;
+   213                          ;  Note: the following registers are mapped into
+   214                          ;  both register bank 0 AND register bank 1.
+   215                          ;------------------------------------------------
+   216                          
+   217  00B0                    RDI0RI:       equ 0B0h          ; Row Digital Interconnect Row 0 Input Reg (RW)
+   218  00B1                    RDI0SYN:      equ 0B1h          ; Row Digital Interconnect Row 0 Sync Reg  (RW)
+   219  00B2                    RDI0IS:       equ 0B2h          ; Row 0 Input Select Register              (RW)
+   220  00B3                    RDI0LT0:      equ 0B3h          ; Row 0 Look Up Table Register 0           (RW)
+   221  00B4                    RDI0LT1:      equ 0B4h          ; Row 0 Look Up Table Register 1           (RW)
+   222  00B5                    RDI0RO0:      equ 0B5h          ; Row 0 Output Register 0                  (RW)
+   223  00B6                    RDI0RO1:      equ 0B6h          ; Row 0 Output Register 1                  (RW)
+   224                          
+   225  00B8                    RDI1RI:       equ 0B8h          ; Row Digital Interconnect Row 1 Input Reg (RW)
+   226  00B9                    RDI1SYN:      equ 0B9h          ; Row Digital Interconnect Row 1 Sync Reg  (RW)
+   227  00BA                    RDI1IS:       equ 0BAh          ; Row 1 Input Select Register              (RW)
+   228  00BB                    RDI1LT0:      equ 0BBh          ; Row 1 Look Up Table Register 0           (RW)
+   229  00BC                    RDI1LT1:      equ 0BCh          ; Row 1 Look Up Table Register 1           (RW)
+   230  00BD                    RDI1RO0:      equ 0BDh          ; Row 1 Output Register 0                  (RW)
+   231  00BE                    RDI1RO1:      equ 0BEh          ; Row 1 Output Register 1                  (RW)
+   232                          
+   233                          ;-----------------------------------------------
+   234                          ;  Ram Page Pointers
+   235                          ;-----------------------------------------------
+   236  00D0                    CUR_PP:      equ 0D0h           ; Current   Page Pointer
+   237  00D1                    STK_PP:      equ 0D1h           ; Stack     Page Pointer
+   238  00D3                    IDX_PP:      equ 0D3h           ; Index     Page Pointer
+   239  00D4                    MVR_PP:      equ 0D4h           ; MVI Read  Page Pointer
+   240  00D5                    MVW_PP:      equ 0D5h           ; MVI Write Page Pointer
+   241                          
+   242                          ;------------------------------------------------
+   243                          ;  I2C Configuration Registers
+   244                          ;------------------------------------------------
+   245  00D6                    I2C_CFG:      equ 0D6h          ; I2C Configuration Register               (RW)
+   246  0040                    I2C_CFG_PINSEL:         equ 40h  ; MASK: Select P1[0] and P1[1] for I2C
+   247  0020                    I2C_CFG_BUSERR_IE:      equ 20h  ; MASK: Enable interrupt on Bus Error
+   248  0010                    I2C_CFG_STOP_IE:        equ 10h  ; MASK: Enable interrupt on Stop
+   249  0000                    I2C_CFG_CLK_RATE_100K:  equ 00h  ; MASK: I2C clock set at 100K
+   250  0004                    I2C_CFG_CLK_RATE_400K:  equ 04h  ; MASK: I2C clock set at 400K
+   251  0008                    I2C_CFG_CLK_RATE_50K:   equ 08h  ; MASK: I2C clock set at 50K
+   252  000C                    I2C_CFG_CLK_RATE:       equ 0Ch  ; MASK: I2C clock rate setting mask
+   253  0002                    I2C_CFG_PSELECT_MASTER: equ 02h  ; MASK: Enable I2C Master
+   254  0001                    I2C_CFG_PSELECT_SLAVE:  equ 01h  ; MASK: Enable I2C Slave
+   255                          
+   256  00D7                    I2C_SCR:      equ 0D7h          ; I2C Status and Control Register          (#)
+   257  0080                    I2C_SCR_BUSERR:        equ 80h   ; MASK: I2C Bus Error detected           (RC)
+   258  0040                    I2C_SCR_LOSTARB:       equ 40h   ; MASK: I2C Arbitration lost             (RC)
+   259  0020                    I2C_SCR_STOP:          equ 20h   ; MASK: I2C Stop detected                (RC)
+   260  0010                    I2C_SCR_ACK:           equ 10h   ; MASK: ACK the last byte                (RW)
+   261  0008                    I2C_SCR_ADDR:          equ 08h   ; MASK: Address rcv'd is Slave address   (RC)
+   262  0004                    I2C_SCR_XMIT:          equ 04h   ; MASK: Set transfer to tranmit mode     (RW)
+   263  0002                    I2C_SCR_LRB:           equ 02h   ; MASK: Last recieved bit                (RC)
+   264  0001                    I2C_SCR_BYTECOMPLETE:  equ 01h   ; MASK: Transfer of byte complete        (RC)
+   265                          
+   266  00D8                    I2C_DR:       equ 0D8h          ; I2C Data Register                        (RW)
+   267                          
+   268  00D9                    I2C_MSCR:     equ 0D9h          ; I2C Master Status and Control Register   (#)
+   269  0008                    I2C_MSCR_BUSY:         equ 08h   ; MASK: I2C Busy (Start detected)        (R)
+   270  0004                    I2C_MSCR_MODE:         equ 04h   ; MASK: Start has been generated         (R)
+   271  0002                    I2C_MSCR_RESTART:      equ 02h   ; MASK: Generate a Restart condition     (RW)
+   272  0001                    I2C_MSCR_START:        equ 01h   ; MASK: Generate a Start condition       (RW)
+   273                          
+   274                          ;------------------------------------------------
+   275                          ;  System and Global Resource Registers
+   276                          ;------------------------------------------------
+   277  00DA                    INT_CLR0:     equ 0DAh          ; Interrupt Clear Register 0               (RW)
+   278                                                         ; Use INT_MSK0 bit field masks
+   279  00DB                    INT_CLR1:     equ 0DBh          ; Interrupt Clear Register 1               (RW)
+   280                                                         ; Use INT_MSK1 bit field masks
+   281  00DC                    INT_CLR2:     equ 0DCh          ; Interrupt Clear Register 2               (RW)
+   282                                                         ; Use INT_MSK2 bit field masks
+   283  00DD                    INT_CLR3:     equ 0DDh          ; Interrupt Clear Register 3               (RW)
+   284                                                         ; Use INT_MSK3 bit field masks
+   285                          
+   286  00DE                    INT_MSK3:     equ 0DEh          ; I2C and Software Mask Register           (RW)
+   287  0080                    INT_MSK3_ENSWINT:          equ 80h ; MASK: enable/disable SW interrupt
+   288  0001                    INT_MSK3_I2C:              equ 01h ; MASK: enable/disable I2C interrupt
+   289                          
+   290  00E0                    INT_MSK0:     equ 0E0h          ; General Interrupt Mask Register          (RW)
+   291  0080                    INT_MSK0_VC3:              equ 80h ; MASK: enable/disable VC3 interrupt
+   292  0040                    INT_MSK0_SLEEP:            equ 40h ; MASK: enable/disable sleep interrupt
+   293  0020                    INT_MSK0_GPIO:             equ 20h ; MASK: enable/disable GPIO  interrupt
+   294  0010                    INT_MSK0_ACOLUMN_3:        equ 10h ; MASK: enable/disable Analog col 3 interrupt
+   295  0008                    INT_MSK0_ACOLUMN_2:        equ 08h ; MASK: enable/disable Analog col 2 interrupt
+   296  0004                    INT_MSK0_ACOLUMN_1:        equ 04h ; MASK: enable/disable Analog col 1 interrupt
+   297  0002                    INT_MSK0_ACOLUMN_0:        equ 02h ; MASK: enable/disable Analog col 0 interrupt
+   298  0001                    INT_MSK0_VOLTAGE_MONITOR:  equ 01h ; MASK: enable/disable Volts interrupt
+   299                          
+   300  00E1                    INT_MSK1:     equ 0E1h          ; Digital PSoC block Mask Register         (RW)
+   301  0080                    INT_MSK1_DCC13:            equ 80h ; MASK: enable/disable DCC13 block interrupt
+   302  0040                    INT_MSK1_DCC12:            equ 40h ; MASK: enable/disable DCC12 block interrupt
+   303  0020                    INT_MSK1_DBC11:            equ 20h ; MASK: enable/disable DBC11 block interrupt
+   304  0010                    INT_MSK1_DBC10:            equ 10h ; MASK: enable/disable DBC10 block interrupt
+   305  0008                    INT_MSK1_DCC03:            equ 08h ; MASK: enable/disable DCC03 block interrupt
+   306  0004                    INT_MSK1_DCC02:            equ 04h ; MASK: enable/disable DCC02 block interrupt
+   307  0002                    INT_MSK1_DBC01:            equ 02h ; MASK: enable/disable DBC01 block interrupt
+   308  0001                    INT_MSK1_DBC00:            equ 01h ; MASK: enable/disable DBC00 block interrupt
+   309                          
+   310  00DF                    INT_MSK2:     equ DFh			; Custom block Mask Register			   (RW)
+   311  0010                    INT_MSK2_SARADC:           equ 10h ; MASK: enable/disable SARADC block interrupt
+   312  0020                    INT_MSK2_CSD0:             equ 20h ; MASK: enable/disable CSD0 block interrupt
+   313  0040                    INT_MSK2_CSD1:             equ 40h ; MASK: enable/disable CSD1 block interrupt
+   314  0080                    INT_MSK2_RTC:              equ 80h ; MASK: enable/disable RTC block interrupt
+   315                          
+   316  00E2                    INT_VC:       equ 0E2h          ; Interrupt vector register                (RC)
+   317  00E3                    RES_WDT:      equ 0E3h          ; Watch Dog Timer Register                 (W)
+   318                          
+   319                          ;------------------------------------------------------
+   320                          ;  MAC Registers
+   321                          ;------------------------------------------------------
+   322                          
+   323  00E8                    MUL0_X:       equ 0E8h          ; Multiply Input X Register                (W)
+   324  00E9                    MUL0_Y:       equ 0E9h          ; Multiply Input Y Register                (W)
+   325  00EA                    MUL0_DH:      equ 0EAh          ; Multiply Result High Byte Register       (R)
+   326  00EB                    MUL0_DL:      equ 0EBh          ; Multiply Result Low Byte Register        (R)
+   327                          
+   328  00EC                    ACC0_DR1:     equ 0ECh          ; Accumulator Data Register 1              (RW)
+   329  00ED                    ACC0_DR0:     equ 0EDh          ; Accumulator Data Register 0              (RW)
+   330  00EE                    ACC0_DR3:     equ 0EEh          ; Accumulator Data Register 3              (RW)
+   331  00EF                    ACC0_DR2:     equ 0EFh          ; Accumulator Data Register 2              (RW)
+   332                          
+   333                          ; DECIMATOR Control Registers
+   334  00E6                    DEC_CR0:      equ 0E6h          ; Data Control Register 0                  (RW)
+   335  00E7                    DEC_CR1:      equ 0E7h          ; Data Control Register 1                  (RW)
+   336                          
+   337                          ;------------------------------------------------------
+   338                          ;  System Status and Control Registers
+   339                          ;
+   340                          ;  Note: The following registers are mapped into both
+   341                          ;        register bank 0 AND register bank 1.
+   342                          ;------------------------------------------------------
+   343  00F7                    CPU_F:        equ 0F7h          ; CPU Flag Register Access                 (RO)
+   344                                                             ; Use FLAG_ masks defined at top of file
+   345                          
+   346  00FD                    DAC_D:        equ 0FDh		   ; DAC Data Register                        (RW)
+   347                          
+   348  00FE                    CPU_SCR1:     equ 0FEh          ; CPU Status and Control Register #1       (#)
+   349  0080                    CPU_SCR1_IRESS:         equ 80h    ; MASK: flag, Internal Reset Status bit
+   350  0010                    CPU_SCR1_SLIMO:         equ 10h	   ; MASK: Slow IMO (internal main osc) enable
+   351  0008                    CPU_SCR1_ECO_ALWD_WR:   equ 08h    ; MASK: flag, ECO allowed has been written
+   352  0004                    CPU_SCR1_ECO_ALLOWED:   equ 04h    ; MASK: ECO allowed to be enabled
+   353  0001                    CPU_SCR1_IRAMDIS:       equ 01h    ; MASK: Disable RAM initialization on WDR
+   354                          
+   355  00FF                    CPU_SCR0:     equ 0FFh          ; CPU Status and Control Register #2       (#)
+   356  0080                    CPU_SCR0_GIE_MASK:      equ 80h    ; MASK: Global Interrupt Enable shadow
+   357  0020                    CPU_SCR0_WDRS_MASK:     equ 20h    ; MASK: Watch Dog Timer Reset
+   358  0010                    CPU_SCR0_PORS_MASK:     equ 10h    ; MASK: power-on reset bit PORS
+   359  0008                    CPU_SCR0_SLEEP_MASK:    equ 08h    ; MASK: Enable Sleep
+   360  0001                    CPU_SCR0_STOP_MASK:     equ 01h    ; MASK: Halt CPU bit
+   361                          
+   362                          ;------------------------------------------------------
+   363                          ;  Neon Capsense Digital Control Registers
+   364                          ;------------------------------------------------------
+   365  0050                    CSD0_DR0_L:				equ 50h		; Capsense 0 data low 0				(RW)
+   366  0054                    CSD0_DR0_H:				equ 54h		; Capsense 0 data high 0			(RW)
+   367  0058                    CSD1_DR0_L:				equ 58h		; Capsense 1 data low 0				(RW)
+   368  005C                    CSD1_DR0_H:				equ 5Ch		; Capsense 1 data high 0			(RW)
+   369  0051                    CSD0_DR1_L:				equ 51h		; Capsense 0 data low 1				(RW)
+   370  0055                    CSD0_DR1_H:				equ 55h		; Capsense 0 data high 1			(RW)
+   371  0059                    CSD1_DR1_L:				equ 59h		; Capsense 1 data low 1				(RW)
+   372  005D                    CSD1_DR1_H:				equ 5Dh		; Capsense 1 data high 1			(RW)
+   373  0052                    CSD0_CNT_L:				equ 52h		; Capsense 0 counter low			(RW)
+   374  0056                    CSD0_CNT_H:				equ 56h		; Capsense 0 counter high			(RW)
+   375  005A                    CSD1_CNT_L:				equ 5Ah		; Capsense 1 counter low			(RW)
+   376  005E                    CSD1_CNT_H:				equ	5Eh		; Capsense 1 counter high			(RW)
+   377  0053                    CSD0_CR0:				equ 53h		; Capsense 0 control 0				(RW)
+   378  005B                    CSD1_CR0:				equ 5Bh		; Capsense 1 control 0				(RW)
+   379  0057                    CSD0_CR1:				equ 57h		; Capsense 0 control 1				(RW)
+   380  005F                    CSD1_CR1:				equ 5Fh		; Capsense 1 control 1				(RW)
+   381                          
+   382                          ;------------------------------------------------------
+   383                          ;  Neon Analog Registers
+   384                          ;------------------------------------------------------
+   385  0065                    ASY_CR:					equ 65h		; Analog Synchronization Control	(RW)
+   386  006A                    ADC_DH:					equ 6Ah		; ADC data high						(RW)
+   387  006B                    ADC_DL:					equ 6Bh		; ADC data low						(RW)
+   388  00C8                    PWMVREF0:				equ C8h		; PWM Voltage Reference 0			(RW)
+   389  00C9                    PWMVREF1:				equ C9h		; PWM Voltage Reference 1			(RW)
+   390  00CB                    PWMSRC:					equ CBh		; PWM Source						(RW)
+   391  00CA                    IDACMODE:				equ CAh		; IDAC Mode							(RW)
+   392  00FC                    IDACR_D:				equ FCh		; Analog Mux DAC data 0				(RW)
+   393  00FD                    IDACL_D:				equ FDh		; Analog Mux DAC data 1				(RW)
+   394                          
+   395                          ;------------------------------------------------------
+   396                          ;  Neon Digital Registers
+   397                          ;------------------------------------------------------
+   398  00B7                    RDI0DSM:				equ B7h		; Row Digital Interconnect input select 0	(RW)
+   399  00BF                    RDI1DSM:				equ BFh		; Row Digital Interconnect input select 1	(RW)
+   400                          
+   401                          ;------------------------------------------------------
+   402                          ;  Neon Test Registers
+   403                          ;------------------------------------------------------
+   404  00CC                    TSCR0:					equ CCh		; Tsource 0							(RW)
+   405  00CD                    TSCMPH:					equ CDh		; TSCMP high						(RW)
+   406  00CE                    TSCMPL:					equ CEh		; TSCMP low							(RW)
+   407  00CF                    TSCR1:					equ CFh		; Tsource 1							(RW)
+   408                          
+   409                          ;;=============================================================================
+   410                          ;;      Register Space, Bank 1
+   411                          ;;=============================================================================
+   412                          
+   413                          ;------------------------------------------------
+   414                          ;  Port Registers
+   415                          ;  Note: Also see this address range in Bank 0.
+   416                          ;------------------------------------------------
+   417                          ; Port 0
+   418  0000                    PRT0DM0:      equ 00h          ; Port 0 Drive Mode 0                      (RW)
+   419  0001                    PRT0DM1:      equ 01h          ; Port 0 Drive Mode 1                      (RW)
+   420  0002                    PRT0IC0:      equ 02h          ; Port 0 Interrupt Control 0               (RW)
+   421  0003                    PRT0IC1:      equ 03h          ; Port 0 Interrupt Control 1               (RW)
+   422                          
+   423                          ; Port 1
+   424  0004                    PRT1DM0:      equ 04h          ; Port 1 Drive Mode 0                      (RW)
+   425  0005                    PRT1DM1:      equ 05h          ; Port 1 Drive Mode 1                      (RW)
+   426  0006                    PRT1IC0:      equ 06h          ; Port 1 Interrupt Control 0               (RW)
+   427  0007                    PRT1IC1:      equ 07h          ; Port 1 Interrupt Control 1               (RW)
+   428                          
+   429                          ; Port 2
+   430  0008                    PRT2DM0:      equ 08h          ; Port 2 Drive Mode 0                      (RW)
+   431  0009                    PRT2DM1:      equ 09h          ; Port 2 Drive Mode 1                      (RW)
+   432  000A                    PRT2IC0:      equ 0Ah          ; Port 2 Interrupt Control 0               (RW)
+   433  000B                    PRT2IC1:      equ 0Bh          ; Port 2 Interrupt Control 1               (RW)
+   434                          
+   435                          ; Port 3
+   436  000C                    PRT3DM0:      equ 0Ch          ; Port 3 Drive Mode 0                      (RW)
+   437  000D                    PRT3DM1:      equ 0Dh          ; Port 3 Drive Mode 1                      (RW)
+   438  000E                    PRT3IC0:      equ 0Eh          ; Port 3 Interrupt Control 0               (RW)
+   439  000F                    PRT3IC1:      equ 0Fh          ; Port 3 Interrupt Control 1               (RW)
+   440                          
+   441                          ; Port 4
+   442  0010                    PRT4DM0:      equ 10h          ; Port 4 Drive Mode 0                      (RW)
+   443  0011                    PRT4DM1:      equ 11h          ; Port 4 Drive Mode 1                      (RW)
+   444  0012                    PRT4IC0:      equ 12h          ; Port 4 Interrupt Control 0               (RW)
+   445  0013                    PRT4IC1:      equ 13h          ; Port 4 Interrupt Control 1               (RW)
+   446                          
+   447                          ;------------------------------------------------
+   448                          ;  Digital PSoC(tm) block Registers
+   449                          ;  Note: Also see this address range in Bank 0.
+   450                          ;------------------------------------------------
+   451                          
+   452                          ; Digital PSoC block 00, Basic Type C
+   453  0020                    DBC00FN:      equ 20h          ; Function Register                        (RW)
+   454  0021                    DBC00IN:      equ 21h          ;    Input Register                        (RW)
+   455  0022                    DBC00OU:      equ 22h          ;   Output Register                        (RW)
+   456  0023                    DBC00CR1:     equ 23h          ;   control & status register 1            (RW)
+   457                          
+   458                          ; Digital PSoC block 01, Basic Type C
+   459  0024                    DBC01FN:      equ 24h          ; Function Register                        (RW)
+   460  0025                    DBC01IN:      equ 25h          ;    Input Register                        (RW)
+   461  0026                    DBC01OU:      equ 26h          ;   Output Register                        (RW)
+   462  0027                    DBC01CR1:     equ 27h          ;   control & status register 1            (RW)
+   463                          
+   464                          ; Digital PSoC block 02, Communications Type C
+   465  0028                    DCC02FN:      equ 28h          ; Function Register                        (RW)
+   466  0029                    DCC02IN:      equ 29h          ;    Input Register                        (RW)
+   467  002A                    DCC02OU:      equ 2Ah          ;   Output Register                        (RW)
+   468  002B                    DBC02CR1:     equ 2Bh          ;   control & status register 1            (RW)
+   469                          
+   470                          ; Digital PSoC block 03, Communications Type C
+   471  002C                    DCC03FN:      equ 2Ch          ; Function Register                        (RW)
+   472  002D                    DCC03IN:      equ 2Dh          ;    Input Register                        (RW)
+   473  002E                    DCC03OU:      equ 2Eh          ;   Output Register                        (RW)
+   474  0029                    DBC03CR1:     equ 29h          ;   control & status register 1            (RW)
+   475                          
+   476                          ; Digital PSoC block 10, Basic Type C
+   477  0030                    DBC10FN:      equ 30h          ; Function Register                        (RW)
+   478  0031                    DBC10IN:      equ 31h          ;    Input Register                        (RW)
+   479  0032                    DBC10OU:      equ 32h          ;   Output Register                        (RW)
+   480  0033                    DBC10CR1:     equ 33h          ;   control & status register 1            (RW)
+   481                          
+   482                          ; Digital PSoC block 11, Basic Type C
+   483  0034                    DBC11FN:      equ 34h          ; Function Register                        (RW)
+   484  0035                    DBC11IN:      equ 35h          ;    Input Register                        (RW)
+   485  0036                    DBC11OU:      equ 36h          ;   Output Register                        (RW)
+   486  0037                    DBC11CR1:     equ 37h          ;   control & status register 1            (RW)
+   487                          
+   488                          ; Digital PSoC block 12, Communications Type C
+   489  0038                    DCC12FN:      equ 38h          ; Function Register                        (RW)
+   490  0039                    DCC12IN:      equ 39h          ;    Input Register                        (RW)
+   491  003A                    DCC12OU:      equ 3Ah          ;   Output Register                        (RW)
+   492  003B                    DBC12CR1:     equ 3Bh          ;   control & status register 1            (RW)
+   493                          
+   494                          ; Digital PSoC block 13, Communications Type C
+   495  003C                    DCC13FN:      equ 3Ch          ; Function Register                        (RW)
+   496  003D                    DCC13IN:      equ 3Dh          ;    Input Register                        (RW)
+   497  003E                    DCC13OU:      equ 3Eh          ;   Output Register                        (RW)
+   498  003F                    DBC13CR1:     equ 3Fh          ;   control & status register 1            (RW)
+   499                          
+   500                          ;------------------------------------------------
+   501                          ;  System and Global Resource Registers
+   502                          ;  Note: Also see this address range in Bank 0.
+   503                          ;------------------------------------------------
+   504                          
+   505  0060                    CLK_CR0:      equ 60h          ; Analog Column Clock Select Register 0    (RW)
+   506  00C0                    CLK_CR0_ACOLUMN_3:    equ C0h    ; MASK: Specify clock for analog cloumn
+   507  0030                    CLK_CR0_ACOLUMN_2:    equ 30h    ; MASK: Specify clock for analog cloumn
+   508  000C                    CLK_CR0_ACOLUMN_1:    equ 0Ch    ; MASK: Specify clock for analog cloumn
+   509  0003                    CLK_CR0_ACOLUMN_0:    equ 03h    ; MASK: Specify clock for analog cloumn
+   510                          
+   511  0061                    CLK_CR1:      equ 61h          ; Analog Clock Source Select Register 1    (RW)
+   512  0018                    CLK_CR1_ACLK1:        equ 18h    ; MASK: Digital PSoC block for analog source
+   513  0003                    CLK_CR1_ACLK0:        equ 03h    ; MASK: Digital PSoC block for analog source
+   514                          
+   515  0003                    CLK_CR1_ACLK2:        equ 03h    ; Deprecated do not use
+   516                          
+   517  0062                    ABF_CR0:      equ 62h          ; Analog Output Buffer Control Register 0  (RW)
+   518  0080                    ABF_CR0_ACOL1MUX:     equ 80h    ; MASK: Analog Column 1 Mux control
+   519                          
+   520  0063                    AMD_CR0:      equ 63h          ; Analog Modulator Control Register 0      (RW)
+   521  000F                    AMD_CR0_AMOD0:        equ 0Fh    ; MASK: Modulation source for analog column 0
+   522                          
+   523  0064                    CMP_GO_EN:    equ 64h          ; Comparator Bus To Global Out Enable      (RW)
+   524  0080                    CMP_GO_EN_GOO5:       equ 80h    ; MASK: Selected Col 1 signal to GOO5
+   525  0040                    CMP_GO_EN_GOO1:       equ 40h    ; MASK: Selected Col 1 signal to GOO1
+   526  0030                    CMP_GO_EN_SEL1:       equ 30h    ; MASK: Column 1 Signal Select
+   527  0008                    CMP_GO_EN_GOO4:       equ 08h    ; MASK: Selected Col 0 signal to GOO4
+   528  0004                    CMP_GO_EN_GOO0:       equ 04h    ; MASK: Selected Col 0 signal to GOO0
+   529  0003                    CMP_GO_EN_SEL0:       equ 03h    ; MASK: Column 0 Signal Select
+   530                          
+   531  0066                    AMD_CR1:      equ 66h          ; Analog Modulator Control Register 1      (RW)
+   532  000F                    AMD_CR1_AMOD1:        equ 0Fh    ; MASK: Modulation ctrl for analog column 1
+   533                          
+   534  0067                    ALT_CR0:      equ 67h          ; Analog Look Up Table (LUT) Register 0    (RW)
+   535  00F0                    ALT_CR0_LUT1:         equ 0F0h    ; MASK: Look up table 1 selection
+   536  000F                    ALT_CR0_LUT0:         equ 0Fh    ; MASK: Look up table 0 selection
+   537                          
+   538  006B                    CLK_CR3:      equ 6Bh          ; Analog Clock Source Control Register 3   (RW)
+   539  0040                    CLK_CR3_SYS1:         equ 40h    ; MASK: Analog Clock 1 selection
+   540  0030                    CLK_CR3_DIVCLK1:      equ 30h    ; MASK: Analog Clock 1 divider
+   541  0004                    CLK_CR3_SYS0:         equ 04h    ; MASK: Analog Clock 0 selection
+   542  0003                    CLK_CR3_DIVCLK0:      equ 03h    ; MASK: Analog Clock 0 divider
+   543                          
+   544                          ;------------------------------------------------
+   545                          ;  Global Digital Interconnects
+   546                          ;------------------------------------------------
+   547                          
+   548  00D0                    GDI_O_IN:     equ 0D0h          ; Global Dig Interconnect Odd Inputs Reg   (RW)
+   549  00D1                    GDI_E_IN:     equ 0D1h          ; Global Dig Interconnect Even Inputs Reg  (RW)
+   550  00D2                    GDI_O_OU:     equ 0D2h          ; Global Dig Interconnect Odd Outputs Reg  (RW)
+   551  00D3                    GDI_E_OU:     equ 0D3h          ; Global Dig Interconnect Even Outputs Reg (RW)
+   552                          
+   553  00A0                    GDI_O_IN_CR:  equ 0A0h          ; Global Dig Interconnect Odd Inputs Reg   (RW)
+   554  00A1                    GDI_E_IN_CR:  equ 0A1h          ; Global Dig Interconnect Even Inputs Reg  (RW)
+   555  00A2                    GDI_O_OU_CR:  equ 0A2h          ; Global Dig Interconnect Odd Outputs Reg  (RW)
+   556  00A3                    GDI_E_OU_CR:  equ 0A3h          ; Global Dig Interconnect Even Outputs Reg (RW)
+   557                          
+   558  00BB                    RDI1LT0:      equ 0BBh          ; Row 1 Look Up Table Register 0           (RW)
+   559  00BC                    RDI1LT1:      equ 0BCh          ; Row 1 Look Up Table Register 1           (RW)
+   560                          
+   561                          ;------------------------------------------------
+   562                          ;  Analog Mux Bus Port Enable Bits
+   563                          ;------------------------------------------------
+   564  00D8                    MUX_CR0:      equ 0D8h          ; Analog Mux Port 0 Bit Enables Register
+   565  00D9                    MUX_CR1:      equ 0D9h          ; Analog Mux Port 1 Bit Enables Register
+   566  00DA                    MUX_CR2:      equ 0DAh          ; Analog Mux Port 2 Bit Enables Register
+   567  00DB                    MUX_CR3:      equ 0DBh          ; Analog Mux Port 3 Bit Enables Register
+   568  00EC                    MUX_CR4:      equ 0ECh          ; Analog Mux Port 4 Bit Enables Register
+   569                          
+   570                          ;------------------------------------------------
+   571                          ;  Clock and System Control Registers
+   572                          ;------------------------------------------------
+   573                          
+   574  00DD                    OSC_GO_EN:    equ 0DDh          ; Oscillator to Global Outputs Enable Register (RW)
+   575  0080                    OSC_GO_EN_SLPINT:      equ 80h	 ; Enable Sleep Timer onto GOE[7]
+   576  0040                    OSC_GO_EN_VC3:         equ 40h    ; Enable VC3 onto GOE[6]
+   577  0020                    OSC_GO_EN_VC2:         equ 20h    ; Enable VC2 onto GOE[5]
+   578  0010                    OSC_GO_EN_VC1:         equ 10h    ; Enable VC1 onto GOE[4]
+   579  0008                    OSC_GO_EN_SYSCLKX2:    equ 08h    ; Enable 2X SysClk onto GOE[3]
+   580  0004                    OSC_GO_EN_SYSCLK:      equ 04h    ; Enable 1X SysClk onto GOE[2]
+   581  0002                    OSC_GO_EN_CLK24M:      equ 02h    ; Enable 24 MHz clock onto GOE[1]
+   582  0001                    OSC_GO_EN_CLK32K:      equ 01h    ; Enable 32 kHz clock onto GOE[0]
+   583                          
+   584  00DE                    OSC_CR4:      equ 0DEh          ; Oscillator Control Register 4            (RW)
+   585  0003                    OSC_CR4_VC3SEL:       equ 03h    ; MASK: System VC3 Clock source
+   586                          
+   587  00DF                    OSC_CR3:      equ 0DFh          ; Oscillator Control Register 3            (RW)
+   588                          
+   589  00E0                    OSC_CR0:      equ 0E0h          ; System Oscillator Control Register 0     (RW)
+   590  0080                    OSC_CR0_32K_SELECT:   equ 80h    ; MASK: Enable/Disable External XTAL Osc
+   591  0040                    OSC_CR0_PLL_MODE:     equ 40h    ; MASK: Enable/Disable PLL
+   592  0020                    OSC_CR0_NO_BUZZ:      equ 20h    ; MASK: Bandgap always powered/BUZZ bandgap
+   593  0018                    OSC_CR0_SLEEP:        equ 18h    ; MASK: Set Sleep timer freq/period
+   594  0000                    OSC_CR0_SLEEP_512Hz:  equ 00h    ;     Set sleep bits for 1.95ms period
+   595  0008                    OSC_CR0_SLEEP_64Hz:   equ 08h    ;     Set sleep bits for 15.6ms period
+   596  0010                    OSC_CR0_SLEEP_8Hz:    equ 10h    ;     Set sleep bits for 125ms period
+   597  0018                    OSC_CR0_SLEEP_1Hz:    equ 18h    ;     Set sleep bits for 1 sec period
+   598  0007                    OSC_CR0_CPU:          equ 07h    ; MASK: Set CPU Frequency
+   599  0000                    OSC_CR0_CPU_3MHz:     equ 00h    ;     set CPU Freq bits for 3MHz Operation
+   600  0001                    OSC_CR0_CPU_6MHz:     equ 01h    ;     set CPU Freq bits for 6MHz Operation
+   601  0002                    OSC_CR0_CPU_12MHz:    equ 02h    ;     set CPU Freq bits for 12MHz Operation
+   602  0003                    OSC_CR0_CPU_24MHz:    equ 03h    ;     set CPU Freq bits for 24MHz Operation
+   603  0004                    OSC_CR0_CPU_1d5MHz:   equ 04h    ;     set CPU Freq bits for 1.5MHz Operation
+   604  0005                    OSC_CR0_CPU_750kHz:   equ 05h    ;     set CPU Freq bits for 750kHz Operation
+   605  0006                    OSC_CR0_CPU_187d5kHz: equ 06h    ;     set CPU Freq bits for 187.5kHz Operation
+   606  0007                    OSC_CR0_CPU_93d7kHz:  equ 07h    ;     set CPU Freq bits for 93.7kHz Operation
+   607                          
+   608  00E1                    OSC_CR1:      equ 0E1h          ; System VC1/VC2 Divider Control Register  (RW)
+   609  00F0                    OSC_CR1_VC1:          equ 0F0h    ; MASK: System VC1 24MHz/External Clk divider
+   610  000F                    OSC_CR1_VC2:          equ 0Fh    ; MASK: System VC2 24MHz/External Clk divider
+   611                          
+   612  00E2                    OSC_CR2:      equ 0E2h          ; Oscillator Control Register 2            (RW)
+   613  0080                    OSC_CR2_PLLGAIN:      equ 80h    ; MASK: High/Low gain
+   614  0004                    OSC_CR2_EXTCLKEN:     equ 04h    ; MASK: Enable/Disable External Clock
+   615  0002                    OSC_CR2_IMODIS:       equ 02h    ; MASK: Enable/Disable System (IMO) Clock Net
+   616  0001                    OSC_CR2_SYSCLKX2DIS:  equ 01h    ; MASK: Enable/Disable 48MHz clock source
+   617                          
+   618  00E3                    VLT_CR:       equ 0E3h          ; Voltage Monitor Control Register         (RW)
+   619  0080                    VLT_CR_SMP:           equ 80h    ; MASK: Enable Switch Mode Pump
+   620  0030                    VLT_CR_PORLEV:        equ 30h    ; MASK: Mask for Power on Reset level control
+   621  0000                    VLT_CR_POR_LOW:       equ 00h    ;   Lowest  Precision Power-on Reset trip point
+   622  0010                    VLT_CR_POR_MID:       equ 10h    ;   Middle  Precision Power-on Reset trip point
+   623  0020                    VLT_CR_POR_HIGH:      equ 20h    ;   Highest Precision Power-on Reset trip point
+   624  0008                    VLT_CR_LVDTBEN:       equ 08h    ; MASK: Enable the CPU Throttle Back on LVD
+   625  0007                    VLT_CR_VM:            equ 07h    ; MASK: Mask for Voltage Monitor level setting
+   626                          
+   627  00E4                    VLT_CMP:      equ 0E4h          ; Voltage Monitor Comparators Register     (R)
+   628  0008                    VLT_CMP_NOWRITE:      equ 08h    ; MASK: Vcc below Flash Write level
+   629  0004                    VLT_CMP_PUMP:         equ 04h    ; MASK: Vcc below SMP trip level
+   630  0002                    VLT_CMP_LVD:          equ 02h    ; MASK: Vcc below LVD trip level
+   631  0001                    VLT_CMP_PPOR:         equ 01h    ; MASK: Vcc below PPOR trip level
+   632                          
+   633  00E5                    ADC0_TR:      equ 0E5h          ; ADC Column 0 Trim Register
+   634  00E6                    ADC1_TR:      equ 0E6h          ; ADC Column 1 Trim Register
+   635                          
+   636  00E8                    IMO_TR:       equ 0E8h          ; Internal Main Oscillator Trim Register   (W)
+   637  00E9                    ILO_TR:       equ 0E9h          ; Internal Low-speed Oscillator Trim       (W)
+   638  00EA                    BDG_TR:       equ 0EAh          ; Band Gap Trim Register                   (W)
+   639  00EB                    ECO_TR:       equ 0EBh          ; External Oscillator Trim Register        (W)
+   640                          
+   641  00FA                    FLS_PR1:      equ 0FAh          ; Flash Program Register 1                 (RW)
+   642  0003                    FLS_PR1_BANK:         equ 03h    ; MASK: Select Active Flash Bank
+   643                          
+   644  00FD                    DAC_CR0:       equ 0FDh          ; Analog Mux DAC Control Register 0
+   645  00DC                    DAC_CR1:       equ 0DCh          ; Analog Mux DAC Control Register 1
+   646  0008                    DAC_CR_IRANGE:        equ 08h    ; MASK: Sets the DAC Range low or high
+   647  0006                    DAC_CR_OSCMODE:       equ 06h    ; MASK: Defines the reset mode for AMux
+   648  0001                    DAC_CR_ENABLE:        equ 01h    ; MASK: Enable/Disable DAC function
+   649                          
+   650                          ;------------------------------------------------
+   651                          ;  I2C Control Registers
+   652                          ;------------------------------------------------
+   653                          
+   654  00AD                    I2C_ADDR:    equ 0ADh          ; I2C Address Register (RW)
+   655                          
+   656                          ;------------------------------------------------------
+   657                          ;  Neon Analog Registers
+   658                          ;------------------------------------------------------
+   659  0053                    VDAC50CR0:		equ 53h			; V DAC5 control 0				(RW)
+   660  0057                    VDAC51CR0:		equ 57h			; V DAC5 control 1				(RW)
+   661  00A8                    ADC_CR0:		equ A8h			; ADC control 0					(RW)
+   662  00A9                    ADC_CR1:		equ A9h			; ADC control 1					(RW)
+   663  00AA                    ADC_CR2:		equ AAh			; ADC control 2					(RW)
+   664  00AB                    ADC_CR3TRIM:	equ ABh			; ADC control 3					(RW)
+   665  00AC                    ADC_CR4:		equ ACh			; ADC control 4					(RW)
+   666  00E7                    VDAC_TRIM:		equ E7h			; V DAC trim					(RW)
+   667                          
+   668                          ;------------------------------------------------------
+   669                          ;  Neon Current Sense CMP Registers
+   670                          ;------------------------------------------------------
+   671  0050                    CMP0CR1:		equ 50h			; CMP0 control 1				(RW)
+   672  0051                    CMP0CR2:		equ 51h			; CMP0 control 2				(RW)
+   673  0054                    CMP1CR1:		equ 54h			; CMP1 control 1				(RW)
+   674  0055                    CMP1CR2:		equ 55h			; CMP1 control 2				(RW)
+   675  0058                    CSCMPCR0:		equ 58h			; CSCMP control 0				(RW)
+   676  0059                    CSCMPGOEN:		equ 59h			; CSCMO global out enable		(RW)
+   677  005A                    CSLUTCR0:		equ 5Ah			; CSLUT control 0				(RW)
+   678  005B                    CMPCOLMUX:		equ 5Bh			; CMP Column Mux				(RW)
+   679  005C                    CMPPWMCR:		equ 5Ch			; CMP PWM control				(RW)
+   680  005D                    CMPFLTCR:		equ 5Dh			; CMP filter control			(RW)
+   681  005E                    CMPCLK1:		equ 5Eh			; CMP clock 1					(RW)
+   682  005F                    CMPCLK0:		equ 5Fh			; CMP clock 0					(RW)
+   683                          
+   684                          ;------------------------------------------------------
+   685                          ;  Neon Real Time Clock Registers
+   686                          ;------------------------------------------------------
+   687  00A4                    RTCH:			equ A4h			; Real time current hour		(RW)
+   688  00A5                    RTCM:			equ A5h			; Real time current minute		(RW)
+   689  00A6                    RTCS:			equ A6h			; Real time current second		(RW)
+   690  00A7                    RTCCR:			equ A7h			; Real time clock control		(RW)
+   691                          
+   692                          ;------------------------------------------------------
+   693                          ;  Analog MUX Config Registers
+   694                          ;------------------------------------------------------
+   695                          
+   696  006A                    AMUX_CFG1:			equ 6Ah  ; Analog MUX Configuration 1
+   697  0020                    AMUX_CFG1_GOINVR:	equ 20h  ;
+   698  0010                    AMUX_CFG1_GOINVL:  	equ 10h	 ;
+   699  000C                    AMUX_CFG1_AMUXMODR:	equ 0Ch	 ;
+   700  0003                    AMUX_CFG1_AMUXMODL:	equ 03h	 ;
+   701                          
+   702                          ;;=============================================================================
+   703                          ;;      M8C System Macros
+   704                          ;;  These macros should be used when their functions are needed.
+   705                          ;;=============================================================================
+   706                          
+   707                          ;----------------------------------------------------
+   708                          ;  Swapping Register Banks
+   709                          ;----------------------------------------------------
+   710                              macro M8C_SetBank0
+   711                              and   F, ~FLAG_XIO_MASK
+   712  3C9A                        endm
+   713                          
+   714                              macro M8C_SetBank1
+   715                              or    F, FLAG_XIO_MASK
+   716  3C9A                        endm
+   717                          
+   718                          ;----------------------------------------------------
+   719                          ;  Global Interrupt Enable/Disable
+   720                          ;----------------------------------------------------
+   721                              macro M8C_EnableGInt
+   722                              or    F, FLAG_GLOBAL_IE
+   723  3C9A                        endm
+   724                          
+   725                              macro M8C_DisableGInt
+   726                              and   F, ~FLAG_GLOBAL_IE
+   727  3C9A                        endm
+   728                          
+   729                          ;----------------------------------------------------
+   730                          ;  Enable/Disable Interrupt Mask
+   731                          ;
+   732                          ;  Use the following macros to enable/disable
+   733                          ;  bits in the Interrupt mask registers,
+   734                          ;  INT_MSK0, INT_MSK1 or INT_MSK3.
+   735                          ;
+   736                          ;  Usage:    M8C_DisableIntMask INT_MSKN, MASK
+   737                          ;            M8C_EnableIntMask  INT_MSKN, MASK
+   738                          ;
+   739                          ;  where INT_MSKN is INT_MSK0, INT_MSK1 or INT_MSK3
+   740                          ;        and MASK is the bit set to enable or disable
+   741                          ;----------------------------------------------------
+   742                          ; Disable Interrupt Bit Mask(s)
+   743                              macro M8C_DisableIntMask
+   744                              and   reg[@0], ~@1              ; disable specified interrupt enable bit
+   745  3C9A                        endm
+   746                          
+   747                          ; Enable Interrupt Bit Mask(s)
+   748                              macro M8C_EnableIntMask
+   749                              or    reg[@0], @1               ; enable specified interrupt enable bit
+   750  3C9A                        endm
+   751                          
+   752                          ;----------------------------------------------------
+   753                          ;  Clear Posted Interrupt Flag Mask
+   754                          ;
+   755                          ;  Use the following macros to clear the
+   756                          ;  bits in the Interrupt Clear registers,
+   757                          ;  INT_CLR0, INT_CLR1 or INT_CLR3.
+   758                          ;  Usage:    M8C_ClearIntFlag INT_CLRN, MASK
+   759                          ;
+   760                          ;  where INT_MSKN is INT_CLR0, INT_CLR1 or INT_CLR3
+   761                          ;        and MASK is the bit set to enable or disable
+   762                          ;----------------------------------------------------
+   763                              macro M8C_ClearIntFlag
+   764                              mov   reg[@0], ~@1              ; clear specified interrupt enable bit
+   765  3C9A                        endm
+   766                          
+   767                          ;----------------------------------------------------
+   768                          ;  Power-On Reset & WatchDog Timer Functions
+   769                          ;----------------------------------------------------
+   770                              macro M8C_EnableWatchDog
+   771                              and   reg[CPU_SCR0], ~CPU_SCR0_PORS_MASK
+   772  3C9A                        endm
+   773                          
+   774                              macro M8C_ClearWDT
+   775                              mov   reg[RES_WDT], 00h
+   776  3C9A                        endm
+   777                          
+   778                              macro M8C_ClearWDTAndSleep
+   779                              mov   reg[RES_WDT], 38h
+   780  3C9A                        endm
+   781                          
+   782                          ;----------------------------------------------------
+   783                          ;  Sleep, CPU Stop & Software Reset
+   784                          ;----------------------------------------------------
+   785                              macro M8C_Sleep
+   786                              or    reg[CPU_SCR0], CPU_SCR0_SLEEP_MASK
+   787                              ; The next instruction to be executed depends on the state of the
+   788                              ; various interrupt enable bits. If some interrupts are enabled
+   789                              ; and the global interrupts are disabled, the next instruction will
+   790                              ; be the one that follows the invocation of this macro. If global
+   791                              ; interrupts are also enabled then the next instruction will be
+   792                              ; from the interrupt vector table. If no interrupts are enabled
+   793                              ; then the CPU sleeps forever.
+   794  3C9A                        endm
+   795                          
+   796                              macro M8C_Stop
+   797                              ; In general, you probably don't want to do this, but here's how:
+   798                              or    reg[CPU_SCR0], CPU_SCR0_STOP_MASK
+   799                              ; Next instruction to be executed is located in the interrupt
+   800                              ; vector table entry for Power-On Reset.
+   801  3C9A                        endm
+   802                          
+   803                              macro M8C_Reset
+   804                              ; Restore CPU to the power-on reset state.
+   805                              mov A, 0
+   806                              SSC
+   807                              ; Next non-supervisor instruction will be at interrupt vector 0.
+   808  3C9A                        endm
+   809                          
+   810                          ;----------------------------------------------------
+   811                          ; ImageCraft Code Compressor Actions
+   812                          ;----------------------------------------------------
+   813                              ; Suspend Code Compressor
+   814                              ; Must not span a RET or RETI instruction
+   815                              ; without resuming code compression
+   816                              macro Suspend_CodeCompressor
+   817                              or   F, 0
+   818  3C9A                        endm
+   819                          
+   820                              ; Resume Code Compression
+   821                              macro Resume_CodeCompressor
+   822                              add  SP, 0
+   823  3C9A                        endm
+     1                          ;;*****************************************************************************
+     2                          ;;*****************************************************************************
+     3                          ;;  FILENAME: SAR10.inc
+     4                          ;;   Version: 2.00, Updated on 2013/5/19 at 10:39:9
+     5                          ;;  Generated by PSoC Designer 5.4.2946
+     6                          ;;
+     7                          ;;  DESCRIPTION: Assembler declarations for the SAR10 user module interface
+     8                          ;;-----------------------------------------------------------------------------
+     9                          ;;  Copyright (c) Cypress Semiconductor 2013. All Rights Reserved.
+    10                          ;;*****************************************************************************
+    11                          ;;*****************************************************************************
+    12                          
+    13                          include "m8c.inc"
+    14                          
+    15                          
+    16                          ;--------------------------------------------------
+    17                          ; Constants for SAR10 API's.
+    18                          ;--------------------------------------------------
+    19                          
+    20  0001                    SAR10_SAR_CR0_REG_START_BIT:                               equ 0x01    ; Control register start bit
+    21  0078                    SAR10_CHN_SEL_MASK:                                        equ 0x78
+    22  0030                    SAR10_TRG_SEL_MASK:                                        equ 0x30
+    23  0001                    SAR10_ALIGN_EN_MASK:                                       equ 0x01
+    24  000E                    SAR10_CLK_SEL_MASK:                                        equ 0x0E
+    25  0008                    SAR10_FREE_RUN_MASK:                                       equ 0x08
+    26  0004                    SAR10_READY_MASK:                                          equ 0x04
+    27  0002                    SAR10_SAR_CR0_REG_SW_TRIG_BIT:                             equ 0x02
+    28                          
+    29  00DF                    SAR10_INT_REG:                                             equ 0x0df
+    30  0010                    SAR10_INT_SAR_MASK:                                        equ 0x10
+    31                          ;--------------------------------------------------
+    32                          ; SAR10 channel selection definitions
+    33                          ;--------------------------------------------------
+    34  0000                    SAR10_CHS_P00:                                             equ   (00h)
+    35  0008                    SAR10_CHS_P01:                                             equ   (08h)
+    36  0010                    SAR10_CHS_P02:                                             equ   (10h)
+    37  0018                    SAR10_CHS_P03:                                             equ   (18h)
+    38  0020                    SAR10_CHS_P04:                                             equ   (20h)
+    39  0028                    SAR10_CHS_P05:                                             equ   (28h)
+    40  0030                    SAR10_CHS_P06:                                             equ   (30h)
+    41  0038                    SAR10_CHS_P07:                                             equ   (38h)
+    42  0060                    SAR10_CHS_AMUX0:                                           equ   (60h)
+    43  0068                    SAR10_CHS_AMUX1:                                           equ   (68h)
+    44                          ;for compatibly with olds projects
+    45  0060                    SAR10_CHS_AMUXL:                                           equ   (60h)
+    46  0068                    SAR10_CHS_AMUXR:                                           equ   (68h)
+    47                          
+    48                          ;--------------------------------------------------
+    49                          ; SAR10 trigger source definitions
+    50                          ;--------------------------------------------------
+    51  0000                    SAR10_SRC_TGRL:                                            equ   (00h)
+    52  0010                    SAR10_SRC_TGRH:                                            equ   (10h)
+    53  0020                    SAR10_SRC_TGR16:                                           equ   (20h)
+    54  0030                    SAR10_SRC_TGRINCMP:                                        equ   (30h)
+    55                          
+    56                          ;--------------------------------------------------
+    57                          ; SAR10 auto trigger definitions
+    58                          ;--------------------------------------------------
+    59  0001                    SAR10_AUTOTGR_ENABLE:                                      equ   (01h)
+    60  0000                    SAR10_AUTOTGR_DISABLE:                                     equ   (00h)
+    61                          
+    62                          ;--------------------------------------------------
+    63                          ; SAR10 clock selection definitions
+    64                          ;--------------------------------------------------
+    65  0000                    SAR10_SYSCLK_2:                                            equ   (00h)
+    66  0002                    SAR10_SYSCLK_4:                                            equ   (02h)
+    67  0004                    SAR10_SYSCLK_6:                                            equ   (04h)
+    68  0006                    SAR10_SYSCLK_8:                                            equ   (06h)
+    69  0008                    SAR10_SYSCLK_12:                                           equ   (08h)
+    70  000A                    SAR10_SYSCLK_16:                                           equ   (0Ah)
+    71  000C                    SAR10_SYSCLK_32:                                           equ   (0Ch)
+    72  000E                    SAR10_SYSCLK_64:                                           equ   (0Eh)
+    73                          
+    74                          ;--------------------------------------------------
+    75                          ; SAR10 run mode selection definitions
+    76                          ;--------------------------------------------------
+    77  0000                    SAR10_ONESHOT:                                             equ   (00h)
+    78  0008                    SAR10_FREERUN:                                             equ   (08h)
+    79                          
+    80                          ;--------------------------------------------------
+    81                          ; SAR10 definitions
+    82                          ;--------------------------------------------------
+    83  0000                    SAR10_Justify:                                             equ 0h
+    84                          
+    85                          ;--------------------------------------------------
+    86                          ; Register Address Constants for SAR10
+    87                          ;--------------------------------------------------
+    88                          
+    89  00A8                    SAR10_SAR_CR0_REG:                             equ 0xa8   ; SAR Control_0 register
+    90  00A9                    SAR10_SAR_CR1_REG:                             equ 0xa9   ; SAR Control_1 register
+    91  00AA                    SAR10_SAR_CR2_REG:                             equ 0xaa   ; SAR Control_2 register
+    92  006A                    SAR10_SAR_DH_REG:                              equ 0x6a    ; SAR Data (MSB) register
+    93  006B                    SAR10_SAR_DL_REG:                              equ 0x6b    ; SAR Data (LSB) register
+    94                          
+    95                          ;--------------------------------------------------
+    96                          ; SAR10 Macro 'Functions'
+    97                          ;--------------------------------------------------
+    98                          
+    99                             macro SAR10_Start_M
+   100                             or    reg[SAR10_SAR_CR0_REG],  SAR10_SAR_CR0_REG_START_BIT
+   101  3C9A                       endm
+   102                          
+   103                             macro SAR10_Stop_M
+   104                             and   reg[SAR10_SAR_CR0_REG], ~SAR10_SAR_CR0_REG_START_BIT
+   105  3C9A                       endm
+   106                          
+   107                             macro SAR10_EnableInt_M
+   108                             M8C_EnableIntMask SAR10_INT_REG, SAR10_INT_SAR_MASK
+   109  3C9A                       endm
+   110                          
+   111                             macro SAR10_DisableInt_M
+   112                             M8C_DisableIntMask SAR10_INT_REG, SAR10_INT_SAR_MASK
+   113  3C9A                       endm
+     1                          ;;*****************************************************************************
+     2                          ;;*****************************************************************************
+     3                          ;;  FILENAME: SAR10INT.asm
+     4                          ;;   Version: 2.00, Updated on 2013/5/19 at 10:39:9
+     5                          ;;  Generated by PSoC Designer 5.4.2946
+     6                          ;;
+     7                          ;;  DESCRIPTION: SAR10 Interrupt Service Routine
+     8                          ;;-----------------------------------------------------------------------------
+     9                          ;;  Copyright (c) Cypress Semiconductor 2013. All Rights Reserved.
+    10                          ;;*****************************************************************************
+    11                          ;;*****************************************************************************
+    12                          
+    13                          include "m8c.inc"
+    14                          include "memory.inc"
+    15                          include "SAR10.inc"
+    16                          
+    17                          ;-----------------------------------------------
+    18                          ;  Global Symbols
+    19                          ;-----------------------------------------------
+    20                          export  _SAR10_ISR
+    21                          
+    22                          
+    23                          AREA InterruptRAM (RAM,REL,CON)
+    24                             
+    25                          ;@PSoC_UserCode_INIT@ (Do not change this line.)
+    26                          ;---------------------------------------------------
+    27                          ; Insert your custom declarations below this banner
+    28                          ;---------------------------------------------------
+    29                          
+    30                          ;------------------------
+    31                          ; Includes
+    32                          ;------------------------
+    33                          
+    34                          	
+    35                          ;------------------------
+    36                          ;  Constant Definitions
+    37                          ;------------------------
+    38                          
+    39                          
+    40                          ;------------------------
+    41                          ; Variable Allocation
+    42                          ;------------------------
+    43                          
+    44                          ;---------------------------------------------------
+    45                          ; Insert your custom declarations above this banner
+    46                          ;---------------------------------------------------
+    47                          ;@PSoC_UserCode_END@ (Do not change this line.)
+    48                          
+    49                          
+    50                          AREA UserModules (ROM, REL)
+    51                          
+    52                          ;-----------------------------------------------------------------------------
+    53                          ;  FUNCTION NAME: _SAR10_ISR
+    54                          ;
+    55                          ;  DESCRIPTION: Unless modified, this implements only a null handler stub.
+    56                          ;
+    57                          ;-----------------------------------------------------------------------------
+    58                          ;
+    59                          
+    60  2E80                    _SAR10_ISR:
+    61                          
+    62                             ;@PSoC_UserCode_BODY@ (Do not change this line.)
+    63                             ;---------------------------------------------------
+    64                             ; Insert your custom assembly code below this banner
+    65                             ;---------------------------------------------------
+    66                             ;   NOTE: interrupt service routines must preserve
+    67                             ;   the values of the A and X CPU registers.
+    68                             
+    69                             ;---------------------------------------------------
+    70                             ; Insert your custom assembly code above this banner
+    71                             ;---------------------------------------------------
+    72                             
+    73                             ;---------------------------------------------------
+    74                             ; Insert a lcall to a C function below this banner
+    75                             ; and un-comment the lines between these banners
+    76                             ;---------------------------------------------------
+    77                             
+    78                             ;PRESERVE_CPU_CONTEXT
+    79                             ;lcall _My_C_Function
+    80                             ;RESTORE_CPU_CONTEXT
+    81                             
+    82                             ;---------------------------------------------------
+    83                             ; Insert a lcall to a C function above this banner
+    84                             ; and un-comment the lines between these banners
+    85                             ;---------------------------------------------------
+    86                             ;@PSoC_UserCode_END@ (Do not change this line.)
+    87                          
+    88  2E80  7E                   reti
+
+
+HI-TECH Software Macro Assembler (PSoC MCU) V9.61
+Symbol Table                                                                                               Wed Jun 10 11:39:23 2015
+
+                       HITECH 0002                     _SAR10_ISR 2E80                      TOOLCHAIN 0002  
