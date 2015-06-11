@@ -2007,16 +2007,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DisBit `Cuc -> 0 `x e ]
 [i _DisBit
 :U ..
--> -> 191 `i `uc
--> -> 239 `i `uc
--> -> 251 `i `uc
--> -> 254 `i `uc
 -> -> 127 `i `uc
 -> -> 223 `i `uc
 -> -> 247 `i `uc
 -> -> 253 `i `uc
+-> -> 191 `i `uc
+-> -> 239 `i `uc
+-> -> 251 `i `uc
+-> -> 254 `i `uc
 ..
-][; ;t74HC595.h: 23: const unsigned char DisBit[]={0xbf,0xef,0xfb,0xfe,0x7f,0xdf,0xf7,0xfd};
+][; ;t74HC595.h: 23: const unsigned char DisBit[]={0x7f,0xdf,0xf7,0xfd,0xbf,0xef,0xfb,0xfe};
 
 "31
 [v _DisplayBuf `uc -> 3 `i e ]

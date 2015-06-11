@@ -53,25 +53,25 @@ void ShowPMxx(unsigned int pm)
 		DisplayContent[k+1] = DigitArray[DisplayNum[k]];
 		DisplayContent[k+5] = DigitArray[DisplayNum[k]];
 	}
-	/*
+	
 	if (pm <= 50)
-	{
+	{	//green
 		IndexStart = 0;
 		IndexEnd   = 4;
 	}
 	else
 	{
 		if (pm <= 150)
-		{
+		{	//red
 			IndexStart = 0;
 			IndexEnd   = 8;
 		}
 		else
-		{
+		{	//yellow
 			IndexStart = 4;
 			IndexEnd   = 8;
 		}
-	}*/
+	}
 }
 
 void ShowHumiTemp(signed char value)
@@ -79,7 +79,7 @@ void ShowHumiTemp(signed char value)
 	signed char temp = value;
 	unsigned char index;
 	
-//	DisplayContent[1] = 0xffff;
+	DisplayContent[1] = 0xffff;
 	DisplayContent[5] = 0xffff;
 	
 	if (temp < 0)
@@ -95,36 +95,37 @@ void ShowHumiTemp(signed char value)
 	index = temp/10;
 	if(index)
 	{
-//		DisplayContent[2] = DigitArray[index];
+		DisplayContent[2] = DigitArray[index];
 		DisplayContent[6] = DigitArray[index];
 	}
 	else
 	{
-//		DisplayContent[2] = 0xffff;
+		DisplayContent[2] = 0xffff;
 		DisplayContent[6] = 0xffff;
 	}
 	
 	index = temp%10;
-//	DisplayContent[3] = DigitArray[index];
+	DisplayContent[3] = DigitArray[index];
 	DisplayContent[7] = DigitArray[index];
 	
 	if (temp < 0)
 	{
 		if (DisplayContent[2] == 0xffff)
 		{
-//			DisplayContent[2] == DIGIT_MINUS;
+			DisplayContent[2] == DIGIT_MINUS;
 			DisplayContent[6] == DIGIT_MINUS;
 		}
 		else 
 		{
-//			DisplayContent[1] == DIGIT_MINUS;
+			DisplayContent[1] == DIGIT_MINUS;
 			DisplayContent[5] == DIGIT_MINUS;
 		}
 	}
-	/*
+	
+	//green
 	IndexStart = 0;
 	IndexEnd   = 4;
-	*/
+	
 }
 
 void LED_Display(void)
@@ -143,7 +144,7 @@ void LED_Display(void)
 		{
 			if (DisplayItem == TEMPERATURE)
 			{
-//				DisplayContent[0] = DIGIT_C;
+				DisplayContent[0] = DIGIT_C;
 				DisplayContent[4] = DIGIT_C;
 				
 				ShowHumiTemp(Temperature);
@@ -154,7 +155,7 @@ void LED_Display(void)
 			{
 				if (DisplayItem == HUMIDITY)
 				{
-	//				DisplayContent[0] = DIGIT_H;
+					DisplayContent[0] = DIGIT_H;
 					DisplayContent[4] = DIGIT_H;
 					
 					ShowHumiTemp(Humidity);

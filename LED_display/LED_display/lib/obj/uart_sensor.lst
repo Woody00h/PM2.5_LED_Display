@@ -1549,13 +1549,13 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    173                          ;    responsibility to perserve their values across calls to fastcall16 
    174                          ;    functions.
    175                          ;
-   176  3032                     UART_Sensor_EnableInt:
-   177  3032                    _UART_Sensor_EnableInt:
+   176  2FB7                     UART_Sensor_EnableInt:
+   177  2FB7                    _UART_Sensor_EnableInt:
    178                             RAM_PROLOGUE RAM_USE_CLASS_1
-   179  3032  43 E1 04             M8C_EnableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
-   180  3035  43 E1 08             M8C_EnableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
+   179  2FB7  43 E1 04             M8C_EnableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
+   180  2FBA  43 E1 08             M8C_EnableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
    181                             RAM_EPILOGUE RAM_USE_CLASS_1
-   182  3038  7F                   ret
+   182  2FBD  7F                   ret
    183                          .ENDSECTION
    184                          
    185                              
@@ -1581,13 +1581,13 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    205                          ;    responsibility to perserve their values across calls to fastcall16 
    206                          ;    functions.
    207                          ;
-   208  3039                     UART_Sensor_DisableInt:
-   209  3039                    _UART_Sensor_DisableInt:
+   208  2FBE                     UART_Sensor_DisableInt:
+   209  2FBE                    _UART_Sensor_DisableInt:
    210                             RAM_PROLOGUE RAM_USE_CLASS_1
-   211  3039  41 E1 FB             M8C_DisableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
-   212  303C  41 E1 F7             M8C_DisableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
+   211  2FBE  41 E1 FB             M8C_DisableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
+   212  2FC1  41 E1 F7             M8C_DisableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
    213                             RAM_EPILOGUE RAM_USE_CLASS_1
-   214  303F  7F                   ret
+   214  2FC4  7F                   ret
    215                          .ENDSECTION
    216                          
    217                          
@@ -1617,22 +1617,22 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    241                          ;     Sets the TX interrupt mode bit to define whether the interrupt occurs
    242                          ;     on TX register empty or TX transmit complete
    243                          ;
-   244  3040                     UART_Sensor_SetTxIntMode:
-   245  3040                    _UART_Sensor_SetTxIntMode:
+   244  2FC5                     UART_Sensor_SetTxIntMode:
+   245  2FC5                    _UART_Sensor_SetTxIntMode:
    246                             RAM_PROLOGUE RAM_USE_CLASS_1
-   247  3040  71 10                M8C_SetBank1
-   248  3042  21 01                and   A, UART_Sensor_INT_MODE_TX_COMPLETE
-   249  3044  A007                 jz    .SetModeRegEmpty
-   250  3046  43 28 10             or    REG[UART_Sensor_TX_FUNC_REG], bfFUNCTION_REG_TX_INT_MODE_BIT
-   251  3049  70 EF                M8C_SetBank0
+   247  2FC5  71 10                M8C_SetBank1
+   248  2FC7  21 01                and   A, UART_Sensor_INT_MODE_TX_COMPLETE
+   249  2FC9  A007                 jz    .SetModeRegEmpty
+   250  2FCB  43 28 10             or    REG[UART_Sensor_TX_FUNC_REG], bfFUNCTION_REG_TX_INT_MODE_BIT
+   251  2FCE  70 EF                M8C_SetBank0
    252                             RAM_EPILOGUE RAM_USE_CLASS_1
-   253  304B  7F                   ret
+   253  2FD0  7F                   ret
    254                          
-   255  304C                    .SetModeRegEmpty:
-   256  304C  41 28 EF             and   REG[UART_Sensor_TX_FUNC_REG], ~bfFUNCTION_REG_TX_INT_MODE_BIT
-   257  304F  70 EF                M8C_SetBank0
+   255  2FD1                    .SetModeRegEmpty:
+   256  2FD1  41 28 EF             and   REG[UART_Sensor_TX_FUNC_REG], ~bfFUNCTION_REG_TX_INT_MODE_BIT
+   257  2FD4  70 EF                M8C_SetBank0
    258                             RAM_EPILOGUE RAM_USE_CLASS_1
-   259  3051  7F                   ret
+   259  2FD6  7F                   ret
    260                          .ENDSECTION
    261                          
    262                          
@@ -1658,19 +1658,19 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    282                          ;    responsibility to perserve their values across calls to fastcall16 
    283                          ;    functions.
    284                          ;
-   285  3052                     UART_Sensor_Start:
-   286  3052                    _UART_Sensor_Start:
+   285  2FD7                     UART_Sensor_Start:
+   286  2FD7                    _UART_Sensor_Start:
    287                             RAM_PROLOGUE RAM_USE_CLASS_1
    288                             ; Note, Proxy Class 4 only if receive buffer used; otherwise Proxy Class 1.
    289                          
-   290  3052  29 01                or    A, bfCONTROL_REG_START_BIT
-   291  3054  60 2B                mov   REG[UART_Sensor_TX_CONTROL_REG], A
-   292  3056  60 2F                mov   REG[UART_Sensor_RX_CONTROL_REG], A
+   290  2FD7  29 01                or    A, bfCONTROL_REG_START_BIT
+   291  2FD9  60 2B                mov   REG[UART_Sensor_TX_CONTROL_REG], A
+   292  2FDB  60 2F                mov   REG[UART_Sensor_RX_CONTROL_REG], A
    293                          IF ( UART_Sensor_RXBUF_ENABLE )
    294                             call  _UART_Sensor_CmdReset
    295                          ENDIF
    296                             RAM_EPILOGUE RAM_USE_CLASS_1
-   297  3058  7F                   ret
+   297  2FDD  7F                   ret
    298                          .ENDSECTION
    299                          
    300                          
@@ -1695,13 +1695,13 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    319                          ;    responsibility to perserve their values across calls to fastcall16 
    320                          ;    functions.
    321                          ;
-   322  3059                     UART_Sensor_Stop:
-   323  3059                    _UART_Sensor_Stop:
+   322  2FDE                     UART_Sensor_Stop:
+   323  2FDE                    _UART_Sensor_Stop:
    324                             RAM_PROLOGUE RAM_USE_CLASS_1
-   325  3059  41 2B FE             and   REG[UART_Sensor_TX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
-   326  305C  41 2F FE             and   REG[UART_Sensor_RX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
+   325  2FDE  41 2B FE             and   REG[UART_Sensor_TX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
+   326  2FE1  41 2F FE             and   REG[UART_Sensor_RX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
    327                             RAM_EPILOGUE RAM_USE_CLASS_1
-   328  305F  7F                   ret
+   328  2FE4  7F                   ret
    329                          .ENDSECTION
    330                          
    331                          
@@ -1726,12 +1726,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    350                          ;    responsibility to perserve their values across calls to fastcall16 
    351                          ;    functions.
    352                          ;
-   353  3060                     UART_Sensor_SendData:
-   354  3060                    _UART_Sensor_SendData:
+   353  2FE5                     UART_Sensor_SendData:
+   354  2FE5                    _UART_Sensor_SendData:
    355                             RAM_PROLOGUE RAM_USE_CLASS_1
-   356  3060  60 29                mov REG[UART_Sensor_TX_BUFFER_REG], A
+   356  2FE5  60 29                mov REG[UART_Sensor_TX_BUFFER_REG], A
    357                             RAM_EPILOGUE RAM_USE_CLASS_1
-   358  3062  7F                   ret
+   358  2FE7  7F                   ret
    359                          .ENDSECTION
    360                          
    361                          
@@ -1757,14 +1757,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    381                          ;    responsibility to perserve their values across calls to fastcall16 
    382                          ;    functions.
    383                          ;
-   384  3063                     UART_Sensor_bReadTxStatus:
-   385  3063                    _UART_Sensor_bReadTxStatus:
-   386  3063                     bUART_Sensor_ReadTxStatus:                      ; For backwards compatibility only
-   387  3063                    _bUART_Sensor_ReadTxStatus:                      ; For backwards compatibility only
+   384  2FE8                     UART_Sensor_bReadTxStatus:
+   385  2FE8                    _UART_Sensor_bReadTxStatus:
+   386  2FE8                     bUART_Sensor_ReadTxStatus:                      ; For backwards compatibility only
+   387  2FE8                    _bUART_Sensor_ReadTxStatus:                      ; For backwards compatibility only
    388                             RAM_PROLOGUE RAM_USE_CLASS_1
-   389  3063  5D 2B                mov A,  REG[UART_Sensor_TX_CONTROL_REG]
+   389  2FE8  5D 2B                mov A,  REG[UART_Sensor_TX_CONTROL_REG]
    390                             RAM_EPILOGUE RAM_USE_CLASS_1
-   391  3065  7F                   ret
+   391  2FEA  7F                   ret
    392                          .ENDSECTION
    393                          
    394                          
@@ -1790,14 +1790,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    414                          ;    responsibility to perserve their values across calls to fastcall16 
    415                          ;    functions.
    416                          ;
-   417  3066                     UART_Sensor_bReadRxData:
-   418  3066                    _UART_Sensor_bReadRxData:
-   419  3066                     bUART_Sensor_ReadRxData:                        ; For backwards compatibility only
-   420  3066                    _bUART_Sensor_ReadRxData:                        ; For backwards compatibility only
+   417  2FEB                     UART_Sensor_bReadRxData:
+   418  2FEB                    _UART_Sensor_bReadRxData:
+   419  2FEB                     bUART_Sensor_ReadRxData:                        ; For backwards compatibility only
+   420  2FEB                    _bUART_Sensor_ReadRxData:                        ; For backwards compatibility only
    421                             RAM_PROLOGUE RAM_USE_CLASS_1
-   422  3066  5D 2E                mov A, REG[UART_Sensor_RX_BUFFER_REG]
+   422  2FEB  5D 2E                mov A, REG[UART_Sensor_RX_BUFFER_REG]
    423                             RAM_EPILOGUE RAM_USE_CLASS_1
-   424  3068  7F                   ret
+   424  2FED  7F                   ret
    425                          .ENDSECTION
    426                          
    427                          
@@ -1824,14 +1824,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    448                          ;    responsibility to perserve their values across calls to fastcall16 
    449                          ;    functions.
    450                          ;
-   451  3069                     UART_Sensor_bReadRxStatus:
-   452  3069                    _UART_Sensor_bReadRxStatus:
-   453  3069                     bUART_Sensor_ReadRxStatus:                      ; For backwards compatibility only
-   454  3069                    _bUART_Sensor_ReadRxStatus:                      ; For backwards compatibility only
+   451  2FEE                     UART_Sensor_bReadRxStatus:
+   452  2FEE                    _UART_Sensor_bReadRxStatus:
+   453  2FEE                     bUART_Sensor_ReadRxStatus:                      ; For backwards compatibility only
+   454  2FEE                    _bUART_Sensor_ReadRxStatus:                      ; For backwards compatibility only
    455                             RAM_PROLOGUE RAM_USE_CLASS_1
-   456  3069  5D 2F                mov A,  REG[UART_Sensor_RX_CONTROL_REG]
+   456  2FEE  5D 2F                mov A,  REG[UART_Sensor_RX_CONTROL_REG]
    457                             RAM_EPILOGUE RAM_USE_CLASS_1
-   458  306B  7F                   ret
+   458  2FF0  7F                   ret
    459                          .ENDSECTION
    460                          
    461                          
@@ -1858,25 +1858,25 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    482                          ;    responsibility to perserve their values across calls to fastcall16 
    483                          ;    functions.
    484                          ;
-   485  306C                     UART_Sensor_TxIntMode:
-   486  306C                    _UART_Sensor_TxIntMode:
+   485  2FF1                     UART_Sensor_TxIntMode:
+   486  2FF1                    _UART_Sensor_TxIntMode:
    487                             RAM_PROLOGUE RAM_USE_CLASS_1
    488                          
-   489  306C  21 01                and  A,UART_Sensor_INT_MODE_TX_COMPLETE
-   490  306E  71 10                M8C_SetBank1
-   491  3070  39 01                cmp  A,UART_Sensor_INT_MODE_TX_COMPLETE
-   492  3072  A006                 jz   .SetTxCmpMode
+   489  2FF1  21 01                and  A,UART_Sensor_INT_MODE_TX_COMPLETE
+   490  2FF3  71 10                M8C_SetBank1
+   491  2FF5  39 01                cmp  A,UART_Sensor_INT_MODE_TX_COMPLETE
+   492  2FF7  A006                 jz   .SetTxCmpMode
    493                          
-   494  3074  41 28 EF             and  reg[UART_Sensor_TX_FUNC_REG],0xEF        ; Set Interrupt on Tx_Reg_Empty
-   495  3077  8004                 jmp  .TxIntMode_End
+   494  2FF9  41 28 EF             and  reg[UART_Sensor_TX_FUNC_REG],0xEF        ; Set Interrupt on Tx_Reg_Empty
+   495  2FFC  8004                 jmp  .TxIntMode_End
    496                          
-   497  3079                    .SetTxCmpMode:                                       ; Set Interrupt on TX Complete
-   498  3079  43 28 10             or   reg[UART_Sensor_TX_FUNC_REG],0x10
+   497  2FFE                    .SetTxCmpMode:                                       ; Set Interrupt on TX Complete
+   498  2FFE  43 28 10             or   reg[UART_Sensor_TX_FUNC_REG],0x10
    499                          
-   500  307C                    .TxIntMode_End:
-   501  307C  70 EF                M8C_SetBank0
+   500  3001                    .TxIntMode_End:
+   501  3001  70 EF                M8C_SetBank0
    502                             RAM_EPILOGUE RAM_USE_CLASS_1
-   503  307E  7F                   ret
+   503  3003  7F                   ret
    504                          .ENDSECTION
    505                          
    506                              
@@ -1905,34 +1905,34 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    529                          ;     Set or Clears the Tx/Rx user module interrupt enable mask bit in the TX
    530                          ;     and RX block.
    531                          ;
-   532  307F                     UART_Sensor_IntCntl:
-   533  307F                    _UART_Sensor_IntCntl:
+   532  3004                     UART_Sensor_IntCntl:
+   533  3004                    _UART_Sensor_IntCntl:
    534                             RAM_PROLOGUE RAM_USE_CLASS_1
    535                          
-   536  307F  08                   push A
-   537  3080  21 01                and  A,UART_Sensor_ENABLE_RX_INT
-   538  3082  A006                 jz   .DisRxInt
+   536  3004  08                   push A
+   537  3005  21 01                and  A,UART_Sensor_ENABLE_RX_INT
+   538  3007  A006                 jz   .DisRxInt
    539                               ; Enable Rx Interrupt
-   540  3084  43 E1 08             M8C_EnableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
-   541  3087  8004                 jmp  .CheckTxInt
-   542  3089                    .DisRxInt:
+   540  3009  43 E1 08             M8C_EnableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
+   541  300C  8004                 jmp  .CheckTxInt
+   542  300E                    .DisRxInt:
    543                               ; Disable Rx Interrupt
-   544  3089  41 E1 F7             M8C_DisableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
+   544  300E  41 E1 F7             M8C_DisableIntMask UART_Sensor_RX_INT_REG, UART_Sensor_RX_INT_MASK
    545                          
-   546  308C                    .CheckTxInt:
-   547  308C  18                   pop  A
-   548  308D  21 02                and  A,UART_Sensor_ENABLE_TX_INT
-   549  308F  A006                 jz   .DisTxInt
+   546  3011                    .CheckTxInt:
+   547  3011  18                   pop  A
+   548  3012  21 02                and  A,UART_Sensor_ENABLE_TX_INT
+   549  3014  A006                 jz   .DisTxInt
    550                               ; Enable Tx Interrupt
-   551  3091  43 E1 04             M8C_EnableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
-   552  3094  8004                 jmp  .End_IntCntl
-   553  3096                    .DisTxInt:
+   551  3016  43 E1 04             M8C_EnableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
+   552  3019  8004                 jmp  .End_IntCntl
+   553  301B                    .DisTxInt:
    554                               ; Disable Tx Interrupt
-   555  3096  41 E1 FB             M8C_DisableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
+   555  301B  41 E1 FB             M8C_DisableIntMask UART_Sensor_TX_INT_REG, UART_Sensor_TX_INT_MASK
    556                          
-   557  3099                    .End_IntCntl:
+   557  301E                    .End_IntCntl:
    558                             RAM_EPILOGUE RAM_USE_CLASS_1
-   559  3099  7F                   ret
+   559  301E  7F                   ret
    560                          .ENDSECTION
    561                          
    562                          
@@ -1966,30 +1966,30 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    590                          ;    functions.
    591                          ;
    592                          .LITERAL
-   593  309A                    UART_Sensor_HEX_STR:
-   594  309A  30 31 32 33 34 35      DS    "0123456789ABCDEF"
+   593  301F                    UART_Sensor_HEX_STR:
+   594  301F  30 31 32 33 34 35      DS    "0123456789ABCDEF"
               36 37 38 39 41 42 
               43 44 45 46       
    595                          .ENDLITERAL
    596                          
    597                          .SECTION
-   598  30AA                     UART_Sensor_PutSHexByte:
-   599  30AA                    _UART_Sensor_PutSHexByte:
+   598  302F                     UART_Sensor_PutSHexByte:
+   599  302F                    _UART_Sensor_PutSHexByte:
    600                             RAM_PROLOGUE RAM_USE_CLASS_1
-   601  30AA  08                   push  A                             ; Save lower nibble
-   602  30AB  67                   asr   A                             ; Shift high nibble to right
-   603  30AC  67                   asr   A
-   604  30AD  67                   asr   A
-   605  30AE  67                   asr   A
-   606  30AF  21 0F                and   A,0Fh                         ; Mask off nibble
-   607  30B1  FFE7                 index UART_Sensor_HEX_STR           ; Get Hex value
-   608  30B3  900F                 call  UART_Sensor_PutChar           ; Write data to screen
-   609  30B5  18                   pop   A                             ; Restore value
-   610  30B6  21 0F                and   A,0Fh                         ; Mask off lower nibble
-   611  30B8  FFE0                 index UART_Sensor_HEX_STR           ; Get Hex value
-   612  30BA  9008                 call  UART_Sensor_PutChar           ; Write data to screen
+   601  302F  08                   push  A                             ; Save lower nibble
+   602  3030  67                   asr   A                             ; Shift high nibble to right
+   603  3031  67                   asr   A
+   604  3032  67                   asr   A
+   605  3033  67                   asr   A
+   606  3034  21 0F                and   A,0Fh                         ; Mask off nibble
+   607  3036  FFE7                 index UART_Sensor_HEX_STR           ; Get Hex value
+   608  3038  900F                 call  UART_Sensor_PutChar           ; Write data to screen
+   609  303A  18                   pop   A                             ; Restore value
+   610  303B  21 0F                and   A,0Fh                         ; Mask off lower nibble
+   611  303D  FFE0                 index UART_Sensor_HEX_STR           ; Get Hex value
+   612  303F  9008                 call  UART_Sensor_PutChar           ; Write data to screen
    613                             RAM_EPILOGUE RAM_USE_CLASS_1
-   614  30BC  7F                   ret
+   614  3041  7F                   ret
    615                          .ENDSECTION
    616                          
    617                          
@@ -2017,15 +2017,15 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    639                          ;    functions.
    640                          ;
    641                          
-   642  30BD                     UART_Sensor_PutSHexInt:
-   643  30BD                    _UART_Sensor_PutSHexInt:
+   642  3042                     UART_Sensor_PutSHexInt:
+   643  3042                    _UART_Sensor_PutSHexInt:
    644                             RAM_PROLOGUE RAM_USE_CLASS_1
-   645  30BD  4B                   swap  A,X
-   646  30BE  9FEA                 call  UART_Sensor_PutSHexByte       ; Print MSB
-   647  30C0  5B                   mov   A,X                           ; Move LSB into position
-   648  30C1  9FE7                 call  UART_Sensor_PutSHexByte       ; Print LSB
+   645  3042  4B                   swap  A,X
+   646  3043  9FEA                 call  UART_Sensor_PutSHexByte       ; Print MSB
+   647  3045  5B                   mov   A,X                           ; Move LSB into position
+   648  3046  9FE7                 call  UART_Sensor_PutSHexByte       ; Print LSB
    649                             RAM_EPILOGUE RAM_USE_CLASS_1
-   650  30C3  7F                   ret
+   650  3048  7F                   ret
    651                          .ENDSECTION
    652                          
    653                          
@@ -2056,19 +2056,19 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    678                             tst REG[UART_Sensor_TX_CONTROL_REG], UART_Sensor_TX_BUFFER_EMPTY     ; Check Tx Status
    679                             jz  .BufEmptyWaitLoop
    680                             mov REG[UART_Sensor_TX_BUFFER_REG], @Source     ; Write data to Tx Port
-   681  30C4                       endm
+   681  3049                       endm
    682                          
-   683  30C4                     UART_Sensor_PutChar:
-   684  30C4                    _UART_Sensor_PutChar:
+   683  3049                     UART_Sensor_PutChar:
+   684  3049                    _UART_Sensor_PutChar:
    685                             RAM_PROLOGUE RAM_USE_CLASS_1
    686                             InLinePutChar A
-      + 30C4                    ; Nothing to do
+      + 3049                    ; Nothing to do
 ??0000:
-      + 30C4  49 2B 10          	tst	reg[43], 16
-      + 30C7  AFFC              	jz	??0000
-      + 30C9  60 29             	mov	reg[41], a
+      + 3049  49 2B 10          	tst	reg[43], 16
+      + 304C  AFFC              	jz	??0000
+      + 304E  60 29             	mov	reg[41], a
    687                             RAM_EPILOGUE RAM_USE_CLASS_1
-   688  30CB  7F                   ret
+   688  3050  7F                   ret
    689                          .ENDSECTION
    690                          
    691                          
@@ -2097,14 +2097,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    714                          ;    If the watchdog timer is used, care must be taken to make sure that
    715                          ;    the delay between characters is less than the watchdog timeout.
    716                          ;
-   717  30CC                     UART_Sensor_cGetChar:
-   718  30CC                    _UART_Sensor_cGetChar:
+   717  3051                     UART_Sensor_cGetChar:
+   718  3051                    _UART_Sensor_cGetChar:
    719                             RAM_PROLOGUE RAM_USE_CLASS_1
-   720  30CC  49 2F 08             tst REG[UART_Sensor_RX_CONTROL_REG],UART_Sensor_RX_REG_FULL    ; Check if a character is ready
-   721  30CF  AFFC                 jz  UART_Sensor_cGetChar                              ; If not loop
-   722  30D1  5D 2E                mov A, REG[UART_Sensor_RX_BUFFER_REG]                 ; Get character
+   720  3051  49 2F 08             tst REG[UART_Sensor_RX_CONTROL_REG],UART_Sensor_RX_REG_FULL    ; Check if a character is ready
+   721  3054  AFFC                 jz  UART_Sensor_cGetChar                              ; If not loop
+   722  3056  5D 2E                mov A, REG[UART_Sensor_RX_BUFFER_REG]                 ; Get character
    723                             RAM_EPILOGUE RAM_USE_CLASS_1
-   724  30D3  7F                   ret
+   724  3058  7F                   ret
    725                          .ENDSECTION
    726                          
    727                          
@@ -2132,33 +2132,33 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    749                          ;    A valid 0x00 character will be ignored, since a 0x00 return value
    750                          ;    implies a valid character or an error condition occured.
    751                          ;
-   752  30D4                     UART_Sensor_cReadChar:
-   753  30D4                    _UART_Sensor_cReadChar:
+   752  3059                     UART_Sensor_cReadChar:
+   753  3059                    _UART_Sensor_cReadChar:
    754                             RAM_PROLOGUE RAM_USE_CLASS_1
-   755  30D4  5D 2F                mov  A,REG[UART_Sensor_RX_CONTROL_REG]                  ; Get Status of RX
-   756  30D6  08                   push A
-   757  30D7  21 08                and  A,UART_Sensor_RX_COMPLETE                          ; Check if a character is ready
-   758  30D9  B004                 jnz  .RX_DATA_RDY                                       ; Data Ready go read it.
-   759  30DB  18                   pop  A
-   760  30DC  800B                 jmp  .RX_NO_VALID_CHAR
+   755  3059  5D 2F                mov  A,REG[UART_Sensor_RX_CONTROL_REG]                  ; Get Status of RX
+   756  305B  08                   push A
+   757  305C  21 08                and  A,UART_Sensor_RX_COMPLETE                          ; Check if a character is ready
+   758  305E  B004                 jnz  .RX_DATA_RDY                                       ; Data Ready go read it.
+   759  3060  18                   pop  A
+   760  3061  800B                 jmp  .RX_NO_VALID_CHAR
    761                          
-   762  30DE                    .RX_DATA_RDY:
-   763  30DE  5D 2E                mov  A,REG[UART_Sensor_RX_BUFFER_REG ]          
-   764  30E0  4B                   swap A,X                                                ; determine if data is valid
+   762  3063                    .RX_DATA_RDY:
+   763  3063  5D 2E                mov  A,REG[UART_Sensor_RX_BUFFER_REG ]          
+   764  3065  4B                   swap A,X                                                ; determine if data is valid
    765                          
-   766  30E1  18                   pop  A                                                  ; Check for errors
-   767  30E2  21 A0                and  A,(UART_Sensor_RX_PARITY_ERROR | UART_Sensor_RX_FRAMING_ERROR)
-   768  30E4  B003                 jnz  .RX_NO_VALID_CHAR                                  ; No character, exit
-   769  30E6  4B                   swap A,X                                                ; Put data in A and exit
+   766  3066  18                   pop  A                                                  ; Check for errors
+   767  3067  21 A0                and  A,(UART_Sensor_RX_PARITY_ERROR | UART_Sensor_RX_FRAMING_ERROR)
+   768  3069  B003                 jnz  .RX_NO_VALID_CHAR                                  ; No character, exit
+   769  306B  4B                   swap A,X                                                ; Put data in A and exit
    770                             RAM_EPILOGUE RAM_USE_CLASS_1
-   771  30E7  7F                   ret
+   771  306C  7F                   ret
    772                          
-   773  30E8                    .RX_NO_VALID_CHAR:
-   774  30E8  50 00                mov A,0x00                                              ; Zero out character
+   773  306D                    .RX_NO_VALID_CHAR:
+   774  306D  50 00                mov A,0x00                                              ; Zero out character
    775                          
-   776  30EA                     End_UART_Sensor_cReadChar:
+   776  306F                     End_UART_Sensor_cReadChar:
    777                             RAM_EPILOGUE RAM_USE_CLASS_1
-   778  30EA  7F                   ret
+   778  306F  7F                   ret
    779                          .ENDSECTION
    780                          
    781                          
@@ -2193,30 +2193,30 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    810                          ;    responsibility to perserve their values across calls to fastcall16 
    811                          ;    functions.
    812                          ;
-   813  30EB                     UART_Sensor_iReadChar:
-   814  30EB                    _UART_Sensor_iReadChar:
+   813  3070                     UART_Sensor_iReadChar:
+   814  3070                    _UART_Sensor_iReadChar:
    815                             RAM_PROLOGUE RAM_USE_CLASS_1
-   816  30EB  5D 2F                mov  A,REG[UART_Sensor_RX_CONTROL_REG]                  ; Get Status of RX
+   816  3070  5D 2F                mov  A,REG[UART_Sensor_RX_CONTROL_REG]                  ; Get Status of RX
    817                                                                                     ; Mask only errors and data ready
-   818  30ED  21 E8                and  A,(UART_Sensor_RX_ERROR|UART_Sensor_RX_REG_FULL)
-   819  30EF  08                   push A
-   820  30F0  21 08                and  A,UART_Sensor_RX_COMPLETE                          ; Check if a character is ready
-   821  30F2  B007                 jnz  .RX_GET_DATA                                       ; Data Ready go read it.
-   822  30F4  18                   pop  A
-   823  30F5  29 01                or   A,UART_Sensor_RX_NO_DATA                           ; Add no data flag
-   824  30F7  4B                   swap A,X
-   825  30F8  8007                 jmp  End_UART_Sensor_iReadChar
+   818  3072  21 E8                and  A,(UART_Sensor_RX_ERROR|UART_Sensor_RX_REG_FULL)
+   819  3074  08                   push A
+   820  3075  21 08                and  A,UART_Sensor_RX_COMPLETE                          ; Check if a character is ready
+   821  3077  B007                 jnz  .RX_GET_DATA                                       ; Data Ready go read it.
+   822  3079  18                   pop  A
+   823  307A  29 01                or   A,UART_Sensor_RX_NO_DATA                           ; Add no data flag
+   824  307C  4B                   swap A,X
+   825  307D  8007                 jmp  End_UART_Sensor_iReadChar
    826                          
-   827  30FA                    .RX_GET_DATA:
-   828  30FA  18                   pop  A
-   829  30FB  21 E0                and  A,UART_Sensor_RX_ERROR
-   830  30FD  4B                   swap A,X
-   831  30FE  5D 2E                mov  A,REG[UART_Sensor_RX_BUFFER_REG ]                  ; Read data first, then
+   827  307F                    .RX_GET_DATA:
+   828  307F  18                   pop  A
+   829  3080  21 E0                and  A,UART_Sensor_RX_ERROR
+   830  3082  4B                   swap A,X
+   831  3083  5D 2E                mov  A,REG[UART_Sensor_RX_BUFFER_REG ]                  ; Read data first, then
    832                                                                                     ; determine if data is valid
    833                          
-   834  3100                     End_UART_Sensor_iReadChar:
+   834  3085                     End_UART_Sensor_iReadChar:
    835                             RAM_EPILOGUE RAM_USE_CLASS_1
-   836  3100  7F                   ret
+   836  3085  7F                   ret
    837                          .ENDSECTION
    838                          
    839                          
@@ -2246,22 +2246,22 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    863                          ;    Currently only the page pointer registers listed below are modified: 
    864                          ;          IDX_PP
    865                          ;
-   866  3101                     UART_Sensor_PutString:
-   867  3101                    _UART_Sensor_PutString:
+   866  3086                     UART_Sensor_PutString:
+   867  3086                    _UART_Sensor_PutString:
    868                             RAM_PROLOGUE RAM_USE_CLASS_3
-   869  3101  60 D3                RAM_SETPAGE_IDX A
-   870  3103                    .PutStringLoop:
-   871  3103  52 00                mov   A,[X]                                   ; Get value pointed to by X
-   872  3105  A006                 jz    End_PutString                           ; Check for end of string
-   873  3107  9FBB                 call  UART_Sensor_PutChar                     ; Send character to Tx port
-   874  3109  75                   inc   X                                       ; Advance pointer to next character
-   875  310A  8FF8                 jmp   .PutStringLoop                          ; Get next character
+   869  3086  60 D3                RAM_SETPAGE_IDX A
+   870  3088                    .PutStringLoop:
+   871  3088  52 00                mov   A,[X]                                   ; Get value pointed to by X
+   872  308A  A006                 jz    End_PutString                           ; Check for end of string
+   873  308C  9FBB                 call  UART_Sensor_PutChar                     ; Send character to Tx port
+   874  308E  75                   inc   X                                       ; Advance pointer to next character
+   875  308F  8FF8                 jmp   .PutStringLoop                          ; Get next character
    876                          
-   877  310C                    End_PutString:
+   877  3091                    End_PutString:
    878                             RAM_EPILOGUE RAM_USE_CLASS_3
-      + 310C  70 3F             	and	f, 0x3F
-      + 310E  71 80             	or	f, 0x80
-   879  3110  7F                   ret
+      + 3091  70 3F             	and	f, 0x3F
+      + 3093  71 80             	or	f, 0x80
+   879  3095  7F                   ret
    880                          .ENDSECTION
    881                              
    882                          .SECTION
@@ -2295,39 +2295,39 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    910  FFFFFFFC                    STR_MSB:    equ -4                               ; MSB pointer of string 
    911  FFFFFFFD                    STR_LSB:    equ -3                               ; LSB pointer of string 
    912                          
-   913  3111                     UART_Sensor_Write:
-   914  3111                    _UART_Sensor_Write:
+   913  3096                     UART_Sensor_Write:
+   914  3096                    _UART_Sensor_Write:
    915                             RAM_PROLOGUE RAM_USE_CLASS_3
-   916  3111  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Refer indexed addrs to the stack
-   917  3114  4F                   mov   X, SP                                   ; Establish the frame pointer 
+   916  3096  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Refer indexed addrs to the stack
+   917  3099  4F                   mov   X, SP                                   ; Establish the frame pointer 
    918                          
-   919  3115                    .NextByteLoop:
-   920  3115  52 FB                mov   A, [X+CNT_LEN]                          ; End of the string?
-   921  3117  A01A                 jz    .End_Write                              ;   Yes, prepare to exit
-   922  3119  7B FB                dec   [X+CNT_LEN]                             ; Decrement counter
+   919  309A                    .NextByteLoop:
+   920  309A  52 FB                mov   A, [X+CNT_LEN]                          ; End of the string?
+   921  309C  A01A                 jz    .End_Write                              ;   Yes, prepare to exit
+   922  309E  7B FB                dec   [X+CNT_LEN]                             ; Decrement counter
    923                          
    924                             IF SYSTEM_LARGE_MEMORY_MODEL
-   925  311B  52 FC                mov   A, [X+STR_MSB]                          ; Load pointer to char to send
+   925  30A0  52 FC                mov   A, [X+STR_MSB]                          ; Load pointer to char to send
    926                             ENDIF
    927                          
-   928  311D  59 FD                mov   X, [X+STR_LSB]                          ; Load pointer to char to send
-   929  311F  60 D3                RAM_SETPAGE_IDX A                             ; switch index pages
-   930  3121  52 00                mov   A, [X]                                  ; Grab the data
+   928  30A2  59 FD                mov   X, [X+STR_LSB]                          ; Load pointer to char to send
+   929  30A4  60 D3                RAM_SETPAGE_IDX A                             ; switch index pages
+   930  30A6  52 00                mov   A, [X]                                  ; Grab the data
    931                             InLinePutChar A                               ; Put data in empty TX buf reg
-      + 3123                    ??0001:
-      + 3123  49 2B 10          	tst	reg[43], 16
-      + 3126  AFFC              	jz	??0001
-      + 3128  60 29             	mov	reg[41], a
-   932  312A  4F                   mov   X, SP                                   ; Recover frame pointer
-   933  312B  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Prepare for stack access
-   934  312E  77 FD                inc   [X+STR_LSB]                             ; Point to next byte, but do not
-   935  3130  8FE4                 jmp   .NextByteLoop                           ;    cross RAM page boundary!
+      + 30A8                    ??0001:
+      + 30A8  49 2B 10          	tst	reg[43], 16
+      + 30AB  AFFC              	jz	??0001
+      + 30AD  60 29             	mov	reg[41], a
+   932  30AF  4F                   mov   X, SP                                   ; Recover frame pointer
+   933  30B0  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Prepare for stack access
+   934  30B3  77 FD                inc   [X+STR_LSB]                             ; Point to next byte, but do not
+   935  30B5  8FE4                 jmp   .NextByteLoop                           ;    cross RAM page boundary!
    936                          
-   937  3132                    .End_Write:
+   937  30B7                    .End_Write:
    938                             RAM_EPILOGUE RAM_USE_CLASS_3
-      + 3132  70 3F             	and	f, 0x3F
-      + 3134  71 80             	or	f, 0x80
-   939  3136  7F                   ret
+      + 30B7  70 3F             	and	f, 0x3F
+      + 30B9  71 80             	or	f, 0x80
+   939  30BB  7F                   ret
    940                          .ENDSECTION
    941                              
    942                          
@@ -2362,38 +2362,38 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    971  FFFFFFFC                    CSTR_MSB:   equ -4           ; MSB pointer of string
    972  FFFFFFFD                    CSTR_LSB:   equ -3           ; LSB pointer of string
    973                          
-   974  3137                     UART_Sensor_CWrite:
-   975  3137                    _UART_Sensor_CWrite:
-   976  3137  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   977  3139  4F                   mov   X,SP
-   978  313A                    .CW_Loop:
-   979  313A  3D FA 00             cmp   [X+CLEN_MSB],0x00                  ; Check for zero counter
-   980  313D  B006                 jnz   .CW_WRITEIT
-   981  313F  3D FB 00             cmp   [X+CLEN_LSB],0x00
-   982  3142  A01D                 jz    .End_CWrite                        ; Leave if done
+   974  30BC                     UART_Sensor_CWrite:
+   975  30BC                    _UART_Sensor_CWrite:
+   976  30BC  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   977  30BE  4F                   mov   X,SP
+   978  30BF                    .CW_Loop:
+   979  30BF  3D FA 00             cmp   [X+CLEN_MSB],0x00                  ; Check for zero counter
+   980  30C2  B006                 jnz   .CW_WRITEIT
+   981  30C4  3D FB 00             cmp   [X+CLEN_LSB],0x00
+   982  30C7  A01D                 jz    .End_CWrite                        ; Leave if done
    983                          
-   984  3144                    .CW_WRITEIT:                                
-   985  3144  10                   push  X                                  ; Save frame pointer
-   986  3145  52 FC                mov   A,[X+CSTR_MSB]
-   987  3147  59 FD                mov   X,[X+CSTR_LSB]
-   988  3149  28                   romx                                     ; Get character from ROM
+   984  30C9                    .CW_WRITEIT:                                
+   985  30C9  10                   push  X                                  ; Save frame pointer
+   986  30CA  52 FC                mov   A,[X+CSTR_MSB]
+   987  30CC  59 FD                mov   X,[X+CSTR_LSB]
+   988  30CE  28                   romx                                     ; Get character from ROM
    989                             InLinePutChar A                          ; Put data in empty TX buf reg
-      + 314A                    ??0002:
-      + 314A  49 2B 10          	tst	reg[43], 16
-      + 314D  AFFC              	jz	??0002
-      + 314F  60 29             	mov	reg[41], a
-   990  3151  20                   pop   X                                  ; Restore frame pointer
-   991  3152  07 FD 01             add   [X+CSTR_LSB],1                     ; Increment the string pointer
-   992  3155  0F FC 00             adc   [X+CSTR_MSB],0
-   993  3158  17 FB 01             sub   [X+CLEN_LSB],0x01                  ; Dec the counter
-   994  315B  1F FA 00             sbb   [X+CLEN_MSB],0x00
-   995  315E  8FDB                 jmp   .CW_Loop
+      + 30CF                    ??0002:
+      + 30CF  49 2B 10          	tst	reg[43], 16
+      + 30D2  AFFC              	jz	??0002
+      + 30D4  60 29             	mov	reg[41], a
+   990  30D6  20                   pop   X                                  ; Restore frame pointer
+   991  30D7  07 FD 01             add   [X+CSTR_LSB],1                     ; Increment the string pointer
+   992  30DA  0F FC 00             adc   [X+CSTR_MSB],0
+   993  30DD  17 FB 01             sub   [X+CLEN_LSB],0x01                  ; Dec the counter
+   994  30E0  1F FA 00             sbb   [X+CLEN_MSB],0x00
+   995  30E3  8FDB                 jmp   .CW_Loop
    996                          
-   997  3160                    .End_CWrite:
+   997  30E5                    .End_CWrite:
    998                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 3160  70 3F             	and	f, 0x3F
-      + 3162  71 80             	or	f, 0x80
-   999  3164  7F                   ret
+      + 30E5  70 3F             	and	f, 0x3F
+      + 30E7  71 80             	or	f, 0x80
+   999  30E9  7F                   ret
   1000                          .ENDSECTION
   1001                          
   1002                          
@@ -2420,26 +2420,26 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
   1023                          ;    responsibility to perserve their values across calls to fastcall16 
   1024                          ;    functions.
   1025                          ;
-  1026  3165                     UART_Sensor_CPutString:
-  1027  3165                    _UART_Sensor_CPutString:
+  1026  30EA                     UART_Sensor_CPutString:
+  1027  30EA                    _UART_Sensor_CPutString:
   1028                             RAM_PROLOGUE RAM_USE_CLASS_1
-  1029  3165  08                   push  A                                       ; Store ROM pointer
-  1030  3166  10                   push  X
-  1031  3167  28                   romx                                          ; Get character from ROM
-  1032  3168  A00B                 jz    .End_CPutString
-  1033  316A  9F58                 call  UART_Sensor_PutChar                     ; Print character
-  1034  316C  20                   pop   X
-  1035  316D  18                   pop   A
-  1036  316E  75                   inc   X                                       ; Inc LSB of pointer
-  1037  316F  DFF5                 jnc   UART_Sensor_CPutString                  ; Check for carry
-  1038  3171  74                   inc   A                                       ; Inc MSB of pointer
-  1039  3172  8FF2                 jmp   UART_Sensor_CPutString
+  1029  30EA  08                   push  A                                       ; Store ROM pointer
+  1030  30EB  10                   push  X
+  1031  30EC  28                   romx                                          ; Get character from ROM
+  1032  30ED  A00B                 jz    .End_CPutString
+  1033  30EF  9F58                 call  UART_Sensor_PutChar                     ; Print character
+  1034  30F1  20                   pop   X
+  1035  30F2  18                   pop   A
+  1036  30F3  75                   inc   X                                       ; Inc LSB of pointer
+  1037  30F4  DFF5                 jnc   UART_Sensor_CPutString                  ; Check for carry
+  1038  30F6  74                   inc   A                                       ; Inc MSB of pointer
+  1039  30F7  8FF2                 jmp   UART_Sensor_CPutString
   1040                          
   1041                          
-  1042  3174                    .End_CPutString:
-  1043  3174  38 FE                add   SP, -2
+  1042  30F9                    .End_CPutString:
+  1043  30F9  38 FE                add   SP, -2
   1044                             RAM_EPILOGUE RAM_USE_CLASS_1
-  1045  3176  7F                   ret
+  1045  30FB  7F                   ret
   1046                          .ENDSECTION
   1047                          
   1048                          
@@ -2464,51 +2464,51 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
   1067                          ;    responsibility to perserve their values across calls to fastcall16 
   1068                          ;    functions.
   1069                          ;
-  1070  3177                     UART_Sensor_PutCRLF:
-  1071  3177                    _UART_Sensor_PutCRLF:
+  1070  30FC                     UART_Sensor_PutCRLF:
+  1071  30FC                    _UART_Sensor_PutCRLF:
   1072                             RAM_PROLOGUE RAM_USE_CLASS_1
-  1073  3177  50 0D                mov  A,0x0D                        ; Send CR
-  1074  3179  9F49                 call UART_Sensor_PutChar
-  1075  317B  50 0A                mov  A,0x0A                        ; Send LF
-  1076  317D  9F45                 call UART_Sensor_PutChar
+  1073  30FC  50 0D                mov  A,0x0D                        ; Send CR
+  1074  30FE  9F49                 call UART_Sensor_PutChar
+  1075  3100  50 0A                mov  A,0x0A                        ; Send LF
+  1076  3102  9F45                 call UART_Sensor_PutChar
   1077                             RAM_EPILOGUE RAM_USE_CLASS_1
-  1078  317F  7F                   ret
+  1078  3104  7F                   ret
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:34:00 2015
 
           UART_Sensor_TX_FUNC_REG 0028             UART_Sensor_TX_INT_REG 00E1            UART_Sensor_TX_INT_MASK 0004  
-            UART_Sensor_EnableInt 3032         UART_Sensor_RX_CONTROL_REG 002F           _bUART_Sensor_ReadRxData 3066  
-       UART_Sensor_TX_CONTROL_REG 002B             _UART_Sensor_EnableInt 3032             UART_Sensor_DisableInt 3039  
-            _UART_Sensor_SendData 3060            UART_Sensor_bReadRxData 3066                           CLEN_LSB FFFFFFFB  
-                         CLEN_MSB FFFFFFFA              _UART_Sensor_cGetChar 30CC            UART_Sensor_PutSHexByte 30AA  
+            UART_Sensor_EnableInt 2FB7         UART_Sensor_RX_CONTROL_REG 002F           _bUART_Sensor_ReadRxData 2FEB  
+       UART_Sensor_TX_CONTROL_REG 002B             _UART_Sensor_EnableInt 2FB7             UART_Sensor_DisableInt 2FBE  
+            _UART_Sensor_SendData 2FE5            UART_Sensor_bReadRxData 2FEB                           CLEN_LSB FFFFFFFB  
+                         CLEN_MSB FFFFFFFA              _UART_Sensor_cGetChar 3051            UART_Sensor_PutSHexByte 302F  
                          CSTR_LSB FFFFFFFD                           CSTR_MSB FFFFFFFC            bfCONTROL_REG_START_BIT 0001  
-          _UART_Sensor_DisableInt 3039                             ??0000 30C4                             ??0001 3123  
-                           ??0002 314A                      End_PutString 310C              UART_Sensor_cReadChar 30D4  
-            UART_Sensor_TxIntMode 306C                             HITECH 0002          UART_Sensor_RX_BUFFER_REG 002E  
+          _UART_Sensor_DisableInt 2FBE                             ??0000 3049                             ??0001 30A8  
+                           ??0002 30CF                      End_PutString 3091              UART_Sensor_cReadChar 3059  
+            UART_Sensor_TxIntMode 2FF1                             HITECH 0002          UART_Sensor_RX_BUFFER_REG 002E  
                   FLAG_PGMODE_01b 0040                    FLAG_PGMODE_10b 0080                             IDX_PP 00D3  
-            UART_Sensor_PutString 3101             _UART_Sensor_cReadChar 30D4                   UART_Sensor_Stop 3059  
-           _UART_Sensor_TxIntMode 306C                 UART_Sensor_CWrite 3137          bUART_Sensor_ReadRxStatus 3069  
-         _UART_Sensor_bReadRxData 3066              UART_Sensor_iReadChar 30EB          bUART_Sensor_ReadTxStatus 3063  
-           _UART_Sensor_PutString 3101          End_UART_Sensor_cReadChar 30EA           _UART_Sensor_PutSHexByte 30AA  
-                _UART_Sensor_Stop 3059             _UART_Sensor_iReadChar 30EB       UART_Sensor_RX_FRAMING_ERROR 0020  
-             UART_Sensor_RX_ERROR 00E0          _UART_Sensor_SetTxIntMode 3040          SYSTEM_LARGE_MEMORY_MODEL 0001  
-        End_UART_Sensor_iReadChar 3100             SYSTEM_MULTIPAGE_STACK 0000               _UART_Sensor_IntCntl 307F  
-             _UART_Sensor_PutCRLF 3177                          TOOLCHAIN 0002             UART_Sensor_PutSHexInt 30BD  
-             _UART_Sensor_PutChar 30C4                            CNT_LEN FFFFFFFB               UART_Sensor_SendData 3060  
-             UART_Sensor_cGetChar 30CC          UART_Sensor_bReadRxStatus 3069                   FLAG_PGMODE_MASK 00C0  
-        UART_Sensor_bReadTxStatus 3063                    RAM_USE_CLASS_1 0001                    RAM_USE_CLASS_2 0002  
+            UART_Sensor_PutString 3086             _UART_Sensor_cReadChar 3059                   UART_Sensor_Stop 2FDE  
+           _UART_Sensor_TxIntMode 2FF1                 UART_Sensor_CWrite 30BC          bUART_Sensor_ReadRxStatus 2FEE  
+         _UART_Sensor_bReadRxData 2FEB              UART_Sensor_iReadChar 3070          bUART_Sensor_ReadTxStatus 2FE8  
+           _UART_Sensor_PutString 3086          End_UART_Sensor_cReadChar 306F           _UART_Sensor_PutSHexByte 302F  
+                _UART_Sensor_Stop 2FDE             _UART_Sensor_iReadChar 3070       UART_Sensor_RX_FRAMING_ERROR 0020  
+             UART_Sensor_RX_ERROR 00E0          _UART_Sensor_SetTxIntMode 2FC5          SYSTEM_LARGE_MEMORY_MODEL 0001  
+        End_UART_Sensor_iReadChar 3085             SYSTEM_MULTIPAGE_STACK 0000               _UART_Sensor_IntCntl 3004  
+             _UART_Sensor_PutCRLF 30FC                          TOOLCHAIN 0002             UART_Sensor_PutSHexInt 3042  
+             _UART_Sensor_PutChar 3049                            CNT_LEN FFFFFFFB               UART_Sensor_SendData 2FE5  
+             UART_Sensor_cGetChar 3051          UART_Sensor_bReadRxStatus 2FEE                   FLAG_PGMODE_MASK 00C0  
+        UART_Sensor_bReadTxStatus 2FE8                    RAM_USE_CLASS_1 0001                    RAM_USE_CLASS_2 0002  
                   RAM_USE_CLASS_3 0004                    RAM_USE_CLASS_4 0008   UART_Sensor_INT_MODE_TX_COMPLETE 0001  
-                          STR_LSB FFFFFFFD                            STR_MSB FFFFFFFC                UART_Sensor_HEX_STR 309A  
-   bfFUNCTION_REG_TX_INT_MODE_BIT 0010         _bUART_Sensor_ReadRxStatus 3069            _UART_Sensor_PutSHexInt 30BD  
-       _bUART_Sensor_ReadTxStatus 3063                  UART_Sensor_Start 3052                  UART_Sensor_Write 3111  
-              _UART_Sensor_CWrite 3137          UART_Sensor_ENABLE_RX_INT 0001          UART_Sensor_ENABLE_TX_INT 0002  
-           UART_Sensor_CPutString 3165                UART_Sensor_IntCntl 307F          UART_Sensor_TX_BUFFER_REG 0029  
-              UART_Sensor_PutCRLF 3177                UART_Sensor_PutChar 30C4            UART_Sensor_RX_COMPLETE 0008  
-          bUART_Sensor_ReadRxData 3066        UART_Sensor_TX_BUFFER_EMPTY 0010            _UART_Sensor_CPutString 3165  
-               _UART_Sensor_Start 3052            UART_Sensor_RX_INT_MASK 0008                 _UART_Sensor_Write 3111  
+                          STR_LSB FFFFFFFD                            STR_MSB FFFFFFFC                UART_Sensor_HEX_STR 301F  
+   bfFUNCTION_REG_TX_INT_MODE_BIT 0010         _bUART_Sensor_ReadRxStatus 2FEE            _UART_Sensor_PutSHexInt 3042  
+       _bUART_Sensor_ReadTxStatus 2FE8                  UART_Sensor_Start 2FD7                  UART_Sensor_Write 3096  
+              _UART_Sensor_CWrite 30BC          UART_Sensor_ENABLE_RX_INT 0001          UART_Sensor_ENABLE_TX_INT 0002  
+           UART_Sensor_CPutString 30EA                UART_Sensor_IntCntl 3004          UART_Sensor_TX_BUFFER_REG 0029  
+              UART_Sensor_PutCRLF 30FC                UART_Sensor_PutChar 3049            UART_Sensor_RX_COMPLETE 0008  
+          bUART_Sensor_ReadRxData 2FEB        UART_Sensor_TX_BUFFER_EMPTY 0010            _UART_Sensor_CPutString 30EA  
+               _UART_Sensor_Start 2FD7            UART_Sensor_RX_INT_MASK 0008                 _UART_Sensor_Write 3096  
                 SYSTEM_STACK_PAGE 0003        UART_Sensor_RX_PARITY_ERROR 0080            UART_Sensor_RX_REG_FULL 0008  
-                    FLAG_XIO_MASK 0010         _UART_Sensor_bReadRxStatus 3069         SYSTEM_IDXPG_TRACKS_IDX_PP 0001  
-       _UART_Sensor_bReadTxStatus 3063             UART_Sensor_RX_INT_REG 00E1         SYSTEM_IDXPG_TRACKS_STK_PP 0000  
-           UART_Sensor_RX_NO_DATA 0001           UART_Sensor_SetTxIntMode 3040           UART_Sensor_RXBUF_ENABLE 0000  
+                    FLAG_XIO_MASK 0010         _UART_Sensor_bReadRxStatus 2FEE         SYSTEM_IDXPG_TRACKS_IDX_PP 0001  
+       _UART_Sensor_bReadTxStatus 2FE8             UART_Sensor_RX_INT_REG 00E1         SYSTEM_IDXPG_TRACKS_STK_PP 0000  
+           UART_Sensor_RX_NO_DATA 0001           UART_Sensor_SetTxIntMode 2FC5           UART_Sensor_RXBUF_ENABLE 0000  

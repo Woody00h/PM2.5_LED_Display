@@ -1462,7 +1462,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     86                          ;     handler for this function, then place code where specified.
     87                          ;-----------------------------------------------------------------------------
     88                          
-    89  3030                    _UART_Board_TX_ISR:
+    89  2FB5                    _UART_Board_TX_ISR:
     90                             ;@PSoC_UserCode_BODY_1@ (Do not change this line.)
     91                             ;---------------------------------------------------
     92                             ; Insert your custom assembly code below this banner
@@ -1488,7 +1488,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    112                             ; and un-comment the lines between these banners
    113                             ;---------------------------------------------------
    114                             ;@PSoC_UserCode_END@ (Do not change this line.)
-   115  3030  7E                   reti
+   115  2FB5  7E                   reti
    116                          
    117                          
    118                          ;-----------------------------------------------------------------------------
@@ -1524,7 +1524,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    148                          ;     a command determinator will still cause the command bit to be set.
    149                          ;
    150                          ;-----------------------------------------------------------------------------
-   151  3031                    _UART_Board_RX_ISR:
+   151  2FB6                    _UART_Board_RX_ISR:
    152                          
    153                             ;@PSoC_UserCode_BODY_2@ (Do not change this line.)
    154                             ;---------------------------------------------------
@@ -1656,12 +1656,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    277                          
    278                          ENDIF
    279                          
-   280  3031                    UART_Board_RX_ISR_END:
-   281  3031  7E                   reti
+   280  2FB6                    UART_Board_RX_ISR_END:
+   281  2FB6  7E                   reti
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:34:00 2015
 
-                          HITECH 0002           UART_Board_RXBUF_ENABLE 0000             UART_Board_RX_ISR_END 3031  
-                       TOOLCHAIN 0002                _UART_Board_RX_ISR 3031                _UART_Board_TX_ISR 3030  
+                          HITECH 0002           UART_Board_RXBUF_ENABLE 0000             UART_Board_RX_ISR_END 2FB6  
+                       TOOLCHAIN 0002                _UART_Board_RX_ISR 2FB6                _UART_Board_TX_ISR 2FB5  

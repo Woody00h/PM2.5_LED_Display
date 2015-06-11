@@ -2259,12 +2259,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     86                          ;    responsibility to perserve their values across calls to fastcall16 
     87                          ;    functions.
     88                          ;
-    89  2D76                     SAR10_EnableInt:
-    90  2D76                    _SAR10_EnableInt:
+    89  2CFB                     SAR10_EnableInt:
+    90  2CFB                    _SAR10_EnableInt:
     91                             RAM_PROLOGUE RAM_USE_CLASS_1
-    92  2D76  43 DF 10             SAR10_EnableInt_M
+    92  2CFB  43 DF 10             SAR10_EnableInt_M
     93                             RAM_EPILOGUE RAM_USE_CLASS_1
-    94  2D79  7F                   ret
+    94  2CFE  7F                   ret
     95                          
     96                          .ENDSECTION
     97                          
@@ -2287,12 +2287,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    114                          ;    responsibility to perserve their values across calls to fastcall16 
    115                          ;    functions.
    116                          ;
-   117  2D7A                     SAR10_DisableInt:
-   118  2D7A                    _SAR10_DisableInt:
+   117  2CFF                     SAR10_DisableInt:
+   118  2CFF                    _SAR10_DisableInt:
    119                             RAM_PROLOGUE RAM_USE_CLASS_1
-   120  2D7A  41 DF EF             SAR10_DisableInt_M
+   120  2CFF  41 DF EF             SAR10_DisableInt_M
    121                             RAM_EPILOGUE RAM_USE_CLASS_1
-   122  2D7D  7F                   ret
+   122  2D02  7F                   ret
    123                          
    124                          .ENDSECTION
    125                          
@@ -2315,14 +2315,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    142                          ;    responsibility to perserve their values across calls to fastcall16 
    143                          ;    functions.
    144                          ;
-   145  2D7E                     SAR10_Start:
-   146  2D7E                    _SAR10_Start:
+   145  2D03                     SAR10_Start:
+   146  2D03                    _SAR10_Start:
    147                             RAM_PROLOGUE RAM_USE_CLASS_1
-   148  2D7E  71 10                M8C_SetBank1
-   149  2D80  43 A8 01             SAR10_Start_M
-   150  2D83  70 EF                M8C_SetBank0
+   148  2D03  71 10                M8C_SetBank1
+   149  2D05  43 A8 01             SAR10_Start_M
+   150  2D08  70 EF                M8C_SetBank0
    151                             RAM_EPILOGUE RAM_USE_CLASS_1
-   152  2D85  7F                   ret
+   152  2D0A  7F                   ret
    153                          
    154                          .ENDSECTION
    155                          
@@ -2345,14 +2345,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    172                          ;    responsibility to perserve their values across calls to fastcall16 
    173                          ;    functions.
    174                          ;
-   175  2D86                     SAR10_Stop:
-   176  2D86                    _SAR10_Stop:
+   175  2D0B                     SAR10_Stop:
+   176  2D0B                    _SAR10_Stop:
    177                             RAM_PROLOGUE RAM_USE_CLASS_1
-   178  2D86  71 10                M8C_SetBank1
-   179  2D88  41 A8 FE             SAR10_Stop_M
-   180  2D8B  70 EF                M8C_SetBank0
+   178  2D0B  71 10                M8C_SetBank1
+   179  2D0D  41 A8 FE             SAR10_Stop_M
+   180  2D10  70 EF                M8C_SetBank0
    181                             RAM_EPILOGUE RAM_USE_CLASS_1
-   182  2D8D  7F                   ret
+   182  2D12  7F                   ret
    183                          
    184                          .ENDSECTION
    185                          
@@ -2375,14 +2375,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    202                          ;    responsibility to perserve their values across calls to fastcall16 
    203                          ;    functions.
    204                          ;
-   205  2D8E                     SAR10_Trigger:
-   206  2D8E                    _SAR10_Trigger:
+   205  2D13                     SAR10_Trigger:
+   206  2D13                    _SAR10_Trigger:
    207                             RAM_PROLOGUE RAM_USE_CLASS_1
-   208  2D8E  71 10                M8C_SetBank1
-   209  2D90  43 A8 02             or    reg[SAR10_SAR_CR0_REG], SAR10_SAR_CR0_REG_SW_TRIG_BIT
-   210  2D93  70 EF                M8C_SetBank0
+   208  2D13  71 10                M8C_SetBank1
+   209  2D15  43 A8 02             or    reg[SAR10_SAR_CR0_REG], SAR10_SAR_CR0_REG_SW_TRIG_BIT
+   210  2D18  70 EF                M8C_SetBank0
    211                             RAM_EPILOGUE RAM_USE_CLASS_1
-   212  2D95  7F                   ret
+   212  2D1A  7F                   ret
    213                          
    214                          .ENDSECTION
    215                          
@@ -2405,15 +2405,15 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    232                          ;    responsibility to perserve their values across calls to fastcall16 
    233                          ;    functions.
    234                          ;
-   235  2D96                     SAR10_fIsDataAvailable:
-   236  2D96                    _SAR10_fIsDataAvailable:
+   235  2D1B                     SAR10_fIsDataAvailable:
+   236  2D1B                    _SAR10_fIsDataAvailable:
    237                             RAM_PROLOGUE RAM_USE_CLASS_4
-   238  2D96  71 10                M8C_SetBank1
-   239  2D98  5D A8                mov   A,reg[SAR10_SAR_CR0_REG]    ; Read value of SAR_CR0 register
-   240  2D9A  70 EF                M8C_SetBank0
-   241  2D9C  21 04                and   A,SAR10_READY_MASK                   ; Checks the availability of sampled data.
+   238  2D1B  71 10                M8C_SetBank1
+   239  2D1D  5D A8                mov   A,reg[SAR10_SAR_CR0_REG]    ; Read value of SAR_CR0 register
+   240  2D1F  70 EF                M8C_SetBank0
+   241  2D21  21 04                and   A,SAR10_READY_MASK                   ; Checks the availability of sampled data.
    242                             RAM_EPILOGUE RAM_USE_CLASS_4
-   243  2D9E  7F                   ret
+   243  2D23  7F                   ret
    244                          
    245                          .ENDSECTION
    246                          
@@ -2442,9 +2442,9 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    269  FFFFFFFE                       Temp_offs:         equ  -2
    270  FFFFFFFF                       DL_REG_offs:       equ  -1
    271                                  
-   272  2D9F                     SAR10_iGetData:
-   273  2D9F                    _SAR10_iGetData:
-   274  2D9F  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   272  2D24                     SAR10_iGetData:
+   273  2D24                    _SAR10_iGetData:
+   274  2D24  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
    275                          IF(SAR10_Justify)  ; for CY8C28x45 Device
    276                             mov   A, reg[SAR10_SAR_DL_REG]  ; Get 8 lowest bits
    277                             push  A                                    ; Store 8 lowest bits in stack
@@ -2452,24 +2452,24 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    279                             mov   X, A                                 ; Get MSB of result
    280                             pop   A                                    ; Get LSB of result
    281                          ELSE ;for CY8C22x45 device
-   282  2DA1  50 00                mov   A, 0x00                              ; Init local var
-   283  2DA3  08                   push  A                                    ; Reserve one byte in stack
-   284  2DA4  5D 6B                mov   A, reg[SAR10_SAR_DL_REG]  ; Get 2 lowest bits
-   285  2DA6  08                   push  A                                    ; Store 2 lowest bits in stack
-   286  2DA7  4F                   mov   X, SP                                ; Set SP in X
-   287  2DA8  5D 6A                mov   A, reg[SAR10_SAR_DH_REG]  ; Read 8 highest bits
-   288  2DAA  64                   asl   A                                    ; Determine two highest bits and store it in stack
-   289  2DAB  6C FE                rlc   [X+Temp_offs]
-   290  2DAD  64                   asl   A
-   291  2DAE  6C FE                rlc   [X+Temp_offs]
-   292  2DB0  2B FF                or    A, [X+DL_REG_offs]                    ; Form LSB of result
-   293  2DB2  20                   pop   X                                     
-   294  2DB3  20                   pop   X                                     ; Get MSB of result
+   282  2D26  50 00                mov   A, 0x00                              ; Init local var
+   283  2D28  08                   push  A                                    ; Reserve one byte in stack
+   284  2D29  5D 6B                mov   A, reg[SAR10_SAR_DL_REG]  ; Get 2 lowest bits
+   285  2D2B  08                   push  A                                    ; Store 2 lowest bits in stack
+   286  2D2C  4F                   mov   X, SP                                ; Set SP in X
+   287  2D2D  5D 6A                mov   A, reg[SAR10_SAR_DH_REG]  ; Read 8 highest bits
+   288  2D2F  64                   asl   A                                    ; Determine two highest bits and store it in stack
+   289  2D30  6C FE                rlc   [X+Temp_offs]
+   290  2D32  64                   asl   A
+   291  2D33  6C FE                rlc   [X+Temp_offs]
+   292  2D35  2B FF                or    A, [X+DL_REG_offs]                    ; Form LSB of result
+   293  2D37  20                   pop   X                                     
+   294  2D38  20                   pop   X                                     ; Get MSB of result
    295                          ENDIF
    296                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2DB4  70 3F             	and	f, 0x3F
-      + 2DB6  71 80             	or	f, 0x80
-   297  2DB8  7F                   ret
+      + 2D39  70 3F             	and	f, 0x3F
+      + 2D3B  71 80             	or	f, 0x80
+   297  2D3D  7F                   ret
    298                          
    299                          .ENDSECTION
    300                          
@@ -2493,12 +2493,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    318                          ;    responsibility to perserve their values across calls to fastcall16 
    319                          ;    functions.
    320                          ;
-   321  2DB9                     SAR10_bGetData:
-   322  2DB9                    _SAR10_bGetData:
+   321  2D3E                     SAR10_bGetData:
+   322  2D3E                    _SAR10_bGetData:
    323                             RAM_PROLOGUE RAM_USE_CLASS_1
-   324  2DB9  5D 6A                mov   A,reg[SAR10_SAR_DH_REG]
+   324  2D3E  5D 6A                mov   A,reg[SAR10_SAR_DH_REG]
    325                             RAM_EPILOGUE RAM_USE_CLASS_1
-   326  2DBB  7F                   ret
+   326  2D40  7F                   ret
    327                          
    328                          .ENDSECTION
    329                          
@@ -2520,23 +2520,23 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    345                          ;    responsibility to perserve their values across calls to fastcall16 
    346                          ;    functions.
    347                          ;
-   348  2DBC                     SAR10_SetADCChannel:
-   349  2DBC                    _SAR10_SetADCChannel:
-   350  2DBC  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   351  2DBE  21 78                and   A, SAR10_CHN_SEL_MASK
-   352  2DC0  4F                   mov   X, SP
-   353  2DC1  08                   push  A                                     ; store value in stack
-   354  2DC2  71 10                M8C_SetBank1
-   355  2DC4  5D A8                mov   A, reg[SAR10_SAR_CR0_REG]  ; get register value
-   356  2DC6  21 87                and   A, ~SAR10_CHN_SEL_MASK     ; clear ADC_CHS bits
-   357  2DC8  2B 00                or    A, [X]                                ; set ADC_CHS bits
-   358  2DCA  60 A8                mov   reg[SAR10_SAR_CR0_REG], A  ; set new register value
-   359  2DCC  70 EF                M8C_SetBank0
-   360  2DCE  18                   pop   A
+   348  2D41                     SAR10_SetADCChannel:
+   349  2D41                    _SAR10_SetADCChannel:
+   350  2D41  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   351  2D43  21 78                and   A, SAR10_CHN_SEL_MASK
+   352  2D45  4F                   mov   X, SP
+   353  2D46  08                   push  A                                     ; store value in stack
+   354  2D47  71 10                M8C_SetBank1
+   355  2D49  5D A8                mov   A, reg[SAR10_SAR_CR0_REG]  ; get register value
+   356  2D4B  21 87                and   A, ~SAR10_CHN_SEL_MASK     ; clear ADC_CHS bits
+   357  2D4D  2B 00                or    A, [X]                                ; set ADC_CHS bits
+   358  2D4F  60 A8                mov   reg[SAR10_SAR_CR0_REG], A  ; set new register value
+   359  2D51  70 EF                M8C_SetBank0
+   360  2D53  18                   pop   A
    361                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2DCF  70 3F             	and	f, 0x3F
-      + 2DD1  71 80             	or	f, 0x80
-   362  2DD3  7F                   ret
+      + 2D54  70 3F             	and	f, 0x3F
+      + 2D56  71 80             	or	f, 0x80
+   362  2D58  7F                   ret
    363                          
    364                          .ENDSECTION
    365                          
@@ -2559,23 +2559,23 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    382                          ;    responsibility to perserve their values across calls to fastcall16 
    383                          ;    functions.
    384                          ;
-   385  2DD4                     SAR10_SetTriggerSrc:
-   386  2DD4                    _SAR10_SetTriggerSrc:
-   387  2DD4  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   388  2DD6  21 30                and   A, SAR10_TRG_SEL_MASK 
-   389  2DD8  4F                   mov   X, SP
-   390  2DD9  08                   push  A                                    ; store value in stack
-   391  2DDA  71 10                M8C_SetBank1
-   392  2DDC  5D A9                mov   A, reg[SAR10_SAR_CR1_REG]  ; get register value
-   393  2DDE  21 CF                and   A, ~SAR10_TRG_SEL_MASK     ; clear TIGSEL bits
-   394  2DE0  2B 00                or    A, [X]                                ; set TIGSEL bits
-   395  2DE2  60 A9                mov   reg[SAR10_SAR_CR1_REG], A  ; set new register value
-   396  2DE4  70 EF                M8C_SetBank0
-   397  2DE6  18                   pop   A
+   385  2D59                     SAR10_SetTriggerSrc:
+   386  2D59                    _SAR10_SetTriggerSrc:
+   387  2D59  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   388  2D5B  21 30                and   A, SAR10_TRG_SEL_MASK 
+   389  2D5D  4F                   mov   X, SP
+   390  2D5E  08                   push  A                                    ; store value in stack
+   391  2D5F  71 10                M8C_SetBank1
+   392  2D61  5D A9                mov   A, reg[SAR10_SAR_CR1_REG]  ; get register value
+   393  2D63  21 CF                and   A, ~SAR10_TRG_SEL_MASK     ; clear TIGSEL bits
+   394  2D65  2B 00                or    A, [X]                                ; set TIGSEL bits
+   395  2D67  60 A9                mov   reg[SAR10_SAR_CR1_REG], A  ; set new register value
+   396  2D69  70 EF                M8C_SetBank0
+   397  2D6B  18                   pop   A
    398                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2DE7  70 3F             	and	f, 0x3F
-      + 2DE9  71 80             	or	f, 0x80
-   399  2DEB  7F                   ret
+      + 2D6C  70 3F             	and	f, 0x3F
+      + 2D6E  71 80             	or	f, 0x80
+   399  2D70  7F                   ret
    400                          
    401                          .ENDSECTION
    402                          
@@ -2598,23 +2598,23 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    419                          ;    responsibility to perserve their values across calls to fastcall16 
    420                          ;    functions.
    421                          ;
-   422  2DEC                     SAR10_EnableAutoTrigger:
-   423  2DEC                    _SAR10_EnableAutoTrigger:
-   424  2DEC  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   425  2DEE  21 01                and   A, SAR10_ALIGN_EN_MASK
-   426  2DF0  4F                   mov   X, SP
-   427  2DF1  08                   push  A                                    ; store value in stack
-   428  2DF2  71 10                M8C_SetBank1
-   429  2DF4  5D A9                mov   A, reg[SAR10_SAR_CR1_REG]  ; get register value
-   430  2DF6  21 FE                and   A, ~SAR10_ALIGN_EN_MASK    ; clear ALIGN_EN bits
-   431  2DF8  2B 00                or    A, [X]                                ; set ALIGN_EN bits
-   432  2DFA  60 A9                mov   reg[SAR10_SAR_CR1_REG], A  ; set new register value
-   433  2DFC  70 EF                M8C_SetBank0
-   434  2DFE  18                   pop   A
+   422  2D71                     SAR10_EnableAutoTrigger:
+   423  2D71                    _SAR10_EnableAutoTrigger:
+   424  2D71  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   425  2D73  21 01                and   A, SAR10_ALIGN_EN_MASK
+   426  2D75  4F                   mov   X, SP
+   427  2D76  08                   push  A                                    ; store value in stack
+   428  2D77  71 10                M8C_SetBank1
+   429  2D79  5D A9                mov   A, reg[SAR10_SAR_CR1_REG]  ; get register value
+   430  2D7B  21 FE                and   A, ~SAR10_ALIGN_EN_MASK    ; clear ALIGN_EN bits
+   431  2D7D  2B 00                or    A, [X]                                ; set ALIGN_EN bits
+   432  2D7F  60 A9                mov   reg[SAR10_SAR_CR1_REG], A  ; set new register value
+   433  2D81  70 EF                M8C_SetBank0
+   434  2D83  18                   pop   A
    435                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2DFF  70 3F             	and	f, 0x3F
-      + 2E01  71 80             	or	f, 0x80
-   436  2E03  7F                   ret
+      + 2D84  70 3F             	and	f, 0x3F
+      + 2D86  71 80             	or	f, 0x80
+   436  2D88  7F                   ret
    437                          
    438                          .ENDSECTION
    439                          
@@ -2637,23 +2637,23 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    456                          ;    responsibility to perserve their values across calls to fastcall16 
    457                          ;    functions.
    458                          ;
-   459  2E04                     SAR10_SetClk:
-   460  2E04                    _SAR10_SetClk:
-   461  2E04  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   462  2E06  21 0E                and   A, SAR10_CLK_SEL_MASK
-   463  2E08  4F                   mov   X, SP
-   464  2E09  08                   push  A                                    ; store value in stack
-   465  2E0A  71 10                M8C_SetBank1
-   466  2E0C  5D A9                mov   A, reg[SAR10_SAR_CR1_REG]  ; get register value
-   467  2E0E  21 F1                and   A, ~SAR10_CLK_SEL_MASK     ; clear CLKSEL bits
-   468  2E10  2B 00                or    A, [X]                                ; set CLKSEL bits
-   469  2E12  60 A9                mov   reg[SAR10_SAR_CR1_REG], A  ; set new register value
-   470  2E14  70 EF                M8C_SetBank0
-   471  2E16  18                   pop   A
+   459  2D89                     SAR10_SetClk:
+   460  2D89                    _SAR10_SetClk:
+   461  2D89  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   462  2D8B  21 0E                and   A, SAR10_CLK_SEL_MASK
+   463  2D8D  4F                   mov   X, SP
+   464  2D8E  08                   push  A                                    ; store value in stack
+   465  2D8F  71 10                M8C_SetBank1
+   466  2D91  5D A9                mov   A, reg[SAR10_SAR_CR1_REG]  ; get register value
+   467  2D93  21 F1                and   A, ~SAR10_CLK_SEL_MASK     ; clear CLKSEL bits
+   468  2D95  2B 00                or    A, [X]                                ; set CLKSEL bits
+   469  2D97  60 A9                mov   reg[SAR10_SAR_CR1_REG], A  ; set new register value
+   470  2D99  70 EF                M8C_SetBank0
+   471  2D9B  18                   pop   A
    472                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2E17  70 3F             	and	f, 0x3F
-      + 2E19  71 80             	or	f, 0x80
-   473  2E1B  7F                   ret
+      + 2D9C  70 3F             	and	f, 0x3F
+      + 2D9E  71 80             	or	f, 0x80
+   473  2DA0  7F                   ret
    474                          
    475                          .ENDSECTION
    476                          
@@ -2676,44 +2676,44 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    493                          ;    responsibility to perserve their values across calls to fastcall16 
    494                          ;    functions.
    495                          ;
-   496  2E1C                     SAR10_SetRunMode:
-   497  2E1C                    _SAR10_SetRunMode:
-   498  2E1C  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   499  2E1E  21 08                and   A, SAR10_FREE_RUN_MASK
-   500  2E20  4F                   mov   X, SP
-   501  2E21  08                   push  A                                    ; store value in stack
-   502  2E22  71 10                M8C_SetBank1
-   503  2E24  5D AA                mov   A, reg[SAR10_SAR_CR2_REG]  ; get register value
-   504  2E26  21 F7                and   A, ~SAR10_FREE_RUN_MASK    ; clear FREERUN bits
-   505  2E28  2B 00                or    A, [X]                                ; set FREERUN bits
-   506  2E2A  60 AA                mov reg[SAR10_SAR_CR2_REG], A   ; set new register value   
-   507  2E2C  70 EF                M8C_SetBank0
-   508  2E2E  18                   pop   A
+   496  2DA1                     SAR10_SetRunMode:
+   497  2DA1                    _SAR10_SetRunMode:
+   498  2DA1  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   499  2DA3  21 08                and   A, SAR10_FREE_RUN_MASK
+   500  2DA5  4F                   mov   X, SP
+   501  2DA6  08                   push  A                                    ; store value in stack
+   502  2DA7  71 10                M8C_SetBank1
+   503  2DA9  5D AA                mov   A, reg[SAR10_SAR_CR2_REG]  ; get register value
+   504  2DAB  21 F7                and   A, ~SAR10_FREE_RUN_MASK    ; clear FREERUN bits
+   505  2DAD  2B 00                or    A, [X]                                ; set FREERUN bits
+   506  2DAF  60 AA                mov reg[SAR10_SAR_CR2_REG], A   ; set new register value   
+   507  2DB1  70 EF                M8C_SetBank0
+   508  2DB3  18                   pop   A
    509                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2E2F  70 3F             	and	f, 0x3F
-      + 2E31  71 80             	or	f, 0x80
-   510  2E33  7F                   ret
+      + 2DB4  70 3F             	and	f, 0x3F
+      + 2DB6  71 80             	or	f, 0x80
+   510  2DB8  7F                   ret
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:33:59 2015
 
-                    Temp_offs FFFFFFFE       _SAR10_EnableAutoTrigger 2DEC            SAR10_FREE_RUN_MASK 0008  
+                    Temp_offs FFFFFFFE       _SAR10_EnableAutoTrigger 2D71            SAR10_FREE_RUN_MASK 0008  
           SAR10_ALIGN_EN_MASK 0001               SAR10_READY_MASK 0004             SAR10_TRG_SEL_MASK 0030  
-          SAR10_SetADCChannel 2DBC               SAR10_SetRunMode 2E1C                 SAR10_bGetData 2DB9  
+          SAR10_SetADCChannel 2D41               SAR10_SetRunMode 2DA1                 SAR10_bGetData 2D3E  
                        HITECH 0002                FLAG_PGMODE_01b 0040                FLAG_PGMODE_10b 0080  
-             SAR10_SAR_DH_REG 006A               SAR10_SAR_DL_REG 006B                 _SAR10_Trigger 2D8E  
-                 SAR10_SetClk 2E04              _SAR10_SetRunMode 2E1C                 SAR10_iGetData 2D9F  
-       SAR10_fIsDataAvailable 2D96                SAR10_EnableInt 2D76      SYSTEM_LARGE_MEMORY_MODEL 0001  
-      _SAR10_fIsDataAvailable 2D96                  SAR10_INT_REG 00DF                _SAR10_bGetData 2DB9  
+             SAR10_SAR_DH_REG 006A               SAR10_SAR_DL_REG 006B                 _SAR10_Trigger 2D13  
+                 SAR10_SetClk 2D89              _SAR10_SetRunMode 2DA1                 SAR10_iGetData 2D24  
+       SAR10_fIsDataAvailable 2D1B                SAR10_EnableInt 2CFB      SYSTEM_LARGE_MEMORY_MODEL 0001  
+      _SAR10_fIsDataAvailable 2D1B                  SAR10_INT_REG 00DF                _SAR10_bGetData 2D3E  
            SAR10_CHN_SEL_MASK 0078                    DL_REG_offs FFFFFFFF                      TOOLCHAIN 0002  
             SAR10_SAR_CR0_REG 00A8              SAR10_SAR_CR1_REG 00A9              SAR10_SAR_CR2_REG 00AA  
-SAR10_SAR_CR0_REG_SW_TRIG_BIT 0002               FLAG_PGMODE_MASK 00C0                _SAR10_iGetData 2D9F  
+SAR10_SAR_CR0_REG_SW_TRIG_BIT 0002               FLAG_PGMODE_MASK 00C0                _SAR10_iGetData 2D24  
               RAM_USE_CLASS_1 0001                RAM_USE_CLASS_2 0002                RAM_USE_CLASS_3 0004  
-              RAM_USE_CLASS_4 0008                  _SAR10_SetClk 2E04                  SAR10_Justify 0000  
-                  SAR10_Start 2D7E                  SAR10_Trigger 2D8E    SAR10_SAR_CR0_REG_START_BIT 0001  
-           SAR10_CLK_SEL_MASK 000E           _SAR10_SetTriggerSrc 2DD4        SAR10_EnableAutoTrigger 2DEC  
-                 _SAR10_Start 2D7E                     SAR10_Stop 2D86               SAR10_DisableInt 2D7A  
-           SAR10_INT_SAR_MASK 0010                    _SAR10_Stop 2D86                  FLAG_XIO_MASK 0010  
-            _SAR10_DisableInt 2D7A     SYSTEM_IDXPG_TRACKS_IDX_PP 0001               _SAR10_EnableInt 2D76  
-         _SAR10_SetADCChannel 2DBC     SYSTEM_IDXPG_TRACKS_STK_PP 0000            SAR10_SetTriggerSrc 2DD4  
+              RAM_USE_CLASS_4 0008                  _SAR10_SetClk 2D89                  SAR10_Justify 0000  
+                  SAR10_Start 2D03                  SAR10_Trigger 2D13    SAR10_SAR_CR0_REG_START_BIT 0001  
+           SAR10_CLK_SEL_MASK 000E           _SAR10_SetTriggerSrc 2D59        SAR10_EnableAutoTrigger 2D71  
+                 _SAR10_Start 2D03                     SAR10_Stop 2D0B               SAR10_DisableInt 2CFF  
+           SAR10_INT_SAR_MASK 0010                    _SAR10_Stop 2D0B                  FLAG_XIO_MASK 0010  
+            _SAR10_DisableInt 2CFF     SYSTEM_IDXPG_TRACKS_IDX_PP 0001               _SAR10_EnableInt 2CFB  
+         _SAR10_SetADCChannel 2D41     SYSTEM_IDXPG_TRACKS_STK_PP 0000            SAR10_SetTriggerSrc 2D59  

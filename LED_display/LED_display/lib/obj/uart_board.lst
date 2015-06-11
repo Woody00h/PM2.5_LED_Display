@@ -1549,13 +1549,13 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    173                          ;    responsibility to perserve their values across calls to fastcall16 
    174                          ;    functions.
    175                          ;
-   176  2EE2                     UART_Board_EnableInt:
-   177  2EE2                    _UART_Board_EnableInt:
+   176  2E67                     UART_Board_EnableInt:
+   177  2E67                    _UART_Board_EnableInt:
    178                             RAM_PROLOGUE RAM_USE_CLASS_1
-   179  2EE2  43 E1 40             M8C_EnableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
-   180  2EE5  43 E1 80             M8C_EnableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
+   179  2E67  43 E1 40             M8C_EnableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
+   180  2E6A  43 E1 80             M8C_EnableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
    181                             RAM_EPILOGUE RAM_USE_CLASS_1
-   182  2EE8  7F                   ret
+   182  2E6D  7F                   ret
    183                          .ENDSECTION
    184                          
    185                              
@@ -1581,13 +1581,13 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    205                          ;    responsibility to perserve their values across calls to fastcall16 
    206                          ;    functions.
    207                          ;
-   208  2EE9                     UART_Board_DisableInt:
-   209  2EE9                    _UART_Board_DisableInt:
+   208  2E6E                     UART_Board_DisableInt:
+   209  2E6E                    _UART_Board_DisableInt:
    210                             RAM_PROLOGUE RAM_USE_CLASS_1
-   211  2EE9  41 E1 BF             M8C_DisableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
-   212  2EEC  41 E1 7F             M8C_DisableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
+   211  2E6E  41 E1 BF             M8C_DisableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
+   212  2E71  41 E1 7F             M8C_DisableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
    213                             RAM_EPILOGUE RAM_USE_CLASS_1
-   214  2EEF  7F                   ret
+   214  2E74  7F                   ret
    215                          .ENDSECTION
    216                          
    217                          
@@ -1617,22 +1617,22 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    241                          ;     Sets the TX interrupt mode bit to define whether the interrupt occurs
    242                          ;     on TX register empty or TX transmit complete
    243                          ;
-   244  2EF0                     UART_Board_SetTxIntMode:
-   245  2EF0                    _UART_Board_SetTxIntMode:
+   244  2E75                     UART_Board_SetTxIntMode:
+   245  2E75                    _UART_Board_SetTxIntMode:
    246                             RAM_PROLOGUE RAM_USE_CLASS_1
-   247  2EF0  71 10                M8C_SetBank1
-   248  2EF2  21 01                and   A, UART_Board_INT_MODE_TX_COMPLETE
-   249  2EF4  A007                 jz    .SetModeRegEmpty
-   250  2EF6  43 38 10             or    REG[UART_Board_TX_FUNC_REG], bfFUNCTION_REG_TX_INT_MODE_BIT
-   251  2EF9  70 EF                M8C_SetBank0
+   247  2E75  71 10                M8C_SetBank1
+   248  2E77  21 01                and   A, UART_Board_INT_MODE_TX_COMPLETE
+   249  2E79  A007                 jz    .SetModeRegEmpty
+   250  2E7B  43 38 10             or    REG[UART_Board_TX_FUNC_REG], bfFUNCTION_REG_TX_INT_MODE_BIT
+   251  2E7E  70 EF                M8C_SetBank0
    252                             RAM_EPILOGUE RAM_USE_CLASS_1
-   253  2EFB  7F                   ret
+   253  2E80  7F                   ret
    254                          
-   255  2EFC                    .SetModeRegEmpty:
-   256  2EFC  41 38 EF             and   REG[UART_Board_TX_FUNC_REG], ~bfFUNCTION_REG_TX_INT_MODE_BIT
-   257  2EFF  70 EF                M8C_SetBank0
+   255  2E81                    .SetModeRegEmpty:
+   256  2E81  41 38 EF             and   REG[UART_Board_TX_FUNC_REG], ~bfFUNCTION_REG_TX_INT_MODE_BIT
+   257  2E84  70 EF                M8C_SetBank0
    258                             RAM_EPILOGUE RAM_USE_CLASS_1
-   259  2F01  7F                   ret
+   259  2E86  7F                   ret
    260                          .ENDSECTION
    261                          
    262                          
@@ -1658,19 +1658,19 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    282                          ;    responsibility to perserve their values across calls to fastcall16 
    283                          ;    functions.
    284                          ;
-   285  2F02                     UART_Board_Start:
-   286  2F02                    _UART_Board_Start:
+   285  2E87                     UART_Board_Start:
+   286  2E87                    _UART_Board_Start:
    287                             RAM_PROLOGUE RAM_USE_CLASS_1
    288                             ; Note, Proxy Class 4 only if receive buffer used; otherwise Proxy Class 1.
    289                          
-   290  2F02  29 01                or    A, bfCONTROL_REG_START_BIT
-   291  2F04  60 3B                mov   REG[UART_Board_TX_CONTROL_REG], A
-   292  2F06  60 3F                mov   REG[UART_Board_RX_CONTROL_REG], A
+   290  2E87  29 01                or    A, bfCONTROL_REG_START_BIT
+   291  2E89  60 3B                mov   REG[UART_Board_TX_CONTROL_REG], A
+   292  2E8B  60 3F                mov   REG[UART_Board_RX_CONTROL_REG], A
    293                          IF ( UART_Board_RXBUF_ENABLE )
    294                             call  _UART_Board_CmdReset
    295                          ENDIF
    296                             RAM_EPILOGUE RAM_USE_CLASS_1
-   297  2F08  7F                   ret
+   297  2E8D  7F                   ret
    298                          .ENDSECTION
    299                          
    300                          
@@ -1695,13 +1695,13 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    319                          ;    responsibility to perserve their values across calls to fastcall16 
    320                          ;    functions.
    321                          ;
-   322  2F09                     UART_Board_Stop:
-   323  2F09                    _UART_Board_Stop:
+   322  2E8E                     UART_Board_Stop:
+   323  2E8E                    _UART_Board_Stop:
    324                             RAM_PROLOGUE RAM_USE_CLASS_1
-   325  2F09  41 3B FE             and   REG[UART_Board_TX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
-   326  2F0C  41 3F FE             and   REG[UART_Board_RX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
+   325  2E8E  41 3B FE             and   REG[UART_Board_TX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
+   326  2E91  41 3F FE             and   REG[UART_Board_RX_CONTROL_REG], ~bfCONTROL_REG_START_BIT
    327                             RAM_EPILOGUE RAM_USE_CLASS_1
-   328  2F0F  7F                   ret
+   328  2E94  7F                   ret
    329                          .ENDSECTION
    330                          
    331                          
@@ -1726,12 +1726,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    350                          ;    responsibility to perserve their values across calls to fastcall16 
    351                          ;    functions.
    352                          ;
-   353  2F10                     UART_Board_SendData:
-   354  2F10                    _UART_Board_SendData:
+   353  2E95                     UART_Board_SendData:
+   354  2E95                    _UART_Board_SendData:
    355                             RAM_PROLOGUE RAM_USE_CLASS_1
-   356  2F10  60 39                mov REG[UART_Board_TX_BUFFER_REG], A
+   356  2E95  60 39                mov REG[UART_Board_TX_BUFFER_REG], A
    357                             RAM_EPILOGUE RAM_USE_CLASS_1
-   358  2F12  7F                   ret
+   358  2E97  7F                   ret
    359                          .ENDSECTION
    360                          
    361                          
@@ -1757,14 +1757,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    381                          ;    responsibility to perserve their values across calls to fastcall16 
    382                          ;    functions.
    383                          ;
-   384  2F13                     UART_Board_bReadTxStatus:
-   385  2F13                    _UART_Board_bReadTxStatus:
-   386  2F13                     bUART_Board_ReadTxStatus:                       ; For backwards compatibility only
-   387  2F13                    _bUART_Board_ReadTxStatus:                       ; For backwards compatibility only
+   384  2E98                     UART_Board_bReadTxStatus:
+   385  2E98                    _UART_Board_bReadTxStatus:
+   386  2E98                     bUART_Board_ReadTxStatus:                       ; For backwards compatibility only
+   387  2E98                    _bUART_Board_ReadTxStatus:                       ; For backwards compatibility only
    388                             RAM_PROLOGUE RAM_USE_CLASS_1
-   389  2F13  5D 3B                mov A,  REG[UART_Board_TX_CONTROL_REG]
+   389  2E98  5D 3B                mov A,  REG[UART_Board_TX_CONTROL_REG]
    390                             RAM_EPILOGUE RAM_USE_CLASS_1
-   391  2F15  7F                   ret
+   391  2E9A  7F                   ret
    392                          .ENDSECTION
    393                          
    394                          
@@ -1790,14 +1790,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    414                          ;    responsibility to perserve their values across calls to fastcall16 
    415                          ;    functions.
    416                          ;
-   417  2F16                     UART_Board_bReadRxData:
-   418  2F16                    _UART_Board_bReadRxData:
-   419  2F16                     bUART_Board_ReadRxData:                         ; For backwards compatibility only
-   420  2F16                    _bUART_Board_ReadRxData:                         ; For backwards compatibility only
+   417  2E9B                     UART_Board_bReadRxData:
+   418  2E9B                    _UART_Board_bReadRxData:
+   419  2E9B                     bUART_Board_ReadRxData:                         ; For backwards compatibility only
+   420  2E9B                    _bUART_Board_ReadRxData:                         ; For backwards compatibility only
    421                             RAM_PROLOGUE RAM_USE_CLASS_1
-   422  2F16  5D 3E                mov A, REG[UART_Board_RX_BUFFER_REG]
+   422  2E9B  5D 3E                mov A, REG[UART_Board_RX_BUFFER_REG]
    423                             RAM_EPILOGUE RAM_USE_CLASS_1
-   424  2F18  7F                   ret
+   424  2E9D  7F                   ret
    425                          .ENDSECTION
    426                          
    427                          
@@ -1824,14 +1824,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    448                          ;    responsibility to perserve their values across calls to fastcall16 
    449                          ;    functions.
    450                          ;
-   451  2F19                     UART_Board_bReadRxStatus:
-   452  2F19                    _UART_Board_bReadRxStatus:
-   453  2F19                     bUART_Board_ReadRxStatus:                       ; For backwards compatibility only
-   454  2F19                    _bUART_Board_ReadRxStatus:                       ; For backwards compatibility only
+   451  2E9E                     UART_Board_bReadRxStatus:
+   452  2E9E                    _UART_Board_bReadRxStatus:
+   453  2E9E                     bUART_Board_ReadRxStatus:                       ; For backwards compatibility only
+   454  2E9E                    _bUART_Board_ReadRxStatus:                       ; For backwards compatibility only
    455                             RAM_PROLOGUE RAM_USE_CLASS_1
-   456  2F19  5D 3F                mov A,  REG[UART_Board_RX_CONTROL_REG]
+   456  2E9E  5D 3F                mov A,  REG[UART_Board_RX_CONTROL_REG]
    457                             RAM_EPILOGUE RAM_USE_CLASS_1
-   458  2F1B  7F                   ret
+   458  2EA0  7F                   ret
    459                          .ENDSECTION
    460                          
    461                          
@@ -1858,25 +1858,25 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    482                          ;    responsibility to perserve their values across calls to fastcall16 
    483                          ;    functions.
    484                          ;
-   485  2F1C                     UART_Board_TxIntMode:
-   486  2F1C                    _UART_Board_TxIntMode:
+   485  2EA1                     UART_Board_TxIntMode:
+   486  2EA1                    _UART_Board_TxIntMode:
    487                             RAM_PROLOGUE RAM_USE_CLASS_1
    488                          
-   489  2F1C  21 01                and  A,UART_Board_INT_MODE_TX_COMPLETE
-   490  2F1E  71 10                M8C_SetBank1
-   491  2F20  39 01                cmp  A,UART_Board_INT_MODE_TX_COMPLETE
-   492  2F22  A006                 jz   .SetTxCmpMode
+   489  2EA1  21 01                and  A,UART_Board_INT_MODE_TX_COMPLETE
+   490  2EA3  71 10                M8C_SetBank1
+   491  2EA5  39 01                cmp  A,UART_Board_INT_MODE_TX_COMPLETE
+   492  2EA7  A006                 jz   .SetTxCmpMode
    493                          
-   494  2F24  41 38 EF             and  reg[UART_Board_TX_FUNC_REG],0xEF         ; Set Interrupt on Tx_Reg_Empty
-   495  2F27  8004                 jmp  .TxIntMode_End
+   494  2EA9  41 38 EF             and  reg[UART_Board_TX_FUNC_REG],0xEF         ; Set Interrupt on Tx_Reg_Empty
+   495  2EAC  8004                 jmp  .TxIntMode_End
    496                          
-   497  2F29                    .SetTxCmpMode:                                       ; Set Interrupt on TX Complete
-   498  2F29  43 38 10             or   reg[UART_Board_TX_FUNC_REG],0x10
+   497  2EAE                    .SetTxCmpMode:                                       ; Set Interrupt on TX Complete
+   498  2EAE  43 38 10             or   reg[UART_Board_TX_FUNC_REG],0x10
    499                          
-   500  2F2C                    .TxIntMode_End:
-   501  2F2C  70 EF                M8C_SetBank0
+   500  2EB1                    .TxIntMode_End:
+   501  2EB1  70 EF                M8C_SetBank0
    502                             RAM_EPILOGUE RAM_USE_CLASS_1
-   503  2F2E  7F                   ret
+   503  2EB3  7F                   ret
    504                          .ENDSECTION
    505                          
    506                              
@@ -1905,34 +1905,34 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    529                          ;     Set or Clears the Tx/Rx user module interrupt enable mask bit in the TX
    530                          ;     and RX block.
    531                          ;
-   532  2F2F                     UART_Board_IntCntl:
-   533  2F2F                    _UART_Board_IntCntl:
+   532  2EB4                     UART_Board_IntCntl:
+   533  2EB4                    _UART_Board_IntCntl:
    534                             RAM_PROLOGUE RAM_USE_CLASS_1
    535                          
-   536  2F2F  08                   push A
-   537  2F30  21 01                and  A,UART_Board_ENABLE_RX_INT
-   538  2F32  A006                 jz   .DisRxInt
+   536  2EB4  08                   push A
+   537  2EB5  21 01                and  A,UART_Board_ENABLE_RX_INT
+   538  2EB7  A006                 jz   .DisRxInt
    539                               ; Enable Rx Interrupt
-   540  2F34  43 E1 80             M8C_EnableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
-   541  2F37  8004                 jmp  .CheckTxInt
-   542  2F39                    .DisRxInt:
+   540  2EB9  43 E1 80             M8C_EnableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
+   541  2EBC  8004                 jmp  .CheckTxInt
+   542  2EBE                    .DisRxInt:
    543                               ; Disable Rx Interrupt
-   544  2F39  41 E1 7F             M8C_DisableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
+   544  2EBE  41 E1 7F             M8C_DisableIntMask UART_Board_RX_INT_REG, UART_Board_RX_INT_MASK
    545                          
-   546  2F3C                    .CheckTxInt:
-   547  2F3C  18                   pop  A
-   548  2F3D  21 02                and  A,UART_Board_ENABLE_TX_INT
-   549  2F3F  A006                 jz   .DisTxInt
+   546  2EC1                    .CheckTxInt:
+   547  2EC1  18                   pop  A
+   548  2EC2  21 02                and  A,UART_Board_ENABLE_TX_INT
+   549  2EC4  A006                 jz   .DisTxInt
    550                               ; Enable Tx Interrupt
-   551  2F41  43 E1 40             M8C_EnableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
-   552  2F44  8004                 jmp  .End_IntCntl
-   553  2F46                    .DisTxInt:
+   551  2EC6  43 E1 40             M8C_EnableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
+   552  2EC9  8004                 jmp  .End_IntCntl
+   553  2ECB                    .DisTxInt:
    554                               ; Disable Tx Interrupt
-   555  2F46  41 E1 BF             M8C_DisableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
+   555  2ECB  41 E1 BF             M8C_DisableIntMask UART_Board_TX_INT_REG, UART_Board_TX_INT_MASK
    556                          
-   557  2F49                    .End_IntCntl:
+   557  2ECE                    .End_IntCntl:
    558                             RAM_EPILOGUE RAM_USE_CLASS_1
-   559  2F49  7F                   ret
+   559  2ECE  7F                   ret
    560                          .ENDSECTION
    561                          
    562                          
@@ -1966,30 +1966,30 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    590                          ;    functions.
    591                          ;
    592                          .LITERAL
-   593  2F4A                    UART_Board_HEX_STR:
-   594  2F4A  30 31 32 33 34 35      DS    "0123456789ABCDEF"
+   593  2ECF                    UART_Board_HEX_STR:
+   594  2ECF  30 31 32 33 34 35      DS    "0123456789ABCDEF"
               36 37 38 39 41 42 
               43 44 45 46       
    595                          .ENDLITERAL
    596                          
    597                          .SECTION
-   598  2F5A                     UART_Board_PutSHexByte:
-   599  2F5A                    _UART_Board_PutSHexByte:
+   598  2EDF                     UART_Board_PutSHexByte:
+   599  2EDF                    _UART_Board_PutSHexByte:
    600                             RAM_PROLOGUE RAM_USE_CLASS_1
-   601  2F5A  08                   push  A                             ; Save lower nibble
-   602  2F5B  67                   asr   A                             ; Shift high nibble to right
-   603  2F5C  67                   asr   A
-   604  2F5D  67                   asr   A
-   605  2F5E  67                   asr   A
-   606  2F5F  21 0F                and   A,0Fh                         ; Mask off nibble
-   607  2F61  FFE7                 index UART_Board_HEX_STR            ; Get Hex value
-   608  2F63  900F                 call  UART_Board_PutChar            ; Write data to screen
-   609  2F65  18                   pop   A                             ; Restore value
-   610  2F66  21 0F                and   A,0Fh                         ; Mask off lower nibble
-   611  2F68  FFE0                 index UART_Board_HEX_STR            ; Get Hex value
-   612  2F6A  9008                 call  UART_Board_PutChar            ; Write data to screen
+   601  2EDF  08                   push  A                             ; Save lower nibble
+   602  2EE0  67                   asr   A                             ; Shift high nibble to right
+   603  2EE1  67                   asr   A
+   604  2EE2  67                   asr   A
+   605  2EE3  67                   asr   A
+   606  2EE4  21 0F                and   A,0Fh                         ; Mask off nibble
+   607  2EE6  FFE7                 index UART_Board_HEX_STR            ; Get Hex value
+   608  2EE8  900F                 call  UART_Board_PutChar            ; Write data to screen
+   609  2EEA  18                   pop   A                             ; Restore value
+   610  2EEB  21 0F                and   A,0Fh                         ; Mask off lower nibble
+   611  2EED  FFE0                 index UART_Board_HEX_STR            ; Get Hex value
+   612  2EEF  9008                 call  UART_Board_PutChar            ; Write data to screen
    613                             RAM_EPILOGUE RAM_USE_CLASS_1
-   614  2F6C  7F                   ret
+   614  2EF1  7F                   ret
    615                          .ENDSECTION
    616                          
    617                          
@@ -2017,15 +2017,15 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    639                          ;    functions.
    640                          ;
    641                          
-   642  2F6D                     UART_Board_PutSHexInt:
-   643  2F6D                    _UART_Board_PutSHexInt:
+   642  2EF2                     UART_Board_PutSHexInt:
+   643  2EF2                    _UART_Board_PutSHexInt:
    644                             RAM_PROLOGUE RAM_USE_CLASS_1
-   645  2F6D  4B                   swap  A,X
-   646  2F6E  9FEA                 call  UART_Board_PutSHexByte        ; Print MSB
-   647  2F70  5B                   mov   A,X                           ; Move LSB into position
-   648  2F71  9FE7                 call  UART_Board_PutSHexByte        ; Print LSB
+   645  2EF2  4B                   swap  A,X
+   646  2EF3  9FEA                 call  UART_Board_PutSHexByte        ; Print MSB
+   647  2EF5  5B                   mov   A,X                           ; Move LSB into position
+   648  2EF6  9FE7                 call  UART_Board_PutSHexByte        ; Print LSB
    649                             RAM_EPILOGUE RAM_USE_CLASS_1
-   650  2F73  7F                   ret
+   650  2EF8  7F                   ret
    651                          .ENDSECTION
    652                          
    653                          
@@ -2056,19 +2056,19 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    678                             tst REG[UART_Board_TX_CONTROL_REG], UART_Board_TX_BUFFER_EMPTY     ; Check Tx Status
    679                             jz  .BufEmptyWaitLoop
    680                             mov REG[UART_Board_TX_BUFFER_REG], @Source    ; Write data to Tx Port
-   681  2F74                       endm
+   681  2EF9                       endm
    682                          
-   683  2F74                     UART_Board_PutChar:
-   684  2F74                    _UART_Board_PutChar:
+   683  2EF9                     UART_Board_PutChar:
+   684  2EF9                    _UART_Board_PutChar:
    685                             RAM_PROLOGUE RAM_USE_CLASS_1
    686                             InLinePutChar A
-      + 2F74                    ; Nothing to do
+      + 2EF9                    ; Nothing to do
 ??0000:
-      + 2F74  49 3B 10          	tst	reg[59], 16
-      + 2F77  AFFC              	jz	??0000
-      + 2F79  60 39             	mov	reg[57], a
+      + 2EF9  49 3B 10          	tst	reg[59], 16
+      + 2EFC  AFFC              	jz	??0000
+      + 2EFE  60 39             	mov	reg[57], a
    687                             RAM_EPILOGUE RAM_USE_CLASS_1
-   688  2F7B  7F                   ret
+   688  2F00  7F                   ret
    689                          .ENDSECTION
    690                          
    691                          
@@ -2097,14 +2097,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    714                          ;    If the watchdog timer is used, care must be taken to make sure that
    715                          ;    the delay between characters is less than the watchdog timeout.
    716                          ;
-   717  2F7C                     UART_Board_cGetChar:
-   718  2F7C                    _UART_Board_cGetChar:
+   717  2F01                     UART_Board_cGetChar:
+   718  2F01                    _UART_Board_cGetChar:
    719                             RAM_PROLOGUE RAM_USE_CLASS_1
-   720  2F7C  49 3F 08             tst REG[UART_Board_RX_CONTROL_REG],UART_Board_RX_REG_FULL    ; Check if a character is ready
-   721  2F7F  AFFC                 jz  UART_Board_cGetChar                              ; If not loop
-   722  2F81  5D 3E                mov A, REG[UART_Board_RX_BUFFER_REG]                 ; Get character
+   720  2F01  49 3F 08             tst REG[UART_Board_RX_CONTROL_REG],UART_Board_RX_REG_FULL    ; Check if a character is ready
+   721  2F04  AFFC                 jz  UART_Board_cGetChar                              ; If not loop
+   722  2F06  5D 3E                mov A, REG[UART_Board_RX_BUFFER_REG]                 ; Get character
    723                             RAM_EPILOGUE RAM_USE_CLASS_1
-   724  2F83  7F                   ret
+   724  2F08  7F                   ret
    725                          .ENDSECTION
    726                          
    727                          
@@ -2132,33 +2132,33 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    749                          ;    A valid 0x00 character will be ignored, since a 0x00 return value
    750                          ;    implies a valid character or an error condition occured.
    751                          ;
-   752  2F84                     UART_Board_cReadChar:
-   753  2F84                    _UART_Board_cReadChar:
+   752  2F09                     UART_Board_cReadChar:
+   753  2F09                    _UART_Board_cReadChar:
    754                             RAM_PROLOGUE RAM_USE_CLASS_1
-   755  2F84  5D 3F                mov  A,REG[UART_Board_RX_CONTROL_REG]                   ; Get Status of RX
-   756  2F86  08                   push A
-   757  2F87  21 08                and  A,UART_Board_RX_COMPLETE                           ; Check if a character is ready
-   758  2F89  B004                 jnz  .RX_DATA_RDY                                       ; Data Ready go read it.
-   759  2F8B  18                   pop  A
-   760  2F8C  800B                 jmp  .RX_NO_VALID_CHAR
+   755  2F09  5D 3F                mov  A,REG[UART_Board_RX_CONTROL_REG]                   ; Get Status of RX
+   756  2F0B  08                   push A
+   757  2F0C  21 08                and  A,UART_Board_RX_COMPLETE                           ; Check if a character is ready
+   758  2F0E  B004                 jnz  .RX_DATA_RDY                                       ; Data Ready go read it.
+   759  2F10  18                   pop  A
+   760  2F11  800B                 jmp  .RX_NO_VALID_CHAR
    761                          
-   762  2F8E                    .RX_DATA_RDY:
-   763  2F8E  5D 3E                mov  A,REG[UART_Board_RX_BUFFER_REG ]          
-   764  2F90  4B                   swap A,X                                                ; determine if data is valid
+   762  2F13                    .RX_DATA_RDY:
+   763  2F13  5D 3E                mov  A,REG[UART_Board_RX_BUFFER_REG ]          
+   764  2F15  4B                   swap A,X                                                ; determine if data is valid
    765                          
-   766  2F91  18                   pop  A                                                  ; Check for errors
-   767  2F92  21 A0                and  A,(UART_Board_RX_PARITY_ERROR | UART_Board_RX_FRAMING_ERROR)
-   768  2F94  B003                 jnz  .RX_NO_VALID_CHAR                                  ; No character, exit
-   769  2F96  4B                   swap A,X                                                ; Put data in A and exit
+   766  2F16  18                   pop  A                                                  ; Check for errors
+   767  2F17  21 A0                and  A,(UART_Board_RX_PARITY_ERROR | UART_Board_RX_FRAMING_ERROR)
+   768  2F19  B003                 jnz  .RX_NO_VALID_CHAR                                  ; No character, exit
+   769  2F1B  4B                   swap A,X                                                ; Put data in A and exit
    770                             RAM_EPILOGUE RAM_USE_CLASS_1
-   771  2F97  7F                   ret
+   771  2F1C  7F                   ret
    772                          
-   773  2F98                    .RX_NO_VALID_CHAR:
-   774  2F98  50 00                mov A,0x00                                              ; Zero out character
+   773  2F1D                    .RX_NO_VALID_CHAR:
+   774  2F1D  50 00                mov A,0x00                                              ; Zero out character
    775                          
-   776  2F9A                     End_UART_Board_cReadChar:
+   776  2F1F                     End_UART_Board_cReadChar:
    777                             RAM_EPILOGUE RAM_USE_CLASS_1
-   778  2F9A  7F                   ret
+   778  2F1F  7F                   ret
    779                          .ENDSECTION
    780                          
    781                          
@@ -2193,30 +2193,30 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    810                          ;    responsibility to perserve their values across calls to fastcall16 
    811                          ;    functions.
    812                          ;
-   813  2F9B                     UART_Board_iReadChar:
-   814  2F9B                    _UART_Board_iReadChar:
+   813  2F20                     UART_Board_iReadChar:
+   814  2F20                    _UART_Board_iReadChar:
    815                             RAM_PROLOGUE RAM_USE_CLASS_1
-   816  2F9B  5D 3F                mov  A,REG[UART_Board_RX_CONTROL_REG]                   ; Get Status of RX
+   816  2F20  5D 3F                mov  A,REG[UART_Board_RX_CONTROL_REG]                   ; Get Status of RX
    817                                                                                     ; Mask only errors and data ready
-   818  2F9D  21 E8                and  A,(UART_Board_RX_ERROR|UART_Board_RX_REG_FULL)
-   819  2F9F  08                   push A
-   820  2FA0  21 08                and  A,UART_Board_RX_COMPLETE                           ; Check if a character is ready
-   821  2FA2  B007                 jnz  .RX_GET_DATA                                       ; Data Ready go read it.
-   822  2FA4  18                   pop  A
-   823  2FA5  29 01                or   A,UART_Board_RX_NO_DATA                            ; Add no data flag
-   824  2FA7  4B                   swap A,X
-   825  2FA8  8007                 jmp  End_UART_Board_iReadChar
+   818  2F22  21 E8                and  A,(UART_Board_RX_ERROR|UART_Board_RX_REG_FULL)
+   819  2F24  08                   push A
+   820  2F25  21 08                and  A,UART_Board_RX_COMPLETE                           ; Check if a character is ready
+   821  2F27  B007                 jnz  .RX_GET_DATA                                       ; Data Ready go read it.
+   822  2F29  18                   pop  A
+   823  2F2A  29 01                or   A,UART_Board_RX_NO_DATA                            ; Add no data flag
+   824  2F2C  4B                   swap A,X
+   825  2F2D  8007                 jmp  End_UART_Board_iReadChar
    826                          
-   827  2FAA                    .RX_GET_DATA:
-   828  2FAA  18                   pop  A
-   829  2FAB  21 E0                and  A,UART_Board_RX_ERROR
-   830  2FAD  4B                   swap A,X
-   831  2FAE  5D 3E                mov  A,REG[UART_Board_RX_BUFFER_REG ]                   ; Read data first, then
+   827  2F2F                    .RX_GET_DATA:
+   828  2F2F  18                   pop  A
+   829  2F30  21 E0                and  A,UART_Board_RX_ERROR
+   830  2F32  4B                   swap A,X
+   831  2F33  5D 3E                mov  A,REG[UART_Board_RX_BUFFER_REG ]                   ; Read data first, then
    832                                                                                     ; determine if data is valid
    833                          
-   834  2FB0                     End_UART_Board_iReadChar:
+   834  2F35                     End_UART_Board_iReadChar:
    835                             RAM_EPILOGUE RAM_USE_CLASS_1
-   836  2FB0  7F                   ret
+   836  2F35  7F                   ret
    837                          .ENDSECTION
    838                          
    839                          
@@ -2246,22 +2246,22 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    863                          ;    Currently only the page pointer registers listed below are modified: 
    864                          ;          IDX_PP
    865                          ;
-   866  2FB1                     UART_Board_PutString:
-   867  2FB1                    _UART_Board_PutString:
+   866  2F36                     UART_Board_PutString:
+   867  2F36                    _UART_Board_PutString:
    868                             RAM_PROLOGUE RAM_USE_CLASS_3
-   869  2FB1  60 D3                RAM_SETPAGE_IDX A
-   870  2FB3                    .PutStringLoop:
-   871  2FB3  52 00                mov   A,[X]                                   ; Get value pointed to by X
-   872  2FB5  A006                 jz    End_PutString                           ; Check for end of string
-   873  2FB7  9FBB                 call  UART_Board_PutChar                      ; Send character to Tx port
-   874  2FB9  75                   inc   X                                       ; Advance pointer to next character
-   875  2FBA  8FF8                 jmp   .PutStringLoop                          ; Get next character
+   869  2F36  60 D3                RAM_SETPAGE_IDX A
+   870  2F38                    .PutStringLoop:
+   871  2F38  52 00                mov   A,[X]                                   ; Get value pointed to by X
+   872  2F3A  A006                 jz    End_PutString                           ; Check for end of string
+   873  2F3C  9FBB                 call  UART_Board_PutChar                      ; Send character to Tx port
+   874  2F3E  75                   inc   X                                       ; Advance pointer to next character
+   875  2F3F  8FF8                 jmp   .PutStringLoop                          ; Get next character
    876                          
-   877  2FBC                    End_PutString:
+   877  2F41                    End_PutString:
    878                             RAM_EPILOGUE RAM_USE_CLASS_3
-      + 2FBC  70 3F             	and	f, 0x3F
-      + 2FBE  71 80             	or	f, 0x80
-   879  2FC0  7F                   ret
+      + 2F41  70 3F             	and	f, 0x3F
+      + 2F43  71 80             	or	f, 0x80
+   879  2F45  7F                   ret
    880                          .ENDSECTION
    881                              
    882                          .SECTION
@@ -2295,39 +2295,39 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    910  FFFFFFFC                    STR_MSB:    equ -4                               ; MSB pointer of string 
    911  FFFFFFFD                    STR_LSB:    equ -3                               ; LSB pointer of string 
    912                          
-   913  2FC1                     UART_Board_Write:
-   914  2FC1                    _UART_Board_Write:
+   913  2F46                     UART_Board_Write:
+   914  2F46                    _UART_Board_Write:
    915                             RAM_PROLOGUE RAM_USE_CLASS_3
-   916  2FC1  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Refer indexed addrs to the stack
-   917  2FC4  4F                   mov   X, SP                                   ; Establish the frame pointer 
+   916  2F46  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Refer indexed addrs to the stack
+   917  2F49  4F                   mov   X, SP                                   ; Establish the frame pointer 
    918                          
-   919  2FC5                    .NextByteLoop:
-   920  2FC5  52 FB                mov   A, [X+CNT_LEN]                          ; End of the string?
-   921  2FC7  A01A                 jz    .End_Write                              ;   Yes, prepare to exit
-   922  2FC9  7B FB                dec   [X+CNT_LEN]                             ; Decrement counter
+   919  2F4A                    .NextByteLoop:
+   920  2F4A  52 FB                mov   A, [X+CNT_LEN]                          ; End of the string?
+   921  2F4C  A01A                 jz    .End_Write                              ;   Yes, prepare to exit
+   922  2F4E  7B FB                dec   [X+CNT_LEN]                             ; Decrement counter
    923                          
    924                             IF SYSTEM_LARGE_MEMORY_MODEL
-   925  2FCB  52 FC                mov   A, [X+STR_MSB]                          ; Load pointer to char to send
+   925  2F50  52 FC                mov   A, [X+STR_MSB]                          ; Load pointer to char to send
    926                             ENDIF
    927                          
-   928  2FCD  59 FD                mov   X, [X+STR_LSB]                          ; Load pointer to char to send
-   929  2FCF  60 D3                RAM_SETPAGE_IDX A                             ; switch index pages
-   930  2FD1  52 00                mov   A, [X]                                  ; Grab the data
+   928  2F52  59 FD                mov   X, [X+STR_LSB]                          ; Load pointer to char to send
+   929  2F54  60 D3                RAM_SETPAGE_IDX A                             ; switch index pages
+   930  2F56  52 00                mov   A, [X]                                  ; Grab the data
    931                             InLinePutChar A                               ; Put data in empty TX buf reg
-      + 2FD3                    ??0001:
-      + 2FD3  49 3B 10          	tst	reg[59], 16
-      + 2FD6  AFFC              	jz	??0001
-      + 2FD8  60 39             	mov	reg[57], a
-   932  2FDA  4F                   mov   X, SP                                   ; Recover frame pointer
-   933  2FDB  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Prepare for stack access
-   934  2FDE  77 FD                inc   [X+STR_LSB]                             ; Point to next byte, but do not
-   935  2FE0  8FE4                 jmp   .NextByteLoop                           ;    cross RAM page boundary!
+      + 2F58                    ??0001:
+      + 2F58  49 3B 10          	tst	reg[59], 16
+      + 2F5B  AFFC              	jz	??0001
+      + 2F5D  60 39             	mov	reg[57], a
+   932  2F5F  4F                   mov   X, SP                                   ; Recover frame pointer
+   933  2F60  62 D3 03             RAM_SETPAGE_IDX2STK                           ; Prepare for stack access
+   934  2F63  77 FD                inc   [X+STR_LSB]                             ; Point to next byte, but do not
+   935  2F65  8FE4                 jmp   .NextByteLoop                           ;    cross RAM page boundary!
    936                          
-   937  2FE2                    .End_Write:
+   937  2F67                    .End_Write:
    938                             RAM_EPILOGUE RAM_USE_CLASS_3
-      + 2FE2  70 3F             	and	f, 0x3F
-      + 2FE4  71 80             	or	f, 0x80
-   939  2FE6  7F                   ret
+      + 2F67  70 3F             	and	f, 0x3F
+      + 2F69  71 80             	or	f, 0x80
+   939  2F6B  7F                   ret
    940                          .ENDSECTION
    941                              
    942                          
@@ -2362,38 +2362,38 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    971  FFFFFFFC                    CSTR_MSB:   equ -4           ; MSB pointer of string
    972  FFFFFFFD                    CSTR_LSB:   equ -3           ; LSB pointer of string
    973                          
-   974  2FE7                     UART_Board_CWrite:
-   975  2FE7                    _UART_Board_CWrite:
-   976  2FE7  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   977  2FE9  4F                   mov   X,SP
-   978  2FEA                    .CW_Loop:
-   979  2FEA  3D FA 00             cmp   [X+CLEN_MSB],0x00                  ; Check for zero counter
-   980  2FED  B006                 jnz   .CW_WRITEIT
-   981  2FEF  3D FB 00             cmp   [X+CLEN_LSB],0x00
-   982  2FF2  A01D                 jz    .End_CWrite                        ; Leave if done
+   974  2F6C                     UART_Board_CWrite:
+   975  2F6C                    _UART_Board_CWrite:
+   976  2F6C  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   977  2F6E  4F                   mov   X,SP
+   978  2F6F                    .CW_Loop:
+   979  2F6F  3D FA 00             cmp   [X+CLEN_MSB],0x00                  ; Check for zero counter
+   980  2F72  B006                 jnz   .CW_WRITEIT
+   981  2F74  3D FB 00             cmp   [X+CLEN_LSB],0x00
+   982  2F77  A01D                 jz    .End_CWrite                        ; Leave if done
    983                          
-   984  2FF4                    .CW_WRITEIT:                                
-   985  2FF4  10                   push  X                                  ; Save frame pointer
-   986  2FF5  52 FC                mov   A,[X+CSTR_MSB]
-   987  2FF7  59 FD                mov   X,[X+CSTR_LSB]
-   988  2FF9  28                   romx                                     ; Get character from ROM
+   984  2F79                    .CW_WRITEIT:                                
+   985  2F79  10                   push  X                                  ; Save frame pointer
+   986  2F7A  52 FC                mov   A,[X+CSTR_MSB]
+   987  2F7C  59 FD                mov   X,[X+CSTR_LSB]
+   988  2F7E  28                   romx                                     ; Get character from ROM
    989                             InLinePutChar A                          ; Put data in empty TX buf reg
-      + 2FFA                    ??0002:
-      + 2FFA  49 3B 10          	tst	reg[59], 16
-      + 2FFD  AFFC              	jz	??0002
-      + 2FFF  60 39             	mov	reg[57], a
-   990  3001  20                   pop   X                                  ; Restore frame pointer
-   991  3002  07 FD 01             add   [X+CSTR_LSB],1                     ; Increment the string pointer
-   992  3005  0F FC 00             adc   [X+CSTR_MSB],0
-   993  3008  17 FB 01             sub   [X+CLEN_LSB],0x01                  ; Dec the counter
-   994  300B  1F FA 00             sbb   [X+CLEN_MSB],0x00
-   995  300E  8FDB                 jmp   .CW_Loop
+      + 2F7F                    ??0002:
+      + 2F7F  49 3B 10          	tst	reg[59], 16
+      + 2F82  AFFC              	jz	??0002
+      + 2F84  60 39             	mov	reg[57], a
+   990  2F86  20                   pop   X                                  ; Restore frame pointer
+   991  2F87  07 FD 01             add   [X+CSTR_LSB],1                     ; Increment the string pointer
+   992  2F8A  0F FC 00             adc   [X+CSTR_MSB],0
+   993  2F8D  17 FB 01             sub   [X+CLEN_LSB],0x01                  ; Dec the counter
+   994  2F90  1F FA 00             sbb   [X+CLEN_MSB],0x00
+   995  2F93  8FDB                 jmp   .CW_Loop
    996                          
-   997  3010                    .End_CWrite:
+   997  2F95                    .End_CWrite:
    998                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 3010  70 3F             	and	f, 0x3F
-      + 3012  71 80             	or	f, 0x80
-   999  3014  7F                   ret
+      + 2F95  70 3F             	and	f, 0x3F
+      + 2F97  71 80             	or	f, 0x80
+   999  2F99  7F                   ret
   1000                          .ENDSECTION
   1001                          
   1002                          
@@ -2420,26 +2420,26 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
   1023                          ;    responsibility to perserve their values across calls to fastcall16 
   1024                          ;    functions.
   1025                          ;
-  1026  3015                     UART_Board_CPutString:
-  1027  3015                    _UART_Board_CPutString:
+  1026  2F9A                     UART_Board_CPutString:
+  1027  2F9A                    _UART_Board_CPutString:
   1028                             RAM_PROLOGUE RAM_USE_CLASS_1
-  1029  3015  08                   push  A                                       ; Store ROM pointer
-  1030  3016  10                   push  X
-  1031  3017  28                   romx                                          ; Get character from ROM
-  1032  3018  A00B                 jz    .End_CPutString
-  1033  301A  9F58                 call  UART_Board_PutChar                      ; Print character
-  1034  301C  20                   pop   X
-  1035  301D  18                   pop   A
-  1036  301E  75                   inc   X                                       ; Inc LSB of pointer
-  1037  301F  DFF5                 jnc   UART_Board_CPutString                   ; Check for carry
-  1038  3021  74                   inc   A                                       ; Inc MSB of pointer
-  1039  3022  8FF2                 jmp   UART_Board_CPutString
+  1029  2F9A  08                   push  A                                       ; Store ROM pointer
+  1030  2F9B  10                   push  X
+  1031  2F9C  28                   romx                                          ; Get character from ROM
+  1032  2F9D  A00B                 jz    .End_CPutString
+  1033  2F9F  9F58                 call  UART_Board_PutChar                      ; Print character
+  1034  2FA1  20                   pop   X
+  1035  2FA2  18                   pop   A
+  1036  2FA3  75                   inc   X                                       ; Inc LSB of pointer
+  1037  2FA4  DFF5                 jnc   UART_Board_CPutString                   ; Check for carry
+  1038  2FA6  74                   inc   A                                       ; Inc MSB of pointer
+  1039  2FA7  8FF2                 jmp   UART_Board_CPutString
   1040                          
   1041                          
-  1042  3024                    .End_CPutString:
-  1043  3024  38 FE                add   SP, -2
+  1042  2FA9                    .End_CPutString:
+  1043  2FA9  38 FE                add   SP, -2
   1044                             RAM_EPILOGUE RAM_USE_CLASS_1
-  1045  3026  7F                   ret
+  1045  2FAB  7F                   ret
   1046                          .ENDSECTION
   1047                          
   1048                          
@@ -2464,51 +2464,51 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
   1067                          ;    responsibility to perserve their values across calls to fastcall16 
   1068                          ;    functions.
   1069                          ;
-  1070  3027                     UART_Board_PutCRLF:
-  1071  3027                    _UART_Board_PutCRLF:
+  1070  2FAC                     UART_Board_PutCRLF:
+  1071  2FAC                    _UART_Board_PutCRLF:
   1072                             RAM_PROLOGUE RAM_USE_CLASS_1
-  1073  3027  50 0D                mov  A,0x0D                        ; Send CR
-  1074  3029  9F49                 call UART_Board_PutChar
-  1075  302B  50 0A                mov  A,0x0A                        ; Send LF
-  1076  302D  9F45                 call UART_Board_PutChar
+  1073  2FAC  50 0D                mov  A,0x0D                        ; Send CR
+  1074  2FAE  9F49                 call UART_Board_PutChar
+  1075  2FB0  50 0A                mov  A,0x0A                        ; Send LF
+  1076  2FB2  9F45                 call UART_Board_PutChar
   1077                             RAM_EPILOGUE RAM_USE_CLASS_1
-  1078  302F  7F                   ret
+  1078  2FB4  7F                   ret
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:34:00 2015
 
-            _UART_Board_SendData 2F10         UART_Board_TX_CONTROL_REG 003B              _UART_Board_cGetChar 2F7C  
+            _UART_Board_SendData 2E95         UART_Board_TX_CONTROL_REG 003B              _UART_Board_cGetChar 2F01  
           UART_Board_RX_INT_MASK 0080        UART_Board_TX_BUFFER_EMPTY 0010            UART_Board_RX_REG_FULL 0008  
-              UART_Board_IntCntl 2F2F        UART_Board_RX_PARITY_ERROR 0080             _UART_Board_cReadChar 2F84  
-           _UART_Board_TxIntMode 2F1C               UART_Board_RX_ERROR 00E0                UART_Board_PutCRLF 3027  
-                        CLEN_LSB FFFFFFFB                          CLEN_MSB FFFFFFFA          End_UART_Board_cReadChar 2F9A  
-              UART_Board_PutChar 2F74            bUART_Board_ReadRxData 2F16             _UART_Board_PutString 2FB1  
-           UART_Board_PutSHexInt 2F6D            UART_Board_TX_FUNC_REG 0038         _bUART_Board_ReadRxStatus 2F19  
-          UART_Board_TX_INT_MASK 0040                  _UART_Board_Stop 2F09         _bUART_Board_ReadTxStatus 2F13  
+              UART_Board_IntCntl 2EB4        UART_Board_RX_PARITY_ERROR 0080             _UART_Board_cReadChar 2F09  
+           _UART_Board_TxIntMode 2EA1               UART_Board_RX_ERROR 00E0                UART_Board_PutCRLF 2FAC  
+                        CLEN_LSB FFFFFFFB                          CLEN_MSB FFFFFFFA          End_UART_Board_cReadChar 2F1F  
+              UART_Board_PutChar 2EF9            bUART_Board_ReadRxData 2E9B             _UART_Board_PutString 2F36  
+           UART_Board_PutSHexInt 2EF2            UART_Board_TX_FUNC_REG 0038         _bUART_Board_ReadRxStatus 2E9E  
+          UART_Board_TX_INT_MASK 0040                  _UART_Board_Stop 2E8E         _bUART_Board_ReadTxStatus 2E98  
                         CSTR_LSB FFFFFFFD                          CSTR_MSB FFFFFFFC           bfCONTROL_REG_START_BIT 0001  
-           _UART_Board_iReadChar 2F9B            _UART_Board_PutSHexInt 2F6D                            ??0000 2F74  
-                          ??0001 2FD3                            ??0002 2FFA          End_UART_Board_iReadChar 2FB0  
-        UART_Board_bReadRxStatus 2F19                     End_PutString 2FBC               UART_Board_SendData 2F10  
-             UART_Board_cGetChar 2F7C          UART_Board_bReadTxStatus 2F13   UART_Board_INT_MODE_TX_COMPLETE 0001  
-         _bUART_Board_ReadRxData 2F16                  UART_Board_Start 2F02                  UART_Board_Write 2FC1  
-                          HITECH 0002            UART_Board_bReadRxData 2F16                   FLAG_PGMODE_01b 0040  
-                 FLAG_PGMODE_10b 0080                            IDX_PP 00D3           UART_Board_SetTxIntMode 2EF0  
-         UART_Board_RXBUF_ENABLE 0000            UART_Board_PutSHexByte 2F5A              UART_Board_EnableInt 2EE2  
-           UART_Board_CPutString 3015          UART_Board_ENABLE_RX_INT 0001          UART_Board_ENABLE_TX_INT 0002  
-               _UART_Board_Start 2F02                 _UART_Board_Write 2FC1            _UART_Board_CPutString 3015  
-         _UART_Board_bReadRxData 2F16          UART_Board_TX_BUFFER_REG 0039           _UART_Board_PutSHexByte 2F5A  
-             _UART_Board_IntCntl 2F2F         SYSTEM_LARGE_MEMORY_MODEL 0001               _UART_Board_PutCRLF 3027  
-               UART_Board_CWrite 2FE7               _UART_Board_PutChar 2F74             UART_Board_RX_INT_REG 00E1  
-          SYSTEM_MULTIPAGE_STACK 0000             UART_Board_RX_NO_DATA 0001          _UART_Board_SetTxIntMode 2EF0  
-     UART_Board_RX_FRAMING_ERROR 0020                         TOOLCHAIN 0002              UART_Board_cReadChar 2F84  
-            UART_Board_TxIntMode 2F1C                           CNT_LEN FFFFFFFB             UART_Board_TX_INT_REG 00E1  
-                FLAG_PGMODE_MASK 00C0              UART_Board_PutString 2FB1                   RAM_USE_CLASS_1 0001  
+           _UART_Board_iReadChar 2F20            _UART_Board_PutSHexInt 2EF2                            ??0000 2EF9  
+                          ??0001 2F58                            ??0002 2F7F          End_UART_Board_iReadChar 2F35  
+        UART_Board_bReadRxStatus 2E9E                     End_PutString 2F41               UART_Board_SendData 2E95  
+             UART_Board_cGetChar 2F01          UART_Board_bReadTxStatus 2E98   UART_Board_INT_MODE_TX_COMPLETE 0001  
+         _bUART_Board_ReadRxData 2E9B                  UART_Board_Start 2E87                  UART_Board_Write 2F46  
+                          HITECH 0002            UART_Board_bReadRxData 2E9B                   FLAG_PGMODE_01b 0040  
+                 FLAG_PGMODE_10b 0080                            IDX_PP 00D3           UART_Board_SetTxIntMode 2E75  
+         UART_Board_RXBUF_ENABLE 0000            UART_Board_PutSHexByte 2EDF              UART_Board_EnableInt 2E67  
+           UART_Board_CPutString 2F9A          UART_Board_ENABLE_RX_INT 0001          UART_Board_ENABLE_TX_INT 0002  
+               _UART_Board_Start 2E87                 _UART_Board_Write 2F46            _UART_Board_CPutString 2F9A  
+         _UART_Board_bReadRxData 2E9B          UART_Board_TX_BUFFER_REG 0039           _UART_Board_PutSHexByte 2EDF  
+             _UART_Board_IntCntl 2EB4         SYSTEM_LARGE_MEMORY_MODEL 0001               _UART_Board_PutCRLF 2FAC  
+               UART_Board_CWrite 2F6C               _UART_Board_PutChar 2EF9             UART_Board_RX_INT_REG 00E1  
+          SYSTEM_MULTIPAGE_STACK 0000             UART_Board_RX_NO_DATA 0001          _UART_Board_SetTxIntMode 2E75  
+     UART_Board_RX_FRAMING_ERROR 0020                         TOOLCHAIN 0002              UART_Board_cReadChar 2F09  
+            UART_Board_TxIntMode 2EA1                           CNT_LEN FFFFFFFB             UART_Board_TX_INT_REG 00E1  
+                FLAG_PGMODE_MASK 00C0              UART_Board_PutString 2F36                   RAM_USE_CLASS_1 0001  
                  RAM_USE_CLASS_2 0002                   RAM_USE_CLASS_3 0004                   RAM_USE_CLASS_4 0008  
-                 UART_Board_Stop 2F09                           STR_LSB FFFFFFFD                           STR_MSB FFFFFFFC  
-            UART_Board_iReadChar 2F9B             UART_Board_DisableInt 2EE9          bUART_Board_ReadRxStatus 2F19  
-  bfFUNCTION_REG_TX_INT_MODE_BIT 0010          bUART_Board_ReadTxStatus 2F13                _UART_Board_CWrite 2FE7  
-       _UART_Board_bReadRxStatus 2F19            _UART_Board_DisableInt 2EE9         _UART_Board_bReadTxStatus 2F13  
-           _UART_Board_EnableInt 2EE2                 SYSTEM_STACK_PAGE 0003                     FLAG_XIO_MASK 0010  
+                 UART_Board_Stop 2E8E                           STR_LSB FFFFFFFD                           STR_MSB FFFFFFFC  
+            UART_Board_iReadChar 2F20             UART_Board_DisableInt 2E6E          bUART_Board_ReadRxStatus 2E9E  
+  bfFUNCTION_REG_TX_INT_MODE_BIT 0010          bUART_Board_ReadTxStatus 2E98                _UART_Board_CWrite 2F6C  
+       _UART_Board_bReadRxStatus 2E9E            _UART_Board_DisableInt 2E6E         _UART_Board_bReadTxStatus 2E98  
+           _UART_Board_EnableInt 2E67                 SYSTEM_STACK_PAGE 0003                     FLAG_XIO_MASK 0010  
         UART_Board_RX_BUFFER_REG 003E        SYSTEM_IDXPG_TRACKS_IDX_PP 0001        SYSTEM_IDXPG_TRACKS_STK_PP 0000  
-          UART_Board_RX_COMPLETE 0008                UART_Board_HEX_STR 2F4A         UART_Board_RX_CONTROL_REG 003F  
+          UART_Board_RX_COMPLETE 0008                UART_Board_HEX_STR 2ECF         UART_Board_RX_CONTROL_REG 003F  

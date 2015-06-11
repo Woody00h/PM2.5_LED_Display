@@ -1070,7 +1070,7 @@
 [v _ShowPMxx `(v  1 e 0 0 ]
 "78
 [v _ShowHumiTemp `(v  1 e 0 0 ]
-"131
+"132
 [v _LED_Display `(v  1 e 0 0 ]
 "36 ./lib\SAR10.h
 [v _SAR10_DisableInt `BR(v  1 e 0 0 ]
@@ -1122,9 +1122,9 @@
 [v _UART_Sensor_IntCntl `BR(v  1 e 0 0 ]
 "26 ./main.c
 [v _Timer8ISR `(v  1 e 0 0 ]
-"56
+"55
 [v _Timer16ISR `(v  1 e 0 0 ]
-"64
+"63
 [v _main `(v  1 e 0 0 ]
 "12 ./particlesensor.c
 [v _SensorUART `(v  1 e 0 0 ]
@@ -2045,12 +2045,12 @@
 "986
 [v _AMUX_CFG1 `Auc  1 e 1 @362 ]
 "129
-"64 ./main.c
+"63 ./main.c
 [v _main `(v  1 e 0 0 ]
 {
-"65
+"64
 [v _ret `uc  1 a 1 0 ]
-"197
+"183
 } 1
 "60 ./boardcommunication.c
 [v _UartPutHexWord `(v  1 e 0 0 ]
@@ -2104,10 +2104,10 @@
 [v _data `ui  1 a 2 xa ]
 "70
 } 7
-"131 ./led.c
+"132 ./led.c
 [v _LED_Display `(v  1 e 0 0 ]
 {
-"167
+"168
 } 0
 "38 ./boardcommunication.c
 [v _UartPutHexByte `(v  1 e 0 0 ]
@@ -2239,7 +2239,7 @@
 [v _value `c  1 a 1 a ]
 "79
 [v _temp `c  1 a 1 a ]
-"128
+"129
 } 3
 "10 ./si7020.c
 [v _Si7020SendCommand `(uc  1 e 1 0 ]
@@ -2376,7 +2376,7 @@
 "26 ./main.c
 [v _Timer8ISR `(v  1 e 0 0 ]
 {
-"53
+"52
 } 0
 "7 ./t74hc595.c
 [v _ShiftRegOutput `(v  1 e 0 0 ]
@@ -2389,10 +2389,10 @@
 [v _i `uc  1 a 1 2 ]
 "61
 } 3
-"56 ./main.c
+"55 ./main.c
 [v _Timer16ISR `(v  1 e 0 0 ]
 {
-"61
+"60
 } 0
 "12 ./particlesensor.c
 [v _SensorUART `(v  1 e 0 0 ]

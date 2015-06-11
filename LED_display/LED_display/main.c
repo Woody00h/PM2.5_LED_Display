@@ -26,6 +26,7 @@ void Timer8ISR(void)
 {
 	if (DeadZone)
 	{
+		Timer8_WritePeriod(79);  
 		DisplayBuf[0] = 0xff;
 		DisplayBuf[1] = 0xff;
 		DisplayBuf[2] = 0xff;
@@ -34,11 +35,9 @@ void Timer8ISR(void)
 	}
 	else 
 	{
-//		if (DisPlayIndex  < 4)
+		Timer8_WritePeriod(159);  
 		*p = DisplayContent[DisPlayIndex];
-//		else 
-//		*p = DisplayContent[DisPlayIndex+4];
-		
+
 		DisplayBuf[2] = DisBit[DisPlayIndex];
 		
 		ShiftRegOutput();
@@ -96,7 +95,7 @@ void main(void)
 	DisplayBuf[0] = 0;
 	DisplayBuf[1] = 0;
 	
-	IndexStart = 4;
+	IndexStart = 0;
 	IndexEnd   = 8;
 	
 	Si7020Init();
@@ -128,17 +127,7 @@ void main(void)
 		 	while(SAR10_fIsDataAvailable()==0);//Wait while data is not ready
 		 	LightADCValue = SAR10_iGetData(); // Read result
 			MUX_CR2 &= ~0X02; //disconnect P2.1 Analog bus
-//			UART_Board_PutSHexInt(LightADCValue);
-//			UART_Board_PutCRLF();
-			
-//			for (i=0;i<8;i++)
-//			{
-//				DisplayContent[i] = DigitArray[k];
-//			}
-//			
-//			k++;
-//			if (k > 9)
-//				k = 0;
+
 		}
 		
 		
@@ -150,14 +139,11 @@ void main(void)
 				ret = Si7020SendCommand(MRH_NHMM); // send the command(Measure RH, No Hold Master Mode)
 				if(ret)
 				{
-//					UART_Board_CPutString("Send commad success");
-//					UART_Board_PutCRLF();
 					RHSampleStep = 1;
 				}
 				else
 				{			
-//					UART_Board_CPutString("Send commad fail");
-//					UART_Board_PutCRLF();					
+					
 				}
 			}
 			else 

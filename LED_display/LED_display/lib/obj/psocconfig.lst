@@ -1410,16 +1410,16 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     51                          ;               Page Pointer Registers Modified: 
     52                          ;               CUR_PP
     53                          ;
-    54  2BE0                    _LoadConfigInit:
-    55  2BE0                     LoadConfigInit:
+    54  2B65                    _LoadConfigInit:
+    55  2B65                     LoadConfigInit:
     56                              RAM_PROLOGUE RAM_USE_CLASS_4
     57                              
-    58  2BE0  7C 2BE7           	lcall	LoadConfig_led_display
-    59  2BE3  7C 3E1C           	lcall	LoadConfigTBL_led_display_Ordered
+    58  2B65  7C 2B6C           	lcall	LoadConfig_led_display
+    59  2B68  7C 3E1C           	lcall	LoadConfigTBL_led_display_Ordered
     60                          
     61                          
     62                              RAM_EPILOGUE RAM_USE_CLASS_4
-    63  2BE6  7F                    ret
+    63  2B6B  7F                    ret
     64                          
     65                          ;---------------------------------------------------------------------------
     66                          ; Load Configuration led_display
@@ -1440,31 +1440,31 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     81                          ;               Page Pointer Registers Modified: 
     82                          ;               CUR_PP
     83                          ;
-    84  2BE7                    _LoadConfig_led_display:
-    85  2BE7                     LoadConfig_led_display:
+    84  2B6C                    _LoadConfig_led_display:
+    85  2B6C                     LoadConfig_led_display:
     86                              RAM_PROLOGUE RAM_USE_CLASS_4
     87                          
-    88  2BE7  10                	push	x
-    89  2BE8  70 EF                 M8C_SetBank0                    ; Force bank 0
-    90  2BEA  50 00                 mov     a, 0                    ; Specify bank 0
-    91  2BEC  67                    asr     a                       ; Store in carry flag
+    88  2B6C  10                	push	x
+    89  2B6D  70 EF                 M8C_SetBank0                    ; Force bank 0
+    90  2B6F  50 00                 mov     a, 0                    ; Specify bank 0
+    91  2B71  67                    asr     a                       ; Store in carry flag
     92                                                              ; Load bank 0 table:
-    93  2BED  50 2C                 mov     A, >LoadConfigTBL_led_display_Bank0
-    94  2BEF  57 44                 mov     X, <LoadConfigTBL_led_display_Bank0
-    95  2BF1  7C 2C02               lcall   LoadConfig              ; Load the bank 0 values
+    93  2B72  50 2B                 mov     A, >LoadConfigTBL_led_display_Bank0
+    94  2B74  57 C9                 mov     X, <LoadConfigTBL_led_display_Bank0
+    95  2B76  7C 2B87               lcall   LoadConfig              ; Load the bank 0 values
     96                          
-    97  2BF4  50 01                 mov     a, 1                    ; Specify bank 1
-    98  2BF6  67                    asr     a                       ; Store in carry flag
+    97  2B79  50 01                 mov     a, 1                    ; Specify bank 1
+    98  2B7B  67                    asr     a                       ; Store in carry flag
     99                                                              ; Load bank 1 table:
-   100  2BF7  50 2C                 mov     A, >LoadConfigTBL_led_display_Bank1
-   101  2BF9  57 DB                 mov     X, <LoadConfigTBL_led_display_Bank1
-   102  2BFB  7C 2C02               lcall   LoadConfig              ; Load the bank 1 values
+   100  2B7C  50 2C                 mov     A, >LoadConfigTBL_led_display_Bank1
+   101  2B7E  57 60                 mov     X, <LoadConfigTBL_led_display_Bank1
+   102  2B80  7C 2B87               lcall   LoadConfig              ; Load the bank 1 values
    103                          
-   104  2BFE  70 EF                 M8C_SetBank0                    ; Force return to bank 0
-   105  2C00  20                	pop		x
+   104  2B83  70 EF                 M8C_SetBank0                    ; Force return to bank 0
+   105  2B85  20                	pop		x
    106                          
    107                              RAM_EPILOGUE RAM_USE_CLASS_4
-   108  2C01  7F                    ret
+   108  2B86  7F                    ret
    109                          
    110                          
    111                          
@@ -1484,54 +1484,54 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    125                          ;                X-2 LSB of config table address
    126                          ;                X-1 MSB of config table address
    127                          ;
-   128  2C02                    LoadConfig:
-   129  2C02  71 40                 RAM_PROLOGUE RAM_USE_CLASS_2
-   130  2C04  38 02                 add     SP, 2                   ; Set up local vars
-   131  2C06  10                    push    X                       ; Save config table address on stack
-   132  2C07  08                    push    A
-   133  2C08  4F                    mov     X, SP
-   134  2C09  56 FC 00              mov     [X-4], 0                ; Set default Destination to Bank 0
-   135  2C0C  D004                  jnc     .BankSelectSaved        ; Carry says Bank 0 is OK
-   136  2C0E  56 FC 01              mov     [X-4], 1                ; No Carry: default to Bank 1
-   137  2C11                    .BankSelectSaved:
-   138  2C11  18                    pop     A
-   139  2C12  20                    pop     X
+   128  2B87                    LoadConfig:
+   129  2B87  71 40                 RAM_PROLOGUE RAM_USE_CLASS_2
+   130  2B89  38 02                 add     SP, 2                   ; Set up local vars
+   131  2B8B  10                    push    X                       ; Save config table address on stack
+   132  2B8C  08                    push    A
+   133  2B8D  4F                    mov     X, SP
+   134  2B8E  56 FC 00              mov     [X-4], 0                ; Set default Destination to Bank 0
+   135  2B91  D004                  jnc     .BankSelectSaved        ; Carry says Bank 0 is OK
+   136  2B93  56 FC 01              mov     [X-4], 1                ; No Carry: default to Bank 1
+   137  2B96                    .BankSelectSaved:
+   138  2B96  18                    pop     A
+   139  2B97  20                    pop     X
    140                          
-   141  2C13                    LoadConfigLp:
-   142  2C13  70 EF                 M8C_SetBank0                    ; Switch to bank 0
-   143  2C15  62 E3 00              M8C_ClearWDT                    ; Clear the watchdog for long inits
-   144  2C18  10                    push    X                       ; Preserve the config table address
-   145  2C19  08                    push    A
-   146  2C1A  28                    romx                            ; Load register address from table
-   147  2C1B  39 FF                 cmp     A, END_CONFIG_TABLE     ; End of table?
-   148  2C1D  A01F                  jz      EndLoadConfig           ;   Yes, go wrap it up
-   149  2C1F  4F                    mov     X, SP                   ;
-   150  2C20  48 FC 01              tst     [X-4], 1                ; Loading IO Bank 1?
-   151  2C23  A003                  jz      .IOBankNowSet           ;    No, Bank 0 is fine
-   152  2C25  71 10                 M8C_SetBank1                    ;   Yes, switch to Bank 1
-   153  2C27                    .IOBankNowSet:
-   154  2C27  54 FD                 mov     [X-3], A                ; Stash the register address
-   155  2C29  18                    pop     A                       ; Retrieve the table address
-   156  2C2A  20                    pop     X
-   157  2C2B  75                    inc     X                       ; Advance to the data byte
-   158  2C2C  09 00                 adc     A, 0
-   159  2C2E  10                    push    X                       ; Save the config table address again
-   160  2C2F  08                    push    A
-   161  2C30  28                    romx                            ; load config data from the table
-   162  2C31  4F                    mov     X, SP                   ; retrieve the register address
-   163  2C32  59 FD                 mov     X, [X-3]
-   164  2C34  61 00                 mov     reg[X], A               ; Configure the register
-   165  2C36  18                    pop     A                       ; retrieve the table address
-   166  2C37  20                    pop     X
-   167  2C38  75                    inc     X                       ; advance to next table entry
-   168  2C39  09 00                 adc     A, 0
-   169  2C3B  8FD7                  jmp     LoadConfigLp            ; loop to configure another register
-   170  2C3D                    EndLoadConfig:
-   171  2C3D  38 FC                 add     SP, -4
+   141  2B98                    LoadConfigLp:
+   142  2B98  70 EF                 M8C_SetBank0                    ; Switch to bank 0
+   143  2B9A  62 E3 00              M8C_ClearWDT                    ; Clear the watchdog for long inits
+   144  2B9D  10                    push    X                       ; Preserve the config table address
+   145  2B9E  08                    push    A
+   146  2B9F  28                    romx                            ; Load register address from table
+   147  2BA0  39 FF                 cmp     A, END_CONFIG_TABLE     ; End of table?
+   148  2BA2  A01F                  jz      EndLoadConfig           ;   Yes, go wrap it up
+   149  2BA4  4F                    mov     X, SP                   ;
+   150  2BA5  48 FC 01              tst     [X-4], 1                ; Loading IO Bank 1?
+   151  2BA8  A003                  jz      .IOBankNowSet           ;    No, Bank 0 is fine
+   152  2BAA  71 10                 M8C_SetBank1                    ;   Yes, switch to Bank 1
+   153  2BAC                    .IOBankNowSet:
+   154  2BAC  54 FD                 mov     [X-3], A                ; Stash the register address
+   155  2BAE  18                    pop     A                       ; Retrieve the table address
+   156  2BAF  20                    pop     X
+   157  2BB0  75                    inc     X                       ; Advance to the data byte
+   158  2BB1  09 00                 adc     A, 0
+   159  2BB3  10                    push    X                       ; Save the config table address again
+   160  2BB4  08                    push    A
+   161  2BB5  28                    romx                            ; load config data from the table
+   162  2BB6  4F                    mov     X, SP                   ; retrieve the register address
+   163  2BB7  59 FD                 mov     X, [X-3]
+   164  2BB9  61 00                 mov     reg[X], A               ; Configure the register
+   165  2BBB  18                    pop     A                       ; retrieve the table address
+   166  2BBC  20                    pop     X
+   167  2BBD  75                    inc     X                       ; advance to next table entry
+   168  2BBE  09 00                 adc     A, 0
+   169  2BC0  8FD7                  jmp     LoadConfigLp            ; loop to configure another register
+   170  2BC2                    EndLoadConfig:
+   171  2BC2  38 FC                 add     SP, -4
    172                              RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2C3F  70 3F             	and	f, 0x3F
-      + 2C41  71 80             	or	f, 0x80
-   173  2C43  7F                    ret
+      + 2BC4  70 3F             	and	f, 0x3F
+      + 2BC6  71 80             	or	f, 0x80
+   173  2BC8  7F                    ret
    174                          
    175                          AREA InterruptRAM(ram, rel)
    176                          
@@ -1542,12 +1542,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:33:58 2015
 
-                  _LoadConfigInit 2BE0    LoadConfigTBL_led_display_Bank0 2C44    LoadConfigTBL_led_display_Bank1 2CDB  
-           LoadConfig_led_display 2BE7                             HITECH 0002                    FLAG_PGMODE_01b 0040  
-                  FLAG_PGMODE_10b 0080            _LoadConfig_led_display 2BE7          SYSTEM_LARGE_MEMORY_MODEL 0001  
+                  _LoadConfigInit 2B65    LoadConfigTBL_led_display_Bank0 2BC9    LoadConfigTBL_led_display_Bank1 2C60  
+           LoadConfig_led_display 2B6C                             HITECH 0002                    FLAG_PGMODE_01b 0040  
+                  FLAG_PGMODE_10b 0080            _LoadConfig_led_display 2B6C          SYSTEM_LARGE_MEMORY_MODEL 0001  
                         NO_SHADOW 0078                          TOOLCHAIN 0002                         _NO_SHADOW 0078  
                  FLAG_PGMODE_MASK 00C0                            RES_WDT 00E3                    RAM_USE_CLASS_1 0001  
                   RAM_USE_CLASS_2 0002                    RAM_USE_CLASS_3 0004                    RAM_USE_CLASS_4 0008  
-LoadConfigTBL_led_display_Ordered 3E1C                         LoadConfig 2C02                     LoadConfigInit 2BE0  
-                 END_CONFIG_TABLE 00FF                      EndLoadConfig 2C3D                      FLAG_XIO_MASK 0010  
-       SYSTEM_IDXPG_TRACKS_IDX_PP 0001                       LoadConfigLp 2C13         SYSTEM_IDXPG_TRACKS_STK_PP 0000  
+LoadConfigTBL_led_display_Ordered 3E1C                         LoadConfig 2B87                     LoadConfigInit 2B65  
+                 END_CONFIG_TABLE 00FF                      EndLoadConfig 2BC2                      FLAG_XIO_MASK 0010  
+       SYSTEM_IDXPG_TRACKS_IDX_PP 0001                       LoadConfigLp 2B98         SYSTEM_IDXPG_TRACKS_STK_PP 0000  

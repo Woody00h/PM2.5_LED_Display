@@ -1,7 +1,7 @@
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
-                                                                                                           Thu Jun 11 11:24:09 2015
+                                                                                                           Thu Jun 11 13:06:49 2015
 
 
      1                          
@@ -26,7 +26,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     20                          	processor	CY8C22345
     21                          	macro	M8C_ClearWDT
     22                          	mov reg[0xE3],0x38
-    23  3182                    	endm
+    23  3107                    	endm
     24                          
     25                          	psect	PD_startup,class=CODE
     26                          	psect	init,class=CODE
@@ -111,7 +111,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    105  3FA7  50 00             	mov	a,low __Lbss0
    106  3FA9  4E                	swap	a,sp
    107  3FAA  50 00             	mov	a,0
-   108  3FAC  57 53             	mov	x,83
+   108  3FAC  57 54             	mov	x,84
    109  3FAE                    bssloop0:
    110  3FAE  08                	push	a
    111  3FAF  79                	dec	x
@@ -120,7 +120,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    114                          ;	Copy initialized data into bank 0
    115                          	global	__Lromdata0,__Lramdata0
    116  3FB2  57 65             	mov	x,low __Lromdata0
-   117  3FB4  50 53             	mov	a,low __Lramdata0
+   117  3FB4  50 54             	mov	a,low __Lramdata0
    118  3FB6  4E                	swap	a,sp
    119  3FB7                    dataloop0:
    120  3FB7  50 00             	mov	a,high __Lromdata0
@@ -139,8 +139,8 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
-Symbol Table                                                                                               Thu Jun 11 11:24:09 2015
+Symbol Table                                                                                               Thu Jun 11 13:06:49 2015
 
-    __Lramdata0 0053       __Lstackps 0300      __Lromdata0 0065            _main 3C9F            start 0000        dataloop0 3FB7  
+    __Lramdata0 0054       __Lstackps 0300      __Lromdata0 0065            _main 3C9F            start 0000        dataloop0 3FB7  
          CUR_PP 00D0           STK_PP 00D1        intlevel0 0003        intlevel1 0003        intlevel2 0003        reset_vec 0000  
        bssloop0 3FAE          __Lbss0 0000          __Start 3F46          startup 3F9D  __stack_start__ 0300  

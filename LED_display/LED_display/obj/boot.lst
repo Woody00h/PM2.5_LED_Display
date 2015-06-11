@@ -1765,7 +1765,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    152  0027  7E                    reti
    153                          
    154  0028                        org   28h                      ;PSoC Block DCC02 Interrupt Vector
-   155  0028  7D 3180               ljmp	_UART_Sensor_TX_ISR
+   155  0028  7D 3105               ljmp	_UART_Sensor_TX_ISR
    156  002B  7E                    reti
    157                          
    158  002C                        org   2Ch                      ;PSoC Block DCC03 Interrupt Vector
@@ -1773,7 +1773,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    160  002F  7E                    reti
    161                              
    162  0030                        org   30h                      ;PSoC Block DBC10 Interrupt Vector
-   163  0030  7C 3B6D               lcall _Timer8ISR
+   163  0030  7C 3B5D               lcall _Timer8ISR
    164  0033  7E                    reti
    165                          
    166  0034                        org   34h                      ;PSoC Block DBC11 Interrupt Vector
@@ -1781,15 +1781,15 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    168  0034  7E                    reti
    169                          
    170  0038                        org   38h                      ;PSoC Block DCC12 Interrupt Vector
-   171  0038  7D 3030               ljmp	_UART_Board_TX_ISR
+   171  0038  7D 2FB5               ljmp	_UART_Board_TX_ISR
    172  003B  7E                    reti
    173                          
    174  003C                        org   3Ch                      ;PSoC Block DCC13 Interrupt Vector
-   175  003C  7C 3B68               lcall _BoardUART
+   175  003C  7C 3B58               lcall _BoardUART
    176  003F  7E                    reti
    177                          
    178  0050                        org   50h                      ;SARADC Interrupt Vector
-   179  0050  7D 2E34               ljmp	_SAR10_ISR
+   179  0050  7D 2DB9               ljmp	_SAR10_ISR
    180  0053  7E                    reti
    181                          
    182  0054                        org   54h                      ;CSD0 Interrupt Vector
@@ -1805,7 +1805,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    192  005C  7E                    reti
    193                              
    194  0050                        org 50h                        ;SAR10 Interrupt Vector
-   195  0050  7D 2E34               ljmp	_SAR10_ISR
+   195  0050  7D 2DB9               ljmp	_SAR10_ISR
    196  0053  7E                    reti
    197                          
    198  0060                        org   60h                      ;PSoC I2C Interrupt Vector
@@ -2017,7 +2017,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    404                              ; to minimize start up time; (2) We may still need to play with the
    405                              ; Sleep Timer.
    406                              ;
-   407  3F7D  7C 2BE0               lcall LoadConfigInit
+   407  3F7D  7C 2B65               lcall LoadConfigInit
    408                          
    409                              ;-----------------------------------
    410                              ; Initialize C Run-Time Environment
@@ -2321,7 +2321,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:34:01 2015
 
-           SELECT_32K_JUST 0000                  _Timer8ISR 3B6D                  __Lstackps 0300          C_LANGUAGE_SUPPORT 0000  
+           SELECT_32K_JUST 0000                  _Timer8ISR 3B5D                  __Lstackps 0300          C_LANGUAGE_SUPPORT 0000  
                _Timer16ISR 3C06               POWER_SET_2V7 0006               POWER_SET_3V3 0008               POWER_SETTING 0010  
              POWER_SET_5V0 0010                 _SensorUART 3C24            SLEEP_TIMER_JUST 0000                    CPU_SCR1 00FE  
           bGetPowerSetting 3F9A                    INT_MSK0 00E0          POWER_SET_2V7_6MHZ 0002                    PLL_MODE 0000  
@@ -2329,11 +2329,11 @@ Symbol Table                                                                    
                     INT_VC 00E2              CPU_CLOCK_JUST 0003                      MVR_PP 00D4                      MVW_PP 00D5  
          _bGetPowerSetting 3F9A                WAIT_FOR_32K 0001                      STK_PP 00D1               LVD_TBEN_JUST 0000  
                     VLT_CR 00E3             VLT_CR_POR_HIGH 0020       SWITCH_MODE_PUMP_JUST 0080           SLEEP_TIMER_JUST2 0000  
-              _stack_start 0080                  _SAR10_ISR 2E34   SYSTEM_LARGE_MEMORY_MODEL 0001         POWER_SET_2V7_12MHZ 0004  
+              _stack_start 0080                  _SAR10_ISR 2DB9   SYSTEM_LARGE_MEMORY_MODEL 0001         POWER_SET_2V7_12MHZ 0004  
     SYSTEM_MULTIPAGE_STACK 0000          POWER_SET_SLOW_IMO 0001               PLL_MODE_JUST 0000                   TOOLCHAIN 0002  
           SWITCH_MODE_PUMP 0001               SYSCLK_SOURCE 0000                     OSC_CR0 00E0                     OSC_CR2 00E2  
-                   RES_WDT 00E3             WATCHDOG_ENABLE 0000          _UART_Board_TX_ISR 3030                  bSSC_KEYSP 00F9  
-      CPU_SCR1_ECO_ALLOWED 0004              LoadConfigInit 2BE0         _UART_Sensor_TX_ISR 3180                     __Start 3F46  
-                _BoardUART 3B68                   bSSC_KEY1 00F8           OSC_CR0_CPU_12MHz 0002           OSC_CR0_CPU_24MHz 0003  
+                   RES_WDT 00E3             WATCHDOG_ENABLE 0000          _UART_Board_TX_ISR 2FB5                  bSSC_KEYSP 00F9  
+      CPU_SCR1_ECO_ALLOWED 0004              LoadConfigInit 2B65         _UART_Sensor_TX_ISR 3105                     __Start 3F46  
+                _BoardUART 3B58                   bSSC_KEY1 00F8           OSC_CR0_CPU_12MHz 0002           OSC_CR0_CPU_24MHz 0003  
                    startup 3F9D           SYSTEM_STACK_PAGE 0003               FLAG_XIO_MASK 0010                  SELECT_32K 0000  
          TRIP_VOLTAGE_JUST 0007  SYSTEM_IDXPG_TRACKS_STK_PP 0000  

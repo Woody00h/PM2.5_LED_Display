@@ -497,8 +497,84 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 15 ]
 "55
 }
-"75
 [; ;led.c: 55: }
+
+[; ;led.c: 57: if (pm <= 50)
+
+"57
+[e $ ! <= _pm -> -> 50 `i `ui 17  ]
+[; ;led.c: 58: {
+
+"58
+{
+[; ;led.c: 59: IndexStart = 0;
+
+"59
+[e = _IndexStart -> -> 0 `i `uc ]
+[; ;led.c: 60: IndexEnd = 4;
+
+"60
+[e = _IndexEnd -> -> 4 `i `uc ]
+"61
+}
+[; ;led.c: 61: }
+
+[e $U 18  ]
+"62
+[e :U 17 ]
+[; ;led.c: 62: else
+
+[; ;led.c: 63: {
+
+"63
+{
+[; ;led.c: 64: if (pm <= 150)
+
+"64
+[e $ ! <= _pm -> -> 150 `i `ui 19  ]
+[; ;led.c: 65: {
+
+"65
+{
+[; ;led.c: 66: IndexStart = 0;
+
+"66
+[e = _IndexStart -> -> 0 `i `uc ]
+[; ;led.c: 67: IndexEnd = 8;
+
+"67
+[e = _IndexEnd -> -> 8 `i `uc ]
+"68
+}
+[; ;led.c: 68: }
+
+[e $U 20  ]
+"69
+[e :U 19 ]
+[; ;led.c: 69: else
+
+[; ;led.c: 70: {
+
+"70
+{
+[; ;led.c: 71: IndexStart = 4;
+
+"71
+[e = _IndexStart -> -> 4 `i `uc ]
+[; ;led.c: 72: IndexEnd = 8;
+
+"72
+[e = _IndexEnd -> -> 8 `i `uc ]
+"73
+}
+[e :U 20 ]
+"74
+}
+[e :U 18 ]
+"75
+[; ;led.c: 73: }
+
+[; ;led.c: 74: }
 
 [; ;led.c: 75: }
 
@@ -523,6 +599,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _index `uc 1 a ]
 [; ;led.c: 80: unsigned char index;
 
+[; ;led.c: 82: DisplayContent[1] = 0xffff;
+
+"82
+[e = *U + &U _DisplayContent * -> -> -> 1 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> 65535 `ui ]
 [; ;led.c: 83: DisplayContent[5] = 0xffff;
 
 "83
@@ -530,7 +610,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;led.c: 85: if (temp < 0)
 
 "85
-[e $ ! < -> _temp `i -> 0 `i 18  ]
+[e $ ! < -> _temp `i -> 0 `i 22  ]
 [; ;led.c: 86: {
 
 "86
@@ -544,13 +624,13 @@ Version 3.2 HI-TECH Software Intermediate Code
  -> _temp `i `c ]
 "88
 }
-[e :U 18 ]
+[e :U 22 ]
 [; ;led.c: 88: }
 
 [; ;led.c: 90: if (temp > 99)
 
 "90
-[e $ ! > -> _temp `i -> 99 `i 19  ]
+[e $ ! > -> _temp `i -> 99 `i 23  ]
 [; ;led.c: 91: {
 
 "91
@@ -561,7 +641,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _temp -> -> 99 `i `c ]
 "93
 }
-[e :U 19 ]
+[e :U 23 ]
 [; ;led.c: 93: }
 
 [; ;led.c: 95: index = temp/10;
@@ -571,11 +651,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;led.c: 96: if(index)
 
 "96
-[e $ ! != -> _index `i -> -> -> 0 `i `uc `i 20  ]
+[e $ ! != -> _index `i -> -> -> 0 `i `uc `i 24  ]
 [; ;led.c: 97: {
 
 "97
 {
+[; ;led.c: 98: DisplayContent[2] = DigitArray[index];
+
+"98
+[e = *U + &U _DisplayContent * -> -> -> 2 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux *U + &U _DigitArray * -> _index `ux -> -> # *U &U _DigitArray `ui `ux ]
 [; ;led.c: 99: DisplayContent[6] = DigitArray[index];
 
 "99
@@ -584,28 +668,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [; ;led.c: 100: }
 
-[e $U 21  ]
+[e $U 25  ]
 "101
-[e :U 20 ]
+[e :U 24 ]
 [; ;led.c: 101: else
 
 [; ;led.c: 102: {
 
 "102
 {
+[; ;led.c: 103: DisplayContent[2] = 0xffff;
+
+"103
+[e = *U + &U _DisplayContent * -> -> -> 2 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> 65535 `ui ]
 [; ;led.c: 104: DisplayContent[6] = 0xffff;
 
 "104
 [e = *U + &U _DisplayContent * -> -> -> 6 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> 65535 `ui ]
 "105
 }
-[e :U 21 ]
+[e :U 25 ]
 [; ;led.c: 105: }
 
 [; ;led.c: 107: index = temp%10;
 
 "107
 [e = _index -> % -> _temp `i -> 10 `i `uc ]
+[; ;led.c: 108: DisplayContent[3] = DigitArray[index];
+
+"108
+[e = *U + &U _DisplayContent * -> -> -> 3 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux *U + &U _DigitArray * -> _index `ux -> -> # *U &U _DigitArray `ui `ux ]
 [; ;led.c: 109: DisplayContent[7] = DigitArray[index];
 
 "109
@@ -613,7 +705,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;led.c: 111: if (temp < 0)
 
 "111
-[e $ ! < -> _temp `i -> 0 `i 22  ]
+[e $ ! < -> _temp `i -> 0 `i 26  ]
 [; ;led.c: 112: {
 
 "112
@@ -621,11 +713,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;led.c: 113: if (DisplayContent[2] == 0xffff)
 
 "113
-[e $ ! == *U + &U _DisplayContent * -> -> -> 2 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> 65535 `ui 23  ]
+[e $ ! == *U + &U _DisplayContent * -> -> -> 2 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> 65535 `ui 27  ]
 [; ;led.c: 114: {
 
 "114
 {
+[; ;led.c: 115: DisplayContent[2] == (~0X1000);
+
+"115
+[e == *U + &U _DisplayContent * -> -> -> 2 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ -> 4096 `i `ui ]
 [; ;led.c: 116: DisplayContent[6] == (~0X1000);
 
 "116
@@ -634,178 +730,196 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [; ;led.c: 117: }
 
-[e $U 24  ]
+[e $U 28  ]
 "118
-[e :U 23 ]
+[e :U 27 ]
 [; ;led.c: 118: else
 
 [; ;led.c: 119: {
 
 "119
 {
+[; ;led.c: 120: DisplayContent[1] == (~0X1000);
+
+"120
+[e == *U + &U _DisplayContent * -> -> -> 1 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ -> 4096 `i `ui ]
 [; ;led.c: 121: DisplayContent[5] == (~0X1000);
 
 "121
 [e == *U + &U _DisplayContent * -> -> -> 5 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ -> 4096 `i `ui ]
 "122
 }
-[e :U 24 ]
+[e :U 28 ]
 "123
 }
-[e :U 22 ]
-"128
+[e :U 26 ]
 [; ;led.c: 122: }
 
 [; ;led.c: 123: }
 
-[; ;led.c: 128: }
+[; ;led.c: 126: IndexStart = 0;
 
-[e :UE 17 ]
+"126
+[e = _IndexStart -> -> 0 `i `uc ]
+[; ;led.c: 127: IndexEnd = 4;
+
+"127
+[e = _IndexEnd -> -> 4 `i `uc ]
+"129
+[; ;led.c: 129: }
+
+[e :UE 21 ]
 }
-"131
+"132
 [v _LED_Display `(v 1 ef ]
 {
-[; ;led.c: 130: void LED_Display(void)
+[; ;led.c: 131: void LED_Display(void)
 
-[; ;led.c: 131: {
+[; ;led.c: 132: {
 
 [e :U _LED_Display ]
 [f ]
-[; ;led.c: 133: if (!DisplayExchangeTimer)
-
-"133
-[e $ ! ! != -> _DisplayExchangeTimer `i -> -> -> 0 `i `uc `i 26  ]
-[; ;led.c: 134: {
+[; ;led.c: 134: if (!DisplayExchangeTimer)
 
 "134
-{
-[; ;led.c: 135: DisplayExchangeTimer = 40;
+[e $ ! ! != -> _DisplayExchangeTimer `i -> -> -> 0 `i `uc `i 30  ]
+[; ;led.c: 135: {
 
 "135
-[e = _DisplayExchangeTimer -> -> 40 `i `uc ]
-[; ;led.c: 136: if (DisplayItem == 0)
+{
+[; ;led.c: 136: DisplayExchangeTimer = 40;
 
 "136
-[e $ ! == -> _DisplayItem `i -> 0 `i 27  ]
-[; ;led.c: 137: {
+[e = _DisplayExchangeTimer -> -> 40 `i `uc ]
+[; ;led.c: 137: if (DisplayItem == 0)
 
 "137
+[e $ ! == -> _DisplayItem `i -> 0 `i 31  ]
+[; ;led.c: 138: {
+
+"138
 {
-[; ;led.c: 138: ShowPMxx(data_pm2_5);
+[; ;led.c: 139: ShowPMxx(data_pm2_5);
 
 "42 ./ParticleSensor.h
 [v _data_pm2_5 `ui 0 e ]
-"138 ./led.c
+"139 ./led.c
 [e ( _ShowPMxx (1
  _data_pm2_5 ]
-[; ;led.c: 139: DisplayItem = 1;
+[; ;led.c: 140: DisplayItem = 1;
 
-"139
+"140
 [e = _DisplayItem -> -> 1 `i `uc ]
-[; ;led.c: 140: UartPutConstStr("Show PM");
+[; ;led.c: 141: UartPutConstStr("Show PM");
 
 "4 ./BoardComm.h
 [v _UartPutConstStr `(v 0 ef1`*Cuc ]
-"140 ./led.c
+"141 ./led.c
 [e ( _UartPutConstStr (1
  :s 1C ]
-"141
-}
-[; ;led.c: 141: }
-
-[e $U 28  ]
 "142
-[e :U 27 ]
-[; ;led.c: 142: else
+}
+[; ;led.c: 142: }
 
-[; ;led.c: 143: {
-
+[e $U 32  ]
 "143
-{
-[; ;led.c: 144: if (DisplayItem == 1)
+[e :U 31 ]
+[; ;led.c: 143: else
+
+[; ;led.c: 144: {
 
 "144
-[e $ ! == -> _DisplayItem `i -> 1 `i 29  ]
-[; ;led.c: 145: {
+{
+[; ;led.c: 145: if (DisplayItem == 1)
 
 "145
+[e $ ! == -> _DisplayItem `i -> 1 `i 33  ]
+[; ;led.c: 146: {
+
+"146
 {
-[; ;led.c: 147: DisplayContent[4] = ~(0X8000 + 0X0004 + 0X0008 + 0X2000);
+[; ;led.c: 147: DisplayContent[0] = ~(0X8000 + 0X0004 + 0X0008 + 0X2000);
 
 "147
+[e = *U + &U _DisplayContent * -> -> -> 0 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux ~ + + + -> 32768 `ui -> -> 4 `i `ui -> -> 8 `i `ui -> -> 8192 `i `ui ]
+[; ;led.c: 148: DisplayContent[4] = ~(0X8000 + 0X0004 + 0X0008 + 0X2000);
+
+"148
 [e = *U + &U _DisplayContent * -> -> -> 4 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux ~ + + + -> 32768 `ui -> -> 4 `i `ui -> -> 8 `i `ui -> -> 8192 `i `ui ]
-[; ;led.c: 149: ShowHumiTemp(Temperature);
+[; ;led.c: 150: ShowHumiTemp(Temperature);
 
 "41 ./Si7020.h
 [v _Temperature `c 0 e ]
-"149 ./led.c
+"150 ./led.c
 [e ( _ShowHumiTemp (1
  _Temperature ]
-[; ;led.c: 150: DisplayItem = 2;
-
-"150
-[e = _DisplayItem -> -> 2 `i `uc ]
-[; ;led.c: 151: UartPutConstStr("Show T");
+[; ;led.c: 151: DisplayItem = 2;
 
 "151
+[e = _DisplayItem -> -> 2 `i `uc ]
+[; ;led.c: 152: UartPutConstStr("Show T");
+
+"152
 [e ( _UartPutConstStr (1
  :s 2C ]
-"152
-}
-[; ;led.c: 152: }
-
-[e $U 30  ]
 "153
-[e :U 29 ]
-[; ;led.c: 153: else
+}
+[; ;led.c: 153: }
 
-[; ;led.c: 154: {
-
+[e $U 34  ]
 "154
-{
-[; ;led.c: 155: if (DisplayItem == 2)
+[e :U 33 ]
+[; ;led.c: 154: else
+
+[; ;led.c: 155: {
 
 "155
-[e $ ! == -> _DisplayItem `i -> 2 `i 31  ]
-[; ;led.c: 156: {
+{
+[; ;led.c: 156: if (DisplayItem == 2)
 
 "156
+[e $ ! == -> _DisplayItem `i -> 2 `i 35  ]
+[; ;led.c: 157: {
+
+"157
 {
-[; ;led.c: 158: DisplayContent[4] = ~(0X0001 + 0X0002 + 0X0008 + 0X2000 + 0X1000);
+[; ;led.c: 158: DisplayContent[0] = ~(0X0001 + 0X0002 + 0X0008 + 0X2000 + 0X1000);
 
 "158
+[e = *U + &U _DisplayContent * -> -> -> 0 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ + + + + -> 1 `i -> 2 `i -> 8 `i -> 8192 `i -> 4096 `i `ui ]
+[; ;led.c: 159: DisplayContent[4] = ~(0X0001 + 0X0002 + 0X0008 + 0X2000 + 0X1000);
+
+"159
 [e = *U + &U _DisplayContent * -> -> -> 4 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ + + + + -> 1 `i -> 2 `i -> 8 `i -> 8192 `i -> 4096 `i `ui ]
-[; ;led.c: 160: ShowHumiTemp(Humidity);
+[; ;led.c: 161: ShowHumiTemp(Humidity);
 
 "40 ./Si7020.h
 [v _Humidity `uc 0 e ]
-"160 ./led.c
+"161 ./led.c
 [e ( _ShowHumiTemp (1
  -> _Humidity `c ]
-[; ;led.c: 161: DisplayItem = 0;
-
-"161
-[e = _DisplayItem -> -> 0 `i `uc ]
-[; ;led.c: 162: UartPutConstStr("Show RH");
+[; ;led.c: 162: DisplayItem = 0;
 
 "162
+[e = _DisplayItem -> -> 0 `i `uc ]
+[; ;led.c: 163: UartPutConstStr("Show RH");
+
+"163
 [e ( _UartPutConstStr (1
  :s 3C ]
-"163
-}
-[e :U 31 ]
 "164
 }
-[e :U 30 ]
+[e :U 35 ]
 "165
 }
-[e :U 28 ]
+[e :U 34 ]
 "166
 }
-[e :U 26 ]
+[e :U 32 ]
 "167
-[; ;led.c: 163: }
-
+}
+[e :U 30 ]
+"168
 [; ;led.c: 164: }
 
 [; ;led.c: 165: }
@@ -814,7 +928,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 
 [; ;led.c: 167: }
 
-[e :UE 25 ]
+[; ;led.c: 168: }
+
+[e :UE 29 ]
 }
 [a 2C 83 104 111 119 32 84 0 ]
 [a 1C 83 104 111 119 32 80 77 0 ]

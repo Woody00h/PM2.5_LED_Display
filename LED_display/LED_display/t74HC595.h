@@ -19,8 +19,8 @@
 
 #ifdef DISPLAY
 #define DISPLAY_EXTERN
-							// R1   R2   R3   R4   G1   G2   G3   G4   
-const unsigned char DisBit[]={0xbf,0xef,0xfb,0xfe,0x7f,0xdf,0xf7,0xfd};
+							// G1   G2   G3   G4   R1   R2   R3   R4
+const unsigned char DisBit[]={0x7f,0xdf,0xf7,0xfd,0xbf,0xef,0xfb,0xfe};
 #else
 
 #define DISPLAY_EXTERN extern

@@ -2230,7 +2230,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     57                          ;-----------------------------------------------------------------------------
     58                          ;
     59                          
-    60  2E34                    _SAR10_ISR:
+    60  2DB9                    _SAR10_ISR:
     61                          
     62                             ;@PSoC_UserCode_BODY@ (Do not change this line.)
     63                             ;---------------------------------------------------
@@ -2258,10 +2258,10 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     85                             ;---------------------------------------------------
     86                             ;@PSoC_UserCode_END@ (Do not change this line.)
     87                          
-    88  2E34  7E                   reti
+    88  2DB9  7E                   reti
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:33:59 2015
 
-                       HITECH 0002                     _SAR10_ISR 2E34                      TOOLCHAIN 0002  
+                       HITECH 0002                     _SAR10_ISR 2DB9                      TOOLCHAIN 0002  

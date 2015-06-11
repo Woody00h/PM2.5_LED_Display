@@ -2225,12 +2225,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     94                          ;    responsibility to perserve their values across calls to fastcall16 
     95                          ;    functions.
     96                          ;
-    97  2E35                     Timer16_EnableInt:
-    98  2E35                    _Timer16_EnableInt:
+    97  2DBA                     Timer16_EnableInt:
+    98  2DBA                    _Timer16_EnableInt:
     99                             RAM_PROLOGUE RAM_USE_CLASS_1
-   100  2E35  43 E1 02             Timer16_EnableInt_M
+   100  2DBA  43 E1 02             Timer16_EnableInt_M
    101                             RAM_EPILOGUE RAM_USE_CLASS_1
-   102  2E38  7F                   ret
+   102  2DBD  7F                   ret
    103                          
    104                          .ENDSECTION
    105                          
@@ -2253,12 +2253,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    122                          ;    responsibility to perserve their values across calls to fastcall16 
    123                          ;    functions.
    124                          ;
-   125  2E39                     Timer16_DisableInt:
-   126  2E39                    _Timer16_DisableInt:
+   125  2DBE                     Timer16_DisableInt:
+   126  2DBE                    _Timer16_DisableInt:
    127                             RAM_PROLOGUE RAM_USE_CLASS_1
-   128  2E39  41 E1 FD             Timer16_DisableInt_M
+   128  2DBE  41 E1 FD             Timer16_DisableInt_M
    129                             RAM_EPILOGUE RAM_USE_CLASS_1
-   130  2E3C  7F                   ret
+   130  2DC1  7F                   ret
    131                          
    132                          .ENDSECTION
    133                          
@@ -2281,12 +2281,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    150                          ;    responsibility to perserve their values across calls to fastcall16 
    151                          ;    functions.
    152                          ;
-   153  2E3D                     Timer16_Start:
-   154  2E3D                    _Timer16_Start:
+   153  2DC2                     Timer16_Start:
+   154  2DC2                    _Timer16_Start:
    155                             RAM_PROLOGUE RAM_USE_CLASS_1
-   156  2E3D  43 23 01             Timer16_Start_M
+   156  2DC2  43 23 01             Timer16_Start_M
    157                             RAM_EPILOGUE RAM_USE_CLASS_1
-   158  2E40  7F                   ret
+   158  2DC5  7F                   ret
    159                          
    160                          .ENDSECTION
    161                          
@@ -2309,12 +2309,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    178                          ;    responsibility to perserve their values across calls to fastcall16 
    179                          ;    functions.
    180                          ;
-   181  2E41                     Timer16_Stop:
-   182  2E41                    _Timer16_Stop:
+   181  2DC6                     Timer16_Stop:
+   182  2DC6                    _Timer16_Stop:
    183                             RAM_PROLOGUE RAM_USE_CLASS_1
-   184  2E41  41 23 FE             Timer16_Stop_M
+   184  2DC6  41 23 FE             Timer16_Stop_M
    185                             RAM_EPILOGUE RAM_USE_CLASS_1
-   186  2E44  7F                   ret
+   186  2DC9  7F                   ret
    187                          
    188                          .ENDSECTION
    189                          
@@ -2338,14 +2338,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    207                          ;    responsibility to perserve their values across calls to fastcall16 
    208                          ;    functions.
    209                          ;
-   210  2E45                     Timer16_WritePeriod:
-   211  2E45                    _Timer16_WritePeriod:
+   210  2DCA                     Timer16_WritePeriod:
+   211  2DCA                    _Timer16_WritePeriod:
    212                             RAM_PROLOGUE RAM_USE_CLASS_1
-   213  2E45  60 21                mov   reg[Timer16_PERIOD_LSB_REG], A
-   214  2E47  5B                   mov   A, X
-   215  2E48  60 25                mov   reg[Timer16_PERIOD_MSB_REG], A
+   213  2DCA  60 21                mov   reg[Timer16_PERIOD_LSB_REG], A
+   214  2DCC  5B                   mov   A, X
+   215  2DCD  60 25                mov   reg[Timer16_PERIOD_MSB_REG], A
    216                             RAM_EPILOGUE RAM_USE_CLASS_1
-   217  2E4A  7F                   ret
+   217  2DCF  7F                   ret
    218                          
    219                          .ENDSECTION
    220                          
@@ -2370,14 +2370,14 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    239                          ;    responsibility to perserve their values across calls to fastcall16 
    240                          ;    functions.
    241                          ;
-   242  2E4B                     Timer16_WriteCompareValue:
-   243  2E4B                    _Timer16_WriteCompareValue:
+   242  2DD0                     Timer16_WriteCompareValue:
+   243  2DD0                    _Timer16_WriteCompareValue:
    244                             RAM_PROLOGUE RAM_USE_CLASS_1
-   245  2E4B  60 22                mov   reg[Timer16_COMPARE_LSB_REG], A
-   246  2E4D  5B                   mov   A, X
-   247  2E4E  60 26                mov   reg[Timer16_COMPARE_MSB_REG], A
+   245  2DD0  60 22                mov   reg[Timer16_COMPARE_LSB_REG], A
+   246  2DD2  5B                   mov   A, X
+   247  2DD3  60 26                mov   reg[Timer16_COMPARE_MSB_REG], A
    248                             RAM_EPILOGUE RAM_USE_CLASS_1
-   249  2E50  7F                   ret
+   249  2DD5  7F                   ret
    250                          
    251                          .ENDSECTION
    252                          
@@ -2399,16 +2399,16 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    268                          ;    responsibility to perserve their values across calls to fastcall16 
    269                          ;    functions.
    270                          ;
-   271  2E51                     Timer16_wReadCompareValue:
-   272  2E51                    _Timer16_wReadCompareValue:
-   273  2E51                     wTimer16_ReadCompareValue:                      ; this name deprecated
-   274  2E51                    _wTimer16_ReadCompareValue:                      ; this name deprecated
+   271  2DD6                     Timer16_wReadCompareValue:
+   272  2DD6                    _Timer16_wReadCompareValue:
+   273  2DD6                     wTimer16_ReadCompareValue:                      ; this name deprecated
+   274  2DD6                    _wTimer16_ReadCompareValue:                      ; this name deprecated
    275                             RAM_PROLOGUE RAM_USE_CLASS_1
-   276  2E51  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]
-   277  2E53  5C                   mov   X, A
-   278  2E54  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]
+   276  2DD6  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]
+   277  2DD8  5C                   mov   X, A
+   278  2DD9  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]
    279                             RAM_EPILOGUE RAM_USE_CLASS_1
-   280  2E56  7F                   ret
+   280  2DDB  7F                   ret
    281                          
    282                          .ENDSECTION
    283                          
@@ -2448,52 +2448,52 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    317                          ;     7) Start the Timer again
    318                          ;     8) Restore global interrupt state
    319                          ;
-   320  2E57                     Timer16_wReadTimerSaveCV:
-   321  2E57                    _Timer16_wReadTimerSaveCV:
-   322  2E57                     wTimer16_ReadTimerSaveCV:                       ; this name deprecated
-   323  2E57                    _wTimer16_ReadTimerSaveCV:                       ; this name deprecated
-   324  2E57                     wTimer16_ReadCounter:                           ; this name deprecated
-   325  2E57                    _wTimer16_ReadCounter:                           ; this name deprecated
+   320  2DDC                     Timer16_wReadTimerSaveCV:
+   321  2DDC                    _Timer16_wReadTimerSaveCV:
+   322  2DDC                     wTimer16_ReadTimerSaveCV:                       ; this name deprecated
+   323  2DDC                    _wTimer16_ReadTimerSaveCV:                       ; this name deprecated
+   324  2DDC                     wTimer16_ReadCounter:                           ; this name deprecated
+   325  2DDC                    _wTimer16_ReadCounter:                           ; this name deprecated
    326                          
    327  0000                    CpuFlags:      equ   0
    328  0001                    wCount_MSB:    equ   1
    329  0002                    wCount_LSB:    equ   2
    330                          
-   331  2E57  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
-   332  2E59  4F                   mov   X, SP                                   ; X <- stack frame pointer
-   333  2E5A  38 03                add   SP, 3                                   ; Reserve space for flags, count
-   334  2E5C  5D 23                mov   A, reg[Timer16_CONTROL_LSB_REG]         ; save the Control register
-   335  2E5E  08                   push  A
-   336  2E5F  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]         ; save the Compare register
-   337  2E61  08                   push  A
-   338  2E62  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]
-   339  2E64  08                   push  A
-   340  2E65  5D 20                mov   A, reg[Timer16_COUNTER_LSB_REG]         ; synchronous copy DR2 <- DR0
+   331  2DDC  71 40                RAM_PROLOGUE RAM_USE_CLASS_2
+   332  2DDE  4F                   mov   X, SP                                   ; X <- stack frame pointer
+   333  2DDF  38 03                add   SP, 3                                   ; Reserve space for flags, count
+   334  2DE1  5D 23                mov   A, reg[Timer16_CONTROL_LSB_REG]         ; save the Control register
+   335  2DE3  08                   push  A
+   336  2DE4  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]         ; save the Compare register
+   337  2DE6  08                   push  A
+   338  2DE7  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]
+   339  2DE9  08                   push  A
+   340  2DEA  5D 20                mov   A, reg[Timer16_COUNTER_LSB_REG]         ; synchronous copy DR2 <- DR0
    341                                                                           ; This may cause an interrupt!
-   342  2E67  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]         ; Now grab DR2 (DR0) and save
-   343  2E69  54 01                mov   [X+wCount_MSB], A
-   344  2E6B  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]
-   345  2E6D  54 02                mov   [X+wCount_LSB], A
-   346  2E6F  50 00                mov   A, 0                                    ; Guess the global interrupt state
-   347  2E71  49 F7 01             tst   reg[CPU_F], FLAG_GLOBAL_IE              ; Currently Disabled?
-   348  2E74  A003                 jz    .SetupStatusFlag                        ;   Yes, guess was correct
-   349  2E76  50 01                mov   A, FLAG_GLOBAL_IE                       ;    No, modify our guess
-   350  2E78                    .SetupStatusFlag:                                ; and ...
-   351  2E78  54 00                mov   [X+CpuFlags], A                         ;   StackFrame[0] <- Flag Reg image
-   352  2E7A  70 FE                M8C_DisableGInt                               ; Disable interrupts globally
-   353  2E7C  41 23 FE             Timer16_Stop_M                                ; Disable (stop) the timer
-   354  2E7F  18                   pop   A                                       ; Restore the Compare register
-   355  2E80  60 26                mov   reg[Timer16_COMPARE_MSB_REG], A
-   356  2E82  18                   pop   A
-   357  2E83  60 22                mov   reg[Timer16_COMPARE_LSB_REG], A
-   358  2E85  18                   pop   A                                       ; restore start state of the timer
-   359  2E86  60 23                mov   reg[Timer16_CONTROL_LSB_REG], A
-   360  2E88  18                   pop   A                                       ; Return result stored in stack frame
-   361  2E89  20                   pop   X
+   342  2DEC  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]         ; Now grab DR2 (DR0) and save
+   343  2DEE  54 01                mov   [X+wCount_MSB], A
+   344  2DF0  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]
+   345  2DF2  54 02                mov   [X+wCount_LSB], A
+   346  2DF4  50 00                mov   A, 0                                    ; Guess the global interrupt state
+   347  2DF6  49 F7 01             tst   reg[CPU_F], FLAG_GLOBAL_IE              ; Currently Disabled?
+   348  2DF9  A003                 jz    .SetupStatusFlag                        ;   Yes, guess was correct
+   349  2DFB  50 01                mov   A, FLAG_GLOBAL_IE                       ;    No, modify our guess
+   350  2DFD                    .SetupStatusFlag:                                ; and ...
+   351  2DFD  54 00                mov   [X+CpuFlags], A                         ;   StackFrame[0] <- Flag Reg image
+   352  2DFF  70 FE                M8C_DisableGInt                               ; Disable interrupts globally
+   353  2E01  41 23 FE             Timer16_Stop_M                                ; Disable (stop) the timer
+   354  2E04  18                   pop   A                                       ; Restore the Compare register
+   355  2E05  60 26                mov   reg[Timer16_COMPARE_MSB_REG], A
+   356  2E07  18                   pop   A
+   357  2E08  60 22                mov   reg[Timer16_COMPARE_LSB_REG], A
+   358  2E0A  18                   pop   A                                       ; restore start state of the timer
+   359  2E0B  60 23                mov   reg[Timer16_CONTROL_LSB_REG], A
+   360  2E0D  18                   pop   A                                       ; Return result stored in stack frame
+   361  2E0E  20                   pop   X
    362                             RAM_EPILOGUE RAM_USE_CLASS_2
-      + 2E8A  70 3F             	and	f, 0x3F
-      + 2E8C  71 80             	or	f, 0x80
-   363  2E8E  7E                   reti                                          ; Flag Reg <- StackFrame[0]
+      + 2E0F  70 3F             	and	f, 0x3F
+      + 2E11  71 80             	or	f, 0x80
+   363  2E13  7E                   reti                                          ; Flag Reg <- StackFrame[0]
    364                          
    365                          .ENDSECTION
    366                          
@@ -2526,42 +2526,42 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    393                          ;     2) Read and return the Count register values from the Compare
    394                          ;        registers into the return buffer.
    395                          ;
-   396  2E8F                     Timer16_wReadTimer:
-   397  2E8F                    _Timer16_wReadTimer:
-   398  2E8F                     wTimer16_ReadTimer:                             ; this name deprecated
-   399  2E8F                    _wTimer16_ReadTimer:                             ; this name deprecated
-   400  2E8F                     wTimer16_CaptureCounter:                        ; this name deprecated
-   401  2E8F                    _wTimer16_CaptureCounter:                        ; this name deprecated
+   396  2E14                     Timer16_wReadTimer:
+   397  2E14                    _Timer16_wReadTimer:
+   398  2E14                     wTimer16_ReadTimer:                             ; this name deprecated
+   399  2E14                    _wTimer16_ReadTimer:                             ; this name deprecated
+   400  2E14                     wTimer16_CaptureCounter:                        ; this name deprecated
+   401  2E14                    _wTimer16_CaptureCounter:                        ; this name deprecated
    402                          
    403                             RAM_PROLOGUE RAM_USE_CLASS_1
-   404  2E8F  5D 20                mov   A, reg[Timer16_COUNTER_LSB_REG]         ; synchronous copy DR2 <- DR0
+   404  2E14  5D 20                mov   A, reg[Timer16_COUNTER_LSB_REG]         ; synchronous copy DR2 <- DR0
    405                                                                           ; This may cause an interrupt!
    406                          
-   407  2E91  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]         ; Return DR2 (actually DR0)
-   408  2E93  5C                   mov   X, A
-   409  2E94  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]
+   407  2E16  5D 26                mov   A, reg[Timer16_COMPARE_MSB_REG]         ; Return DR2 (actually DR0)
+   408  2E18  5C                   mov   X, A
+   409  2E19  5D 22                mov   A, reg[Timer16_COMPARE_LSB_REG]
    410                             RAM_EPILOGUE RAM_USE_CLASS_1
-   411  2E96  7F                   ret
+   411  2E1B  7F                   ret
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
 Symbol Table                                                                                               Thu Jun 11 09:33:59 2015
 
-           wTimer16_ReadTimer 2E8F           wTimer16_ReadCounter 2E57              Timer16_EnableInt 2E35  
-     Timer16_wReadTimerSaveCV 2E57                          CPU_F 00F7       _wTimer16_CaptureCounter 2E8F  
-    Timer16_WriteCompareValue 2E4B             Timer16_DisableInt 2E39     _wTimer16_ReadCompareValue 2E51  
-                       HITECH 0002             _Timer16_EnableInt 2E35                  _Timer16_Stop 2E41  
-              FLAG_PGMODE_01b 0040                FLAG_PGMODE_10b 0080       wTimer16_ReadTimerSaveCV 2E57  
-           Timer16_wReadTimer 2E8F                       CpuFlags 0000               Timer16_INT_MASK 0002  
-          _wTimer16_ReadTimer 2E8F      SYSTEM_LARGE_MEMORY_MODEL 0001     _Timer16_WriteCompareValue 2E4B  
+           wTimer16_ReadTimer 2E14           wTimer16_ReadCounter 2DDC              Timer16_EnableInt 2DBA  
+     Timer16_wReadTimerSaveCV 2DDC                          CPU_F 00F7       _wTimer16_CaptureCounter 2E14  
+    Timer16_WriteCompareValue 2DD0             Timer16_DisableInt 2DBE     _wTimer16_ReadCompareValue 2DD6  
+                       HITECH 0002             _Timer16_EnableInt 2DBA                  _Timer16_Stop 2DC6  
+              FLAG_PGMODE_01b 0040                FLAG_PGMODE_10b 0080       wTimer16_ReadTimerSaveCV 2DDC  
+           Timer16_wReadTimer 2E14                       CpuFlags 0000               Timer16_INT_MASK 0002  
+          _wTimer16_ReadTimer 2E14      SYSTEM_LARGE_MEMORY_MODEL 0001     _Timer16_WriteCompareValue 2DD0  
                FLAG_GLOBAL_IE 0001         Timer16_PERIOD_LSB_REG 0021         Timer16_PERIOD_MSB_REG 0025  
-        _wTimer16_ReadCounter 2E57                      TOOLCHAIN 0002        Timer16_COUNTER_LSB_REG 0020  
-               _Timer16_Start 2E3D               FLAG_PGMODE_MASK 00C0            _Timer16_DisableInt 2E39  
+        _wTimer16_ReadCounter 2DDC                      TOOLCHAIN 0002        Timer16_COUNTER_LSB_REG 0020  
+               _Timer16_Start 2DC2               FLAG_PGMODE_MASK 00C0            _Timer16_DisableInt 2DBE  
               RAM_USE_CLASS_1 0001                RAM_USE_CLASS_2 0002                RAM_USE_CLASS_3 0004  
-              RAM_USE_CLASS_4 0008      _Timer16_wReadTimerSaveCV 2E57      Timer16_wReadCompareValue 2E51  
+              RAM_USE_CLASS_4 0008      _Timer16_wReadTimerSaveCV 2DDC      Timer16_wReadCompareValue 2DD6  
                    wCount_LSB 0002                     wCount_MSB 0001        Timer16_CONTROL_LSB_REG 0023  
-              Timer16_INT_REG 00E1           _Timer16_WritePeriod 2E45            _Timer16_wReadTimer 2E8F  
-      Timer16_COMPARE_LSB_REG 0022        Timer16_COMPARE_MSB_REG 0026      _wTimer16_ReadTimerSaveCV 2E57  
-Timer16_CONTROL_REG_START_BIT 0001        wTimer16_CaptureCounter 2E8F     SYSTEM_IDXPG_TRACKS_IDX_PP 0001  
-          Timer16_WritePeriod 2E45     _Timer16_wReadCompareValue 2E51                  Timer16_Start 2E3D  
-    wTimer16_ReadCompareValue 2E51     SYSTEM_IDXPG_TRACKS_STK_PP 0000                   Timer16_Stop 2E41  
+              Timer16_INT_REG 00E1           _Timer16_WritePeriod 2DCA            _Timer16_wReadTimer 2E14  
+      Timer16_COMPARE_LSB_REG 0022        Timer16_COMPARE_MSB_REG 0026      _wTimer16_ReadTimerSaveCV 2DDC  
+Timer16_CONTROL_REG_START_BIT 0001        wTimer16_CaptureCounter 2E14     SYSTEM_IDXPG_TRACKS_IDX_PP 0001  
+          Timer16_WritePeriod 2DCA     _Timer16_wReadCompareValue 2DD6                  Timer16_Start 2DC2  
+    wTimer16_ReadCompareValue 2DD6     SYSTEM_IDXPG_TRACKS_STK_PP 0000                   Timer16_Stop 2DC6  
