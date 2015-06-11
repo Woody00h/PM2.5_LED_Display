@@ -2027,7 +2027,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 
 [; ;software_IIC.H: 35: unsigned char ISendByte(unsigned char sla,unsigned char c);
 
-[; ;software_IIC.H: 36: unsigned char ISendStr(unsigned char sla,unsigned int suba,unsigned char *s,unsigned char no);
+[; ;software_IIC.H: 36: unsigned char ISendStr(unsigned char sla,unsigned char *s,unsigned char no);
 
 [; ;software_IIC.H: 37: unsigned char IRcvByte(unsigned char sla,unsigned char *c);
 
@@ -2710,17 +2710,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 26 ]
 }
 "213
-[v _ISendStr `(uc 1 ef4`uc`ui`*uc`uc ]
+[v _ISendStr `(uc 1 ef3`uc`*uc`uc ]
 {
-[; ;software_iic.c: 212: unsigned char ISendStr(unsigned char sla,unsigned int suba,unsigned char *s,unsigned char no)
+[; ;software_iic.c: 212: unsigned char ISendStr(unsigned char sla,unsigned char *s,unsigned char no)
 
 [; ;software_iic.c: 213: {
 
 [e :U _ISendStr ]
 [v _sla `uc 1 r1 ]
-[v _suba `ui 1 r2 ]
-[v _s `*uc 1 r3 ]
-[v _no `uc 1 r4 ]
+[v _s `*uc 1 r2 ]
+[v _no `uc 1 r3 ]
 [f ]
 "214
 [v _i `uc 1 a ]
@@ -2761,175 +2760,144 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 30 ]
 [; ;software_iic.c: 222: }
 
-[; ;software_iic.c: 224: Tmp = suba & 0xff;
+[; ;software_iic.c: 224: for(i=0;i<no;i++)
 
 "224
-[e = _Tmp -> & _suba -> -> 255 `i `ui `uc ]
-[; ;software_iic.c: 225: SendByte(Tmp);
-
-"225
-[e ( _SendByte (1
- _Tmp ]
-[; ;software_iic.c: 226: if(ack==0)
-
-"226
-[e $ ! == -> _ack `i -> 0 `i 31  ]
-[; ;software_iic.c: 227: {
-
-"227
-{
-[; ;software_iic.c: 228: Stop_I2c();
-
-"228
-[e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 229: return(0);
-
-"229
-[e ) -> -> 0 `i `uc ]
-[e $UE 29  ]
-"230
-}
-[e :U 31 ]
-[; ;software_iic.c: 230: }
-
-[; ;software_iic.c: 233: for(i=0;i<no;i++)
-
-"233
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 35  ]
-"234
-[e :U 32 ]
-[; ;software_iic.c: 234: {
+[e $U 34  ]
+"225
+[e :U 31 ]
+[; ;software_iic.c: 225: {
 
 {
-[; ;software_iic.c: 235: SendByte(*s);
+[; ;software_iic.c: 226: SendByte(*s);
 
-"235
+"226
 [e ( _SendByte (1
  *U _s ]
-[; ;software_iic.c: 236: if(ack==0)
+[; ;software_iic.c: 227: if(ack==0)
 
-"236
-[e $ ! == -> _ack `i -> 0 `i 36  ]
-[; ;software_iic.c: 237: {
+"227
+[e $ ! == -> _ack `i -> 0 `i 35  ]
+[; ;software_iic.c: 228: {
 
-"237
+"228
 {
-[; ;software_iic.c: 238: Stop_I2c();
+[; ;software_iic.c: 229: Stop_I2c();
 
-"238
+"229
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 239: return(0);
+[; ;software_iic.c: 230: return(0);
 
-"239
+"230
 [e ) -> -> 0 `i `uc ]
 [e $UE 29  ]
-"240
+"231
 }
-[e :U 36 ]
-[; ;software_iic.c: 240: }
-
-[; ;software_iic.c: 241: s++;
-
-"241
-[e ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
-"242
-}
-"233
-[e ++ _i -> -> 1 `i `uc ]
 [e :U 35 ]
-[e $ < -> _i `i -> _no `i 32  ]
-[e :U 33 ]
-"242
+[; ;software_iic.c: 231: }
+
+[; ;software_iic.c: 232: s++;
+
+"232
+[e ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
+"233
 }
-[; ;software_iic.c: 242: }
+"224
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 34 ]
+[e $ < -> _i `i -> _no `i 31  ]
+[e :U 32 ]
+"233
+}
+[; ;software_iic.c: 233: }
 
-[; ;software_iic.c: 243: Stop_I2c();
+[; ;software_iic.c: 234: Stop_I2c();
 
-"243
+"234
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 244: return(1);
+[; ;software_iic.c: 235: return(1);
 
-"244
+"235
 [e ) -> -> 1 `i `uc ]
 [e $UE 29  ]
-"245
-[; ;software_iic.c: 245: }
+"236
+[; ;software_iic.c: 236: }
 
 [e :UE 29 ]
 }
-"255
+"246
 [v _IRcvByte `(uc 1 ef2`uc`*uc ]
 {
-[; ;software_iic.c: 254: unsigned char IRcvByte(unsigned char sla,unsigned char *c)
+[; ;software_iic.c: 245: unsigned char IRcvByte(unsigned char sla,unsigned char *c)
 
-[; ;software_iic.c: 255: {
+[; ;software_iic.c: 246: {
 
 [e :U _IRcvByte ]
 [v _sla `uc 1 r1 ]
 [v _c `*uc 1 r2 ]
 [f ]
-[; ;software_iic.c: 256: Start_I2c();
+[; ;software_iic.c: 247: Start_I2c();
 
-"256
+"247
 [e ( _Start_I2c ..  ]
-[; ;software_iic.c: 257: SendByte(sla+1);
+[; ;software_iic.c: 248: SendByte(sla+1);
 
-"257
+"248
 [e ( _SendByte (1
  -> + -> _sla `i -> 1 `i `uc ]
-[; ;software_iic.c: 258: if(ack==0)
+[; ;software_iic.c: 249: if(ack==0)
 
-"258
-[e $ ! == -> _ack `i -> 0 `i 38  ]
-[; ;software_iic.c: 259: {
+"249
+[e $ ! == -> _ack `i -> 0 `i 37  ]
+[; ;software_iic.c: 250: {
 
-"259
+"250
 {
-[; ;software_iic.c: 260: Stop_I2c();
+[; ;software_iic.c: 251: Stop_I2c();
 
-"260
+"251
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 261: return(0);
+[; ;software_iic.c: 252: return(0);
 
-"261
+"252
 [e ) -> -> 0 `i `uc ]
-[e $UE 37  ]
-"262
+[e $UE 36  ]
+"253
 }
-[e :U 38 ]
-[; ;software_iic.c: 262: }
+[e :U 37 ]
+[; ;software_iic.c: 253: }
 
-[; ;software_iic.c: 263: *c=RcvByte();
+[; ;software_iic.c: 254: *c=RcvByte();
 
-"263
+"254
 [e = *U _c ( _RcvByte ..  ]
-[; ;software_iic.c: 264: Ack_I2c(1);
+[; ;software_iic.c: 255: Ack_I2c(1);
 
-"264
+"255
 [e ( _Ack_I2c (1
  -> -> 1 `i `uc ]
-[; ;software_iic.c: 265: Stop_I2c();
+[; ;software_iic.c: 256: Stop_I2c();
 
-"265
+"256
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 266: return(1);
+[; ;software_iic.c: 257: return(1);
 
-"266
+"257
 [e ) -> -> 1 `i `uc ]
-[e $UE 37  ]
-"267
-[; ;software_iic.c: 267: }
+[e $UE 36  ]
+"258
+[; ;software_iic.c: 258: }
 
-[e :UE 37 ]
+[e :UE 36 ]
 }
-"277
+"268
 [v _IRcvStr `(uc 1 ef4`uc`ui`*uc`uc ]
 {
-[; ;software_iic.c: 276: unsigned char IRcvStr(unsigned char sla,unsigned int suba,unsigned char *s,unsigned char no)
+[; ;software_iic.c: 267: unsigned char IRcvStr(unsigned char sla,unsigned int suba,unsigned char *s,unsigned char no)
 
-[; ;software_iic.c: 277: {
+[; ;software_iic.c: 268: {
 
 [e :U _IRcvStr ]
 [v _sla `uc 1 r1 ]
@@ -2937,267 +2905,267 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _s `*uc 1 r3 ]
 [v _no `uc 1 r4 ]
 [f ]
-"278
+"269
 [v _i `uc 1 a ]
-"279
+"270
 [v _Tmp `uc 1 a ]
-[; ;software_iic.c: 278: unsigned char i;
+[; ;software_iic.c: 269: unsigned char i;
 
-[; ;software_iic.c: 279: unsigned char Tmp;
+[; ;software_iic.c: 270: unsigned char Tmp;
 
-[; ;software_iic.c: 280: Start_I2c();
+[; ;software_iic.c: 271: Start_I2c();
 
-"280
+"271
 [e ( _Start_I2c ..  ]
-[; ;software_iic.c: 281: SendByte(sla);
+[; ;software_iic.c: 272: SendByte(sla);
 
-"281
+"272
 [e ( _SendByte (1
  _sla ]
-[; ;software_iic.c: 282: if(ack==0)
+[; ;software_iic.c: 273: if(ack==0)
 
-"282
-[e $ ! == -> _ack `i -> 0 `i 40  ]
-[; ;software_iic.c: 283: {
+"273
+[e $ ! == -> _ack `i -> 0 `i 39  ]
+[; ;software_iic.c: 274: {
 
-"283
+"274
 {
-[; ;software_iic.c: 284: Stop_I2c();
+[; ;software_iic.c: 275: Stop_I2c();
 
-"284
+"275
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 285: return(0);
+[; ;software_iic.c: 276: return(0);
 
-"285
+"276
 [e ) -> -> 0 `i `uc ]
-[e $UE 39  ]
-"286
+[e $UE 38  ]
+"277
 }
-[e :U 40 ]
-[; ;software_iic.c: 286: }
+[e :U 39 ]
+[; ;software_iic.c: 277: }
 
-[; ;software_iic.c: 287: Tmp = suba & 0xff;
+[; ;software_iic.c: 278: Tmp = suba & 0xff;
 
-"287
+"278
 [e = _Tmp -> & _suba -> -> 255 `i `ui `uc ]
-[; ;software_iic.c: 288: SendByte(Tmp);
+[; ;software_iic.c: 279: SendByte(Tmp);
 
-"288
+"279
 [e ( _SendByte (1
  _Tmp ]
-[; ;software_iic.c: 289: if(ack==0)
+[; ;software_iic.c: 280: if(ack==0)
 
-"289
-[e $ ! == -> _ack `i -> 0 `i 41  ]
-[; ;software_iic.c: 290: {
+"280
+[e $ ! == -> _ack `i -> 0 `i 40  ]
+[; ;software_iic.c: 281: {
 
-"290
+"281
 {
-[; ;software_iic.c: 291: Stop_I2c();
+[; ;software_iic.c: 282: Stop_I2c();
 
-"291
+"282
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 292: return(0);
+[; ;software_iic.c: 283: return(0);
 
-"292
+"283
 [e ) -> -> 0 `i `uc ]
-[e $UE 39  ]
-"293
+[e $UE 38  ]
+"284
 }
-[e :U 41 ]
-[; ;software_iic.c: 293: }
+[e :U 40 ]
+[; ;software_iic.c: 284: }
 
-[; ;software_iic.c: 295: Start_I2c();
+[; ;software_iic.c: 286: Start_I2c();
 
-"295
+"286
 [e ( _Start_I2c ..  ]
-[; ;software_iic.c: 296: SendByte(sla+1);
+[; ;software_iic.c: 287: SendByte(sla+1);
 
-"296
+"287
 [e ( _SendByte (1
  -> + -> _sla `i -> 1 `i `uc ]
-[; ;software_iic.c: 297: if(ack==0)
+[; ;software_iic.c: 288: if(ack==0)
 
-"297
-[e $ ! == -> _ack `i -> 0 `i 42  ]
-[; ;software_iic.c: 298: {
+"288
+[e $ ! == -> _ack `i -> 0 `i 41  ]
+[; ;software_iic.c: 289: {
 
-"298
+"289
 {
-[; ;software_iic.c: 299: Stop_I2c();
+[; ;software_iic.c: 290: Stop_I2c();
 
-"299
+"290
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 300: return(0);
+[; ;software_iic.c: 291: return(0);
 
-"300
+"291
 [e ) -> -> 0 `i `uc ]
-[e $UE 39  ]
-"301
+[e $UE 38  ]
+"292
 }
-[e :U 42 ]
-[; ;software_iic.c: 301: }
+[e :U 41 ]
+[; ;software_iic.c: 292: }
 
-[; ;software_iic.c: 302: for(i=0;i<no-1;i++)
+[; ;software_iic.c: 293: for(i=0;i<no-1;i++)
 
-"302
+"293
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 46  ]
-"303
-[e :U 43 ]
-[; ;software_iic.c: 303: {
+[e $U 45  ]
+"294
+[e :U 42 ]
+[; ;software_iic.c: 294: {
 
 {
-[; ;software_iic.c: 304: *s=RcvByte();
+[; ;software_iic.c: 295: *s=RcvByte();
 
-"304
+"295
 [e = *U _s ( _RcvByte ..  ]
-[; ;software_iic.c: 305: Ack_I2c(0);
+[; ;software_iic.c: 296: Ack_I2c(0);
 
-"305
+"296
 [e ( _Ack_I2c (1
  -> -> 0 `i `uc ]
-[; ;software_iic.c: 306: s++;
+[; ;software_iic.c: 297: s++;
 
-"306
+"297
 [e ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
-"307
+"298
 }
-"302
+"293
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 46 ]
-[e $ < -> _i `i - -> _no `i -> 1 `i 43  ]
-[e :U 44 ]
-"307
+[e :U 45 ]
+[e $ < -> _i `i - -> _no `i -> 1 `i 42  ]
+[e :U 43 ]
+"298
 }
-[; ;software_iic.c: 307: }
+[; ;software_iic.c: 298: }
 
-[; ;software_iic.c: 308: *s=RcvByte();
+[; ;software_iic.c: 299: *s=RcvByte();
 
-"308
+"299
 [e = *U _s ( _RcvByte ..  ]
-[; ;software_iic.c: 309: Ack_I2c(1);
+[; ;software_iic.c: 300: Ack_I2c(1);
 
-"309
+"300
 [e ( _Ack_I2c (1
  -> -> 1 `i `uc ]
-[; ;software_iic.c: 310: Stop_I2c();
+[; ;software_iic.c: 301: Stop_I2c();
 
-"310
+"301
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 311: return(1);
+[; ;software_iic.c: 302: return(1);
 
-"311
+"302
 [e ) -> -> 1 `i `uc ]
-[e $UE 39  ]
-"312
-[; ;software_iic.c: 312: }
+[e $UE 38  ]
+"303
+[; ;software_iic.c: 303: }
 
-[e :UE 39 ]
+[e :UE 38 ]
 }
-"315
+"306
 [v _IRcvBytes `(uc 1 ef3`uc`*uc`uc ]
 {
-[; ;software_iic.c: 314: unsigned char IRcvBytes(unsigned char sla,unsigned char *s,unsigned char no)
+[; ;software_iic.c: 305: unsigned char IRcvBytes(unsigned char sla,unsigned char *s,unsigned char no)
 
-[; ;software_iic.c: 315: {
+[; ;software_iic.c: 306: {
 
 [e :U _IRcvBytes ]
 [v _sla `uc 1 r1 ]
 [v _s `*uc 1 r2 ]
 [v _no `uc 1 r3 ]
 [f ]
-"316
+"307
 [v _i `uc 1 a ]
-[; ;software_iic.c: 316: unsigned char i;
+[; ;software_iic.c: 307: unsigned char i;
 
-[; ;software_iic.c: 318: Start_I2c();
+[; ;software_iic.c: 309: Start_I2c();
 
-"318
+"309
 [e ( _Start_I2c ..  ]
-[; ;software_iic.c: 319: SendByte(sla+1);
+[; ;software_iic.c: 310: SendByte(sla+1);
 
-"319
+"310
 [e ( _SendByte (1
  -> + -> _sla `i -> 1 `i `uc ]
-[; ;software_iic.c: 320: if(ack==0)
+[; ;software_iic.c: 311: if(ack==0)
 
-"320
-[e $ ! == -> _ack `i -> 0 `i 48  ]
-[; ;software_iic.c: 321: {
+"311
+[e $ ! == -> _ack `i -> 0 `i 47  ]
+[; ;software_iic.c: 312: {
 
-"321
+"312
 {
-[; ;software_iic.c: 322: Stop_I2c();
+[; ;software_iic.c: 313: Stop_I2c();
 
-"322
+"313
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 323: return(0);
+[; ;software_iic.c: 314: return(0);
 
-"323
+"314
 [e ) -> -> 0 `i `uc ]
-[e $UE 47  ]
-"324
+[e $UE 46  ]
+"315
 }
-[e :U 48 ]
-[; ;software_iic.c: 324: }
+[e :U 47 ]
+[; ;software_iic.c: 315: }
 
-[; ;software_iic.c: 325: for(i=0;i<no-1;i++)
+[; ;software_iic.c: 316: for(i=0;i<no-1;i++)
 
-"325
+"316
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 52  ]
-"326
-[e :U 49 ]
-[; ;software_iic.c: 326: {
+[e $U 51  ]
+"317
+[e :U 48 ]
+[; ;software_iic.c: 317: {
 
 {
-[; ;software_iic.c: 327: *s=RcvByte();
+[; ;software_iic.c: 318: *s=RcvByte();
 
-"327
+"318
 [e = *U _s ( _RcvByte ..  ]
-[; ;software_iic.c: 328: Ack_I2c(0);
+[; ;software_iic.c: 319: Ack_I2c(0);
 
-"328
+"319
 [e ( _Ack_I2c (1
  -> -> 0 `i `uc ]
-[; ;software_iic.c: 329: s++;
+[; ;software_iic.c: 320: s++;
 
-"329
+"320
 [e ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
-"330
+"321
 }
-"325
+"316
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 52 ]
-[e $ < -> _i `i - -> _no `i -> 1 `i 49  ]
-[e :U 50 ]
-"330
+[e :U 51 ]
+[e $ < -> _i `i - -> _no `i -> 1 `i 48  ]
+[e :U 49 ]
+"321
 }
-[; ;software_iic.c: 330: }
+[; ;software_iic.c: 321: }
 
-[; ;software_iic.c: 331: *s=RcvByte();
+[; ;software_iic.c: 322: *s=RcvByte();
 
-"331
+"322
 [e = *U _s ( _RcvByte ..  ]
-[; ;software_iic.c: 332: Ack_I2c(1);
+[; ;software_iic.c: 323: Ack_I2c(1);
 
-"332
+"323
 [e ( _Ack_I2c (1
  -> -> 1 `i `uc ]
-[; ;software_iic.c: 333: Stop_I2c();
+[; ;software_iic.c: 324: Stop_I2c();
 
-"333
+"324
 [e ( _Stop_I2c ..  ]
-[; ;software_iic.c: 334: return(1);
+[; ;software_iic.c: 325: return(1);
 
-"334
+"325
 [e ) -> -> 1 `i `uc ]
-[e $UE 47  ]
-"335
-[; ;software_iic.c: 335: }
+[e $UE 46  ]
+"326
+[; ;software_iic.c: 326: }
 
-[e :UE 47 ]
+[e :UE 46 ]
 }

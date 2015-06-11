@@ -1,27 +1,51 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[; ;Si7020.h: 27: unsigned char Si7020SendCommand(unsigned char cmd);
+"23 ./Si7020.h
+[v _poly_h `uc 1 e ]
+[i _poly_h
+-> -> 152 `i `uc
+]
+[; ;Si7020.h: 23: unsigned char poly_h=0x98;
 
-[; ;Si7020.h: 28: void Si7020Read_RH_NHM(unsigned char * buffer);
+"24
+[v _poly_l `uc 1 e ]
+[i _poly_l
+-> -> 128 `i `uc
+]
+[; ;Si7020.h: 24: unsigned char poly_l=0x80;
 
-[; ;Si7020.h: 29: unsigned char Si7020Read_Temp_after_RHM(unsigned char * buffer);
+"25
+[v _data_length `uc 1 e ]
+[; ;Si7020.h: 25: unsigned char data_length;
 
-[; ;Si7020.h: 30: signed char Si7020CalcTemp(unsigned int data);
+[; ;Si7020.h: 30: unsigned char Si7020SendCommand(unsigned char cmd);
 
-[; ;Si7020.h: 31: unsigned char Si7020CalcRH(unsigned int data);
+[; ;Si7020.h: 31: void Si7020Read_RH_NHM(unsigned char * buffer);
 
-[; ;Si7020.h: 32: void Si7020ClearBuf();
+[; ;Si7020.h: 32: unsigned char Si7020Read_Temp_after_RHM(unsigned char * buffer);
 
-"34 ./Si7020.h
+[; ;Si7020.h: 33: signed char Si7020CalcTemp(unsigned int data);
+
+[; ;Si7020.h: 34: unsigned char Si7020CalcRH(unsigned int data);
+
+[; ;Si7020.h: 35: void Si7020ClearBuf();
+
+[; ;Si7020.h: 36: unsigned char CRC8Check();
+
+[; ;Si7020.h: 37: void LeftRotate();
+
+[; ;Si7020.h: 38: void Si7020Init();
+
+"40
 [v _Humidity `uc 1 e ]
-[; ;Si7020.h: 34: unsigned char Humidity;
+[; ;Si7020.h: 40: unsigned char Humidity;
 
-"35
+"41
 [v _Temperature `c 1 e ]
-[; ;Si7020.h: 35: signed char Temperature;
+[; ;Si7020.h: 41: signed char Temperature;
 
-"36
+"42
 [v _RecBuf `uc -> 5 `i e ]
-[; ;Si7020.h: 36: unsigned char RecBuf[5];
+[; ;Si7020.h: 42: unsigned char RecBuf[5];
 
 [; ;software_IIC.h: 25: extern unsigned char ack;
 
@@ -43,7 +67,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 
 [; ;software_IIC.h: 35: extern unsigned char ISendByte(unsigned char sla,unsigned char c);
 
-[; ;software_IIC.h: 36: extern unsigned char ISendStr(unsigned char sla,unsigned int suba,unsigned char *s,unsigned char no);
+[; ;software_IIC.h: 36: extern unsigned char ISendStr(unsigned char sla,unsigned char *s,unsigned char no);
 
 [; ;software_IIC.h: 37: extern unsigned char IRcvByte(unsigned char sla,unsigned char *c);
 
@@ -176,11 +200,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 8 ]
 [; ;si7020.c: 40: }
 
-[; ;si7020.c: 42: ret = IRcvBytes(0x80,buffer,3);
+[; ;si7020.c: 42: ret = IRcvBytes(0x80,buffer,2);
 
 "42
 [e = _ret ( _IRcvBytes (3
- , , -> -> 128 `i `uc _buffer -> -> 3 `i `uc ]
+ , , -> -> 128 `i `uc _buffer -> -> 2 `i `uc ]
 [; ;si7020.c: 44: if (!ret)
 
 "44
@@ -421,4 +445,226 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;si7020.c: 110: }
 
 [e :UE 17 ]
+}
+"113
+[v _Si7020Init `(v 1 ef ]
+{
+[; ;si7020.c: 112: void Si7020Init()
+
+[; ;si7020.c: 113: {
+
+[e :U _Si7020Init ]
+[f ]
+"114
+[v _my_data `uc -> 2 `i a ]
+[; ;si7020.c: 114: unsigned char my_data[2];
+
+[; ;si7020.c: 115: my_data[0] = 0xE6;
+
+"115
+[e = *U + &U _my_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _my_data `ui `ux -> -> 230 `i `uc ]
+[; ;si7020.c: 116: my_data[1] = 0;
+
+"116
+[e = *U + &U _my_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _my_data `ui `ux -> -> 0 `i `uc ]
+[; ;si7020.c: 117: ISendStr[0x80,my_data,2];
+
+"36 ./software_IIC.h
+[v _ISendStr `(uc 0 ef3`uc`*uc`uc ]
+"117 ./si7020.c
+[e &U *U + &U _ISendStr * -> ; ; -> 128 `i &U _my_data -> 2 `i `x -> -> # &U *U &U _ISendStr `i `x ]
+[; ;si7020.c: 118: data_length = 24;
+
+"118
+[e = _data_length -> -> 24 `i `uc ]
+"119
+[; ;si7020.c: 119: }
+
+[e :UE 21 ]
+}
+"122
+[v _LeftRotate `(v 1 ef ]
+{
+[; ;si7020.c: 121: void LeftRotate()
+
+[; ;si7020.c: 122: {
+
+[e :U _LeftRotate ]
+[f ]
+"123
+[v _k `uc 1 a ]
+[; ;si7020.c: 123: unsigned char k;
+
+[; ;si7020.c: 124: for(k=0;k<3;k++)
+
+"124
+{
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 3 `i 23  ]
+[e $U 24  ]
+"125
+[e :U 23 ]
+[; ;si7020.c: 125: {
+
+{
+[; ;si7020.c: 126: RecBuf[k] <<= 1;
+
+"126
+[e =<< *U + &U _RecBuf * -> _k `ux -> -> # *U &U _RecBuf `ui `ux -> 1 `i ]
+[; ;si7020.c: 127: if(k < 2)
+
+"127
+[e $ ! < -> _k `i -> 2 `i 26  ]
+[; ;si7020.c: 128: {
+
+"128
+{
+[; ;si7020.c: 129: RecBuf[k] |= (RecBuf[k+1]&0x80)?1:0;
+
+"129
+[e =| *U + &U _RecBuf * -> _k `ux -> -> # *U &U _RecBuf `ui `ux -> ? != & -> *U + &U _RecBuf * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _RecBuf `ui `ux `i -> 128 `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
+"130
+}
+[e :U 26 ]
+"131
+}
+"124
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 3 `i 23  ]
+[e :U 24 ]
+"131
+}
+[; ;si7020.c: 130: }
+
+[; ;si7020.c: 131: }
+
+[; ;si7020.c: 132: data_length --;
+
+"132
+[e -- _data_length -> -> 1 `i `uc ]
+"133
+[; ;si7020.c: 133: }
+
+[e :UE 22 ]
+}
+"136
+[v _CRC8Check `(uc 1 ef ]
+{
+[; ;si7020.c: 135: unsigned char CRC8Check()
+
+[; ;si7020.c: 136: {
+
+[e :U _CRC8Check ]
+[f ]
+[; ;si7020.c: 137: while(1)
+
+"137
+[e :U 29 ]
+[; ;si7020.c: 138: {
+
+"138
+{
+[; ;si7020.c: 139: if(RecBuf[0]&0x80)
+
+"139
+[e $ ! != & -> *U + &U _RecBuf * -> -> -> 0 `i `ui `ux -> -> # *U &U _RecBuf `ui `ux `i -> 128 `i -> 0 `i 31  ]
+[; ;si7020.c: 140: {
+
+"140
+{
+[; ;si7020.c: 141: RecBuf[0] ^= poly_h;
+
+"141
+[e =^ *U + &U _RecBuf * -> -> -> 0 `i `ui `ux -> -> # *U &U _RecBuf `ui `ux _poly_h ]
+[; ;si7020.c: 142: RecBuf[1] ^= poly_l;
+
+"142
+[e =^ *U + &U _RecBuf * -> -> -> 1 `i `ui `ux -> -> # *U &U _RecBuf `ui `ux _poly_l ]
+[; ;si7020.c: 143: LeftRotate();
+
+"143
+[e ( _LeftRotate ..  ]
+"144
+}
+[; ;si7020.c: 144: }
+
+[e $U 32  ]
+"145
+[e :U 31 ]
+[; ;si7020.c: 145: else
+
+[; ;si7020.c: 146: {
+
+"146
+{
+[; ;si7020.c: 147: LeftRotate();
+
+"147
+[e ( _LeftRotate ..  ]
+"148
+}
+[e :U 32 ]
+[; ;si7020.c: 148: }
+
+[; ;si7020.c: 150: if(data_length <= 8)
+
+"150
+[e $ ! <= -> _data_length `i -> 8 `i 33  ]
+[; ;si7020.c: 151: break;
+
+"151
+[e $U 30  ]
+[e :U 33 ]
+"152
+}
+[e :U 28 ]
+"137
+[e $U 29  ]
+[e :U 30 ]
+[; ;si7020.c: 152: }
+
+[; ;si7020.c: 154: data_length = 24;
+
+"154
+[e = _data_length -> -> 24 `i `uc ]
+[; ;si7020.c: 156: if(!RecBuf[0])
+
+"156
+[e $ ! ! != -> *U + &U _RecBuf * -> -> -> 0 `i `ui `ux -> -> # *U &U _RecBuf `ui `ux `i -> -> -> 0 `i `uc `i 34  ]
+[; ;si7020.c: 157: {
+
+"157
+{
+[; ;si7020.c: 158: return 1;
+
+"158
+[e ) -> -> 1 `i `uc ]
+[e $UE 27  ]
+"159
+}
+[; ;si7020.c: 159: }
+
+[e $U 35  ]
+"160
+[e :U 34 ]
+[; ;si7020.c: 160: else
+
+[; ;si7020.c: 161: {
+
+"161
+{
+[; ;si7020.c: 162: return 0;
+
+"162
+[e ) -> -> 0 `i `uc ]
+[e $UE 27  ]
+"163
+}
+[e :U 35 ]
+"164
+[; ;si7020.c: 163: }
+
+[; ;si7020.c: 164: }
+
+[e :UE 27 ]
 }

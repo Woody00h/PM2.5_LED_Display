@@ -209,7 +209,7 @@ uchar ISendByte(uchar sla,uchar c)
 //           �������1��ʾ�����ɹ��������������
 //ע�⣺    ʹ��ǰ�����ѽ������ߡ�
 //******************************************************************* 
-uchar ISendStr(uchar sla,uint suba,uchar *s,uchar no)
+uchar ISendStr(uchar sla,uchar *s,uchar no)
 {
 	uchar i;
 	uchar Tmp;
@@ -221,15 +221,6 @@ uchar ISendStr(uchar sla,uint suba,uchar *s,uchar no)
 		return(0);
 	}
 
-	Tmp = suba & 0xff;
-	SendByte(Tmp);            //���������ӵ�ַ 
-	if(ack==0)
-	{
-		Stop_I2c();
-		return(0);
-	}
-	
-	
 	for(i=0;i<no;i++)
 	{   
 		SendByte(*s);               //�������� 

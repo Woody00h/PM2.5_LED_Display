@@ -1,3 +1,3 @@
 -H+./output/LED_display.sym -M./output/LED_display.map -O./output/LED_display.obj 
 ./obj/boardcommunication.p1 ./obj/led.p1 ./obj/main.p1 ./obj/particlesensor.p1 ./obj/si7020.p1 ./obj/software_iic.p1 ./obj/t74hc595.p1 	
- E:/430PRO~1/LED_DI~1/LED_DI~1/LED_DI~1/lib/libpsoc.lib E:/430PRO~1/LED_DI~1/LED_DI~1/LED_DI~1/lib/libpsoc.lpp C:\PROGRA~2\HI-TEC~1\HCPSOC\PRO\9.61/lib/psoc-c.lib  
+ E:/430PRO~1/PM2~1.5_L/LED_DI~1/LED_DI~1/lib/libpsoc.lib E:/430PRO~1/PM2~1.5_L/LED_DI~1/LED_DI~1/lib/libpsoc.lpp C:\PROGRA~2\HI-TEC~1\HCPSOC\PRO\9.61/lib/psoc-c.lib  

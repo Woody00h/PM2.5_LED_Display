@@ -33,7 +33,7 @@ SW_IIC_EXT		void	SendByte(uchar c);
 SW_IIC_EXT		uchar	RcvByte(void);
 SW_IIC_EXT		void	Ack_I2c(uchar a);
 SW_IIC_EXT		uchar	ISendByte(uchar sla,uchar c);
-SW_IIC_EXT		uchar	ISendStr(uchar sla,uint suba,uchar *s,uchar no);
+SW_IIC_EXT		uchar	ISendStr(uchar sla,uchar *s,uchar no);
 SW_IIC_EXT		uchar	IRcvByte(uchar sla,uchar *c);
 SW_IIC_EXT		uchar	IRcvStr(uchar sla,uint suba,uchar *s,uchar no);
 SW_IIC_EXT		uchar 	IRcvBytes(uchar sla,uchar *s,uchar no);

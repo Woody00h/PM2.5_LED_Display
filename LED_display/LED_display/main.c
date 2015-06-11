@@ -67,11 +67,6 @@ void main(void)
 	M8C_EnableGInt ; // Uncomment this line to enable Global Interrupts
 	// Insert your main routine code here.
 	
-//	DisplayBuf[0] = 0xff;
-//	DisplayBuf[1] = 0xff;
-//	DisplayBuf[2] = 0xff;
-//	ShiftRegOutput();
-	
 	Init_IIC();
 	
 	UART_Board_Start(UART_PARITY_NONE);
@@ -104,10 +99,7 @@ void main(void)
 	IndexStart = 4;
 	IndexEnd   = 8;
 	
-//	for (i=0;i<8;i++)
-//	{
-//		DisplayContent[i] = DigitArray[8];
-//	}
+	Si7020Init();
 
 	while (1)
 	{
@@ -122,7 +114,7 @@ void main(void)
 			}
 			else
 			{
-				UartPutConstStr("CRC fail");
+				UartPutConstStr("checksum fail");
 			}
 		}
 		
@@ -169,24 +161,33 @@ void main(void)
 				}
 			}
 			else 
-			{				
+			{
+					
 					Si7020Read_RH_NHM(RecBuf);
 					Si7020Data = *(unsigned int *)RecBuf;
-					UartPutConstStr("RH:");
-					UartPutHexWord(Si7020Data);
-					Humidity = Si7020CalcRH(Si7020Data);
-					UartPutHexByte(Humidity);
-					Si7020ClearBuf();
+//					UartPutHexByte(RecBuf[0]);
+//					UartPutHexByte(RecBuf[1]);
+//					UartPutHexByte(RecBuf[2]);
+					if (CRC8Check())
+					{						
+						UartPutConstStr("RH:");
+//						UartPutHexWord(Si7020Data);
+						Humidity = Si7020CalcRH(Si7020Data);
+						UartPutHexByte(Humidity);
+					}
+					else 
+					{
+						UartPutConstStr("CRC fail");
+					}
+					
 				
 					Si7020Read_Temp_after_RHM(RecBuf);
 					Si7020Data = *(unsigned int *)RecBuf;
 					UartPutConstStr("Temperature:");
-					UartPutHexWord(Si7020Data);
 					Temperature = Si7020CalcTemp(Si7020Data);
 					UartPutHexByte(Temperature);
+				
 					RHSampleStep = 0;
-					Si7020ClearBuf();
-					
 			}
 		}
 		

@@ -282,23 +282,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 
 [; ;ParticleSensor.h: 43: extern unsigned char FrameCheck(void);
 
-[; ;Si7020.h: 27: extern unsigned char Si7020SendCommand(unsigned char cmd);
+[; ;Si7020.h: 30: extern unsigned char Si7020SendCommand(unsigned char cmd);
 
-[; ;Si7020.h: 28: extern void Si7020Read_RH_NHM(unsigned char * buffer);
+[; ;Si7020.h: 31: extern void Si7020Read_RH_NHM(unsigned char * buffer);
 
-[; ;Si7020.h: 29: extern unsigned char Si7020Read_Temp_after_RHM(unsigned char * buffer);
+[; ;Si7020.h: 32: extern unsigned char Si7020Read_Temp_after_RHM(unsigned char * buffer);
 
-[; ;Si7020.h: 30: extern signed char Si7020CalcTemp(unsigned int data);
+[; ;Si7020.h: 33: extern signed char Si7020CalcTemp(unsigned int data);
 
-[; ;Si7020.h: 31: extern unsigned char Si7020CalcRH(unsigned int data);
+[; ;Si7020.h: 34: extern unsigned char Si7020CalcRH(unsigned int data);
 
-[; ;Si7020.h: 32: extern void Si7020ClearBuf();
+[; ;Si7020.h: 35: extern void Si7020ClearBuf();
 
-[; ;Si7020.h: 34: extern unsigned char Humidity;
+[; ;Si7020.h: 36: extern unsigned char CRC8Check();
 
-[; ;Si7020.h: 35: extern signed char Temperature;
+[; ;Si7020.h: 37: extern void LeftRotate();
 
-[; ;Si7020.h: 36: extern unsigned char RecBuf[5];
+[; ;Si7020.h: 38: extern void Si7020Init();
+
+[; ;Si7020.h: 40: extern unsigned char Humidity;
+
+[; ;Si7020.h: 41: extern signed char Temperature;
+
+[; ;Si7020.h: 42: extern unsigned char RecBuf[5];
 
 [; ;BoardComm.h: 4: void UartPutConstStr(const unsigned char *str);
 
@@ -730,7 +736,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _DisplayContent * -> -> -> 4 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux ~ + + + -> 32768 `ui -> -> 4 `i `ui -> -> 8 `i `ui -> -> 8192 `i `ui ]
 [; ;led.c: 149: ShowHumiTemp(Temperature);
 
-"35 ./Si7020.h
+"41 ./Si7020.h
 [v _Temperature `c 0 e ]
 "149 ./led.c
 [e ( _ShowHumiTemp (1
@@ -771,7 +777,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _DisplayContent * -> -> -> 4 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ + + + + -> 1 `i -> 2 `i -> 8 `i -> 8192 `i -> 4096 `i `ui ]
 [; ;led.c: 160: ShowHumiTemp(Humidity);
 
-"34 ./Si7020.h
+"40 ./Si7020.h
 [v _Humidity `uc 0 e ]
 "160 ./led.c
 [e ( _ShowHumiTemp (1

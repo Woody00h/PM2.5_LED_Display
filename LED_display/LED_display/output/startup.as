@@ -122,7 +122,7 @@ dataloop0:
 	push	a
 	inc	x
 		mov	a,x
-cmp	a,low (__Lromdata0+3)
+cmp	a,low (__Lromdata0+5)
 	jnz	dataloop0
 	mov	reg[CUR_PP],0
 	mov	reg[STK_PP],3

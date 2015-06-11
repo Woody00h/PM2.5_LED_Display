@@ -1,7 +1,7 @@
 PROJNAME=LED_display
 DEVICE=CY8C22345
 BASEDEVICE=CY8C22045
-PROJPATH=E:/430PRO~1/LED_DI~1/LED_DI~1/LED_DI~1
+PROJPATH=E:/430PRO~1/PM2~1.5_L/LED_DI~1/LED_DI~1
 PSOCDIR=D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1
 INCLUDE_PATH=D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1
 CSRCS= boardcommunication.c led.c main.c particlesensor.c si7020.c software_iic.c t74hc595.c
