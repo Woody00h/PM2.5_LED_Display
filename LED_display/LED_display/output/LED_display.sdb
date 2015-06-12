@@ -217,11 +217,11 @@
 [s S561 . 8 `ul 1 quot 4 0 `ul 1 rem 4 4 ]
 [v _uldiv_t `S561  1 t 8 ]
 "124
-[v F92 `(v  1 t 0 ]
+[v F93 `(v  1 t 0 ]
 "128
-[v F104 `(i  1 t 2 ]
+[v F105 `(i  1 t 2 ]
 "129
-[v F113 `(i  1 t 2 ]
+[v F114 `(i  1 t 2 ]
 "4 ./ParticleSensor.h
 [v _u16 `ui  1 t 2 ]
 "23
@@ -429,10 +429,10 @@
 "4 ./ParticleSensor.h
 [v _u16 `ui  1 t 2 ]
 "23
-[s S1108 . 24 `ui 1 Head 2 0 `ui 1 Length 2 2 `ui 1 PM1_0_US 2 4 `ui 1 PM2_5_US 2 6 `ui 1 PM10_US 2 8 `ui 1 PM1_0_CN 2 10 `ui 1 PM2_5_CN 2 12 `ui 1 PM10_CN 2 14 `ui 1 Reserve1 2 16 `ui 1 Reserve2 2 18 `ui 1 Reserve3 2 20 `ui 1 checksum 2 22 ]
+[s S1109 . 24 `ui 1 Head 2 0 `ui 1 Length 2 2 `ui 1 PM1_0_US 2 4 `ui 1 PM2_5_US 2 6 `ui 1 PM10_US 2 8 `ui 1 PM1_0_CN 2 10 `ui 1 PM2_5_CN 2 12 `ui 1 PM10_CN 2 14 `ui 1 Reserve1 2 16 `ui 1 Reserve2 2 18 `ui 1 Reserve3 2 20 `ui 1 checksum 2 22 ]
 [v _PMFrameField `S569  1 t 24 ]
 "29
-[u S1122 . 40 `[40]uc 1 PMRxBuf 40 0 `S569 1 MyPMFrame 24 0 ]
+[u S1123 . 40 `[40]uc 1 PMRxBuf 40 0 `S569 1 MyPMFrame 24 0 ]
 [v _PMSFrameUnion `S583  1 t 40 ]
 "18 D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1\m8c.h
 [v _BOOL `uc  1 t 1 ]
@@ -633,10 +633,10 @@
 "4 ./ParticleSensor.h
 [v _u16 `ui  1 t 2 ]
 "23
-[s S1707 . 24 `ui 1 Head 2 0 `ui 1 Length 2 2 `ui 1 PM1_0_US 2 4 `ui 1 PM2_5_US 2 6 `ui 1 PM10_US 2 8 `ui 1 PM1_0_CN 2 10 `ui 1 PM2_5_CN 2 12 `ui 1 PM10_CN 2 14 `ui 1 Reserve1 2 16 `ui 1 Reserve2 2 18 `ui 1 Reserve3 2 20 `ui 1 checksum 2 22 ]
+[s S1712 . 24 `ui 1 Head 2 0 `ui 1 Length 2 2 `ui 1 PM1_0_US 2 4 `ui 1 PM2_5_US 2 6 `ui 1 PM10_US 2 8 `ui 1 PM1_0_CN 2 10 `ui 1 PM2_5_CN 2 12 `ui 1 PM10_CN 2 14 `ui 1 Reserve1 2 16 `ui 1 Reserve2 2 18 `ui 1 Reserve3 2 20 `ui 1 checksum 2 22 ]
 [v _PMFrameField `S569  1 t 24 ]
 "29
-[u S1721 . 40 `[40]uc 1 PMRxBuf 40 0 `S569 1 MyPMFrame 24 0 ]
+[u S1726 . 40 `[40]uc 1 PMRxBuf 40 0 `S569 1 MyPMFrame 24 0 ]
 [v _PMSFrameUnion `S583  1 t 40 ]
 "18 D:/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C22~1\m8c.h
 [v _BOOL `uc  1 t 1 ]
@@ -1037,16 +1037,16 @@
 "6
 [v _wchar_t `us  1 t 2 ]
 "47
-[s S2832 . 4 `i 1 quot 2 0 `i 1 rem 2 2 ]
+[s S2838 . 4 `i 1 quot 2 0 `i 1 rem 2 2 ]
 [v _div_t `S549  1 t 4 ]
 "51
-[s S2836 . 4 `ui 1 quot 2 0 `ui 1 rem 2 2 ]
+[s S2842 . 4 `ui 1 quot 2 0 `ui 1 rem 2 2 ]
 [v _udiv_t `S553  1 t 4 ]
 "55
-[s S2840 . 8 `l 1 quot 4 0 `l 1 rem 4 4 ]
+[s S2846 . 8 `l 1 quot 4 0 `l 1 rem 4 4 ]
 [v _ldiv_t `S557  1 t 8 ]
 "59
-[s S2844 . 8 `ul 1 quot 4 0 `ul 1 rem 4 4 ]
+[s S2850 . 8 `ul 1 quot 4 0 `ul 1 rem 4 4 ]
 [v _uldiv_t `S561  1 t 8 ]
 "124
 [v F79 `(v  1 t 0 ]
@@ -1072,6 +1072,8 @@
 [v _ShowHumiTemp `(v  1 e 0 0 ]
 "132
 [v _LED_Display `(v  1 e 0 0 ]
+"171
+[v _LED_Init `(v  1 e 0 0 ]
 "36 ./lib\SAR10.h
 [v _SAR10_DisableInt `BR(v  1 e 0 0 ]
 "37
@@ -1126,7 +1128,7 @@
 [v _main `(v  1 e 0 0 ]
 "12 ./particlesensor.c
 [v _SensorUART `(v  1 e 0 0 ]
-"78
+"80
 [v _FrameCheck `(uc  1 e 1 0 ]
 "10 ./si7020.c
 [v _Si7020SendCommand `(uc  1 e 1 0 ]
@@ -1182,19 +1184,19 @@
 [v ___wmul `(ui  1 e 2 0 ]
 "8 ./led.c
 [v _DisplayNum `[3]uc  1 e 3 0 ]
-"34 ./LED.h
+"38 ./LED.h
 [v _DigitArray `C[10]ui  1 e 20 0 ]
-"51
-[v _DisplayContent `[8]ui  1 e 16 0 ]
-"52
-[v _DisplayExchangeTimer `uc  1 e 1 0 ]
-"53
-[v _DisPlayIndex `uc  1 e 1 0 ]
-"54
-[v _IndexStart `uc  1 e 1 0 ]
 "55
-[v _IndexEnd `uc  1 e 1 0 ]
+[v _DisplayContent `[8]ui  1 e 16 0 ]
 "56
+[v _DisplayExchangeTimer `uc  1 e 1 0 ]
+"57
+[v _DisPlayIndex `uc  1 e 1 0 ]
+"58
+[v _IndexStart `uc  1 e 1 0 ]
+"59
+[v _IndexEnd `uc  1 e 1 0 ]
+"60
 [v _DisplayItem `uc  1 e 1 0 ]
 "7 ./lib\PSoCGPIOINT.h
 [v _MR_Data_ADDR `Auc  1 e 1 @0 ]
@@ -1476,6 +1478,8 @@
 [v _MyPMSUnion `S583  1 e 40 0 ]
 "42
 [v _data_pm2_5 `ui  1 e 2 0 ]
+"43
+[v _RecTimeoutTimer `uc  1 e 1 0 ]
 "23 ./Si7020.h
 [v _poly_h `uc  1 e 1 0 ]
 "24
@@ -2048,7 +2052,7 @@
 {
 "64
 [v _ret `uc  1 a 1 0 ]
-"184
+"193
 } 1
 "60 ./boardcommunication.c
 [v _UartPutHexWord `(v  1 e 0 0 ]
@@ -2064,14 +2068,14 @@
 [v _data `ui  1 a 2 xa ]
 "90
 } 6
-"78 ./particlesensor.c
+"80 ./particlesensor.c
 [v _FrameCheck `(uc  1 e 1 0 ]
 {
-"79
+"81
 [v _checksum `ui  1 a 2 0 ]
-"80
+"82
 [v _i `uc  1 a 1 2 ]
-"98
+"100
 } 3
 "113 ./si7020.c
 [v _Si7020Init `(v  1 e 0 0 ]
@@ -2146,6 +2150,11 @@
 [v _data `ui  1 a 2 xa ]
 "101
 } 7
+"171 ./led.c
+[v _LED_Init `(v  1 e 0 0 ]
+{
+"178
+} 0
 "22 ./software_iic.c
 [v _Init_IIC `(v  1 e 0 0 ]
 {
@@ -2397,5 +2406,5 @@
 {
 "13
 [v _rxdata `uc  1 a 1 0 ]
-"70
+"72
 } 1

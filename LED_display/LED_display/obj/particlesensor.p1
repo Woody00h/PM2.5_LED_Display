@@ -2079,7 +2079,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _data_pm2_5 `ui 1 e ]
 [; ;ParticleSensor.h: 42: unsigned int data_pm2_5;
 
-[; ;ParticleSensor.h: 43: unsigned char FrameCheck(void);
+"43
+[v _RecTimeoutTimer `uc 1 e ]
+[; ;ParticleSensor.h: 43: unsigned char RecTimeoutTimer;
+
+[; ;ParticleSensor.h: 44: unsigned char FrameCheck(void);
 
 "12 ./particlesensor.c
 [v _SensorUART `(v 1 ef ]
@@ -2104,254 +2108,258 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _UART_Sensor_bReadRxData `BF619 0 e ]
 "15 ./particlesensor.c
 [e = _rxdata ( _UART_Sensor_bReadRxData ..  ]
-[; ;particlesensor.c: 24: if(HeadFlag == 0)
+[; ;particlesensor.c: 24: RecTimeoutTimer = 3;
 
 "24
-[e $ ! == -> _HeadFlag `i -> 0 `i 4  ]
-[; ;particlesensor.c: 25: {
+[e = _RecTimeoutTimer -> -> 3 `i `uc ]
+[; ;particlesensor.c: 26: if(HeadFlag == 0)
 
-"25
-{
-[; ;particlesensor.c: 27: if(DataPtr < 2)
+"26
+[e $ ! == -> _HeadFlag `i -> 0 `i 4  ]
+[; ;particlesensor.c: 27: {
 
 "27
-[e $ ! < -> _DataPtr `i -> 2 `i 5  ]
-[; ;particlesensor.c: 28: {
-
-"28
 {
-[; ;particlesensor.c: 29: MyPMSUnion.PMRxBuf[DataPtr] = rxdata;
+[; ;particlesensor.c: 29: if(DataPtr < 2)
 
 "29
-[e = *U + &U . _MyPMSUnion 0 * -> _DataPtr `ux -> -> # *U &U . _MyPMSUnion 0 `ui `ux _rxdata ]
-[; ;particlesensor.c: 30: DataPtr ++;
+[e $ ! < -> _DataPtr `i -> 2 `i 5  ]
+[; ;particlesensor.c: 30: {
 
 "30
-[e ++ _DataPtr -> -> 1 `i `uc ]
+{
+[; ;particlesensor.c: 31: MyPMSUnion.PMRxBuf[DataPtr] = rxdata;
+
 "31
+[e = *U + &U . _MyPMSUnion 0 * -> _DataPtr `ux -> -> # *U &U . _MyPMSUnion 0 `ui `ux _rxdata ]
+[; ;particlesensor.c: 32: DataPtr ++;
+
+"32
+[e ++ _DataPtr -> -> 1 `i `uc ]
+"33
 }
-[; ;particlesensor.c: 31: }
+[; ;particlesensor.c: 33: }
 
 [e $U 6  ]
-"32
-[e :U 5 ]
-[; ;particlesensor.c: 32: else
-
-[; ;particlesensor.c: 33: {
-
-"33
-{
-[; ;particlesensor.c: 34: MyPMSUnion.MyPMFrame.Head <<= 8;
-
 "34
-[e =<< . . _MyPMSUnion 1 0 -> 8 `i ]
-[; ;particlesensor.c: 35: MyPMSUnion.PMRxBuf[1] = rxdata;
+[e :U 5 ]
+[; ;particlesensor.c: 34: else
+
+[; ;particlesensor.c: 35: {
 
 "35
-[e = *U + &U . _MyPMSUnion 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _MyPMSUnion 0 `ui `ux _rxdata ]
-[; ;particlesensor.c: 36: DataPtr = 2;
+{
+[; ;particlesensor.c: 36: MyPMSUnion.MyPMFrame.Head <<= 8;
 
 "36
-[e = _DataPtr -> -> 2 `i `uc ]
+[e =<< . . _MyPMSUnion 1 0 -> 8 `i ]
+[; ;particlesensor.c: 37: MyPMSUnion.PMRxBuf[1] = rxdata;
+
 "37
+[e = *U + &U . _MyPMSUnion 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _MyPMSUnion 0 `ui `ux _rxdata ]
+[; ;particlesensor.c: 38: DataPtr = 2;
+
+"38
+[e = _DataPtr -> -> 2 `i `uc ]
+"39
 }
 [e :U 6 ]
-[; ;particlesensor.c: 37: }
+[; ;particlesensor.c: 39: }
 
-[; ;particlesensor.c: 40: if(DataPtr == 2 && MyPMSUnion.MyPMFrame.Head == 0x424d)
-
-"40
-[e $ ! && == -> _DataPtr `i -> 2 `i == . . _MyPMSUnion 1 0 -> -> 16973 `i `ui 7  ]
-[; ;particlesensor.c: 41: {
-
-"41
-{
-[; ;particlesensor.c: 42: HeadFlag = 1;
+[; ;particlesensor.c: 42: if(DataPtr == 2 && MyPMSUnion.MyPMFrame.Head == 0x424d)
 
 "42
-[e = _HeadFlag -> -> 1 `i `uc ]
+[e $ ! && == -> _DataPtr `i -> 2 `i == . . _MyPMSUnion 1 0 -> -> 16973 `i `ui 7  ]
+[; ;particlesensor.c: 43: {
+
 "43
+{
+[; ;particlesensor.c: 44: HeadFlag = 1;
+
+"44
+[e = _HeadFlag -> -> 1 `i `uc ]
+"45
 }
 [e :U 7 ]
-"44
+"46
 }
-[; ;particlesensor.c: 43: }
+[; ;particlesensor.c: 45: }
 
-[; ;particlesensor.c: 44: }
+[; ;particlesensor.c: 46: }
 
 [e $U 8  ]
-"45
-[e :U 4 ]
-[; ;particlesensor.c: 45: else
-
-[; ;particlesensor.c: 46: {
-
-"46
-{
-[; ;particlesensor.c: 47: MyPMSUnion.PMRxBuf[DataPtr] = rxdata;
-
 "47
-[e = *U + &U . _MyPMSUnion 0 * -> _DataPtr `ux -> -> # *U &U . _MyPMSUnion 0 `ui `ux _rxdata ]
-[; ;particlesensor.c: 48: if(DataPtr >= (40-1))
+[e :U 4 ]
+[; ;particlesensor.c: 47: else
+
+[; ;particlesensor.c: 48: {
 
 "48
-[e $ ! >= -> _DataPtr `i - -> 40 `i -> 1 `i 9  ]
-[; ;particlesensor.c: 49: {
+{
+[; ;particlesensor.c: 49: MyPMSUnion.PMRxBuf[DataPtr] = rxdata;
 
 "49
-{
-[; ;particlesensor.c: 50: DataPtr = (40-1);
+[e = *U + &U . _MyPMSUnion 0 * -> _DataPtr `ux -> -> # *U &U . _MyPMSUnion 0 `ui `ux _rxdata ]
+[; ;particlesensor.c: 50: if(DataPtr >= (40-1))
 
 "50
-[e = _DataPtr -> - -> 40 `i -> 1 `i `uc ]
+[e $ ! >= -> _DataPtr `i - -> 40 `i -> 1 `i 9  ]
+[; ;particlesensor.c: 51: {
+
 "51
+{
+[; ;particlesensor.c: 52: DataPtr = (40-1);
+
+"52
+[e = _DataPtr -> - -> 40 `i -> 1 `i `uc ]
+"53
 }
-[; ;particlesensor.c: 51: }
+[; ;particlesensor.c: 53: }
 
 [e $U 10  ]
-"52
-[e :U 9 ]
-[; ;particlesensor.c: 52: else
-
-[; ;particlesensor.c: 53: {
-
-"53
-{
-[; ;particlesensor.c: 54: DataPtr++;
-
 "54
-[e ++ _DataPtr -> -> 1 `i `uc ]
+[e :U 9 ]
+[; ;particlesensor.c: 54: else
+
+[; ;particlesensor.c: 55: {
+
 "55
+{
+[; ;particlesensor.c: 56: DataPtr++;
+
+"56
+[e ++ _DataPtr -> -> 1 `i `uc ]
+"57
 }
 [e :U 10 ]
-[; ;particlesensor.c: 55: }
+[; ;particlesensor.c: 57: }
 
-[; ;particlesensor.c: 57: if(DataPtr == (MyPMSUnion.MyPMFrame.Length + 4) && DataPtr >= 6)
-
-"57
-[e $ ! && == -> _DataPtr `ui + . . _MyPMSUnion 1 1 -> -> 4 `i `ui >= -> _DataPtr `i -> 6 `i 11  ]
-[; ;particlesensor.c: 58: {
-
-"58
-{
-[; ;particlesensor.c: 59: PMSFrameFlag = 1;
+[; ;particlesensor.c: 59: if(DataPtr == (MyPMSUnion.MyPMFrame.Length + 4) && DataPtr >= 6)
 
 "59
-[e = _PMSFrameFlag -> -> 1 `i `uc ]
-[; ;particlesensor.c: 60: HeadFlag = 0;
+[e $ ! && == -> _DataPtr `ui + . . _MyPMSUnion 1 1 -> -> 4 `i `ui >= -> _DataPtr `i -> 6 `i 11  ]
+[; ;particlesensor.c: 60: {
 
 "60
-[e = _HeadFlag -> -> 0 `i `uc ]
-[; ;particlesensor.c: 61: DataPtr = 0;
+{
+[; ;particlesensor.c: 61: PMSFrameFlag = 1;
 
 "61
+[e = _PMSFrameFlag -> -> 1 `i `uc ]
+[; ;particlesensor.c: 62: HeadFlag = 0;
+
+"62
+[e = _HeadFlag -> -> 0 `i `uc ]
+[; ;particlesensor.c: 63: DataPtr = 0;
+
+"63
 [e = _DataPtr -> -> 0 `i `uc ]
-"68
+"70
 }
 [e :U 11 ]
-"69
+"71
 }
 [e :U 8 ]
-"70
-[; ;particlesensor.c: 68: }
-
-[; ;particlesensor.c: 69: }
-
+"72
 [; ;particlesensor.c: 70: }
+
+[; ;particlesensor.c: 71: }
+
+[; ;particlesensor.c: 72: }
 
 [e :UE 3 ]
 }
-"78
+"80
 [v _FrameCheck `(uc 1 ef ]
 {
-[; ;particlesensor.c: 77: unsigned char FrameCheck(void)
+[; ;particlesensor.c: 79: unsigned char FrameCheck(void)
 
-[; ;particlesensor.c: 78: {
+[; ;particlesensor.c: 80: {
 
 [e :U _FrameCheck ]
 [f ]
-"79
+"81
 [v _checksum `ui 1 a ]
-[; ;particlesensor.c: 79: unsigned int checksum = 0;
+[; ;particlesensor.c: 81: unsigned int checksum = 0;
 
 [e = _checksum -> -> 0 `i `ui ]
-"80
+"82
 [v _i `uc 1 a ]
-[; ;particlesensor.c: 80: unsigned char i = 0;
+[; ;particlesensor.c: 82: unsigned char i = 0;
 
 [e = _i -> -> 0 `i `uc ]
-[; ;particlesensor.c: 82: for (i = 0; i < (MyPMSUnion.MyPMFrame.Length+2); i++)
+[; ;particlesensor.c: 84: for (i = 0; i < (MyPMSUnion.MyPMFrame.Length+2); i++)
 
-"82
+"84
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 16  ]
-"83
+"85
 [e :U 13 ]
-[; ;particlesensor.c: 83: {
+[; ;particlesensor.c: 85: {
 
 {
-[; ;particlesensor.c: 84: checksum += MyPMSUnion.PMRxBuf[i];
+[; ;particlesensor.c: 86: checksum += MyPMSUnion.PMRxBuf[i];
 
-"84
+"86
 [e =+ _checksum -> *U + &U . _MyPMSUnion 0 * -> _i `ux -> -> # *U &U . _MyPMSUnion 0 `ui `ux `ui ]
-"85
+"87
 }
-"82
+"84
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 16 ]
 [e $ < -> _i `ui + . . _MyPMSUnion 1 1 -> -> 2 `i `ui 13  ]
 [e :U 14 ]
-"85
-}
-[; ;particlesensor.c: 85: }
-
-[; ;particlesensor.c: 87: MyPMSUnion.MyPMFrame.Length = 0;
-
 "87
-[e = . . _MyPMSUnion 1 1 -> -> 0 `i `ui ]
-[; ;particlesensor.c: 88: MyPMSUnion.MyPMFrame.Head = 0;
+}
+[; ;particlesensor.c: 87: }
 
-"88
-[e = . . _MyPMSUnion 1 0 -> -> 0 `i `ui ]
-[; ;particlesensor.c: 90: if (checksum == MyPMSUnion.MyPMFrame.checksum)
+[; ;particlesensor.c: 89: MyPMSUnion.MyPMFrame.Length = 0;
+
+"89
+[e = . . _MyPMSUnion 1 1 -> -> 0 `i `ui ]
+[; ;particlesensor.c: 90: MyPMSUnion.MyPMFrame.Head = 0;
 
 "90
-[e $ ! == _checksum . . _MyPMSUnion 1 11 17  ]
-[; ;particlesensor.c: 91: {
-
-"91
-{
-[; ;particlesensor.c: 92: return 1;
+[e = . . _MyPMSUnion 1 0 -> -> 0 `i `ui ]
+[; ;particlesensor.c: 92: if (checksum == MyPMSUnion.MyPMFrame.checksum)
 
 "92
+[e $ ! == _checksum . . _MyPMSUnion 1 11 17  ]
+[; ;particlesensor.c: 93: {
+
+"93
+{
+[; ;particlesensor.c: 94: return 1;
+
+"94
 [e ) -> -> 1 `i `uc ]
 [e $UE 12  ]
-"93
+"95
 }
-[; ;particlesensor.c: 93: }
+[; ;particlesensor.c: 95: }
 
 [e $U 18  ]
-"94
-[e :U 17 ]
-[; ;particlesensor.c: 94: else
-
-[; ;particlesensor.c: 95: {
-
-"95
-{
-[; ;particlesensor.c: 96: return 0;
-
 "96
+[e :U 17 ]
+[; ;particlesensor.c: 96: else
+
+[; ;particlesensor.c: 97: {
+
+"97
+{
+[; ;particlesensor.c: 98: return 0;
+
+"98
 [e ) -> -> 0 `i `uc ]
 [e $UE 12  ]
-"97
+"99
 }
 [e :U 18 ]
-"98
-[; ;particlesensor.c: 97: }
+"100
+[; ;particlesensor.c: 99: }
 
-[; ;particlesensor.c: 98: }
+[; ;particlesensor.c: 100: }
 
 [e :UE 12 ]
 }

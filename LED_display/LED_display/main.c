@@ -76,6 +76,8 @@ void main(void)
 //	UART_Sensor_EnableInt();
 	UART_Sensor_IntCntl(UART_Sensor_ENABLE_RX_INT|UART_Sensor_DISABLE_TX_INT);
 	
+	LED_Init();
+	
 	Timer8_WritePeriod(160);  
 	Timer8_WriteCompareValue(80);  
 	Timer8_EnableInt();  
@@ -96,13 +98,20 @@ void main(void)
 	DisplayBuf[1] = 0;
 	
 	IndexStart = 0;
-	IndexEnd   = 8;
+	IndexEnd   = 4;
 	
 	Si7020Init();
 	
 	RES_WDT = 0;
 	while (1)
 	{
+		if (!RecTimeoutTimer)
+		{
+			PMSFrameFlag = 0;
+			HeadFlag = 0;	
+            DataPtr = 0;
+		}
+		
 		if (PMSFrameFlag)
 		{
 			PMSFrameFlag = 0;

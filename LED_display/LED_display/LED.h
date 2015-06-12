@@ -23,6 +23,10 @@
 #define DIGIT_P ~(BIT_A + BIT_B + BIT_F + BIT_G + BIT_E)
 #define DIGIT_C ~(BIT_A + BIT_D + BIT_E + BIT_F)
 #define DIGIT_H ~(BIT_B + BIT_C + BIT_E + BIT_F + BIT_G)
+#define DIGIT_L ~(BIT_D + BIT_E + BIT_F)
+#define DIGIT_O ~(BIT_C + BIT_D + BIT_E + BIT_G)
+#define DIGIT_A ~(BIT_A + BIT_B + BIT_G + BIT_C + BIT_D + BIT_E)
+#define DIGIT_D ~(BIT_B + BIT_G + BIT_C + BIT_D + BIT_E)
 #define DIGIT_MINUS (~BIT_G)
 #define PM2_5 		0
 #define TEMPERATURE	1
@@ -58,4 +62,5 @@ LED_EXTERN unsigned char DisplayItem;
 LED_EXTERN void ShowPMxx(unsigned int pm);
 LED_EXTERN void ShowHumiTemp(signed char value);
 LED_EXTERN void LED_Display(void);
+LED_EXTERN void LED_Init();
 #endif 

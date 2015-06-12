@@ -1,7 +1,7 @@
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
-                                                                                                           Fri Jun 12 16:15:52 2015
+                                                                                                           Fri Jun 12 16:54:53 2015
 
 
      1                          
@@ -26,7 +26,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     20                          	processor	CY8C22345
     21                          	macro	M8C_ClearWDT
     22                          	mov reg[0xE3],0x38
-    23  3106                    	endm
+    23  30D4                    	endm
     24                          
     25                          	psect	PD_startup,class=CODE
     26                          	psect	init,class=CODE
@@ -135,12 +135,12 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
    129  3FCA  50 00             	mov	a,low __Lstackps
    130  3FCC  4E                	swap	a,sp
    131                          
-   132  3FCD  7D 3C9E           	ljmp	_main
+   132  3FCD  7D 3C8E           	ljmp	_main
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
-Symbol Table                                                                                               Fri Jun 12 16:15:52 2015
+Symbol Table                                                                                               Fri Jun 12 16:54:53 2015
 
-    __Lramdata0 0054       __Lstackps 0300      __Lromdata0 0065            _main 3C9E            start 0000        dataloop0 3FBA  
+    __Lramdata0 0054       __Lstackps 0300      __Lromdata0 0065            _main 3C8E            start 0000        dataloop0 3FBA  
          CUR_PP 00D0           STK_PP 00D1        intlevel0 0003        intlevel1 0003        intlevel2 0003        reset_vec 0000  
        bssloop0 3FB1          __Lbss0 0000          __Start 3F46          startup 3FA0  __stack_start__ 0300  

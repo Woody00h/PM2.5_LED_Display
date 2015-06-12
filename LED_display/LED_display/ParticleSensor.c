@@ -21,6 +21,8 @@ void SensorUART(void )
 	UART_Board_SendData(rxdata);
 	*/
 	
+	RecTimeoutTimer = 3;
+	
 	if(HeadFlag == 0)
     {
         //head receive

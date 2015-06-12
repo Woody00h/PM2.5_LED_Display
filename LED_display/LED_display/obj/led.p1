@@ -1,82 +1,84 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"34 ./LED.h
+"38 ./LED.h
 [v _DigitArray `Cui -> 0 `x e ]
 [i _DigitArray
 :U ..
-"35
-~ + + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 8192 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 8 `i `ui
-"36
--> ~ + -> 1 `i -> 2 `i `ui
-"37
-~ + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 4096 `i `ui -> -> 8 `i `ui -> -> 4 `i `ui
-"38
-~ + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 4096 `i `ui
 "39
--> ~ + + + -> 1 `i -> 2 `i -> 8192 `i -> 4096 `i `ui
+~ + + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 8192 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 8 `i `ui
 "40
-~ + + + + -> 32768 `ui -> -> 8192 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui
+-> ~ + -> 1 `i -> 2 `i `ui
 "41
-~ + + + + + -> 32768 `ui -> -> 8192 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 8 `i `ui
+~ + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 4096 `i `ui -> -> 8 `i `ui -> -> 4 `i `ui
 "42
-~ + + -> 32768 `ui -> -> 1 `i `ui -> -> 2 `i `ui
+~ + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 4096 `i `ui
 "43
-~ + + + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 8192 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 8 `i `ui
+-> ~ + + + -> 1 `i -> 2 `i -> 8192 `i -> 4096 `i `ui
 "44
+~ + + + + -> 32768 `ui -> -> 8192 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui
+"45
+~ + + + + + -> 32768 `ui -> -> 8192 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 8 `i `ui
+"46
+~ + + -> 32768 `ui -> -> 1 `i `ui -> -> 2 `i `ui
+"47
+~ + + + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 8192 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 8 `i `ui
+"48
 ~ + + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 8192 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui
 ..
-][; ;LED.h: 34: const unsigned int DigitArray[] = {
+][; ;LED.h: 38: const unsigned int DigitArray[] = {
 
-[; ;LED.h: 35: ~(0X8000 + 0X0001 + 0X2000 + 0X0002 + 0X0004 + 0X0008),
+[; ;LED.h: 39: ~(0X8000 + 0X0001 + 0X2000 + 0X0002 + 0X0004 + 0X0008),
 
-[; ;LED.h: 36: ~(0X0001 + 0X0002),
+[; ;LED.h: 40: ~(0X0001 + 0X0002),
 
-[; ;LED.h: 37: ~(0X8000 + 0X0001 + 0X1000 + 0X0008 + 0X0004),
+[; ;LED.h: 41: ~(0X8000 + 0X0001 + 0X1000 + 0X0008 + 0X0004),
 
-[; ;LED.h: 38: ~(0X8000 + 0X0001 + 0X0002 + 0X0004 + 0X1000),
+[; ;LED.h: 42: ~(0X8000 + 0X0001 + 0X0002 + 0X0004 + 0X1000),
 
-[; ;LED.h: 39: ~(0X0001 + 0X0002 + 0X2000 + 0X1000),
+[; ;LED.h: 43: ~(0X0001 + 0X0002 + 0X2000 + 0X1000),
 
-[; ;LED.h: 40: ~(0X8000 + 0X2000 + 0X1000 + 0X0002 + 0X0004),
+[; ;LED.h: 44: ~(0X8000 + 0X2000 + 0X1000 + 0X0002 + 0X0004),
 
-[; ;LED.h: 41: ~(0X8000 + 0X2000 + 0X1000 + 0X0002 + 0X0004 + 0X0008),
+[; ;LED.h: 45: ~(0X8000 + 0X2000 + 0X1000 + 0X0002 + 0X0004 + 0X0008),
 
-[; ;LED.h: 42: ~(0X8000 + 0X0001 + 0X0002),
+[; ;LED.h: 46: ~(0X8000 + 0X0001 + 0X0002),
 
-[; ;LED.h: 43: ~(0X8000 + 0X0001 + 0X2000 + 0X1000 + 0X0002 + 0X0004 + 0X0008),
+[; ;LED.h: 47: ~(0X8000 + 0X0001 + 0X2000 + 0X1000 + 0X0002 + 0X0004 + 0X0008),
 
-[; ;LED.h: 44: ~(0X8000 + 0X0001 + 0X2000 + 0X1000 + 0X0002 + 0X0004),
+[; ;LED.h: 48: ~(0X8000 + 0X0001 + 0X2000 + 0X1000 + 0X0002 + 0X0004),
 
-[; ;LED.h: 45: };
-
-"51
-[v _DisplayContent `ui -> 8 `i e ]
-[; ;LED.h: 51: unsigned int DisplayContent[8];
-
-"52
-[v _DisplayExchangeTimer `uc 1 e ]
-[; ;LED.h: 52: unsigned char DisplayExchangeTimer;
-
-"53
-[v _DisPlayIndex `uc 1 e ]
-[; ;LED.h: 53: unsigned char DisPlayIndex;
-
-"54
-[v _IndexStart `uc 1 e ]
-[; ;LED.h: 54: unsigned char IndexStart;
+[; ;LED.h: 49: };
 
 "55
-[v _IndexEnd `uc 1 e ]
-[; ;LED.h: 55: unsigned char IndexEnd;
+[v _DisplayContent `ui -> 8 `i e ]
+[; ;LED.h: 55: unsigned int DisplayContent[8];
 
 "56
+[v _DisplayExchangeTimer `uc 1 e ]
+[; ;LED.h: 56: unsigned char DisplayExchangeTimer;
+
+"57
+[v _DisPlayIndex `uc 1 e ]
+[; ;LED.h: 57: unsigned char DisPlayIndex;
+
+"58
+[v _IndexStart `uc 1 e ]
+[; ;LED.h: 58: unsigned char IndexStart;
+
+"59
+[v _IndexEnd `uc 1 e ]
+[; ;LED.h: 59: unsigned char IndexEnd;
+
+"60
 [v _DisplayItem `uc 1 e ]
-[; ;LED.h: 56: unsigned char DisplayItem;
+[; ;LED.h: 60: unsigned char DisplayItem;
 
-[; ;LED.h: 58: void ShowPMxx(unsigned int pm);
+[; ;LED.h: 62: void ShowPMxx(unsigned int pm);
 
-[; ;LED.h: 59: void ShowHumiTemp(signed char value);
+[; ;LED.h: 63: void ShowHumiTemp(signed char value);
 
-[; ;LED.h: 60: void LED_Display(void);
+[; ;LED.h: 64: void LED_Display(void);
+
+[; ;LED.h: 65: void LED_Init();
 
 "4 C:\Program Files (x86)\HI-TECH Software\HCPSOC\PRO\9.61\include\stdlib.h
 [v _ptrdiff_t `i 1 t ]
@@ -185,7 +187,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 123: extern void exit(int);
 
 "124
-[v F92 `(v 1 tf ]
+[v F93 `(v 1 tf ]
 [; ;stdlib.h: 124: extern int atexit(void (*)(void));
 
 [; ;stdlib.h: 125: extern char * getenv(const char *);
@@ -195,11 +197,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 127: extern int system(char *);
 
 "128
-[v F104 `(i 1 tf2`*Cv`*Cv ]
+[v F105 `(i 1 tf2`*Cv`*Cv ]
 [; ;stdlib.h: 128: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
 
 "129
-[v F113 `(i 1 tf2`*Cv`*Cv ]
+[v F114 `(i 1 tf2`*Cv`*Cv ]
 [; ;stdlib.h: 129: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
 
 [; ;stdlib.h: 130: extern int abs(int);
@@ -280,7 +282,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 
 [; ;ParticleSensor.h: 42: extern unsigned int data_pm2_5;
 
-[; ;ParticleSensor.h: 43: extern unsigned char FrameCheck(void);
+[; ;ParticleSensor.h: 43: extern unsigned char RecTimeoutTimer;
+
+[; ;ParticleSensor.h: 44: extern unsigned char FrameCheck(void);
 
 [; ;Si7020.h: 30: extern unsigned char Si7020SendCommand(unsigned char cmd);
 
@@ -931,6 +935,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;led.c: 168: }
 
 [e :UE 29 ]
+}
+"171
+[v _LED_Init `(v 1 ef ]
+{
+[; ;led.c: 170: void LED_Init()
+
+[; ;led.c: 171: {
+
+[e :U _LED_Init ]
+[f ]
+[; ;led.c: 173: DisplayContent[0] = ~(0X0004 + 0X0008 + 0X2000);
+
+"173
+[e = *U + &U _DisplayContent * -> -> -> 0 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ + + -> 4 `i -> 8 `i -> 8192 `i `ui ]
+[; ;led.c: 174: DisplayContent[1] = ~(0X0002 + 0X0004 + 0X0008 + 0X1000);
+
+"174
+[e = *U + &U _DisplayContent * -> -> -> 1 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ + + + -> 2 `i -> 4 `i -> 8 `i -> 4096 `i `ui ]
+[; ;led.c: 175: DisplayContent[2] = ~(0X8000 + 0X0001 + 0X1000 + 0X0002 + 0X0004 + 0X0008);
+
+"175
+[e = *U + &U _DisplayContent * -> -> -> 2 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux ~ + + + + + -> 32768 `ui -> -> 1 `i `ui -> -> 4096 `i `ui -> -> 2 `i `ui -> -> 4 `i `ui -> -> 8 `i `ui ]
+[; ;led.c: 176: DisplayContent[3] = ~(0X0001 + 0X1000 + 0X0002 + 0X0004 + 0X0008);
+
+"176
+[e = *U + &U _DisplayContent * -> -> -> 3 `i `ui `ux -> -> # *U &U _DisplayContent `ui `ux -> ~ + + + + -> 1 `i -> 4096 `i -> 2 `i -> 4 `i -> 8 `i `ui ]
+[; ;led.c: 177: DisplayExchangeTimer = 40;
+
+"177
+[e = _DisplayExchangeTimer -> -> 40 `i `uc ]
+"178
+[; ;led.c: 178: }
+
+[e :UE 36 ]
 }
 [a 2C 83 104 111 119 32 84 0 ]
 [a 1C 83 104 111 119 32 80 77 0 ]

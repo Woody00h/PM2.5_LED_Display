@@ -166,3 +166,13 @@ void LED_Display(void)
 		}
 	}
 }
+
+void LED_Init()
+{
+	//just show "Load" when power on
+	DisplayContent[0] = DIGIT_L;
+	DisplayContent[1] = DIGIT_O;
+	DisplayContent[2] = DIGIT_A;
+	DisplayContent[3] = DIGIT_D;
+	DisplayExchangeTimer = 40;
+}
