@@ -29,9 +29,9 @@ PLL_MODE:				equ	0h		;PLL mode value
 PLL_MODE_MASK:			equ	40h		;PLL mode mask
 PLL_MODE_JUST:			equ	0h		;PLL mode value justified
 
-SLEEP_TIMER:			equ	0h		;Sleep Timer value
+SLEEP_TIMER:			equ	2h		;Sleep Timer value
 SLEEP_TIMER_MASK:		equ	18h		;Sleep Timer mask
-SLEEP_TIMER_JUST:		equ	0h		;Sleep Timer value justified
+SLEEP_TIMER_JUST:		equ	10h		;Sleep Timer value justified
 
 SLEEP_TIMER2:			equ	0h		;Sleep Extend value
 SLEEP_TIMER_MASK2:		equ	10h		;Sleep Extend mask
@@ -60,7 +60,7 @@ POWER_SET_2V7_6MHZ:     equ 02h	 ; MASK for 2.7V,  6MHZ operation
 POWER_SET_SLOW_IMO:     equ 01h  ; MASK for slow Internal Main Oscillator (IMO) 
 
 COMM_RX_PRESENT:		equ	1	;1 = TRUE
-WATCHDOG_ENABLE:		equ 0	;Watchdog Enable 1 = Enable
+WATCHDOG_ENABLE:		equ 1	;Watchdog Enable 1 = Enable
 
 CLOCK_DIV_VC1:			equ	7h	;VC1 clock divider
 CLOCK_DIV_VC1_MASK:		equ	f0h	;VC1 clock divider mask

@@ -1,7 +1,7 @@
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
-                                                                                                           Thu Jun 11 13:06:49 2015
+                                                                                                           Fri Jun 12 16:15:52 2015
 
 
      1                          
@@ -26,7 +26,7 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     20                          	processor	CY8C22345
     21                          	macro	M8C_ClearWDT
     22                          	mov reg[0xE3],0x38
-    23  3107                    	endm
+    23  3106                    	endm
     24                          
     25                          	psect	PD_startup,class=CODE
     26                          	psect	init,class=CODE
@@ -100,47 +100,47 @@ HI-TECH Software Macro Assembler (PSoC MCU) V9.61
     94  0000  7D 3F46           	ljmp	__Start
     95                          
     96                          	psect	init
-    97  3F9D                    startup:
-    98  3F9D  62 E3 38          	M8C_ClearWDT
-    99  3FA0  71 80             	or	f, 0x80	;select multiple RAM page mode
-   100  3FA2  70 BF             	and	f, 0xBF
+    97  3FA0                    startup:
+    98  3FA0  62 E3 38          	M8C_ClearWDT
+    99  3FA3  71 80             	or	f, 0x80	;select multiple RAM page mode
+   100  3FA5  70 BF             	and	f, 0xBF
    101                          
    102                          ;	Clear uninitialized variables in bank 0
    103                          	global	__Lbss0
-   104  3FA4  62 D1 00          	mov	reg[STK_PP],0
-   105  3FA7  50 00             	mov	a,low __Lbss0
-   106  3FA9  4E                	swap	a,sp
-   107  3FAA  50 00             	mov	a,0
-   108  3FAC  57 54             	mov	x,84
-   109  3FAE                    bssloop0:
-   110  3FAE  08                	push	a
-   111  3FAF  79                	dec	x
-   112  3FB0  BFFD              	jnz	bssloop0
+   104  3FA7  62 D1 00          	mov	reg[STK_PP],0
+   105  3FAA  50 00             	mov	a,low __Lbss0
+   106  3FAC  4E                	swap	a,sp
+   107  3FAD  50 00             	mov	a,0
+   108  3FAF  57 54             	mov	x,84
+   109  3FB1                    bssloop0:
+   110  3FB1  08                	push	a
+   111  3FB2  79                	dec	x
+   112  3FB3  BFFD              	jnz	bssloop0
    113                          
    114                          ;	Copy initialized data into bank 0
    115                          	global	__Lromdata0,__Lramdata0
-   116  3FB2  57 65             	mov	x,low __Lromdata0
-   117  3FB4  50 54             	mov	a,low __Lramdata0
-   118  3FB6  4E                	swap	a,sp
-   119  3FB7                    dataloop0:
-   120  3FB7  50 00             	mov	a,high __Lromdata0
-   121  3FB9  28                	romx
-   122  3FBA  08                	push	a
-   123  3FBB  75                	inc	x
-   124  3FBC  5B                		mov	a,x
-   125  3FBD  39 6A             cmp	a,low (__Lromdata0+5)
-   126  3FBF  BFF7              	jnz	dataloop0
-   127  3FC1  62 D0 00          	mov	reg[CUR_PP],0
-   128  3FC4  62 D1 03          	mov	reg[STK_PP],3
-   129  3FC7  50 00             	mov	a,low __Lstackps
-   130  3FC9  4E                	swap	a,sp
+   116  3FB5  57 65             	mov	x,low __Lromdata0
+   117  3FB7  50 54             	mov	a,low __Lramdata0
+   118  3FB9  4E                	swap	a,sp
+   119  3FBA                    dataloop0:
+   120  3FBA  50 00             	mov	a,high __Lromdata0
+   121  3FBC  28                	romx
+   122  3FBD  08                	push	a
+   123  3FBE  75                	inc	x
+   124  3FBF  5B                		mov	a,x
+   125  3FC0  39 6A             cmp	a,low (__Lromdata0+5)
+   126  3FC2  BFF7              	jnz	dataloop0
+   127  3FC4  62 D0 00          	mov	reg[CUR_PP],0
+   128  3FC7  62 D1 03          	mov	reg[STK_PP],3
+   129  3FCA  50 00             	mov	a,low __Lstackps
+   130  3FCC  4E                	swap	a,sp
    131                          
-   132  3FCA  7D 3C9F           	ljmp	_main
+   132  3FCD  7D 3C9E           	ljmp	_main
 
 
 HI-TECH Software Macro Assembler (PSoC MCU) V9.61
-Symbol Table                                                                                               Thu Jun 11 13:06:49 2015
+Symbol Table                                                                                               Fri Jun 12 16:15:52 2015
 
-    __Lramdata0 0054       __Lstackps 0300      __Lromdata0 0065            _main 3C9F            start 0000        dataloop0 3FB7  
+    __Lramdata0 0054       __Lstackps 0300      __Lromdata0 0065            _main 3C9E            start 0000        dataloop0 3FBA  
          CUR_PP 00D0           STK_PP 00D1        intlevel0 0003        intlevel1 0003        intlevel2 0003        reset_vec 0000  
-       bssloop0 3FAE          __Lbss0 0000          __Start 3F46          startup 3F9D  __stack_start__ 0300  
+       bssloop0 3FB1          __Lbss0 0000          __Start 3F46          startup 3FA0  __stack_start__ 0300  

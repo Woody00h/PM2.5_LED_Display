@@ -2408,13 +2408,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "71 ./main.c
 [e ( _UART_Board_Start (1
  -> -> 0 `i `uc ]
-[; ;main.c: 73: UART_Board_IntCntl(0x01|0x00);
-
-"95 ./lib\UART_Board.h
-[v _UART_Board_IntCntl `BF572 0 e ]
-"73 ./main.c
-[e ( _UART_Board_IntCntl (1
- -> | -> 1 `i -> 0 `i `uc ]
 [; ;main.c: 75: UART_Sensor_Start(0x00);
 
 "73 ./lib\UART_Sensor.h
@@ -2534,332 +2527,340 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Si7020Init `(v 0 ef ]
 "101 ./main.c
 [e ( _Si7020Init ..  ]
-[; ;main.c: 103: while (1)
+[; ;main.c: 103: RES_WDT = 0;
 
 "103
-[e :U 14 ]
-[; ;main.c: 104: {
+[e = _RES_WDT -> -> 0 `i `uc ]
+[; ;main.c: 104: while (1)
 
 "104
+[e :U 14 ]
+[; ;main.c: 105: {
+
+"105
 {
-[; ;main.c: 105: if (PMSFrameFlag)
+[; ;main.c: 106: if (PMSFrameFlag)
 
 "40 ./ParticleSensor.h
 [v _PMSFrameFlag `uc 0 e ]
-"105 ./main.c
+"106 ./main.c
 [e $ ! != -> _PMSFrameFlag `i -> -> -> 0 `i `uc `i 16  ]
-[; ;main.c: 106: {
-
-"106
-{
-[; ;main.c: 107: PMSFrameFlag = 0;
+[; ;main.c: 107: {
 
 "107
+{
+[; ;main.c: 108: PMSFrameFlag = 0;
+
+"108
 [e = _PMSFrameFlag -> -> 0 `i `uc ]
-[; ;main.c: 108: if (FrameCheck())
+[; ;main.c: 109: if (FrameCheck())
 
 "43 ./ParticleSensor.h
 [v _FrameCheck `(uc 0 ef ]
-"108 ./main.c
+"109 ./main.c
 [e $ ! != -> ( _FrameCheck ..  `i -> -> -> 0 `i `uc `i 17  ]
-[; ;main.c: 109: {
+[; ;main.c: 110: {
 
-"109
+"110
 {
-[; ;main.c: 110: data_pm2_5 = MyPMSUnion.MyPMFrame.PM2_5_US;
+[; ;main.c: 111: data_pm2_5 = MyPMSUnion.MyPMFrame.PM2_5_US;
 
 "42 ./ParticleSensor.h
 [v _data_pm2_5 `ui 0 e ]
 "41
 [v _MyPMSUnion `S2 0 e ]
-"110 ./main.c
+"111 ./main.c
 [e = _data_pm2_5 . . _MyPMSUnion 1 3 ]
-[; ;main.c: 111: UartPutConstStr("PM2.5:");
+[; ;main.c: 112: UartPutConstStr("PM2.5:");
 
 "4 ./BoardComm.h
 [v _UartPutConstStr `(v 0 ef1`*Cuc ]
-"111 ./main.c
+"112 ./main.c
 [e ( _UartPutConstStr (1
  :s 1C ]
-[; ;main.c: 112: UartPutHexWord(data_pm2_5);
+[; ;main.c: 113: UartPutHexWord(data_pm2_5);
 
 "6 ./BoardComm.h
 [v _UartPutHexWord `(v 0 ef1`ui ]
-"112 ./main.c
+"113 ./main.c
 [e ( _UartPutHexWord (1
  _data_pm2_5 ]
-"113
+"114
 }
-[; ;main.c: 113: }
+[; ;main.c: 114: }
 
 [e $U 18  ]
-"114
-[e :U 17 ]
-[; ;main.c: 114: else
-
-[; ;main.c: 115: {
-
 "115
-{
-[; ;main.c: 116: UartPutConstStr("checksum fail");
+[e :U 17 ]
+[; ;main.c: 115: else
+
+[; ;main.c: 116: {
 
 "116
+{
+[; ;main.c: 117: UartPutConstStr("checksum fail");
+
+"117
 [e ( _UartPutConstStr (1
  :s 2C ]
-"117
-}
-[e :U 18 ]
 "118
 }
+[e :U 18 ]
+"119
+}
 [e :U 16 ]
-[; ;main.c: 117: }
-
 [; ;main.c: 118: }
 
-[; ;main.c: 120: if (!one_sec_timer)
+[; ;main.c: 119: }
 
-"120
-[e $ ! ! != -> _one_sec_timer `i -> -> -> 0 `i `uc `i 19  ]
-[; ;main.c: 121: {
+[; ;main.c: 121: if (!one_sec_timer)
 
 "121
-{
-[; ;main.c: 122: one_sec_timer = 8;
+[e $ ! ! != -> _one_sec_timer `i -> -> -> 0 `i `uc `i 19  ]
+[; ;main.c: 122: {
 
 "122
-[e = _one_sec_timer -> -> 8 `i `uc ]
-[; ;main.c: 125: MUX_CR2 |= 0X02;
+{
+[; ;main.c: 123: one_sec_timer = 8;
 
-"125
+"123
+[e = _one_sec_timer -> -> 8 `i `uc ]
+[; ;main.c: 126: MUX_CR2 |= 0X02;
+
+"126
 [e =| _MUX_CR2 -> -> 2 `i `uc ]
-[; ;main.c: 126: SAR10_Trigger();
+[; ;main.c: 127: SAR10_Trigger();
 
 "39 ./lib\SAR10.h
 [v _SAR10_Trigger `BF368 0 e ]
-"126 ./main.c
+"127 ./main.c
 [e ( _SAR10_Trigger ..  ]
-[; ;main.c: 127: while(SAR10_fIsDataAvailable()==0);
+[; ;main.c: 128: while(SAR10_fIsDataAvailable()==0);
 
 "40 ./lib\SAR10.h
 [v _SAR10_fIsDataAvailable `BF371 0 e ]
-"127 ./main.c
+"128 ./main.c
 [e $U 20  ]
 [e :U 21 ]
 [e :U 20 ]
 [e $ == -> ( _SAR10_fIsDataAvailable ..  `i -> 0 `i 21  ]
 [e :U 22 ]
-[; ;main.c: 128: LightADCValue = SAR10_iGetData();
+[; ;main.c: 129: LightADCValue = SAR10_iGetData();
 
 "41 ./lib\SAR10.h
 [v _SAR10_iGetData `BF374 0 e ]
-"128 ./main.c
+"129 ./main.c
 [e = _LightADCValue -> ( _SAR10_iGetData ..  `ui ]
-[; ;main.c: 129: MUX_CR2 &= ~0X02;
+[; ;main.c: 130: MUX_CR2 &= ~0X02;
 
-"129
+"130
 [e =& _MUX_CR2 -> ~ -> 2 `i `uc ]
-"131
+"132
 }
 [e :U 19 ]
-[; ;main.c: 131: }
+[; ;main.c: 132: }
 
-[; ;main.c: 134: if(!rh_sample_timer)
-
-"134
-[e $ ! ! != -> _rh_sample_timer `i -> -> -> 0 `i `uc `i 23  ]
-[; ;main.c: 135: {
+[; ;main.c: 135: if(!rh_sample_timer)
 
 "135
-{
-[; ;main.c: 136: rh_sample_timer = 8;
+[e $ ! ! != -> _rh_sample_timer `i -> -> -> 0 `i `uc `i 23  ]
+[; ;main.c: 136: {
 
 "136
-[e = _rh_sample_timer -> -> 8 `i `uc ]
-[; ;main.c: 137: if (!RHSampleStep)
+{
+[; ;main.c: 137: rh_sample_timer = 8;
 
 "137
-[e $ ! ! != -> _RHSampleStep `i -> -> -> 0 `i `uc `i 24  ]
-[; ;main.c: 138: {
+[e = _rh_sample_timer -> -> 8 `i `uc ]
+[; ;main.c: 138: if (!RHSampleStep)
 
 "138
+[e $ ! ! != -> _RHSampleStep `i -> -> -> 0 `i `uc `i 24  ]
+[; ;main.c: 139: {
+
+"139
 {
-[; ;main.c: 139: ret = Si7020SendCommand(0xF5);
+[; ;main.c: 140: ret = Si7020SendCommand(0xF5);
 
 "30 ./Si7020.h
 [v _Si7020SendCommand `(uc 0 ef1`uc ]
-"139 ./main.c
+"140 ./main.c
 [e = _ret ( _Si7020SendCommand (1
  -> -> 245 `i `uc ]
-[; ;main.c: 140: if(ret)
-
-"140
-[e $ ! != -> _ret `i -> -> -> 0 `i `uc `i 25  ]
-[; ;main.c: 141: {
+[; ;main.c: 141: if(ret)
 
 "141
-{
-[; ;main.c: 142: RHSampleStep = 1;
+[e $ ! != -> _ret `i -> -> -> 0 `i `uc `i 25  ]
+[; ;main.c: 142: {
 
 "142
-[e = _RHSampleStep -> -> 1 `i `uc ]
+{
+[; ;main.c: 143: RHSampleStep = 1;
+
 "143
+[e = _RHSampleStep -> -> 1 `i `uc ]
+"144
 }
-[; ;main.c: 143: }
+[; ;main.c: 144: }
 
 [e $U 26  ]
-"144
-[e :U 25 ]
-[; ;main.c: 144: else
-
-[; ;main.c: 145: {
-
 "145
+[e :U 25 ]
+[; ;main.c: 145: else
+
+[; ;main.c: 146: {
+
+"146
 {
-"147
-}
-[e :U 26 ]
 "148
 }
-[; ;main.c: 147: }
-
+[e :U 26 ]
+"149
+}
 [; ;main.c: 148: }
 
+[; ;main.c: 149: }
+
 [e $U 27  ]
-"149
-[e :U 24 ]
-[; ;main.c: 149: else
-
-[; ;main.c: 150: {
-
 "150
+[e :U 24 ]
+[; ;main.c: 150: else
+
+[; ;main.c: 151: {
+
+"151
 {
-[; ;main.c: 152: Si7020Read_RH_NHM(RecBuf);
+[; ;main.c: 153: Si7020Read_RH_NHM(RecBuf);
 
 "31 ./Si7020.h
 [v _Si7020Read_RH_NHM `(v 0 ef1`*uc ]
 "42
 [v _RecBuf `uc -> 0 `x e ]
-"152 ./main.c
+"153 ./main.c
 [e ( _Si7020Read_RH_NHM (1
  &U _RecBuf ]
-[; ;main.c: 153: Si7020Data = *(unsigned int *)RecBuf;
+[; ;main.c: 154: Si7020Data = *(unsigned int *)RecBuf;
 
-"153
+"154
 [e = _Si7020Data *U -> &U _RecBuf `*ui ]
-[; ;main.c: 157: if (CRC8Check())
+[; ;main.c: 158: if (CRC8Check())
 
 "36 ./Si7020.h
 [v _CRC8Check `(uc 0 ef ]
-"157 ./main.c
+"158 ./main.c
 [e $ ! != -> ( _CRC8Check ..  `i -> -> -> 0 `i `uc `i 28  ]
-[; ;main.c: 158: {
-
-"158
-{
-[; ;main.c: 159: UartPutConstStr("RH:");
+[; ;main.c: 159: {
 
 "159
+{
+[; ;main.c: 160: UartPutConstStr("RH:");
+
+"160
 [e ( _UartPutConstStr (1
  :s 3C ]
-[; ;main.c: 161: Humidity = Si7020CalcRH(Si7020Data);
+[; ;main.c: 162: Humidity = Si7020CalcRH(Si7020Data);
 
 "40 ./Si7020.h
 [v _Humidity `uc 0 e ]
 "34
 [v _Si7020CalcRH `(uc 0 ef1`ui ]
-"161 ./main.c
+"162 ./main.c
 [e = _Humidity ( _Si7020CalcRH (1
  _Si7020Data ]
-[; ;main.c: 162: UartPutHexByte(Humidity);
+[; ;main.c: 163: UartPutHexByte(Humidity);
 
 "5 ./BoardComm.h
 [v _UartPutHexByte `(v 0 ef1`uc ]
-"162 ./main.c
+"163 ./main.c
 [e ( _UartPutHexByte (1
  _Humidity ]
-"163
+"164
 }
-[; ;main.c: 163: }
+[; ;main.c: 164: }
 
 [e $U 29  ]
-"164
-[e :U 28 ]
-[; ;main.c: 164: else
-
-[; ;main.c: 165: {
-
 "165
-{
-[; ;main.c: 166: UartPutConstStr("CRC fail");
+[e :U 28 ]
+[; ;main.c: 165: else
+
+[; ;main.c: 166: {
 
 "166
+{
+[; ;main.c: 167: UartPutConstStr("CRC fail");
+
+"167
 [e ( _UartPutConstStr (1
  :s 4C ]
-"167
+"168
 }
 [e :U 29 ]
-[; ;main.c: 167: }
+[; ;main.c: 168: }
 
-[; ;main.c: 170: Si7020Read_Temp_after_RHM(RecBuf);
+[; ;main.c: 171: Si7020Read_Temp_after_RHM(RecBuf);
 
 "32 ./Si7020.h
 [v _Si7020Read_Temp_after_RHM `(uc 0 ef1`*uc ]
-"170 ./main.c
+"171 ./main.c
 [e ( _Si7020Read_Temp_after_RHM (1
  &U _RecBuf ]
-[; ;main.c: 171: Si7020Data = *(unsigned int *)RecBuf;
-
-"171
-[e = _Si7020Data *U -> &U _RecBuf `*ui ]
-[; ;main.c: 172: UartPutConstStr("Temperature:");
+[; ;main.c: 172: Si7020Data = *(unsigned int *)RecBuf;
 
 "172
+[e = _Si7020Data *U -> &U _RecBuf `*ui ]
+[; ;main.c: 173: UartPutConstStr("Temperature:");
+
+"173
 [e ( _UartPutConstStr (1
  :s 5C ]
-[; ;main.c: 173: Temperature = Si7020CalcTemp(Si7020Data);
+[; ;main.c: 174: Temperature = Si7020CalcTemp(Si7020Data);
 
 "41 ./Si7020.h
 [v _Temperature `c 0 e ]
 "33
 [v _Si7020CalcTemp `(c 0 ef1`ui ]
-"173 ./main.c
+"174 ./main.c
 [e = _Temperature ( _Si7020CalcTemp (1
  _Si7020Data ]
-[; ;main.c: 174: UartPutHexByte(Temperature);
+[; ;main.c: 175: UartPutHexByte(Temperature);
 
-"174
+"175
 [e ( _UartPutHexByte (1
  -> _Temperature `uc ]
-[; ;main.c: 176: RHSampleStep = 0;
+[; ;main.c: 177: RHSampleStep = 0;
 
-"176
-[e = _RHSampleStep -> -> 0 `i `uc ]
 "177
-}
-[e :U 27 ]
+[e = _RHSampleStep -> -> 0 `i `uc ]
 "178
 }
+[e :U 27 ]
+"179
+}
 [e :U 23 ]
-[; ;main.c: 177: }
-
 [; ;main.c: 178: }
 
-[; ;main.c: 180: LED_Display();
+[; ;main.c: 179: }
+
+[; ;main.c: 181: LED_Display();
 
 "60 ./LED.h
 [v _LED_Display `(v 0 ef ]
-"180 ./main.c
+"181 ./main.c
 [e ( _LED_Display ..  ]
+[; ;main.c: 182: RES_WDT = 0;
+
 "182
+[e = _RES_WDT -> -> 0 `i `uc ]
+"183
 }
 [e :U 13 ]
-"103
+"104
 [e $U 14  ]
 [e :U 15 ]
-"183
-[; ;main.c: 182: }
-
+"184
 [; ;main.c: 183: }
+
+[; ;main.c: 184: }
 
 [e :UE 12 ]
 }

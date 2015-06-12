@@ -1,5 +1,39 @@
 Starting MAKE...
-creating project.mk -- no changes
+creating project.mk 
+
+lib/psocconfig.asm
+
+lib/psocconfigtbl.asm
+
+lib/sar10.asm
+
+lib/sar10int.asm
+
+lib/timer16.asm
+
+lib/timer16int.asm
+
+lib/timer8.asm
+
+lib/timer8int.asm
+
+lib/uart_board.asm
+
+lib/uart_boardint.asm
+
+lib/uart_boardplus.asm
+
+lib/uart_sensor.asm
+
+lib/uart_sensorint.asm
+
+lib/uart_sensorplus.asm
+
+module lib/obj/uart_boardplus.obj defines no symbols (warning)
+
+module lib/obj/uart_sensorplus.obj defines no symbols (warning)
+
+./boot.asm
 
 sed: can't read HTlinkOpts.lkp: No such file or directory
 
@@ -17,7 +51,7 @@ Serial number: HCPSOC-679591
 
 Memory Summary:
 
-    Program space        used  1492h (  5266) of  4000h bytes   ( 32.1%)
+    Program space        used  1496h (  5270) of  4000h bytes   ( 32.2%)
 
     Data space           used    80h (   128) of   400h bytes   ( 12.5%)
 
@@ -25,10 +59,10 @@ Memory Summary:
 
 Comparative memory usage (excludes absolute areas and stack variables)
 
-    ROM used:  4933 bytes
+    ROM used:  4934 bytes
 
     RAM used:    91 bytes
 
  
-LED_display - 0 error(s) 0 warning(s) 13:06:50
+LED_display - 0 error(s) 0 warning(s) 16:15:53
 

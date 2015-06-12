@@ -70,7 +70,7 @@ void main(void)
 	
 	UART_Board_Start(UART_PARITY_NONE);
 //	UART_Board_EnableInt();
-	UART_Board_IntCntl(UART_Board_ENABLE_RX_INT|UART_Board_DISABLE_TX_INT);
+//	UART_Board_IntCntl(UART_Board_ENABLE_RX_INT|UART_Board_DISABLE_TX_INT);
 
 	UART_Sensor_Start(UART_PARITY_NONE);
 //	UART_Sensor_EnableInt();
@@ -99,7 +99,8 @@ void main(void)
 	IndexEnd   = 8;
 	
 	Si7020Init();
-
+	
+	RES_WDT = 0;
 	while (1)
 	{
 		if (PMSFrameFlag)
@@ -178,6 +179,6 @@ void main(void)
 		}
 		
 		LED_Display();
-		
+		RES_WDT = 0;
 	}
 }
